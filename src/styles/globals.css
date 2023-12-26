@@ -76,9 +76,29 @@
 }
 
 @layer components {
+  /* display */
   .flex-center {
     @apply flex items-center justify-center;
   }
+
+  /* font */
+  .font-xl {
+    @apply text-2xl font-semibold leading-8;
+  }
+  .font-lg {
+    @apply text-lg font-medium leading-5;
+  }
+  .font-base {
+    @apply text-base font-medium leading-5;
+  }
+  .font-sm {
+    @apply text-sm font-medium leading-5;
+  }
+  .font-xs {
+    @apply text-xs font-medium leading-5;
+  }
+
+  /* etc */
   .hr {
     @apply my-4 border border-gray-200;
   }
