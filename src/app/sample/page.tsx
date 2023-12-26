@@ -16,19 +16,29 @@ export default function SamplePage() {
 
   return (
     <>
-      <h1 className="mb-2 text-center text-3xl font-bold">shadcn 컴포넌트 예시 페이지 링크</h1>
-      <hr className="my-4 border border-gray-200" />
-      <p className="text-center text-sm">
-        form의 경우 react-hook-form을 기반으로 하고 있어서 해당 라이브러리도 같이 설치해뒀어요!
-      </p>
-      <hr className="my-4 border border-gray-200" />
-      <div className="align mx-auto flex w-32 flex-col space-y-4">
+      <h1 className="mb-2 text-center text-3xl font-bold">컴포넌트 예시 페이지 링크</h1>
+
+      <hr className="hr" />
+      <span className="flex-center gap-2">
+        사용 예시 페이지 있는 컴포넌트: button<sub>(23-12-26 19:50 기준)</sub>
+      </span>
+      <hr className="hr" />
+
+      <div className="flex-center mx-auto w-full flex-col space-y-4">
         {components.map((name, idx) => (
-          <Button key={idx} variant="outline" asChild>
-            <Link href={`https://ui.shadcn.com/docs/components/${name}`} target="_blank">
-              {name}
-            </Link>
-          </Button>
+          <div key={idx} className="flex gap-2 font-medium">
+            <span className="flex-center">{name} :</span>
+            <Button className="border p-2 hover:bg-indigo-100">
+              <Link href={`https://ui.shadcn.com/docs/components/${name}`} target="_blank">
+                공식문서
+              </Link>
+            </Button>
+            <Button key={idx} className="border p-2 hover:bg-orange-100">
+              <Link href={`sample/${name}`} target="_blank">
+                사용예시
+              </Link>
+            </Button>
+          </div>
         ))}
       </div>
     </>
