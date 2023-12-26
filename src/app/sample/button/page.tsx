@@ -1,5 +1,4 @@
 import { Button } from '@/components/ui/button'
-import { BottomButton } from '@/components/common'
 import Link from 'next/link'
 
 export default function SampleButtonPage() {
@@ -38,9 +37,12 @@ export default function SampleButtonPage() {
 
       <hr className="hr" />
 
-      <p className="mb-2 font-bold">☑️ 버튼에 링크를 연결하는 방법</p>
-      <Button className="bg-slate-300 p-4">
-        <Link href="/">클릭 시 메인페이지로 이동</Link>
+      <p className="mb-2 font-bold">
+        ☑️ 버튼에 링크를 연결하는 방법: href prop에 경로만 적어주면 Link로 알아서 넘겨줌 <br />
+        <sub>href가 아예 없으면 일반 버튼, href에 경로를 적으면 Link가 같이 있는 버튼</sub>
+      </p>
+      <Button href="/" className="bg-slate-300 p-4">
+        클릭 시 메인페이지로 이동
       </Button>
     </>
   )
