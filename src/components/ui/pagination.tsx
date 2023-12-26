@@ -2,7 +2,7 @@ import * as React from 'react'
 import { ChevronLeft, ChevronRight, MoreHorizontal } from 'lucide-react'
 
 import { cn } from '@/libs/shadcnUtils'
-import { ButtonProps, buttonVariants } from '@/components/ui/button'
+import { shadcnButtonProps, buttonVariants } from '@/components/ui/shadcnButton'
 
 const Pagination = ({ className, ...props }: React.ComponentProps<'nav'>) => (
   <nav
@@ -27,7 +27,7 @@ PaginationItem.displayName = 'PaginationItem'
 
 type PaginationLinkProps = {
   isActive?: boolean
-} & Pick<ButtonProps, 'size'> &
+} & Pick<shadcnButtonProps, 'size'> &
   React.ComponentProps<'a'>
 
 const PaginationLink = ({ className, isActive, size = 'icon', ...props }: PaginationLinkProps) => (
