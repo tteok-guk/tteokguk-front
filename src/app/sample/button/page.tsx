@@ -1,5 +1,4 @@
 import { Button } from '@/components/ui/button'
-import Link from 'next/link'
 
 export default function SampleButtonPage() {
   return (
@@ -11,37 +10,42 @@ export default function SampleButtonPage() {
 
       <hr className="hr" />
 
-      <p className="mb-2 font-bold">☑️ 아무것도 지정하지 않은 기본 버튼</p>
+      <p className="mb-4 font-bold">☑️ 아무것도 지정하지 않은 기본 버튼</p>
       <Button>default</Button>
 
       <hr className="hr" />
 
-      <p className="mb-2 font-bold">☑️ size=sm</p>
-      <Button size="sm" className="bg-slate-300">
-        sm과 full의 높이는 서로 동일함 (40px)
-      </Button>
+      <p className="mb-4 font-bold">☑️ size=sm / size=lg</p>
+      <div className="flex-center mt-10">
+        <Button size="sm" className="bg-slate-300">
+          sm
+        </Button>
+        <Button size="lg" className="ml-10 bg-slate-300">
+          lg
+        </Button>
+      </div>
 
       <hr className="hr" />
 
-      <p className="mb-2 font-bold">☑️ size=full</p>
+      <p className="mb-4 font-bold">☑️ size=full</p>
       <Button size="full" className="bg-slate-300">
-        size: full은 해당 화면의 width를 가득 채움
+        full
       </Button>
 
       <hr className="hr" />
 
-      <p className="mb-2 font-bold">☑️ shape=circle / width, height는 className으로 지정</p>
-      <Button shape="circle" className="h-14 w-14 bg-slate-300">
+      <p className="mb-4 font-bold">☑️ shape=circle / width, height는 className으로 지정</p>
+      <Button shape="circle" className="h-60 w-60 bg-slate-300">
         동글
       </Button>
 
       <hr className="hr" />
 
-      <p className="mb-2 font-bold">
+      <p className="mb-4 font-bold">
         ☑️ 버튼에 링크를 연결하는 방법: href prop에 경로만 적어주면 Link로 알아서 넘겨줌 <br />
         <sub>href가 아예 없으면 일반 버튼, href에 경로를 적으면 Link가 같이 있는 버튼</sub>
       </p>
-      <Button href="/" className="bg-slate-300 p-4">
+      <Button href="/" className="bg-slate-300 p-8">
         클릭 시 메인페이지로 이동
       </Button>
     </>

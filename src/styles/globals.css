@@ -76,30 +76,30 @@
 }
 
 @layer components {
-  /* display */
+  /* position */
   .flex-center {
     @apply flex items-center justify-center;
   }
 
   /* font */
   .font-xl {
-    @apply text-2xl font-semibold leading-8;
+    @apply text-24 leading-32 font-semibold;
   }
   .font-lg {
-    @apply text-lg font-medium leading-5;
+    @apply text-18 leading-22 font-medium;
   }
   .font-base {
-    @apply text-base font-medium leading-5;
+    @apply text-16 leading-22 font-medium;
   }
   .font-sm {
-    @apply text-sm font-medium leading-5;
+    @apply text-14 leading-22 font-medium;
   }
   .font-xs {
-    @apply text-xs font-medium leading-5;
+    @apply text-11 leading-22 font-medium;
   }
 
   /* etc */
   .hr {
-    @apply my-4 border border-gray-200;
+    @apply my-16 border border-gray-200;
   }
 }
