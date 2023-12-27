@@ -8,11 +8,12 @@ const buttonVariants = cva('text-base disabled:pointer-events-none disabled:opac
   variants: {
     size: {
       default: 'h-fit w-fit',
-      sm: 'px-2 py-4',
-      full: 'w-full py-4',
+      sm: 'w-58 h-58',
+      lg: 'w-265 h-58',
+      full: 'w-335 h-58',
     },
     shape: {
-      default: 'rounded-lg',
+      default: 'rounded-6',
       circle: 'rounded-full',
     },
   },
