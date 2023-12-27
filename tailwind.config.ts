@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+import { generateUtilities } from './src/utils/generateUtilities'
 
 const config = {
   darkMode: ['class'],
@@ -13,6 +14,35 @@ const config = {
       },
     },
     extend: {
+      gap: generateUtilities(100),
+      columnGap: generateUtilities(100),
+      rowGap: generateUtilities(100),
+      top: generateUtilities(200),
+      right: generateUtilities(200),
+      bottom: generateUtilities(200),
+      left: generateUtilities(200),
+      width: generateUtilities(600),
+      minWidth: generateUtilities(600),
+      maxWidth: generateUtilities(600),
+      height: generateUtilities(600),
+      minHeight: generateUtilities(600),
+      maxHeight: generateUtilities(600),
+      margin: generateUtilities(200),
+      marginTop: generateUtilities(200),
+      marginRight: generateUtilities(200),
+      marginBottom: generateUtilities(200),
+      marginLeft: generateUtilities(200),
+      padding: generateUtilities(200),
+      paddingTop: generateUtilities(200),
+      paddingRight: generateUtilities(200),
+      paddingBottom: generateUtilities(200),
+      paddingLeft: generateUtilities(200),
+      border: generateUtilities(20),
+      borderWidth: generateUtilities(20),
+      borderRadius: generateUtilities(20),
+      fontSize: generateUtilities(30),
+      letterSpacing: generateUtilities(40),
+      lineHeight: generateUtilities(40),
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
@@ -47,11 +77,6 @@ const config = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
-      },
-      borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
       },
       keyframes: {
         'accordion-down': {
