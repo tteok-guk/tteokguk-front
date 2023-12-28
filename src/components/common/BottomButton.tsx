@@ -9,20 +9,30 @@ export default function BottomButton({
   fullBtnName,
   smallBtnClick,
   fullBtnClick,
+  smallBtnHref,
+  fullBtnHref,
 }: BottomButtonProps) {
   return (
-    <div className="absolute z-10 left-0 px-20 pt-16 bottom-0 w-full h-117 flex gap-x-12">
+    <div className="absolute bottom-0 left-0 z-10 flex h-117 w-full gap-x-12 px-20 pt-16">
       {split === 'twice' ? (
         <>
-          <Button className="border border-pr-500 text-pr-500 min-w-51 max-w-100 min-h-51 flex-grow flex-shrink-0" onClick={smallBtnClick}>
+          <Button
+            href={smallBtnHref}
+            className="min-h-51 min-w-51 max-w-100 flex-shrink-0 flex-grow border border-pr-500 text-pr-500"
+            onClick={smallBtnClick}
+          >
             {smallBtnName}
           </Button>
-          <Button className="border min-w-218 min-h-51 flex-grow flex-shrink-0 bg-pr-500 text-white" onClick={fullBtnClick}>
+          <Button
+            href={fullBtnHref}
+            className="min-h-51 min-w-218 flex-shrink-0 flex-grow border bg-pr-500 text-white"
+            onClick={fullBtnClick}
+          >
             {fullBtnName}
           </Button>
         </>
       ) : (
-        <Button size="full" className="border" onClick={fullBtnClick}>
+        <Button href={fullBtnHref} size="full" className="border" onClick={fullBtnClick}>
           {fullBtnName}
         </Button>
       )}

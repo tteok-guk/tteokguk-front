@@ -17,9 +17,7 @@ export default function SampleButtonPage() {
       <hr className="hr" />
 
       <p className="mb-4 font-bold">☑️ size=full</p>
-      <Button size="full">
-        full
-      </Button>
+      <Button size="full">full</Button>
 
       <hr className="hr" />
 
@@ -38,7 +36,7 @@ export default function SampleButtonPage() {
         클릭 시 메인페이지로 이동
       </Button>
 
-      <BottomButton split="twice" fullBtnName="긴 버튼" smallBtnName="작은버튼"/>
+      <BottomButton split="twice" fullBtnName="긴 버튼" smallBtnName="작은버튼" />
     </>
   )
 }
