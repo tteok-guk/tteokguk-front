@@ -1,9 +1,9 @@
 'use client'
 
-import { Badge } from "@/components/ui/badge"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Label } from "@/components/ui/label"
-import { Input } from "@/components/ui/input"
+import { Badge } from '@/components/ui/badge'
+import { Checkbox } from '@/components/ui/checkbox'
+import { Label } from '@/components/ui/label'
+import { Input } from '@/components/ui/input'
 import {
   Pagination,
   PaginationContent,
@@ -11,11 +11,11 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/components/ui/pagination"
-import { Textarea } from "@/components/ui/textarea"
-import { Skeleton } from "@/components/ui/skeleton"
-import { Button } from "@/components/ui/button"
-import { useToast } from "@/hooks/use-toast"
+} from '@/components/ui/pagination'
+import { Textarea } from '@/components/ui/textarea'
+import { Skeleton } from '@/components/ui/skeleton'
+import { Button } from '@/components/ui/button'
+import { useToast } from '@/hooks/use-toast'
 
 export default function SampleShadcnPage() {
   const { toast } = useToast()
@@ -25,16 +25,16 @@ export default function SampleShadcnPage() {
       <p>지금 페이지 진입하면 에러 뜰텐데 페이지네이션 때문임🤔</p>
       <p>원인 아직 못찾음😎</p>
 
-      <hr className="hr"/>
-
+      <hr className="hr" />
 
       {/* Badge */}
       <h1 className="font-xl mb-15">Badge</h1>
       <Badge>설날 D-52 (default 컬러는 임시 지정해둠)</Badge>
-      <br /><br />
-      <Badge className="bg-blue-500 w-300">배경 컬러, width, height 지정 가능</Badge>
+      <br />
+      <br />
+      <Badge className="w-300 bg-blue-500">배경 컬러, width, height 지정 가능</Badge>
 
-      <hr className="hr"/>
+      <hr className="hr" />
 
       {/* Checkbox */}
       <h1 className="font-xl mb-15">Checkbox</h1>
@@ -48,7 +48,10 @@ export default function SampleShadcnPage() {
       <div className="items-top flex space-x-2">
         <Checkbox id="terms1" />
         <div className="grid gap-4 leading-none">
-          <Label htmlFor="terms1" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+          <Label
+            htmlFor="terms1"
+            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+          >
             Label 컴포넌트도 같이 import 해서 쓰시면 돼요
           </Label>
           <p className="text-sm text-muted-foreground">
@@ -57,20 +60,24 @@ export default function SampleShadcnPage() {
         </div>
       </div>
 
-      <hr className="hr"/>
+      <hr className="hr" />
 
       {/* Input */}
       <h1 className="font-xl mb-15">Input</h1>
       <div className="flex-center flex-col gap-10">
         <Input type="text" placeholder="placeholder message" />
-        <Input type="text" placeholder="className으로 width, height 조정 가능" className="w-300 h-50" />
+        <Input
+          type="text"
+          placeholder="className으로 width, height 조정 가능"
+          className="h-50 w-300"
+        />
       </div>
       <div className="grid w-full max-w-sm items-center gap-1.5">
         <Label htmlFor="picture">사진 업로드</Label>
         <Input id="picture" type="file" />
       </div>
 
-      <hr className="hr"/>
+      <hr className="hr" />
 
       {/* Pagination */}
       <h1 className="font-xl">Pagination</h1>
@@ -82,13 +89,17 @@ export default function SampleShadcnPage() {
           </PaginationItem>
           <div className="flex-center">
             <PaginationItem>
-              <PaginationLink href="#" className="text-14" isActive>1</PaginationLink>
+              <PaginationLink href="#" className="text-14" isActive>
+                1
+              </PaginationLink>
             </PaginationItem>
             <span className="mx-4">/</span>
             <PaginationItem>
-              <PaginationLink href="#" className="text-14">5</PaginationLink>
+              <PaginationLink href="#" className="text-14">
+                5
+              </PaginationLink>
             </PaginationItem>
-            <span className="text-14 ml-4">그릇</span>
+            <span className="ml-4 text-14">그릇</span>
           </div>
           <PaginationItem>
             <PaginationNext href="#" />
@@ -96,13 +107,13 @@ export default function SampleShadcnPage() {
         </PaginationContent>
       </Pagination>
 
-      <hr className="hr"/>
+      <hr className="hr" />
 
       {/* Textarea */}
       <h1 className="font-xl mb-15">Textarea</h1>
       <Textarea placeholder="편지쓰기 어쩌고 저쩌고" />
 
-      <hr className="hr"/>
+      <hr className="hr" />
 
       {/* Skeleton */}
       <h1 className="font-xl mb-15">Skeleton</h1>
@@ -115,7 +126,7 @@ export default function SampleShadcnPage() {
       </div>
 
       {/* Toast */}
-      <hr className="hr"/>
+      <hr className="hr" />
       <h1 className="font-xl mb-15">Toast</h1>
       <Button
         size="full"
@@ -128,7 +139,8 @@ export default function SampleShadcnPage() {
         클릭하면 토스트 나옴
       </Button>
 
-      <br/><br/>
+      <br />
+      <br />
     </section>
   )
 }

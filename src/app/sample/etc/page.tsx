@@ -1,6 +1,36 @@
 'use client'
 
+type colorsType = {
+  [key: number]: string
+}
+
 export default function SampleEtcPage() {
+  const prColors: colorsType = {
+    1: 'bg-pr-100',
+    2: 'bg-pr-200',
+    3: 'bg-pr-300',
+    4: 'bg-pr-400',
+    5: 'bg-pr-500',
+    6: 'bg-pr-600',
+    7: 'bg-pr-700',
+    8: 'bg-pr-800',
+    9: 'bg-pr-900',
+  }
+
+  const grColors: colorsType = {
+    1: 'bg-gr-100',
+    2: 'bg-gr-200',
+    3: 'bg-gr-300',
+    4: 'bg-gr-400',
+    5: 'bg-gr-500',
+    6: 'bg-gr-600',
+    7: 'bg-gr-700',
+    8: 'bg-gr-800',
+    9: 'bg-gr-900',
+  }
+
+  const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
   return (
     <>
       <h1 className="font-xl">기타 공통 컴포넌트/클래스 사용 예시</h1>
@@ -23,27 +53,19 @@ export default function SampleEtcPage() {
 
       <h2 className="font-lg">공통 색상</h2>
       <div className="flex">
-        <div className="flex-1 grid grid-cols-3 text-white font-xs">
-          <div className="w-50 h-50 bg-pr-100 rounded-8 flex-center">pr-100</div>
-          <div className="w-50 h-50 bg-pr-200 rounded-8 flex-center">pr-200</div>
-          <div className="w-50 h-50 bg-pr-300 rounded-8 flex-center">pr-300</div>
-          <div className="w-50 h-50 bg-pr-400 rounded-8 flex-center">pr-400</div>
-          <div className="w-50 h-50 bg-pr-500 rounded-8 flex-center">pr-500</div>
-          <div className="w-50 h-50 bg-pr-600 rounded-8 flex-center">pr-600</div>
-          <div className="w-50 h-50 bg-pr-700 rounded-8 flex-center">pr-700</div>
-          <div className="w-50 h-50 bg-pr-800 rounded-8 flex-center">pr-800</div>
-          <div className="w-50 h-50 bg-pr-900 rounded-8 flex-center">pr-900</div>
+        <div className="font-xs grid flex-1 grid-cols-3 text-white">
+          {arr.map((num, idx) => (
+            <div key={idx} className={`flex-center h-50 w-50 rounded-8 ${prColors[num]}`}>
+              {prColors[num].slice(-6)}
+            </div>
+          ))}
         </div>
-        <div className="flex-1 grid grid-cols-3 text-white font-xs">
-          <div className="w-50 h-50 bg-gr-100 rounded-8 flex-center">gr-100</div>
-          <div className="w-50 h-50 bg-gr-200 rounded-8 flex-center">gr-200</div>
-          <div className="w-50 h-50 bg-gr-300 rounded-8 flex-center">gr-300</div>
-          <div className="w-50 h-50 bg-gr-400 rounded-8 flex-center">gr-400</div>
-          <div className="w-50 h-50 bg-gr-500 rounded-8 flex-center">gr-500</div>
-          <div className="w-50 h-50 bg-gr-600 rounded-8 flex-center">gr-600</div>
-          <div className="w-50 h-50 bg-gr-700 rounded-8 flex-center">gr-700</div>
-          <div className="w-50 h-50 bg-gr-800 rounded-8 flex-center">gr-800</div>
-          <div className="w-50 h-50 bg-gr-900 rounded-8 flex-center">gr-900</div>
+        <div className="font-xs grid flex-1 grid-cols-3 text-white">
+          {arr.map((num, idx) => (
+            <div key={idx} className={`flex-center h-50 w-50 rounded-8 ${grColors[num]}`}>
+              {grColors[num].slice(-6)}
+            </div>
+          ))}
         </div>
       </div>
     </>
