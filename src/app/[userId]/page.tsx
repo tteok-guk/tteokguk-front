@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { DdayIcon, myPage } from '../../../public/images/index'
 import Link from 'next/link'
 import { PaginationEntire } from '@/components/common'
+import Garnish from '@/components/Garnish'
 
 type Props = {
   params: {
@@ -15,6 +16,7 @@ type Props = {
 export default async function DishPage({ params: { userId } }: Props) {
   const 떡국 = await getTteokguk(userId)
   if (!떡국) {
+    // 추후 not-found 페이지로 수정 예정
     console.log('해당떡국없음')
   }
 
@@ -50,15 +52,21 @@ export default async function DishPage({ params: { userId } }: Props) {
                 key={item.고명식별자}
                 className={` absolute text-center ${garnishLocation[idx]} flex flex-col `}
               >
-                <div
-                  className="h-54 w-54  rounded-full 
-                bg-[url('/images/seaweed.png')] bg-cover bg-center"
-                >
-                  {item.고명키값}
+                {/* <div
+                  className={`h-54 w-54  rounded-full bg-[url('/images/seaweed.png')] bg-cover bg-center`}
+                > */}
+                <div className={`h-54 w-54 `}>
+                  <Image
+                    width={54}
+                    height={54}
+                    src={`/images/${item.고명키값}.png`}
+                    alt="garnish"
+                  />
                 </div>
                 <p className="font-xs">{item.닉네임}</p>
               </div>
             ))}
+
             {userId === 'my' ? (
               <div className="absolute bottom-[-52px] right-[-18px]">
                 <Link href={'/change-Matt	'}>
