@@ -18,7 +18,7 @@ const ShareButton = () => {
     <>
       {pathname === '/my' ? (
         <BottomButton
-          fullBtnName="덕담 남기기"
+          fullBtnName="내떡국 공유하기"
           fullBtnClick={() => handleCopyClipBoard('https://develop-tteokguk.vercel.app/니떡국')}
         />
       ) : (

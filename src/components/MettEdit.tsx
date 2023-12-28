@@ -1,5 +1,7 @@
 'use client'
 
+import Link from 'next/link'
+
 const MettEdit = () => {
   return (
     <div className="flex-center flex flex-col">

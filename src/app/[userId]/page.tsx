@@ -1,12 +1,10 @@
+import MettEdit from '@/components/MettEdit'
+import ShareButton from '@/components/ShareButton'
 import { getTteokguk, getTteokguks } from '@/services/main'
 import Image from 'next/image'
-import { DdayIcon, myPage, red, seaweed } from '../../../public/images/index'
-
-import { Button } from '@/components/ui/button'
-import PaginationEntire from '@/components/common/PaginationEntire'
-import MettEdit from '@/components/MettEdit'
-import { BottomButton } from '@/components/common'
-import ShareButton from '@/components/ShareButton'
+import { DdayIcon, myPage } from '../../../public/images/index'
+import Link from 'next/link'
+import { PaginationEntire } from '@/components/common'
 
 type Props = {
   params: {
@@ -29,24 +27,16 @@ export default async function DishPage({ params: { userId } }: Props) {
     5: 'top-[205px] left-[122px]',
     6: 'top-[164px] left-[194px]',
   }
-  const matt: MattType = {
-    red: 'red.png',
-  }
 
-  //junjangsee.tistory.com/entry/React-리액트로-클립보드-복사-기능-만들어보기-feat-Custom-Hook [개발 여행:티스토리]
-  // const mattUrl = 떡국?.테이블매트정보 ? `bg-[url('/images/${떡국.테이블매트정보}.png)]` : ''
   return (
     <section className=" mx-[-20px] mt-[-32px] flex h-dvh justify-center bg-[url('/images/red.png')] bg-cover bg-center px-20 ">
       {/* <div className={`w-375 bg-[url('/images/${떡국?.테이블매트정보}')] bg-cover bg-center `}> */}
       <div className={` w-375  `}>
-        {/* <div
-        className={`w-375 ${
-          떡국?.테이블매트정보 ? `bg-[url('/images/${떡국.테이블매트정보}.png)]` : ''
-        }`}
-      > */}
         <div className="flex flex-row items-center justify-between pb-36 pt-32 ">
           <h1 className="font-xl">{`${떡국?.nickname}님의 떡국`}</h1>
-          <Image src={myPage} width={28} height={28} alt="myPageButton" className="pb-1 pt-2" />
+          <Link href={'/account'}>
+            <Image src={myPage} width={28} height={28} alt="myPageButton" className="pb-1 pt-2" />
+          </Link>
         </div>
         <div className="flex flex-col items-center">
           <div className="font-sm flex-center px-15 bg-pr-100 mb-8 flex flex-row gap-1.5 rounded-2xl py-3">
@@ -69,16 +59,18 @@ export default async function DishPage({ params: { userId } }: Props) {
                 <p className="font-xs">{item.닉네임}</p>
               </div>
             ))}
-            <div className="absolute bottom-[-52px] right-[-18px]">
-              <MettEdit />
-            </div>
+            {userId === 'my' ? (
+              <div className="absolute bottom-[-52px] right-[-18px]">
+                <Link href={'/change-Matt	'}>
+                  <MettEdit />
+                </Link>
+              </div>
+            ) : (
+              ''
+            )}
           </div>
 
           <PaginationEntire />
-
-          {/* <Button size="full" className=" mt-42">
-            {'내떡국 공유하기'}
-          </Button> */}
           <ShareButton />
         </div>
       </div>
