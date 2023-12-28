@@ -32,7 +32,7 @@ export default async function DishPage({ params: { userId } }: Props) {
     red: 'red.png',
   }
 
-  const mattUrl = 떡국?.테이블매트정보 ? `bg-[url('/images/${떡국.테이블매트정보}.png)]` : ''
+  // const mattUrl = 떡국?.테이블매트정보 ? `bg-[url('/images/${떡국.테이블매트정보}.png)]` : ''
   return (
     <section className=" mx-[-20px] mt-[-32px] flex h-dvh justify-center bg-[url('/images/red.png')] bg-cover bg-center px-20 ">
       {/* <div className={`w-375 bg-[url('/images/${떡국?.테이블매트정보}')] bg-cover bg-center `}> */}
@@ -43,13 +43,13 @@ export default async function DishPage({ params: { userId } }: Props) {
         }`}
       > */}
         <div className="flex flex-row items-center justify-between pb-36 pt-32 ">
-          <h1 className="font-xl">{`${떡국.nickname}님의 떡국`}</h1>
+          <h1 className="font-xl">{`${떡국?.nickname}님의 떡국`}</h1>
           <Image src={myPage} width={28} height={28} alt="myPageButton" className="pb-1 pt-2" />
         </div>
         <div className="flex flex-col items-center">
           <div className="font-sm flex-center px-15 bg-pr-100 mb-8 flex flex-row gap-1.5 rounded-2xl py-3">
             <Image width={12} height={11} src={DdayIcon} alt="D-day icon" />
-            <p className="font-base text-pr-800">{`까치까치 설날 D-${떡국.디데이}`}</p>
+            <p className="font-base text-pr-800">{`까치까치 설날 D-${떡국?.디데이}`}</p>
           </div>
           <p className="mb-5">{`${떡국?.편지총개수}개의 덕담을 받았어요!`}</p>
           <div className="h-300 w-300 mb-31 mt-19 bg-gr-200 relative rounded-full">
