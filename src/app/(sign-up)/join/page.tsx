@@ -1,3 +1,3 @@
 export default function JoinPage() {
-  return <div>JoinPage</div>
+  return <div>닉넴입력하기</div>
 }
