@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import PaginationEntire from '@/components/common/PaginationEntire'
 import MettEdit from '@/components/MettEdit'
 import { BottomButton } from '@/components/common'
+import ShareButton from '@/components/ShareButton'
 
 type Props = {
   params: {
@@ -32,6 +33,7 @@ export default async function DishPage({ params: { userId } }: Props) {
     red: 'red.png',
   }
 
+  //junjangsee.tistory.com/entry/React-리액트로-클립보드-복사-기능-만들어보기-feat-Custom-Hook [개발 여행:티스토리]
   // const mattUrl = 떡국?.테이블매트정보 ? `bg-[url('/images/${떡국.테이블매트정보}.png)]` : ''
   return (
     <section className=" mx-[-20px] mt-[-32px] flex h-dvh justify-center bg-[url('/images/red.png')] bg-cover bg-center px-20 ">
@@ -77,7 +79,7 @@ export default async function DishPage({ params: { userId } }: Props) {
           {/* <Button size="full" className=" mt-42">
             {'내떡국 공유하기'}
           </Button> */}
-          <BottomButton fullBtnName="덕담 남기기" />
+          <ShareButton />
         </div>
       </div>
     </section>
