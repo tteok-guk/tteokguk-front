@@ -23,7 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={`${inter.className} h-dvh w-full bg-gray-100`}>
-        <main className="min-w-320 max-w-575 relative mx-auto h-full bg-white px-20 pt-32">
+        <main className="min-w-320 max-w-575 relative mx-auto overflow-y-auto h-full bg-bg px-20 pt-32">
           {children}
         </main>
         <Toaster />
