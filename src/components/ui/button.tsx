@@ -4,15 +4,14 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/libs/shadcnUtils'
 import Link from 'next/link'
 
-const buttonVariants = cva('text-base disabled:pointer-events-none disabled:opacity-50', {
+const buttonVariants = cva('font-base disabled:pointer-events-none disabled:opacity-50', {
   variants: {
     size: {
       default: 'h-fit w-fit',
-      sm: 'px-2 py-4',
-      full: 'w-full py-4',
+      full: 'w-full h-58 bg-pr-500 text-white',
     },
     shape: {
-      default: 'rounded-lg',
+      default: 'rounded-6',
       circle: 'rounded-full',
     },
   },

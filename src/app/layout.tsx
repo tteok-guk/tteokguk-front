@@ -10,11 +10,22 @@ export const metadata: Metadata = {
   description: '',
 }
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: 'no',
+  // todo 편지쓰기 키보드 영역 확인 후 interactiveWidget 재조정
+  interactiveWidget: 'overlays-content',
+}
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} h-screen w-screen`}>
-        <main className="relative mx-auto h-full w-full max-w-3xl px-5 py-10">{children}</main>
+      <body className={`${inter.className} h-dvh w-full bg-gray-100`}>
+        <main className="min-w-320 max-w-575 relative mx-auto overflow-y-auto h-full bg-bg px-20 pt-32">
+          {children}
+        </main>
         <Toaster />
       </body>
     </html>
