@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 
 export default function SamplePage() {
@@ -16,37 +15,42 @@ export default function SamplePage() {
 
   return (
     <>
-      <h1 className="text-30 mb-4 text-center font-bold">컴포넌트 예시 페이지 링크</h1>
+      <h1 className="font-xl mb-4 text-center font-bold">컴포넌트 예시 페이지 링크</h1>
 
       <hr className="hr" />
-      <span className="flex-center flex-col gap-8">
-        <p>사용 예시 페이지 있는 컴포넌트: button, font</p>
-        <sub>(23-12-27 01:10 기준)</sub>
-      </span>
-      <hr className="hr mt-30" />
 
-      <div className="flex-center mx-auto w-full flex-col space-y-4">
+      <h2 className="font-lg">shadcn 공식문서 보러가기</h2>
+      <div className="mt-10">
         {components.map((name, idx) => (
-          <div key={idx} className="flex gap-8 font-medium">
-            <span className="flex-center">{name} :</span>
             <Button
               key={idx}
               href={`https://ui.shadcn.com/docs/components/${name}`}
-              className="text-14 border p-4 hover:bg-indigo-100"
+              className="text-14 border p-4 mr-20 hover:bg-gray-100"
             >
-              공식문서
+              {name}
             </Button>
-            <Button
-              key={idx}
-              href={`sample/${name}`}
-              className="text-14 border p-4 hover:bg-orange-100"
-            >
-              사용예시
-            </Button>
-          </div>
         ))}
-        <Button href={`sample/etc`} className="border p-4 hover:bg-orange-100">
-          기타 (폰트 등) 공통 사용 예시
+      </div>
+
+      <hr className="hr" />
+
+      <h2 className="font-lg">shadcn 컴포넌트 사용 예시 보러가기</h2>
+      <div className="mt-10">
+        <Button href={`sample/shadcn`} className="border p-4 hover:bg-gray-100">
+          클릭 시 이동
+        </Button>
+      </div>
+
+
+      <hr className="hr" />
+
+      <h2 className="font-lg">기타 (폰트 등) 공통 사용 예시</h2>
+      <div className="mt-10">
+        <Button href={`sample/button`} className="border p-4 mr-20 hover:bg-gray-100">
+          버튼
+        </Button>
+        <Button href={`sample/etc`} className="border p-4 hover:bg-gray-100">
+          폰트 외 기타
         </Button>
       </div>
     </>
