@@ -118,8 +118,7 @@ export default function SampleShadcnPage() {
       <hr className="hr"/>
       <h1 className="font-xl mb-15">Toast</h1>
       <Button
-        size="lg"
-        className="bg-gray-200"
+        size="full"
         onClick={() => {
           toast({
             description: '토스트는 클라이언트 컴포넌트에서만 사용 가능',
