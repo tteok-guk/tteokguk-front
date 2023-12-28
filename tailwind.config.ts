@@ -17,10 +17,7 @@ const config = {
       gap: generateUtilities(100),
       columnGap: generateUtilities(100),
       rowGap: generateUtilities(100),
-      top: generateUtilities(200),
-      right: generateUtilities(200),
-      bottom: generateUtilities(200),
-      left: generateUtilities(200),
+      inset: generateUtilities(200),
       width: generateUtilities(600),
       minWidth: generateUtilities(600),
       maxWidth: generateUtilities(600),
@@ -40,9 +37,12 @@ const config = {
       border: generateUtilities(20),
       borderWidth: generateUtilities(20),
       borderRadius: generateUtilities(20),
-      fontSize: generateUtilities(30),
+      fontSize: generateUtilities(50),
       letterSpacing: generateUtilities(40),
       lineHeight: generateUtilities(40),
+      fontFamily: {
+        soyo: ['var(--font-soyo)'],
+      },
       colors: {
         pr: {
           100: '#CCE4E9',

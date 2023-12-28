@@ -22,13 +22,13 @@ export default function SamplePage() {
       <h2 className="font-lg">shadcn 공식문서 보러가기</h2>
       <div className="mt-10">
         {components.map((name, idx) => (
-            <Button
-              key={idx}
-              href={`https://ui.shadcn.com/docs/components/${name}`}
-              className="text-14 border p-4 mr-20 hover:bg-gray-100"
-            >
-              {name}
-            </Button>
+          <Button
+            key={idx}
+            href={`https://ui.shadcn.com/docs/components/${name}`}
+            className="mr-20 border p-4 text-14 hover:bg-gray-100"
+          >
+            {name}
+          </Button>
         ))}
       </div>
 
@@ -41,12 +41,11 @@ export default function SamplePage() {
         </Button>
       </div>
 
-
       <hr className="hr" />
 
       <h2 className="font-lg">기타 (폰트 등) 공통 사용 예시</h2>
       <div className="mt-10">
-        <Button href={`sample/button`} className="border p-4 mr-20 hover:bg-gray-100">
+        <Button href={`sample/button`} className="mr-20 border p-4 hover:bg-gray-100">
           버튼
         </Button>
         <Button href={`sample/etc`} className="border p-4 hover:bg-gray-100">
