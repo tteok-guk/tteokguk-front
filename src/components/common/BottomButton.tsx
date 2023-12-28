@@ -11,7 +11,7 @@ export default function BottomButton({
   fullBtnClick,
 }: BottomButtonProps) {
   return (
-    <div className="absolute z-10 left-0 px-20 pt-16 bottom-0 w-full h-117 flex gap-x-12 bg-white">
+    <div className="absolute z-10 left-0 px-20 pt-16 bottom-0 w-full h-117 flex gap-x-12">
       {split === 'twice' ? (
         <>
           <Button className="border border-pr-500 text-pr-500 min-w-51 max-w-100 min-h-51 flex-grow flex-shrink-0" onClick={smallBtnClick}>

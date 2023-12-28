@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button'
+import { BottomButton } from '@/components/common'
 
 export default function SampleButtonPage() {
   return (
@@ -15,20 +16,8 @@ export default function SampleButtonPage() {
 
       <hr className="hr" />
 
-      <p className="mb-4 font-bold">☑️ size=sm / size=lg</p>
-      <div className="flex-center mt-10">
-        <Button size="sm" className="bg-slate-300">
-          sm
-        </Button>
-        <Button size="lg" className="ml-10 bg-slate-300">
-          lg
-        </Button>
-      </div>
-
-      <hr className="hr" />
-
       <p className="mb-4 font-bold">☑️ size=full</p>
-      <Button size="full" className="bg-slate-300">
+      <Button size="full">
         full
       </Button>
 
@@ -48,6 +37,8 @@ export default function SampleButtonPage() {
       <Button href="/" className="bg-slate-300 p-8">
         클릭 시 메인페이지로 이동
       </Button>
+
+      <BottomButton split="twice" fullBtnName="긴 버튼" smallBtnName="작은버튼"/>
     </>
   )
 }
