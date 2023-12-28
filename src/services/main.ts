@@ -6,8 +6,9 @@ export type Tteokguk = {
   id: string
   디데이: number
   편지총개수: number
-  고명정보: [{ 닉네임: string; 고명키값: string }]
+  고명정보: [{ 고명식별자: number; 닉네임: string; 고명키값: string }]
   테이블매트정보: string
+  총페이지수: number
   인입유저떡국설정완료여부?: boolean
 }
 
@@ -21,7 +22,5 @@ export async function getTteokguks(): Promise<Tteokguk[]> {
 
 export async function getTteokguk(id: string): Promise<Tteokguk | undefined> {
   const tteokguk = await getTteokguks()
-  // console.log('tteokguk', tteokguk)
-  console.log('id', id)
   return tteokguk.find((item) => item.id === id)
 }
