@@ -1,9 +1,6 @@
-export const mattObj = () => {
-  const mattObj: MattType = {
-    red: 'bg-[url(/images/red.png)]',
-    yellow: 'bg-[url(/images/yellow.png)]',
-  }
-  return mattObj
+export const mattObj: MattType = {
+  red: 'bg-[url(/images/red.png)]',
+  yellow: 'bg-[url(/images/yellow.png)]',
 }
 
 export interface MattType {

@@ -21,12 +21,10 @@ export default async function DishPage({ params: { userId } }: Props) {
     console.log('해당떡국없음')
   }
 
-  const matt = mattObj()
-
   return (
     <section
       className={` mx-[-20px] mt-[-32px] flex h-dvh justify-center ${
-        matt[떡국?.mattId]
+        mattObj[떡국?.mattId]
       } bg-cover bg-center px-20 `}
     >
       {/* <div className={`w-375 bg-[url('/images/${떡국?.테이블매트정보}')] bg-cover bg-center `}> */}
