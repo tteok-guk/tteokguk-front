@@ -1,4 +1,4 @@
-import MettEdit from '@/components/MettEdit'
+import MattEdit from '@/components/MattEdit'
 import ShareButton from '@/components/ShareButton'
 import { getTteokguk, getTteokguks } from '@/services/main'
 import Image from 'next/image'
@@ -47,28 +47,11 @@ export default async function DishPage({ params: { userId } }: Props) {
           </div>
           <p className="mb-5">{`${떡국?.garnishCnt}개의 덕담을 받았어요!`}</p>
           <div className="relative mb-31 mt-19 h-300 w-300 rounded-full bg-gr-200">
-            {/* {떡국?.garnish.map((item, idx) => (
-              <div
-                key={item.garnishId}
-                className={` absolute text-center ${garnishLocation[idx]} flex flex-col `}
-              >
-                <div className={`h-54 w-54 `}>
-                  <Image
-                    width={54}
-                    height={54}
-                    src={`/images/${item.garnishName}.png`}
-                    alt="garnish"
-                  />
-                </div>
-                <p className="font-xs">{item.nickname}</p>
-              </div>
-            ))} */}
             <Garnish />
-
             {userId === 'host' ? (
               <div className="absolute bottom-[-52px] right-[-18px]">
                 <Link href={'/change-matt	'}>
-                  <MettEdit />
+                  <MattEdit />
                 </Link>
               </div>
             ) : (
