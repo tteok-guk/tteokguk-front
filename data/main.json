@@ -1,20 +1,20 @@
 [
   {
-    "id": "my",
+    "id": "host",
     "nickname": "공주",
-    "디데이": 30,
-    "편지총개수": 7,
-    "고명정보": [
-      { "고명식별자": 123, "닉네임": "나는공주다", "고명키값": "cucumber" },
-      { "고명식별자": 456, "닉네임": "한솔띠", "고명키값": "cucumber" },
-      { "고명식별자": 789, "닉네임": "이건일곱글자로", "고명키값": "cucumber" },
-      { "고명식별자": 124, "닉네임": "희제님바보", "고명키값": "cucumber" },
-      { "고명식별자": 125, "닉네임": "지각생주영님", "고명키값": "seaweed" },
-      { "고명식별자": 126, "닉네임": "떡국기원", "고명키값": "mushroom" },
-      { "고명식별자": 127, "닉네임": "대박나자!!!", "고명키값": "riceCake" }
+    "dDay": 30,
+    "garnishCnt": 7,
+    "garnish": [
+      { "garnishId": 123, "nickname": "나는공주다", "garnishName": "cucumber" },
+      { "garnishId": 456, "nickname": "한솔띠", "garnishName": "cucumber" },
+      { "garnishId": 789, "nickname": "이건일곱글자로", "garnishName": "cucumber" },
+      { "garnishId": 124, "nickname": "희제님바보", "garnishName": "cucumber" },
+      { "garnishId": 125, "nickname": "지각생주영님", "garnishName": "seaweed" },
+      { "garnishId": 126, "nickname": "떡국기원", "garnishName": "mushroom" },
+      { "garnishId": 127, "nickname": "대박나자!!!", "garnishName": "riceCake" }
     ],
-    "총페이지수": 1,
-    "테이블매트정보": "red",
-    "인입유저떡국설정완료여부": true
+    "lastPageNum": 1,
+    "mattId": "red",
+    " isPublic": true
   }
 ]

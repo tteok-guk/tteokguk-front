@@ -40,15 +40,15 @@ export default async function DishPage({ params: { userId } }: Props) {
           </Link>
         </div>
         <div className="flex flex-col items-center">
-          <div className="font-sm flex-center px-15 bg-pr-100 mb-8 flex flex-row gap-1.5 rounded-2xl py-3">
+          <div className="font-sm flex-center mb-8 flex flex-row gap-1.5 rounded-2xl bg-pr-100 px-15 py-3">
             <Image width={12} height={11} src={DdayIcon} alt="D-day icon" />
-            <p className="font-base text-pr-800">{`까치까치 설날 D-${떡국?.디데이}`}</p>
+            <p className="font-base text-pr-800">{`까치까치 설날 D-${떡국?.dDay}`}</p>
           </div>
-          <p className="mb-5">{`${떡국?.편지총개수}개의 덕담을 받았어요!`}</p>
-          <div className="h-300 w-300 mb-31 mt-19 bg-gr-200 relative rounded-full">
-            {떡국?.고명정보.map((item, idx) => (
+          <p className="mb-5">{`${떡국?.garnishCnt}개의 덕담을 받았어요!`}</p>
+          <div className="relative mb-31 mt-19 h-300 w-300 rounded-full bg-gr-200">
+            {떡국?.garnish.map((item, idx) => (
               <div
-                key={item.고명식별자}
+                key={item.garnishId}
                 className={` absolute text-center ${garnishLocation[idx]} flex flex-col `}
               >
                 {/* <div
@@ -58,15 +58,15 @@ export default async function DishPage({ params: { userId } }: Props) {
                   <Image
                     width={54}
                     height={54}
-                    src={`/images/${item.고명키값}.png`}
+                    src={`/images/${item.garnishName}.png`}
                     alt="garnish"
                   />
                 </div>
-                <p className="font-xs">{item.닉네임}</p>
+                <p className="font-xs">{item.nickname}</p>
               </div>
             ))}
 
-            {userId === 'my' ? (
+            {userId === 'host' ? (
               <div className="absolute bottom-[-52px] right-[-18px]">
                 <Link href={'/change-matt	'}>
                   <MettEdit />
