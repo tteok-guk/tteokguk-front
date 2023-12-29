@@ -1,11 +1,12 @@
+import { mattObj } from '@/components/DynamicObject/mattObj'
+import Garnish from '@/components/Garnish'
 import MattEdit from '@/components/MattEdit'
 import ShareButton from '@/components/ShareButton'
+import { PaginationEntire } from '@/components/common'
 import { getTteokguk, getTteokguks } from '@/services/main'
 import Image from 'next/image'
-import { DdayIcon, myPage } from '../../../public/images/index'
 import Link from 'next/link'
-import { PaginationEntire } from '@/components/common'
-import Garnish from '@/components/Garnish'
+import { DdayIcon, myPage } from '../../../public/images/index'
 
 type Props = {
   params: {
@@ -20,18 +21,14 @@ export default async function DishPage({ params: { userId } }: Props) {
     console.log('해당떡국없음')
   }
 
-  const garnishLocation: GarnishType = {
-    0: 'top-[39px] left-[122px]',
-    1: 'top-[81px] left-[51px]',
-    2: 'top-[123px] left-[122px]',
-    3: 'top-[81px] left-[194px]',
-    4: 'top-[164px] left-[51px]',
-    5: 'top-[205px] left-[122px]',
-    6: 'top-[164px] left-[194px]',
-  }
+  const matt = mattObj()
 
   return (
-    <section className=" mx-[-20px] mt-[-32px] flex h-dvh justify-center bg-[url('/images/red.png')] bg-cover bg-center px-20 ">
+    <section
+      className={` mx-[-20px] mt-[-32px] flex h-dvh justify-center ${
+        matt[떡국?.mattId]
+      } bg-cover bg-center px-20 `}
+    >
       {/* <div className={`w-375 bg-[url('/images/${떡국?.테이블매트정보}')] bg-cover bg-center `}> */}
       <div className={` w-375  `}>
         <div className="flex flex-row items-center justify-between pb-36 pt-32 ">
@@ -79,5 +76,5 @@ export interface GarnishType {
 }
 
 export interface MattType {
-  [key: string]: string
+  [key: string]: string | undefined
 }
