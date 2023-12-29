@@ -46,7 +46,7 @@ export default async function DishPage({ params: { userId } }: Props) {
             {userId === 'host' ? (
               <div className="absolute bottom-[-52px] right-[-18px]">
                 <Link href={'/change-matt	'}>
-                  <MattEdit />
+                  <MattEdit mattId={떡국?.mattId || 'default'} />
                 </Link>
               </div>
             ) : (
