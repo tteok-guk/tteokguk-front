@@ -4,5 +4,5 @@ export const mattObj: MattType = {
 }
 
 export interface MattType {
-  [key: string]: string | undefined
+  [key: string]: string
 }

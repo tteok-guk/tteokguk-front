@@ -1,11 +1,8 @@
 'use client'
 
+import { toast } from '@/hooks/use-toast'
 import { usePathname } from 'next/navigation'
 import { BottomButton } from './common'
-import { Toaster } from './ui/toaster'
-import { useState } from 'react'
-import { Button } from './ui/button'
-import { toast } from '@/hooks/use-toast'
 
 const ShareButton = () => {
   const handleCopyClipBoard = async (text: string) => {

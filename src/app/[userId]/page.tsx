@@ -24,7 +24,7 @@ export default async function DishPage({ params: { userId } }: Props) {
   return (
     <section
       className={` mx-[-20px] mt-[-32px] flex h-dvh justify-center ${
-        mattObj[떡국?.mattId]
+        mattObj[떡국?.mattId || 'default']
       } bg-cover bg-center px-20 `}
     >
       {/* <div className={`w-375 bg-[url('/images/${떡국?.테이블매트정보}')] bg-cover bg-center `}> */}
