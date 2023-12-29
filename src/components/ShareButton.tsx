@@ -2,12 +2,18 @@
 
 import { usePathname } from 'next/navigation'
 import { BottomButton } from './common'
+import { Toaster } from './ui/toaster'
+import { useState } from 'react'
+import { Button } from './ui/button'
+import { toast } from '@/hooks/use-toast'
 
 const ShareButton = () => {
   const handleCopyClipBoard = async (text: string) => {
     try {
       await navigator.clipboard.writeText(text)
-      // alert('복사 성공!');
+      toast({ description: 'URL 복사가 완료되었습니다.' })
+
+      // alert('복사 성공!')
     } catch (error) {
       alert('복사 실패!')
     }

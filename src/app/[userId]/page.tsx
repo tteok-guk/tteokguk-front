@@ -5,7 +5,6 @@ import Image from 'next/image'
 import { DdayIcon, myPage } from '../../../public/images/index'
 import Link from 'next/link'
 import { PaginationEntire } from '@/components/common'
-import Garnish from '@/components/Garnish'
 
 type Props = {
   params: {
@@ -69,7 +68,7 @@ export default async function DishPage({ params: { userId } }: Props) {
 
             {userId === 'my' ? (
               <div className="absolute bottom-[-52px] right-[-18px]">
-                <Link href={'/change-Matt	'}>
+                <Link href={'/change-matt	'}>
                   <MettEdit />
                 </Link>
               </div>
