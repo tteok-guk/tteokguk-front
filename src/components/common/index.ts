@@ -1,3 +1,4 @@
+import TopButton from './TopButton'
 import BottomButton from './BottomButton'
 
-export { BottomButton }
+export { TopButton, BottomButton }

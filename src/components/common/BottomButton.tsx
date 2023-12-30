@@ -13,7 +13,7 @@ export default function BottomButton({
   fullBtnHref,
 }: BottomButtonProps) {
   return (
-    <div className="absolute bottom-0 left-0 z-10 flex h-117 w-full gap-x-12 px-20 pt-16">
+    <div className="fixed bottom-0 left-0 flex h-117 w-full gap-x-12 bg-bg px-20 pt-16">
       {split === 'twice' ? (
         <>
           <Button
