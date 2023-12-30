@@ -1,3 +1,7 @@
+export interface TopButtonProps {
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void | void
+}
+
 export interface BottomButtonProps {
   split?: 'none' | 'twice'
   smallBtnName?: string
