@@ -26,12 +26,18 @@ interface ButtonProps
     VariantProps<typeof buttonVariants> {
   children?: React.ReactNode
   href?: string
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ size, shape, href, children, className, ...props }, ref) => {
+  ({ size, shape, href, children, className, onClick, ...props }, ref) => {
     return (
-      <button className={cn(buttonVariants({ size, shape, className }))} ref={ref} {...props}>
+      <button
+        className={cn(buttonVariants({ size, shape, className }))}
+        ref={ref}
+        onClick={onClick}
+        {...props}
+      >
         {href ? <Link href={href}>{children}</Link> : children}
       </button>
     )
