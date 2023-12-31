@@ -11,10 +11,13 @@ export default function BottomButton({
   fullBtnClick,
   smallBtnHref,
   fullBtnHref,
+  bgColor = 'bg-bg',
 }: BottomButtonProps) {
   return (
-    <div className="fixed bottom-0 left-0 h-117 w-full bg-bg pt-16">
-      <div className="mx-auto flex h-full min-w-320 max-w-575 justify-center gap-x-12 px-20">
+    <div className="fixed bottom-0 left-0 h-117 w-full">
+      <div
+        className={`mx-auto flex h-full min-w-320 max-w-575 justify-center gap-x-12 ${bgColor} px-20 pt-16`}
+      >
         {split === 'twice' ? (
           <>
             <Button
