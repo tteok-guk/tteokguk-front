@@ -1,4 +1,4 @@
 export default function KaKaoLoginPage() {
-    return <div>카톡 로긴 완</div>
+    return <div>리다이렉트 URL 확인 임시용</div>
   }
   
