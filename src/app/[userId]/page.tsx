@@ -1,4 +1,4 @@
-import { mattObj } from '@/components/DynamicObject/mattObj'
+import { mattObj } from '@/types/mattObj'
 import Garnish from '@/components/Garnish'
 import MattEdit from '@/components/MattEdit'
 import ShareButton from '@/components/ShareButton'

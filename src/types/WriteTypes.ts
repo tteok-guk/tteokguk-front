@@ -1,7 +1,7 @@
 import { StaticImageData } from 'next/image'
 
 export interface RouletteModalProps {
-  onClose: (event: React.MouseEvent<HTMLButtonElement>) => void | void
+  onClose: () => void
 }
 
 export interface GarnishesProps {
