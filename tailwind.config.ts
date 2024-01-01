@@ -43,6 +43,12 @@ const config = {
       fontFamily: {
         soyo: ['var(--font-soyo)'],
       },
+      screens: {
+        sm: '320px', // min width, galaxy s9+
+        md: '375px', // main width
+        lg: '430px', // iphone pro max
+        xl: '575px', // max-with, tablet, pc
+      },
       colors: {
         pr: {
           100: '#CCE4E9',

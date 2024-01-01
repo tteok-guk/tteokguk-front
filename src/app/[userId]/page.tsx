@@ -1,4 +1,4 @@
-import { mattObj } from '@/components/DynamicObject/mattObj'
+import { mattObj } from '@/types/mattObj'
 import Garnish from '@/components/Garnish'
 import MattEdit from '@/components/MattEdit'
 import ShareButton from '@/components/ShareButton'
@@ -6,7 +6,7 @@ import { PaginationEntire } from '@/components/common'
 import { getTteokguk, getTteokguks } from '@/services/main'
 import Image from 'next/image'
 import Link from 'next/link'
-import { DdayIcon, myPage } from '../../../public/images/index'
+import { iconDday, iconMypage } from '../../../public/images/icons'
 
 type Props = {
   params: {
@@ -32,12 +32,18 @@ export default async function DishPage({ params: { userId } }: Props) {
         <div className="flex flex-row items-center justify-between pb-36 pt-32 ">
           <h1 className="font-xl">{`${떡국?.nickname}님의 떡국`}</h1>
           <Link href={'/account'}>
-            <Image src={myPage} width={28} height={28} alt="myPageButton" className="pb-1 pt-2" />
+            <Image
+              src={iconMypage}
+              width={28}
+              height={28}
+              alt="myPageButton"
+              className="pb-1 pt-2"
+            />
           </Link>
         </div>
         <div className="flex flex-col items-center">
           <div className="font-sm flex-center mb-8 flex flex-row gap-1.5 rounded-2xl bg-pr-100 px-15 py-3">
-            <Image width={12} height={11} src={DdayIcon} alt="D-day icon" />
+            <Image width={12} height={11} src={iconDday} alt="D-day icon" />
             <p className="font-base text-pr-800">{`까치까치 설날 D-${떡국?.dDay}`}</p>
           </div>
           <p className="mb-5">{`${떡국?.garnishCnt}개의 덕담을 받았어요!`}</p>

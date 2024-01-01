@@ -1,9 +1,9 @@
 'use client'
 import Image from 'next/image'
-import { myPage } from '../../public/images/index'
+import { iconMypage } from '../../public/images/icons'
 
 const AccountButton = () => {
-  return <Image src={myPage} width={28} height={28} alt="myPageButton" className="pb-1 pt-2" />
+  return <Image src={iconMypage} width={28} height={28} alt="myPageButton" className="pb-1 pt-2" />
 }
 
 export default AccountButton
