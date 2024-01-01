@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { TopButtonProps } from '@/types/CommonTypes'
 import { Button } from '@/components/ui/button'
-import { arrow } from '../../../public/images'
+import { iconArrow } from '../../../public/images/icons'
 
 export default function TopButton({ onClick }: TopButtonProps) {
   const router = useRouter()
@@ -13,7 +13,7 @@ export default function TopButton({ onClick }: TopButtonProps) {
   return (
     <div className="w-full">
       <Button className="mb-12 mt-2" onClick={setOnClick}>
-        <Image src={arrow} alt="왼쪽을 가르키는 화살표 이미지" width={24} height={24} />
+        <Image src={iconArrow} alt="왼쪽을 가르키는 화살표 이미지" width={24} height={24} />
       </Button>
     </div>
   )
