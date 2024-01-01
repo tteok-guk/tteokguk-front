@@ -83,19 +83,19 @@
 
   /* font */
   .font-xl {
-    @apply text-24 leading-32 font-semibold;
+    @apply text-24 font-semibold leading-32;
   }
   .font-lg {
-    @apply text-18 leading-22 font-medium;
+    @apply text-18 font-medium leading-22;
   }
   .font-base {
-    @apply text-16 leading-22 font-medium;
+    @apply text-16 font-medium leading-22;
   }
   .font-sm {
-    @apply text-14 leading-22 font-medium;
+    @apply text-14 font-medium leading-22;
   }
   .font-xs {
-    @apply text-11 leading-22 font-medium;
+    @apply text-11 font-medium leading-22;
   }
 
   /* etc */

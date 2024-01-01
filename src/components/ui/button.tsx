@@ -36,7 +36,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ size, shape, href, children, className, onClick, ...props }, ref) => {
     return (
       <Link href={href ?? ''} className={cn(buttonVariants({ size, shape, className }))}>
-        <button ref={ref} onClick={onClick} {...props}>
+        <button ref={ref} onClick={onClick} className="flex-center h-full w-full" {...props}>
           {children}
         </button>
       </Link>
