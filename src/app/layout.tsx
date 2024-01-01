@@ -34,6 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={`${pretendard.className} ${soyo.variable} h-dvh w-full bg-gray-100`}>
+        {/* 리액트쿼리 프로바이저 */}
         <Providers>
           <main className="relative mx-auto h-full min-w-320 max-w-575 overflow-y-auto bg-bg px-20 pt-32">
             {children}

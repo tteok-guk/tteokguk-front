@@ -1,4 +1,4 @@
-// 리액트쿼리 프로바이저 컴포넌트
+// 리액트쿼리 프로바이저
 'use client';
 
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
