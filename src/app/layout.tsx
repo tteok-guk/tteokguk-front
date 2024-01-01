@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { ReactQueryProvider, RecoilProvider } from '@/components/providers'
 import { Toaster } from '@/components/ui/toaster'
 import localFont from 'next/font/local'
 import '@/styles/globals.css'
@@ -34,12 +34,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={`${pretendard.className} ${soyo.variable} h-dvh w-full bg-gray-100`}>
-        <Providers>
-          <main className="relative mx-auto h-full min-w-320 max-w-575 overflow-y-auto bg-bg px-20 pt-32">
-            {children}
-          </main>
-          <Toaster />
-        </Providers>
+        <ReactQueryProvider>
+          <RecoilProvider>
+            <main className="relative mx-auto h-full min-w-320 max-w-575 overflow-y-auto bg-bg px-20 pt-32">
+              {children}
+            </main>
+            <Toaster />
+          </RecoilProvider>
+        </ReactQueryProvider>
       </body>
     </html>
   )

@@ -55,10 +55,11 @@ _(👇🏻클릭 시 해당 섹션으로 이동합니다)_
 | /join                 | 기본 회원가입 페이지                                                                       |
 | /make-dish            | 내 떡국 최초 설정 페이지                                                                   |
 | /[userId]             | [userId]의 떡국 페이지                                                                     |
-| /[userId]/write       | [userId]에게 편지 작성 페이지                                                              |
+| /[userId]/set-garnish | [userId]에게 작성할 떡국의 고명 선택 페이지                                                |
+| /[userId]/write       | [userId]에게 떡국 작성 페이지                                                              |
 | /[userId]/[garnishId] | [userId]의 [garnishId] 편지 조회 페이지                                                    |
 | /account              | [userId]의 마이페이지<br/>(mypage로 하면 유저가 내떡국이랑 헷갈릴까봐 account로 임시 설정) |
-| /change-Matt          | [userId]의 테이블 매트 변경 페이지                                                         |
+| /change-matt          | [userId]의 테이블 매트 변경 페이지                                                         |
 
 <br/><br/>
 
