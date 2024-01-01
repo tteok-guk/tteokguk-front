@@ -42,6 +42,7 @@ const config = {
       lineHeight: generateUtilities(40),
       fontFamily: {
         soyo: ['var(--font-soyo)'],
+        soyoThin: ['var(--font-soyo_thin)'],
       },
       screens: {
         sm: '320px', // min width, galaxy s9+

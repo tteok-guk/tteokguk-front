@@ -10,9 +10,14 @@ const pretendard = localFont({
   variable: '--font-pretendard',
 })
 const soyo = localFont({
-  src: '../../public/fonts/SoyoMapleBold.ttf',
+  src: '../../public/fonts/SoyoMapleBold.woff2',
   display: 'swap',
   variable: '--font-soyo',
+})
+const soyo_thin = localFont({
+  src: '../../public/fonts/SoyoMapleRegular.woff2',
+  display: 'swap',
+  variable: '--font-soyo_thin',
 })
 
 export const metadata: Metadata = {
@@ -32,7 +37,10 @@ export const viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${pretendard.className} ${soyo.variable} h-dvh w-full bg-gray-100`}>
+      <body
+        className={`${pretendard.className} ${soyo.variable} ${soyo_thin.variable} h-dvh w-full bg-gray-100`}
+        // className={`${pretendard.className} ${soyo.variable} h-dvh w-full bg-gray-100`}
+      >
         <ReactQueryProvider>
           <RecoilProvider>
             <main className="relative mx-auto h-full min-w-320 max-w-575 overflow-y-auto bg-bg px-20 pt-32">

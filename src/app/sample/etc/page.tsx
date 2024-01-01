@@ -37,7 +37,7 @@ export default function SampleEtcPage() {
 
       <hr className="hr" />
 
-      <h2 className="font-lg">와이어프레임 기준 폰트 className</h2>
+      <h2 className="font-lg mb-4 bg-pr-400 p-4 text-white">와이어프레임 기준 폰트 className</h2>
       <p className="mb-20 text-sm">
         font-XX 안에 와이어프레임에 맞는 font-size, font-weight, line-height 한번에 걸어뒀음
       </p>
@@ -50,8 +50,13 @@ export default function SampleEtcPage() {
       </ul>
 
       <hr className="hr" />
+      <h2 className="font-lg mb-4 bg-pr-400 p-4 text-white">소요단풍체 적용하기</h2>
+      <p className="font-soyo text-18">굵은 소요단풍체를 적용하려면 font-soyo</p>
+      <p className="font-soyoThin text-18">얇은 소요단풍체를 적용하려면 className font-soyoThin</p>
 
-      <h2 className="font-lg">공통 색상</h2>
+      <hr className="hr" />
+
+      <h2 className="font-lg mb-4 bg-pr-400 p-4 text-white">공통 색상</h2>
       <div className="flex">
         <div className="font-xs grid flex-1 grid-cols-3 text-white">
           {arr.map((num, idx) => (
