@@ -102,4 +102,10 @@
   .hr {
     @apply my-16 border border-gray-200;
   }
+  .layout-scroll {
+    @apply scrollbar-h-466 scrollbar-h-10 scrollbar-thumb-rounded-full scrollbar-thin scrollbar-thumb-gr-100 scrollbar-track-transparent overflow-y-auto overflow-x-hidden;
+  }
+  .white-scroll {
+    @apply scrollbar-w-11 scrollbar-thumb-rounded-full scrollbar-thin scrollbar-thumb-bg scrollbar-track-transparent overflow-y-auto overflow-x-hidden;
+  }
 }

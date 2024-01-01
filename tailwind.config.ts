@@ -42,6 +42,7 @@ const config = {
       lineHeight: generateUtilities(40),
       fontFamily: {
         soyo: ['var(--font-soyo)'],
+        soyoThin: ['var(--font-soyo_thin)'],
       },
       screens: {
         sm: '320px', // min width, galaxy s9+
@@ -123,7 +124,10 @@ const config = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [require('tailwindcss-animate'), require('tailwind-scrollbar')({ nocompatible: true })],
+  variants: {
+    scrollbar: ['rounded'],
+  },
 } satisfies Config
 
 export default config
