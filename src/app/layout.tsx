@@ -1,9 +1,8 @@
 import type { Metadata } from 'next'
-import RecoilRootProvider from './recoilRootProvider'
+import { ReactQueryProvider, RecoilProvider } from '@/components/providers'
 import { Toaster } from '@/components/ui/toaster'
 import localFont from 'next/font/local'
 import '@/styles/globals.css'
-import Providers from '@/components/Providers'
 
 const pretendard = localFont({
   src: '../../public/fonts/PretendardVariable.woff2',
@@ -32,15 +31,16 @@ export const viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ko">
-      <body className={`${pretendard.className} ${soyo.variable} h-dvh w-full bg-gray-200`}>
-        <main className="relative mx-auto h-full min-w-320 max-w-575 overflow-y-auto bg-white px-20 pt-32">
-          <Providers>
-            <RecoilRootProvider>{children}</RecoilRootProvider>
-          </Providers>
-        </main>
-        <div id="modal-root"></div>
-        <Toaster />
+    <html lang="en">
+      <body className={`${pretendard.className} ${soyo.variable} h-dvh w-full bg-gray-100`}>
+        <ReactQueryProvider>
+          <RecoilProvider>
+            <main className="relative mx-auto h-full min-w-320 max-w-575 overflow-y-auto bg-bg px-20 pt-32">
+              {children}
+            </main>
+            <Toaster />
+          </RecoilProvider>
+        </ReactQueryProvider>
       </body>
     </html>
   )
