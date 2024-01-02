@@ -1,4 +1,3 @@
-import { mattObj } from '@/types/mattObj'
 import Garnish from '@/components/Garnish'
 import MattEdit from '@/components/MattEdit'
 import ShareButton from '@/components/ShareButton'
@@ -7,6 +6,7 @@ import { getTteokguk, getTteokguks } from '@/services/main'
 import Image from 'next/image'
 import Link from 'next/link'
 import { iconDday, iconMypage } from '../../../public/images/icons'
+import { mattObj } from '../../../data/mattObj'
 
 type Props = {
   params: {

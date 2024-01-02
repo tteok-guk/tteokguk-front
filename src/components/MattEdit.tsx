@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { mattObj } from '../types/mattObj'
+import { mattObj } from '../../data/mattObj'
 
 const MattEdit = ({ mattId }: MattEditType) => {
   return (
