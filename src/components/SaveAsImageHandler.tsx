@@ -25,7 +25,7 @@ export default function SaveAsImageHandler({}) {
           const div = divRef.current
 
           // Use html-to-image library
-          const canvas = await htmlToImage.toCanvas(div)
+          const canvas = await htmlToImage.toCanvas(div as HTMLElement)
           canvas.toBlob((blob) => {
             if (blob !== null) {
               saveAs(blob, 'result.png')
