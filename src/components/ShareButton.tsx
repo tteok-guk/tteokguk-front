@@ -21,11 +21,13 @@ const ShareButton = () => {
     <>
       {pathname === '/host' ? (
         <BottomButton
+          bgColor="bg-transperant"
           fullBtnName="내떡국 공유하기"
           fullBtnClick={() => handleCopyClipBoard('https://develop-tteokguk.vercel.app/니떡국')}
         />
       ) : (
         <BottomButton
+          bgColor="bg-transperant"
           split="twice"
           smallBtnName="내떡국"
           fullBtnName="덕담 남기기"
