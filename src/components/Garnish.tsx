@@ -24,7 +24,12 @@ const Garnish = ({ garnishInfo }: GarnishType) => {
           onClick={GarnishDetailMoveToBtnHandler}
         >
           <div className={`h-54 w-54 `}>
-            <Image width={54} height={54} src={`/images/${item.garnishName}.png`} alt="garnish" />
+            <Image
+              width={54}
+              height={54}
+              src={`/images/garnishes/${item.garnishName}.png`}
+              alt="garnish"
+            />
           </div>
           <p className="font-xs">{item.nickname}</p>
         </div>
