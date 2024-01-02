@@ -15,33 +15,34 @@ export default function SaveAsImageHandler({}) {
   const [screenshot, setScreenshot] = useState(false)
 
   const handleDownload = async () => {
-    // setScreenshot(true)를 setTimeout 이전으로 이동
     setScreenshot(true)
-
-    setTimeout(async () => {
-      if (!divRef.current) return // divRef를 참조하기 전에 체크
-      try {
-        const div = divRef.current
-
-        // Use html-to-image library
-        const canvas = await htmlToImage.toCanvas(div)
-        canvas.toBlob((blob) => {
-          if (blob !== null) {
-            saveAs(blob, 'result.png')
-          }
-        })
-        toast({ description: '사진이 저장되었습니다.' })
-      } catch (error) {
-        console.error('Error converting div to image:', error)
-      } finally {
-        // setScreenshot(false)를 여기서 호출하여 3초 후에 숨기도록 변경
-        setTimeout(() => {
-          setScreenshot(false)
-        }, 3000)
-      }
-    }, 0) // setTimeout 내부에서 바로 실행
   }
-  console.log(screenshot)
+
+  useEffect(() => {
+    if (screenshot && divRef.current) {
+      const captureTimeout = setTimeout(async () => {
+        try {
+          const div = divRef.current
+
+          // Use html-to-image library
+          const canvas = await htmlToImage.toCanvas(div)
+          canvas.toBlob((blob) => {
+            if (blob !== null) {
+              saveAs(blob, 'result.png')
+              toast({ description: '사진이 저장되었습니다.' })
+            }
+          })
+        } catch (error) {
+          console.error('Error converting div to image:', error)
+        } finally {
+          setScreenshot(false)
+        }
+      }, 3000) // 3초 후에 캡쳐 실행
+
+      // useEffect 종료 시에 clearTimeout을 호출하여 메모리 누수 방지
+      return () => clearTimeout(captureTimeout)
+    }
+  }, [screenshot])
   return (
     <>
       {!screenshot && (
