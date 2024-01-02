@@ -5,8 +5,8 @@ import { PaginationEntire } from '@/components/common'
 import { getTteokguk, getTteokguks } from '@/services/main'
 import Image from 'next/image'
 import Link from 'next/link'
+import { mattObj } from './_matt/mattObj'
 import { iconDday, iconMypage } from '../../../public/images/icons'
-import { mattObj } from '../../../data/mattObj'
 
 type Props = {
   params: {
