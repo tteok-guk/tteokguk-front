@@ -1,4 +1,3 @@
-import { mattObj } from '@/types/mattObj'
 import Garnish from '@/components/Garnish'
 import MattEdit from '@/components/MattEdit'
 import ShareButton from '@/components/ShareButton'
@@ -6,6 +5,7 @@ import { PaginationEntire } from '@/components/common'
 import { getTteokguk, getTteokguks } from '@/services/main'
 import Image from 'next/image'
 import Link from 'next/link'
+import { mattObj } from './_matt/mattObj'
 import { iconDday, iconMypage } from '../../../public/images/icons'
 
 type Props = {
@@ -61,7 +61,7 @@ export default async function DishPage({ params: { userId } }: Props) {
           </div>
 
           <PaginationEntire />
-          <ShareButton />
+          <ShareButton btnType="snap-shot" />
         </div>
       </div>
     </section>
