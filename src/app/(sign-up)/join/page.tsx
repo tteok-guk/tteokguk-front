@@ -1,8 +1,8 @@
 'use client'
 
-import JoinStep from "@/components/JoinStep";
 import { BottomButton } from "@/components/common";
 import { useEffect, useState } from "react";
+import { Input } from "@/components/ui/input";
 
 // 상태 Enum
 const StepStatus = {
@@ -107,7 +107,7 @@ export default function JoinPage() {
             <h2 className={'font-xs text-[#ADADAD]'}>최대 8자 / 공백, 특수기호 불가</h2>
           </div>
           <div>
-            <input
+            <Input
               type={'text'}
               placeholder={'닉네임을 입력해 주세요'}
               maxLength={8}
