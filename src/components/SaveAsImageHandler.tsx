@@ -32,15 +32,14 @@ export default function SaveAsImageHandler({}) {
         }
         const div = divRef.current
 
-        // Use html2canvas instead of html-to-image
         const canvas = await html2canvas(div, { logging: true })
 
         canvas.toBlob((blob) => {
           if (blob !== null) {
             const imageURL = URL.createObjectURL(blob)
             setCapturedImage(imageURL)
-
-            saveAs(blob, 'result.png', { autoBom: true })
+            saveAs(blob, '떡국.png')
+            setScreenshot(true)
           }
         })
       } catch (error) {
