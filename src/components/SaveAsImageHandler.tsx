@@ -37,7 +37,10 @@ export default function SaveAsImageHandler({}) {
             saveAs(blob, 'result.png')
           }
         })
-        setIsMobileOpen(true)
+        if (isMobile) {
+          setIsMobileOpen(true)
+          alert('모바일 이여서 isMobileOpen됨!')
+        }
         toast({ description: '사진이 저장되었습니다.' })
       } catch (error) {
         console.error('Error converting div to image:', error)
