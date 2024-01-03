@@ -52,7 +52,6 @@ export default function SaveAsImageHandler({}) {
     const isMobile = /Mobi/i.test(window.navigator.userAgent)
     if (isMobile) {
       setIsMobile(true)
-      setScreenshot(false)
     }
   }, [])
 
@@ -102,7 +101,7 @@ export default function SaveAsImageHandler({}) {
           />
         </div>
       )}
-      {isMobile && (
+      {screenshot && isMobile && (
         <div className="relative mx-[-20px] mt-[-32px] h-dvh bg-red-200">
           <Image src={capturedImage} alt="snap-shot" layout="fill" />
 
