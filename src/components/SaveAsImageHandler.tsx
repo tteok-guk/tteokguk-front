@@ -50,7 +50,7 @@ export default function SaveAsImageHandler({}) {
 
   useEffect(() => {
     const isMobile = /Mobi/i.test(window.navigator.userAgent)
-    if (isMobile) {
+    if (isMobile && screenshot) {
       setIsMobile(true)
     }
   }, [])
@@ -102,9 +102,8 @@ export default function SaveAsImageHandler({}) {
         </div>
       )}
       {screenshot && isMobile && (
-        <div className="relative mx-[-20px] mt-[-32px] h-dvh bg-red-200">
+        <div className="relative mx-[-20px] mt-[-32px] h-dvh">
           <Image src={capturedImage} alt="snap-shot" layout="fill" />
-
           <Image
             src={iconClose}
             width={24}
