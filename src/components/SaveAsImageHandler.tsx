@@ -41,6 +41,7 @@ export default function SaveAsImageHandler({}) {
             setCapturedImage(imageURL)
 
             saveAs(blob, 'result.png')
+            setIsMobileOpen(false)
           }
         })
       } catch (error) {
