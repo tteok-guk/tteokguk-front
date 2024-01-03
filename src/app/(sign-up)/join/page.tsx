@@ -27,7 +27,7 @@ export default function JoinPage() {
 
   // 사용자 닉네임 상태, 상태변경 핸들러
   const [userName, setUserName] = useState('')
-  const userNameOnChangeHandler = (e) => {
+  const userNameOnChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const typedValue = e.target.value
     if (/^[^\s~`!@#$%\^&*()+=\[\]\\';,./{}|\\":<>\?_-]*$/.test(typedValue)) {
       setUserName(typedValue);
