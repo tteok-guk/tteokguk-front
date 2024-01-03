@@ -16,6 +16,7 @@ export default function SaveAsImageHandler({}) {
   const [capturedImage, setCapturedImage] = useState('')
   const [screenshot, setScreenshot] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
+  const [isMobileOpen, setIsMobileOpen] = useState(false)
   const handleDownload = async () => {
     setScreenshot(true)
 
@@ -36,7 +37,7 @@ export default function SaveAsImageHandler({}) {
             saveAs(blob, 'result.png')
           }
         })
-
+        setIsMobileOpen(true)
         toast({ description: '사진이 저장되었습니다.' })
       } catch (error) {
         console.error('Error converting div to image:', error)
@@ -101,7 +102,7 @@ export default function SaveAsImageHandler({}) {
           />
         </div>
       )}
-      {screenshot && isMobile && (
+      {isMobileOpen && (
         <div className="relative mx-[-20px] mt-[-32px] h-dvh">
           <Image src={capturedImage} alt="snap-shot" layout="fill" />
           <Image
