@@ -21,9 +21,6 @@ export default function SaveAsImageHandler({}) {
 
     setTimeout(async () => {
       if (!divRef.current) return
-      await Promise.all(
-        Array.from(divRef.current.querySelectorAll('img')).map((img) => img.complete),
-      )
 
       try {
         const div = divRef.current
@@ -51,7 +48,7 @@ export default function SaveAsImageHandler({}) {
       } finally {
         setTimeout(() => {
           setScreenshot(false)
-        }, 3000)
+        }, 100000)
       }
     }, 0)
   }
