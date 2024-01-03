@@ -39,6 +39,7 @@ export default function SaveAsImageHandler({}) {
         })
         if (isMobile) {
           setIsMobileOpen(true)
+          setScreenshot(false)
           alert('모바일 이여서 isMobileOpen됨!')
         }
         toast({ description: '사진이 저장되었습니다.' })
