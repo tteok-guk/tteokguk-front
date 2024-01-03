@@ -55,8 +55,9 @@ export default function SaveAsImageHandler({}) {
 
   useEffect(() => {
     const isMobile = /Mobi/i.test(window.navigator.userAgent)
-    if (isMobile && screenshot) {
+    if (isMobile) {
       setIsMobile(true)
+      alert('모바일로 열림')
     }
   }, [])
 
