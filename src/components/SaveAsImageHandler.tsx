@@ -24,6 +24,12 @@ export default function SaveAsImageHandler({}) {
       if (!divRef.current) return
 
       try {
+        if (isMobile) {
+          setIsMobileOpen(true)
+          setScreenshot(false)
+        } else {
+          toast({ description: '사진이 저장되었습니다.' })
+        }
         const div = divRef.current
 
         // Use html2canvas instead of html-to-image
@@ -37,13 +43,6 @@ export default function SaveAsImageHandler({}) {
             saveAs(blob, 'result.png')
           }
         })
-
-        if (isMobile) {
-          setIsMobileOpen(true)
-          setScreenshot(false)
-        } else {
-          toast({ description: '사진이 저장되었습니다.' })
-        }
       } catch (error) {
         console.error('Error converting div to image:', error)
       } finally {
