@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import saveAs from 'file-saver'
 import { BottomButton } from './common'
 import Image from 'next/image'
@@ -11,39 +11,45 @@ import { toast } from '@/hooks/use-toast'
 
 export default function SaveAsImageHandler({}) {
   const divRef = useRef<HTMLDivElement>(null)
-
+  const [capturedImage, setCapturedImage] = useState<string | null>(null)
   const [screenshot, setScreenshot] = useState(false)
 
   const handleDownload = async () => {
-    // setScreenshot(true)를 setTimeout 이전으로 이동
     setScreenshot(true)
 
     setTimeout(async () => {
-      if (!divRef.current) return // divRef를 참조하기 전에 체크
+      if (!divRef.current) return
       try {
         const div = divRef.current
 
-        // Use html-to-image library
         const canvas = await htmlToImage.toCanvas(div, { includeQueryParams: true })
+
         canvas.toBlob((blob) => {
           if (blob !== null) {
+            // Blob 데이터를 이미지 URL로 변환하여 상태에 저장
+            const imageURL = URL.createObjectURL(blob)
+            setCapturedImage(imageURL)
+
+            // 파일로 저장
             saveAs(blob, 'result.png')
           }
         })
+
         toast({ description: '사진이 저장되었습니다.' })
       } catch (error) {
         console.error('Error converting div to image:', error)
       } finally {
-        // setScreenshot(false)를 여기서 호출하여 3초 후에 숨기도록 변경
         setTimeout(() => {
           setScreenshot(false)
-        }, 3000)
+        }, 1000)
       }
-    }, 0) // setTimeout 내부에서 바로 실행
+    }, 0)
   }
+
+  const basic = !screenshot
   return (
     <>
-      {!screenshot && (
+      {basic && (
         <div className="mx-[-20px] mt-[-32px] h-dvh bg-[url(/images/matts/red.png)] p-20">
           <div className="flex flex-row-reverse">
             <Image src={iconClose} width={24} height={24} alt="iconClose" className=" m-12 " />
@@ -74,6 +80,7 @@ export default function SaveAsImageHandler({}) {
           <SaveImage />
         </div>
       )}
+      {capturedImage !== null && <Image src={capturedImage} alt="snap-shot" layout="fill" />}
     </>
   )
 }
