@@ -61,7 +61,7 @@ export default async function DishPage({ params: { userId } }: Props) {
           </div>
 
           <PaginationEntire />
-          <ShareButton btnType="snap-shot" />
+          <ShareButton />
         </div>
       </div>
     </section>
