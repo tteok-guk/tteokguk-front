@@ -9,7 +9,6 @@ import SaveImage from './SaveImage'
 import { iconClose } from '../../public/images/icons'
 import { toast } from '@/hooks/use-toast'
 import Link from 'next/link'
-import { userAgent } from 'next/server'
 
 export default function SaveAsImageHandler({}) {
   const divRef = useRef<HTMLDivElement>(null)
@@ -61,7 +60,7 @@ export default function SaveAsImageHandler({}) {
     }
   }, [])
 
-  const basic = !screenshot
+  const basic = !screenshot && !isMobileOpen
   return (
     <>
       {basic && (
