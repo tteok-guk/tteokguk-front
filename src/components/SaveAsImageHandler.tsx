@@ -43,7 +43,7 @@ export default function SaveAsImageHandler({}) {
       } finally {
         setTimeout(() => {
           setScreenshot(false)
-        }, 1000)
+        }, 3000)
       }
     }, 0)
   }
@@ -52,7 +52,7 @@ export default function SaveAsImageHandler({}) {
     const isMobile = /Mobi/i.test(window.navigator.userAgent)
     if (isMobile) {
       setIsMobile(true)
-      alert('나는 모바일')
+      setScreenshot(false)
     }
   }, [])
 
@@ -82,20 +82,16 @@ export default function SaveAsImageHandler({}) {
       )}
       {screenshot && (
         <div className="relative mx-[-20px] mt-[-32px] h-dvh bg-red-200">
-          {screenshot ? (
-            <div
-              ref={divRef}
-              className=" flex-center    flex h-dvh flex-col items-center bg-[url(/images/matts/red.png)] "
-            >
-              <div className="font-lg mt-50 pb-20">
-                <p>2024 어쩌구 이런 멘트랑</p>
-                <p>뒷 배경은 일러스트</p>
-              </div>
-              <SaveImage />
+          <div
+            ref={divRef}
+            className=" flex-center    flex h-dvh flex-col items-center bg-[url(/images/matts/red.png)] "
+          >
+            <div className="font-lg mt-50 pb-20">
+              <p>2024 어쩌구 이런 멘트랑</p>
+              <p>뒷 배경은 일러스트</p>
             </div>
-          ) : (
-            <Image src={capturedImage} alt="snap-shot" layout="fill" />
-          )}
+            <SaveImage />
+          </div>
           <Image
             src={iconClose}
             width={24}
@@ -106,12 +102,20 @@ export default function SaveAsImageHandler({}) {
           />
         </div>
       )}
-      {/* {capturedImage && (
-        <>
-          <div className="flex flex-row-reverse"></div>
+      {isMobile && (
+        <div className="relative mx-[-20px] mt-[-32px] h-dvh bg-red-200">
           <Image src={capturedImage} alt="snap-shot" layout="fill" />
-        </>
-      )} */}
+
+          <Image
+            src={iconClose}
+            width={24}
+            height={24}
+            alt="iconClose"
+            className=" absolute right-20 top-20 m-12"
+            onClick={() => setIsMobile(false)}
+          />
+        </div>
+      )}
     </>
   )
 }
