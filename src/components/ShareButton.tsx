@@ -36,14 +36,14 @@ const ShareButton = ({ btnType }: BtnType) => {
           fullBtnHref="/dsda/write"
         />
       )}
-      {btnType === 'snap-shot' && (
+      {/* {btnType === 'snap-shot' && (
         <BottomButton
           bgColor="bg-transperant"
           split="twice"
           smallBtnName="저장"
           fullBtnName="사진 공유"
         />
-      )}
+      )} */}
     </>
   )
 }
