@@ -40,8 +40,7 @@ export default function SaveAsImageHandler({}) {
             const imageURL = URL.createObjectURL(blob)
             setCapturedImage(imageURL)
 
-            saveAs(blob, 'result.png')
-            setIsMobileOpen(false)
+            saveAs(blob, 'result.png', { autoBom: true })
           }
         })
       } catch (error) {
