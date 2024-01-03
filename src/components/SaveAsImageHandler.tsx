@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import saveAs from 'file-saver'
 import { BottomButton } from './common'
 import Image from 'next/image'
@@ -8,10 +8,12 @@ import * as htmlToImage from 'html-to-image'
 import SaveImage from './SaveImage'
 import { iconClose } from '../../public/images/icons'
 import { toast } from '@/hooks/use-toast'
+import Link from 'next/link'
+import { userAgent } from 'next/server'
 
 export default function SaveAsImageHandler({}) {
   const divRef = useRef<HTMLDivElement>(null)
-  const [capturedImage, setCapturedImage] = useState<string | null>(null)
+  const [capturedImage, setCapturedImage] = useState('')
   const [screenshot, setScreenshot] = useState(false)
 
   const handleDownload = async () => {
@@ -46,13 +48,20 @@ export default function SaveAsImageHandler({}) {
     }, 0)
   }
 
+  useEffect(() => {
+    const isMobile = /Mobi/i.test(window.navigator.userAgent)
+    console.log(isMobile)
+  }, [])
+
   const basic = !screenshot
   return (
     <>
       {basic && (
         <div className="mx-[-20px] mt-[-32px] h-dvh bg-[url(/images/matts/red.png)] p-20">
           <div className="flex flex-row-reverse">
-            <Image src={iconClose} width={24} height={24} alt="iconClose" className=" m-12 " />
+            <Link href={'/host'}>
+              <Image src={iconClose} width={24} height={24} alt="iconClose" className=" m-12 " />
+            </Link>
           </div>
           <div className="font-xl mb-75">
             <p>덕담 남기기 완료</p>
@@ -69,18 +78,37 @@ export default function SaveAsImageHandler({}) {
         </div>
       )}
       {screenshot && (
-        <div
-          ref={divRef}
-          className="flex-center mx-[-20px] mt-[-32px] flex h-dvh flex-col items-center bg-[url(/images/matts/red.png)] "
-        >
-          <div className="font-lg mt-50 pb-20">
-            <p>2024 어쩌구 이런 멘트랑</p>
-            <p>뒷 배경은 일러스트</p>
-          </div>
-          <SaveImage />
+        <div className="relative mx-[-20px] mt-[-32px] h-dvh bg-red-200">
+          {screenshot ? (
+            <div
+              ref={divRef}
+              className=" flex-center    flex h-dvh flex-col items-center bg-[url(/images/matts/red.png)] "
+            >
+              <div className="font-lg mt-50 pb-20">
+                <p>2024 어쩌구 이런 멘트랑</p>
+                <p>뒷 배경은 일러스트</p>
+              </div>
+              <SaveImage />
+            </div>
+          ) : (
+            <Image src={capturedImage} alt="snap-shot" layout="fill" />
+          )}
+          <Image
+            src={iconClose}
+            width={24}
+            height={24}
+            alt="iconClose"
+            className=" absolute right-20 top-20 m-12"
+            onClick={() => setScreenshot(false)}
+          />
         </div>
       )}
-      {capturedImage !== null && <Image src={capturedImage} alt="snap-shot" layout="fill" />}
+      {/* {capturedImage && (
+        <>
+          <div className="flex flex-row-reverse"></div>
+          <Image src={capturedImage} alt="snap-shot" layout="fill" />
+        </>
+      )} */}
     </>
   )
 }
