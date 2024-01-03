@@ -21,7 +21,6 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "file-saver": "^2.0.5",
-    "html-to-image": "^1.11.11",
     "html2canvas": "^1.4.1",
     "lucide-react": "^0.302.0",
     "next": "14.0.4",
