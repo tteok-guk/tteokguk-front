@@ -15,7 +15,7 @@ export default function SaveAsImageHandler({}) {
   const divRef = useRef<HTMLDivElement>(null)
   const [capturedImage, setCapturedImage] = useState('')
   const [screenshot, setScreenshot] = useState(false)
-
+  const [isMobile, setIsMobile] = useState(false)
   const handleDownload = async () => {
     setScreenshot(true)
 
@@ -50,7 +50,10 @@ export default function SaveAsImageHandler({}) {
 
   useEffect(() => {
     const isMobile = /Mobi/i.test(window.navigator.userAgent)
-    console.log(isMobile)
+    if (isMobile) {
+      setIsMobile(true)
+      alert('나는 모바일')
+    }
   }, [])
 
   const basic = !screenshot
