@@ -107,7 +107,7 @@ export default function SaveAsImageHandler({}) {
           />
         </div>
       )}
-      {isMobileOpen && (
+      {isMobileOpen && capturedImage && (
         <div className="relative mx-[-20px] mt-[-32px] h-dvh">
           <Image src={capturedImage} alt="snap-shot" layout="fill" />
           <Image
@@ -116,7 +116,7 @@ export default function SaveAsImageHandler({}) {
             height={24}
             alt="iconClose"
             className=" absolute right-20 top-20 m-12"
-            onClick={() => setIsMobile(false)}
+            onClick={() => setIsMobileOpen(false)}
           />
         </div>
       )}
