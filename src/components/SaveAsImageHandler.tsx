@@ -47,9 +47,9 @@ export default function SaveAsImageHandler({}) {
       } finally {
         setTimeout(() => {
           setScreenshot(false)
-        }, 300000)
+        }, 3000)
       }
-    }, 60000)
+    }, 3000)
   }
 
   useEffect(() => {
