@@ -24,14 +24,6 @@ export default function SaveAsImageHandler({}) {
       if (!divRef.current) return
 
       try {
-        const isKakaoTalkInAppBrowser = /KAKAOTALK/i.test(window.navigator.userAgent)
-        if (isKakaoTalkInAppBrowser) {
-          setIsKakao(true)
-          setScreenshot(false)
-          return
-        } else {
-          toast({ description: '사진이 저장되었습니다.' })
-        }
         const div = divRef.current
 
         const canvas = await html2canvas(div, { logging: true })
@@ -41,6 +33,14 @@ export default function SaveAsImageHandler({}) {
             const imageURL = URL.createObjectURL(blob)
 
             saveAs(blob, '떡국.png')
+            const isKakaoTalkInAppBrowser = /KAKAOTALK/i.test(window.navigator.userAgent)
+            if (isKakaoTalkInAppBrowser) {
+              setIsKakao(true)
+              setScreenshot(false)
+              return
+            } else {
+              toast({ description: '사진이 저장되었습니다.' })
+            }
             if (isKakao) {
               setCapturedImage(imageURL)
             }
