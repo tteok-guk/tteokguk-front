@@ -53,6 +53,10 @@ export default function SaveAsImageHandler({}) {
   }
 
   useEffect(() => {
+    const isKakaoTalkInAppBrowser = /KAKAOTALK/i.test(window.navigator.userAgent)
+    if (isKakaoTalkInAppBrowser) {
+      alert(isKakaoTalkInAppBrowser)
+    }
     const isMobile = /Mobi/i.test(window.navigator.userAgent)
     if (isMobile) {
       setIsMobile(true)
