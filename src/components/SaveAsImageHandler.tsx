@@ -14,8 +14,8 @@ export default function SaveAsImageHandler({}) {
   const divRef = useRef<HTMLDivElement>(null)
   const [capturedImage, setCapturedImage] = useState('')
   const [screenshot, setScreenshot] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
-  const [isMobileOpen, setIsMobileOpen] = useState(false)
+  const [isKakao, setIsKakao] = useState(false)
+  // const [isMobileOpen, setIsMobileOpen] = useState(false)
 
   const handleDownload = async () => {
     setScreenshot(true)
@@ -24,9 +24,11 @@ export default function SaveAsImageHandler({}) {
       if (!divRef.current) return
 
       try {
-        if (isMobile) {
-          setIsMobileOpen(true)
+        const isKakaoTalkInAppBrowser = /KAKAOTALK/i.test(window.navigator.userAgent)
+        if (isKakaoTalkInAppBrowser) {
+          setIsKakao(true)
           setScreenshot(false)
+          return
         } else {
           toast({ description: '사진이 저장되었습니다.' })
         }
@@ -37,9 +39,10 @@ export default function SaveAsImageHandler({}) {
         canvas.toBlob((blob) => {
           if (blob !== null) {
             const imageURL = URL.createObjectURL(blob)
-            setCapturedImage(imageURL)
+            if (isKakao) {
+              setCapturedImage(imageURL)
+            }
             saveAs(blob, '떡국.png')
-            setScreenshot(true)
           }
         })
       } catch (error) {
@@ -52,18 +55,9 @@ export default function SaveAsImageHandler({}) {
     }, 0)
   }
 
-  useEffect(() => {
-    const isKakaoTalkInAppBrowser = /KAKAOTALK/i.test(window.navigator.userAgent)
-    if (isKakaoTalkInAppBrowser) {
-      alert(isKakaoTalkInAppBrowser)
-    }
-    const isMobile = /Mobi/i.test(window.navigator.userAgent)
-    if (isMobile) {
-      setIsMobile(true)
-    }
-  }, [])
+  useEffect(() => {}, [])
 
-  const basic = !screenshot && !isMobileOpen
+  const basic = !screenshot && !isKakao && !capturedImage
   return (
     <>
       {basic && (
@@ -109,7 +103,7 @@ export default function SaveAsImageHandler({}) {
           />
         </div>
       )}
-      {isMobileOpen && capturedImage && (
+      {isKakao && capturedImage && (
         <div className="relative mx-[-20px] mt-[-32px] h-dvh">
           <Image src={capturedImage} alt="snap-shot" layout="fill" />
           <Image
@@ -118,7 +112,7 @@ export default function SaveAsImageHandler({}) {
             height={24}
             alt="iconClose"
             className=" absolute right-20 top-20 m-12"
-            onClick={() => setIsMobileOpen(false)}
+            onClick={() => setIsKakao(false)}
           />
         </div>
       )}
