@@ -37,12 +37,10 @@ export default function SaveAsImageHandler({}) {
             if (isKakaoTalkInAppBrowser) {
               setIsKakao(true)
               setScreenshot(false)
+              setCapturedImage(imageURL)
               return
             } else {
               toast({ description: '사진이 저장되었습니다.' })
-            }
-            if (isKakao) {
-              setCapturedImage(imageURL)
             }
           }
         })
