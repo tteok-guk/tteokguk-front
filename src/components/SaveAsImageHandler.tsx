@@ -39,10 +39,11 @@ export default function SaveAsImageHandler({}) {
         canvas.toBlob((blob) => {
           if (blob !== null) {
             const imageURL = URL.createObjectURL(blob)
+
+            saveAs(blob, '떡국.png')
             if (isKakao) {
               setCapturedImage(imageURL)
             }
-            saveAs(blob, '떡국.png')
           }
         })
       } catch (error) {
