@@ -73,7 +73,7 @@ export default async function DishPage({ params: { userId } }: Props) {
           </div>
 
           <PaginationEntire />
-          <ShareButton />
+          <ShareButton tteokGukId={떡국?.id} />
         </div>
       </div>
     </section>
