@@ -3,22 +3,98 @@ import { NextResponse } from "next/server";
 import { getUserType } from "@/services/userCheck";
 
 export async function middleware(request: NextRequest) {
-	// 요청 헤더에서 로그인 여부를 확인할 수 있도록 쿠키에 접근
-  // console.log(']iddleware : ', request.nextUrl.searchParams.get('token'))
-  if(request.nextUrl.searchParams.get('token')){
-    const token = request.nextUrl.searchParams.get('token')
-    const userType = await getUserType(token)
-    if(userType.isMember){
-      return NextResponse.redirect(new URL('/host', request.url))
+  console.log(':::::: in middleware (', request.nextUrl.pathname, ')')
+  
+  const path = request.nextUrl.pathname
+  const params = request.nextUrl.searchParams
+  const cookie = request.cookies
+  
+  const goNext = () => {
+    return NextResponse.next()
+  }
+  
+  const goUrl = (url: string) => {
+    return NextResponse.redirect(new URL(url, request.url))
+  }
+
+  const authInfo = async () => {
+    if(cookie.has('token')){
+      const token = cookie.get('token')?.value
+      console.log("token >> ", token)
+      if(await getUserType(token)){
+        return {'hasToken':true, 'isMember':true}
+      }else{
+        return {'hasToken':true, 'isMember':false}
+      }
     }else{
-      return NextResponse.redirect(new URL('/join', request.url))
+      return {'hasToken':false, 'isMember':false}
+    }
+  }
+  const authData = await authInfo()
+
+  if(path.startsWith('/host')){
+    // access denied url
+    // TODO 유리님 개발 완료하고 나면 host/snap-shot도 막기
+    if(path.includes('/set-garnish') || path.includes('/write') /*|| path.includes('/snap-shot')*/){
+      return goUrl('/')
+    }else{
+      if(authData.hasToken){
+        if(authData.isMember){
+          return goNext()
+        }else{
+          return goUrl('/join')
+        }
+      }else{
+        return goUrl('/')
+      }
     }
   }else{
-    // 아예 토큰이 없는 경우
-    return NextResponse.redirect(new URL('/', request.url))
+    // access denied url
+    if(path.includes('/garnish-list')){
+      return goUrl('/')
+    }else if(path.includes('/join')){
+      if(authData.hasToken){
+        if(authData.isMember){
+          return goUrl('/host')
+        }else{
+          return goNext()
+        }
+      }else{
+        return goUrl('/')
+      }
+    }else if(path.includes('change-matt') || path.includes('/make-dish') || path.includes('/account')){
+      if(authData.hasToken){
+        if(authData.isMember){
+          return goNext()
+        }else{
+          return goUrl('/join')
+        }
+      }else{
+        return goUrl('/')
+      }
+    }else if (path.startsWith('/login/success')){
+      if(params.get('token')){
+        const token = params.get('token')
+        if(!token){
+          throw Error()
+        }
+        cookie.set('token', token)
+        if(await getUserType(token)){
+          return goUrl('/host')
+        }else{
+          return goUrl('/join')
+        }
+      }else{
+        return goUrl('/')
+      }
+    }
   }
 }
 
 export const config = {
-  matcher: ["/login/success"]
-};
+  // 전역에서 체크하려다가 너무 많이 호출 되서 바꿈.
+  matcher: [
+    '/login/success', '/host/:path*', '/join', '/change-matt', '/make-dish', '/account'
+  ]
+}
+

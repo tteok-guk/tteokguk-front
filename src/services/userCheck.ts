@@ -2,7 +2,7 @@ export type UserType = {
   isMember: boolean
 }
 
-export async function getUserType(token: string | null): Promise<UserType> {
+export async function getUserType(token: string | null | undefined): Promise<UserType> {
   // 토큰 정보로 유저 정보 가져오기
   const response = await fetch('https://api.tteok-guk.store/api/member/check', {
     method: 'GET', // *GET, POST, PUT, DELETE 등
