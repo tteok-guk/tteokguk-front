@@ -5,9 +5,9 @@
     "dDay": 30,
     "garnishCnt": 7,
     "garnish": [
-      { "garnishId": 123, "nickname": "나는공주다", "garnishName": "greenOnion" },
-      { "garnishId": 456, "nickname": "한솔띠", "garnishName": "greenOnion" },
-      { "garnishId": 789, "nickname": "이건일곱글자로", "garnishName": "greenOnion" },
+      { "garnishId": 123, "nickname": "나는공주다", "garnishName": "pepperoncino" },
+      { "garnishId": 456, "nickname": "한솔띠", "garnishName": "strawberry" },
+      { "garnishId": 789, "nickname": "이건일곱글자로", "garnishName": "vegetable" },
       { "garnishId": 124, "nickname": "희제님바보", "garnishName": "greenOnion" },
       { "garnishId": 125, "nickname": "지각생주영님", "garnishName": "seaweed" },
       { "garnishId": 126, "nickname": "떡국기원", "garnishName": "mushroom" },
