@@ -5,9 +5,8 @@ import { PaginationEntire } from '@/components/common'
 import { getTteokguk, getTteokguks } from '@/services/main'
 import Image from 'next/image'
 import Link from 'next/link'
-import { dishesObj, mattObj } from './_object/object'
 import { iconDday, iconMypage } from '../../../public/images/icons'
-import { useEffect } from 'react'
+import { dishesObj, mattObj } from './_object/object'
 
 type Props = {
   params: {
@@ -22,19 +21,10 @@ export default async function DishPage({ params: { userId } }: Props) {
     console.log('해당떡국없음')
   }
 
-  // { "garnishId": 123, "nickname": "나는공주다", "garnishName": "pepperoncino" },
-  // { "garnishId": 456, "nickname": "한솔띠", "garnishName": "strawberry" },
-  // { "garnishId": 789, "nickname": "이건일곱글자로", "garnishName": "vegetable" },
-  // { "garnishId": 124, "nickname": "희제님바보", "garnishName": "greenOnion" },
-  // { "garnishId": 125, "nickname": "지각생주영님", "garnishName": "seaweed" },
-  // { "garnishId": 126, "nickname": "떡국기원", "garnishName": "mushroom" },
-  // { "garnishId": 127, "nickname": "대박나자!!!", "garnishName": "basicRc" }
   const determineDishType = (garnish: GarnishItem[] | undefined, userId: string) => {
     if ((garnish?.length === 0 || !garnish) && userId !== 'host') {
       return 'firstDish'
-    } else if (garnish.length > 0) {
-      return 'basicDish'
-    } else if (garnish.length === 0 && userId === 'host') {
+    } else if (garnish?.length === 0 && userId === 'host') {
       return 'emptyDish'
     } else {
       return 'basicDish'
