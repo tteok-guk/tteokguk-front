@@ -34,5 +34,15 @@
     "lastPageNum": 1,
     "mattType": "yellowCheck",
     " isPublic": true
+  },
+  {
+    "id": "noneGarnish",
+    "nickname": "난고명없음",
+    "dDay": 30,
+    "garnishCnt": 0,
+    "garnish": [],
+    "lastPageNum": 1,
+    "mattType": "pinkDew",
+    " isPublic": true
   }
 ]
