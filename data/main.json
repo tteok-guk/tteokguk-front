@@ -5,16 +5,44 @@
     "dDay": 30,
     "garnishCnt": 7,
     "garnish": [
-      { "garnishId": 123, "nickname": "나는공주다", "garnishName": "greenOnion" },
-      { "garnishId": 456, "nickname": "한솔띠", "garnishName": "greenOnion" },
-      { "garnishId": 789, "nickname": "이건일곱글자로", "garnishName": "greenOnion" },
+      { "garnishId": 123, "nickname": "나는공주다", "garnishName": "pepperoncino" },
+      { "garnishId": 456, "nickname": "한솔띠", "garnishName": "strawberry" },
+      { "garnishId": 789, "nickname": "이건일곱글자로", "garnishName": "vegetable" },
       { "garnishId": 124, "nickname": "희제님바보", "garnishName": "greenOnion" },
       { "garnishId": 125, "nickname": "지각생주영님", "garnishName": "seaweed" },
       { "garnishId": 126, "nickname": "떡국기원", "garnishName": "mushroom" },
       { "garnishId": 127, "nickname": "대박나자!!!", "garnishName": "basicRc" }
     ],
     "lastPageNum": 1,
-    "mattId": "yellow",
+    "mattType": "blueGradation",
+    " isPublic": true
+  },
+  {
+    "id": "guest",
+    "nickname": "영은님짱",
+    "dDay": 30,
+    "garnishCnt": 7,
+    "garnish": [
+      { "garnishId": 5455, "nickname": "영은님", "garnishName": "pepperoncino" },
+      { "garnishId": 5345, "nickname": "진짜 쩔어", "garnishName": "strawberry" },
+      { "garnishId": 4324, "nickname": "진심 능력자", "garnishName": "coloredRc" },
+      { "garnishId": 414, "nickname": "재능충그잡채", "garnishName": "egg" },
+      { "garnishId": 4324, "nickname": "최고의", "garnishName": "pineapple" },
+      { "garnishId": 6465, "nickname": "디자이너", "garnishName": "vegetable" },
+      { "garnishId": 424, "nickname": "떡국대박기원", "garnishName": "basicRc" }
+    ],
+    "lastPageNum": 1,
+    "mattType": "yellowCheck",
+    " isPublic": true
+  },
+  {
+    "id": "noneGarnish",
+    "nickname": "난고명없음",
+    "dDay": 30,
+    "garnishCnt": 0,
+    "garnish": [],
+    "lastPageNum": 1,
+    "mattType": "pinkDew",
     " isPublic": true
   }
 ]
