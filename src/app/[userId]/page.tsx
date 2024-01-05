@@ -33,7 +33,7 @@ export default async function DishPage({ params: { userId } }: Props) {
   return (
     <section
       className={` mx-[-20px] mt-[-32px] flex h-dvh justify-center ${
-        mattObj[떡국?.mattId || 'default']
+        mattObj[떡국?.mattType || 'default']
       } bg-cover bg-center px-20 `}
     >
       <div className={` w-375  `}>
@@ -64,7 +64,7 @@ export default async function DishPage({ params: { userId } }: Props) {
             {userId === 'host' ? (
               <div className="absolute bottom-[-52px] right-[-18px]">
                 <Link href={'/change-matt	'}>
-                  <MattEdit mattId={떡국?.mattId || 'default'} />
+                  <MattEdit mattType={떡국?.mattType || 'default'} />
                 </Link>
               </div>
             ) : (
