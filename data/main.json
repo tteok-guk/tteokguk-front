@@ -16,5 +16,23 @@
     "lastPageNum": 1,
     "mattType": "blueGradation",
     " isPublic": true
+  },
+  {
+    "id": "guest",
+    "nickname": "영은님짱",
+    "dDay": 30,
+    "garnishCnt": 7,
+    "garnish": [
+      { "garnishId": 5455, "nickname": "영은님", "garnishName": "pepperoncino" },
+      { "garnishId": 5345, "nickname": "진짜 쩔어", "garnishName": "strawberry" },
+      { "garnishId": 4324, "nickname": "진심 능력자", "garnishName": "coloredRc" },
+      { "garnishId": 414, "nickname": "재능충그잡채", "garnishName": "egg" },
+      { "garnishId": 4324, "nickname": "최고의", "garnishName": "pineapple" },
+      { "garnishId": 6465, "nickname": "디자이너", "garnishName": "vegetable" },
+      { "garnishId": 424, "nickname": "떡국대박기원", "garnishName": "basicRc" }
+    ],
+    "lastPageNum": 1,
+    "mattType": "yellowCheck",
+    " isPublic": true
   }
 ]
