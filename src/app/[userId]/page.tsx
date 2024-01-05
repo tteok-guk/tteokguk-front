@@ -5,8 +5,9 @@ import { PaginationEntire } from '@/components/common'
 import { getTteokguk, getTteokguks } from '@/services/main'
 import Image from 'next/image'
 import Link from 'next/link'
-import { mattObj } from './_object/object'
+import { dishesObj, mattObj } from './_object/object'
 import { iconDday, iconMypage } from '../../../public/images/icons'
+import { useEffect } from 'react'
 
 type Props = {
   params: {
@@ -21,13 +22,30 @@ export default async function DishPage({ params: { userId } }: Props) {
     console.log('해당떡국없음')
   }
 
+  // { "garnishId": 123, "nickname": "나는공주다", "garnishName": "pepperoncino" },
+  // { "garnishId": 456, "nickname": "한솔띠", "garnishName": "strawberry" },
+  // { "garnishId": 789, "nickname": "이건일곱글자로", "garnishName": "vegetable" },
+  // { "garnishId": 124, "nickname": "희제님바보", "garnishName": "greenOnion" },
+  // { "garnishId": 125, "nickname": "지각생주영님", "garnishName": "seaweed" },
+  // { "garnishId": 126, "nickname": "떡국기원", "garnishName": "mushroom" },
+  // { "garnishId": 127, "nickname": "대박나자!!!", "garnishName": "basicRc" }
+  const determineDishType = (garnish: GarnishItem[] | undefined, userId: string) => {
+    if ((garnish?.length === 0 || !garnish) && userId !== 'host') {
+      return 'firstDish'
+    } else if (garnish.length > 0) {
+      return 'basicDish'
+    } else if (garnish.length === 0 && userId === 'host') {
+      return 'emptyDish'
+    } else {
+      return 'basicDish'
+    }
+  }
   return (
     <section
       className={` mx-[-20px] mt-[-32px] flex h-dvh justify-center ${
         mattObj[떡국?.mattId || 'default']
       } bg-cover bg-center px-20 `}
     >
-      {/* <div className={`w-375 bg-[url('/images/${떡국?.테이블매트정보}')] bg-cover bg-center `}> */}
       <div className={` w-375  `}>
         <div className="flex flex-row items-center justify-between pb-36 pt-32 ">
           <h1 className="font-xl">{`${떡국?.nickname}님의 떡국`}</h1>
@@ -47,7 +65,11 @@ export default async function DishPage({ params: { userId } }: Props) {
             <p className="font-base text-pr-800">{`까치까치 설날 D-${떡국?.dDay}`}</p>
           </div>
           <p className="mb-5">{`${떡국?.garnishCnt}개의 덕담을 받았어요!`}</p>
-          <div className="relative mb-31 mt-19 h-300 w-300 rounded-full bg-gr-200">
+          <div
+            className={`relative mb-31 mt-19 h-300 w-300 rounded-full ${
+              dishesObj[determineDishType(떡국?.garnish, userId)]
+            } bg-cente bg-cover`}
+          >
             <Garnish garnishInfo={떡국?.garnish} />
             {userId === 'host' ? (
               <div className="absolute bottom-[-52px] right-[-18px]">
@@ -61,6 +83,7 @@ export default async function DishPage({ params: { userId } }: Props) {
           </div>
 
           <PaginationEntire />
+          <ShareButton />
         </div>
       </div>
     </section>
@@ -72,4 +95,10 @@ export async function generateStaticParams() {
   return tteokguks.map((tteokguk) => ({
     userId: tteokguk.id,
   }))
+}
+
+interface GarnishItem {
+  garnishId: number
+  nickname: string
+  garnishName: string
 }
