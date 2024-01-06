@@ -22,7 +22,7 @@ export default function BottomButton({
           <>
             <Button
               href={smallBtnHref}
-              className="h-58 min-w-51 max-w-100 flex-shrink-0 flex-grow border border-pr-500 text-pr-500"
+              className="h-58 min-w-51 max-w-100 flex-shrink-0 flex-grow border border-pr-500 bg-pr-100 text-pr-500"
               onClick={smallBtnClick}
             >
               {smallBtnName}

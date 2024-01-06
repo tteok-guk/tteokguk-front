@@ -4,9 +4,9 @@ import Image from 'next/image'
 
 const Garnish = ({ garnishInfo }: GarnishType) => {
   const garnishLocation: GarnishLocationType = {
-    0: 'top-[39px] left-[122px]',
+    0: 'top-[123px] left-[122px]',
     1: 'top-[81px] left-[51px]',
-    2: 'top-[123px] left-[122px]',
+    2: 'top-[39px] left-[122px]',
     3: 'top-[81px] left-[194px]',
     4: 'top-[164px] left-[51px]',
     5: 'top-[205px] left-[122px]',

@@ -7,7 +7,7 @@ export type Tteokguk = {
   dDay: number
   garnishCnt: number
   garnish: [{ garnishId: number; nickname: string; garnishName: string }]
-  mattId: string
+  mattType: string
   lastPageNum: number
   isPublic?: boolean
 }
