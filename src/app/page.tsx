@@ -8,13 +8,10 @@ export default function AuthPage() {
 
   const loginHandler = () => {
     // window.loacation.href 사용
-    window.location.href = kakaoLink;
-  }
-
-  const Logo = () => {
-    return <>
-    
-    </>
+    const stateData = '?state=test'
+    // window.location.href = `${kakaoLink}${cookieData2}`
+    window.location.href = `${kakaoLink}`
+  
   }
 
   return (
