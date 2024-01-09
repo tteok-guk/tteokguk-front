@@ -13,18 +13,74 @@ const StepStatus = {
   COMPLETE: 'stepComplete',
 }
 export default function JoinPage() {
+  // input style
   const iptSt = 'w-full px-0 py-4 rounded-0 font-lg text-gr-900 border-t-0 border-x-0 border-b-1 bg-transparent placeholder:text-[#ADADAD] placeholder:font-lg caret-pr-500 focus:outline-none'
   const invalidSt = 'border-b-[#FF0000]'
   const validSt = 'border-b-[#ADADAD]'
-  const [isStepBtnActive, setIsStepBtnActive] = useState(false)
+
+  // button style
+  const activeBtnSt = 'font-semibold border-0 bg-pr-500 text-17 leading-22 text-white active:bg-pr-500'
+  const disabledBtnSt = 'font-semibold border-0 bg-gr-100 text-17 leading-22 text-gr-400 disabled:bg-gr-100 active:bg-gr-100'
+
+  // 하단 버튼 활성화 상태
+  const [isStepBtnActive, setIsStepBtnActive] = useState(true)
+  
+  // 회원가입 단계 및 진행 상태
   const [step, setStep] = useState({
       current : 2,
       status : [StepStatus.INITIAL, StepStatus.INITIAL, StepStatus.INITIAL]
     }
   )
-  // 사용자 닉네임 상태, 상태변경 핸들러
+
+  // 사용자 닉네임, 닉네임 유효성 상태 상태변경 핸들러
   const [userName, setUserName] = useState('')
   const [isValidName, setIsValidName] = useState(true)
+  
+  // 전체 선택박스 상태
+  const [groupTerm, setGroupTerm] = useState(false)
+  // 선택박스 상태
+  const [terms, setTerms] = useState([
+      {
+        'type' : 'required',
+        'text' : '(필수) 만 14세 이상입니다.',
+        'checked' : false,
+      },
+      {
+        'type' : 'required',
+        'text' : '(필수) 서비스 이용 약관에 동의합니다.',
+        'checked' : false,
+        'link' : '',
+      },
+      {
+        'type' : 'required',
+        'text' : '(필수) 개인정보 수집이용에 동의합니다.',
+        'checked' : false,
+        'link': '',
+      }
+  ])
+
+  // 선택박스 상태 변경 핸들러
+  const checkboxOnChangeHandler = (idx:number) => {
+    setTerms((prevTerms) => {
+      const newTerms = [...prevTerms]
+      newTerms[idx] = {
+        ...newTerms[idx],
+        checked: !newTerms[idx].checked,
+      }
+      return newTerms
+    })
+  }
+
+  // 전체 선택 박스 상태 변경 핸들러
+  const groupCheckboxOnChangeHandler = (groupChecked:boolean) => {
+    setTerms((prevTerms) =>
+      prevTerms.map((term) =>
+        term.type === 'required' ? { ...term, checked: groupChecked } : term
+      )
+    )
+  }
+
+  // 닉네임 상태변경 핸들러
   const userNameOnChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const typedValue = e.target.value
     if (/^[^\s~`!@#$%\^&*()+=\[\]\\';,./{}|\\":<>\?_-]*$/.test(typedValue)) {
@@ -34,10 +90,13 @@ export default function JoinPage() {
       setIsValidName(false)
     }
   }
+
+  // 닉네임 전체 지우기 핸들러
   const deleteNameOnClickHandler = (e: React.MouseEvent<HTMLDivElement>) => {
     setUserName('')
   }
 
+  // 회원가입 단계 이동 핸들러
   const navBtnOnClickHandler = (curr:number, dire:string) => {
     if(dire === 'prev'){
       if(curr !== 0){
@@ -57,7 +116,9 @@ export default function JoinPage() {
       }
     }
   }
-
+  
+  // Hooks
+  // [userName] useEffect Hook
   useEffect(()=>{
     if(userName.length > 0){
       if(userName.length <= 8){
@@ -97,6 +158,38 @@ export default function JoinPage() {
       }))
     }
   },[userName])
+
+  // [terms] useEffect Hook
+  useEffect(()=>{
+    const checkCondition = terms.map((term, idx) => {
+      if(term.type === 'required'){
+        return term.checked
+      }
+    })
+    if(checkCondition.every(Boolean)){
+      setStep(prevStep => ({
+        ...prevStep,
+        status: [
+          ...prevStep.status.slice(0, step.current),
+          StepStatus.COMPLETE,
+          ...prevStep.status.slice(step.current + 1),
+        ],
+      }))
+      setGroupTerm(true)
+    }else{
+      setStep(prevStep => ({
+        ...prevStep,
+        status: [
+          ...prevStep.status.slice(0, step.current),
+          StepStatus.INITIAL,
+          ...prevStep.status.slice(step.current + 1),
+        ],
+      }))
+      setGroupTerm(false)
+    }
+  },[terms])
+
+  // [step] useEffect Hook
   useEffect(()=>{
     console.log(">>>>>", step.current)
     console.log(">>>>>", step.status)
@@ -106,6 +199,8 @@ export default function JoinPage() {
       setIsStepBtnActive(false)
     }
   },[step])
+
+
   return (
     <div>
       {/* 상단 영역 */}
@@ -166,22 +261,20 @@ export default function JoinPage() {
           </div>
           <div className={'relative flex flex-col gap-y-20'}>
             <div className={'flex items-center w-full gap-10 py-16 pl-20 bg-gr-100 rounded-4 h-52'}>
-              <Checkbox id='termsAll' className={'w-20 h-20 rounded-full bg-center border-0 bg-[url(/images/icons/iconCheckCircleBefore.png)] bg-white'} />
-              <Label htmlFor='termsAll'>필수 약관 전체 동의</Label>
+              <Checkbox id='termsAll' checked={groupTerm} onCheckedChange={groupCheckboxOnChangeHandler} className={'w-20 h-20 rounded-full bg-center border-0 bg-[url(/images/icons/iconCheckCircleBefore.png)] bg-white'} />
+              <Label htmlFor='termsAll' className={'font-semibold text-gr-900'}>필수 약관 전체 동의</Label>
             </div>
             <div className={'flex flex-col gap-y-22'}>
-              <div className={'flex items-center w-full gap-10 pl-20'}>
-                <Checkbox id='terms1' className={'w-20 h-20 rounded-full bg-center border-0 bg-[url(/images/icons/iconCheckCircleBefore.png)] bg-white'} />
-                <Label htmlFor='terms1'>(필수) 만 14세 이상입니다.</Label>
-              </div>
-              <div className='flex items-center w-full gap-10 pl-20'>
-                <Checkbox id='terms2' className={'w-20 h-20 rounded-full bg-center border-0 bg-[url(/images/icons/iconCheckCircleBefore.png)] bg-white'} />
-                <Label htmlFor='terms2'>(필수) 서비스 이용 약관에 동의합니다.</Label>
-              </div>
-              <div className='flex items-center w-full gap-10 pl-20'>
-                <Checkbox id='terms3' className={'w-20 h-20 rounded-full bg-center border-0 bg-[url(/images/icons/iconCheckCircleBefore.png)] bg-white'}/>
-                <Label htmlFor='terms3'>(필수) 개인정보 수집이용에 동의합니다.</Label>
-              </div>
+              {
+                terms.map((term, idx)=>{
+                  return (
+                    <div className={'flex items-center w-full gap-10 pl-20'}>
+                      <Checkbox id={'terms'+idx} checked={term.checked} onCheckedChange={()=>(checkboxOnChangeHandler(idx))}  className={'w-20 h-20 rounded-full bg-center border-0 bg-[url(/images/icons/iconCheckCircleBefore.png)] bg-white'} />
+                      <Label htmlFor={'terms'+idx}>{term.text}</Label>
+                    </div>
+                  )
+                })
+              }
             </div>
           </div>
         </div>
@@ -192,7 +285,7 @@ export default function JoinPage() {
           <div className={`mx-auto flex h-full min-w-320 max-w-575 justify-center bg-bg px-20 pt-16`}>
             <Button 
               size="full"
-              className={'font-semibold text-red-800 border bg-pr-500 text-17 leading-22 disabled:bg-[#D9D9D9]'}
+              className={isStepBtnActive?`${activeBtnSt}`:`${disabledBtnSt}`}
               onClick={()=>{navBtnOnClickHandler(step.current, 'next')}}
               disabled={!isStepBtnActive}>
               {step.current === 2? '완료':'다음'}
