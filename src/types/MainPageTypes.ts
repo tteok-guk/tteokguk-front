@@ -19,15 +19,29 @@ export interface HostTteokgukType {
 }
 
 export interface GarnishArrType {
-  garnishId: number
-  nickname: string
-  garnishType: string
+  garnishes: {
+    garnishId: number
+    nickname: string
+    garnishType: string
+  }[]
+  pageSize: number
+  garnishCnt: number
 }
 
 export interface GarnishType {
-  garnishInfo?: GarnishArrType[]
+  garnishInfo?: {
+    garnishId: number
+    nickname: string
+    garnishType: string
+  }[]
 }
 
 export interface GarnishLocationType {
   [key: number]: string
+}
+
+export interface GarnishItem {
+  garnishId: number
+  nickname: string
+  garnishType: string
 }

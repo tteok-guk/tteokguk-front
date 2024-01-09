@@ -1,4 +1,4 @@
-import { GarnishType, GuestTteokgukType, HostTteokgukType } from '@/types/MainPageTypes'
+import { GarnishArrType, GuestTteokgukType, HostTteokgukType } from '@/types/MainPageTypes'
 import { cookies } from 'next/headers'
 
 const baseUrl = process.env.NEXT_PUBLIC_API_KEY
@@ -35,7 +35,7 @@ export async function getHostTteokguk(): Promise<HostTteokgukType> {
   return data
 }
 
-export async function getGarnishes(userId: string, pageNum: number): Promise<GarnishType> {
+export async function getGarnishes(userId: string, pageNum: number): Promise<GarnishArrType> {
   const res = await fetch(`${baseUrl}/api/v1/tteokguk/${userId}/garnishes?page=${pageNum}`, {
     headers: {
       'Content-Type': 'application/json',

@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { redirect } from 'next/navigation'
 import { iconDday, iconMypage } from '../../../public/images/icons'
 import { dishesObj, mattObj } from './_object/object'
+import { GarnishItem } from '@/types/MainPageTypes'
 
 interface Props {
   params: {
@@ -102,10 +103,4 @@ export default async function DishPage({ params: { userId } }: Props) {
       </div>
     </section>
   )
-}
-
-interface GarnishItem {
-  garnishId: number
-  nickname: string
-  garnishName: string
 }
