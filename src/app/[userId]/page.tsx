@@ -21,6 +21,7 @@ export default async function DishPage({ params: { userId } }: Props) {
 
   if (userId === 'host') {
     hostTG = await getHostTteokguk()
+    console.log('hostTG', hostTG)
 
     if (hostTG === null) {
       redirect('/')
@@ -77,7 +78,7 @@ export default async function DishPage({ params: { userId } }: Props) {
         <div className="flex flex-col items-center">
           <div className="font-sm flex-center mb-8 flex flex-row gap-1.5 rounded-2xl bg-pr-100 px-15 py-3">
             <Image width={12} height={11} src={iconDday} alt="D-day icon" />
-            <p className="font-base text-pr-800">{`까치까치 설날 D-${dDay}`}</p>
+            <p className="font-base text-pr-800">{`까치까치 설날 D${dDay}`}</p>
           </div>
           <p className="mb-5">{`${garnish.garnishCnt}개의 덕담을 받았어요!`}</p>
           <div
