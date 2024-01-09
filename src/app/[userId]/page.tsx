@@ -25,6 +25,7 @@ export default async function DishPage({ params: { userId } }: Props) {
     // if (hostTG === null) {
     //   redirect('/')
     // }
+    console.log(hostTGApi)
     const tgId = hostTG?.tteokGukId
     garnishes = await getGarnishes(tgId, 1)
   } else {
