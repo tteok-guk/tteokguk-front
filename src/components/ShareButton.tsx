@@ -23,7 +23,9 @@ const ShareButton = ({ btnType, tteokGukId }: BtnType) => {
         <BottomButton
           bgColor="bg-transperant"
           fullBtnName="내떡국 공유하기"
-          fullBtnClick={() => handleCopyClipBoard('https://develop-tteokguk.vercel.app/host')}
+          fullBtnClick={() =>
+            handleCopyClipBoard(`https://develop-tteokguk.vercel.app/${tteokGukId}`)
+          }
         />
       )}
       {btnType !== 'snap-shot' && pathname !== '/host' && (

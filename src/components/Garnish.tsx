@@ -1,5 +1,6 @@
 'use client'
 import { toast } from '@/hooks/use-toast'
+import { GarnishArrType, GarnishLocationType, GarnishType } from '@/types/MainPageTypes'
 import Image from 'next/image'
 
 const Garnish = ({ garnishInfo }: GarnishType) => {
@@ -15,19 +16,20 @@ const Garnish = ({ garnishInfo }: GarnishType) => {
   const GarnishDetailMoveToBtnHandler = () => {
     toast({ description: '편지 확인은 02/09까지 기다려 주세요.' })
   }
+
   return (
     <>
       {garnishInfo?.map((item: GarnishArrType, idx: number) => (
         <div
           key={item.garnishId}
-          className={` absolute text-center ${garnishLocation[idx]} flex flex-col `}
+          className={` absolute text-center ${garnishLocation[idx]} flex cursor-pointer flex-col`}
           onClick={GarnishDetailMoveToBtnHandler}
         >
           <div className={`h-54 w-54 `}>
             <Image
               width={54}
               height={54}
-              src={`/images/garnishes/${item.garnishName}.png`}
+              src={`/images/garnishes/${item.garnishType}.png`}
               alt="garnish"
             />
           </div>
@@ -39,17 +41,3 @@ const Garnish = ({ garnishInfo }: GarnishType) => {
 }
 
 export default Garnish
-
-export interface GarnishArrType {
-  garnishId: number
-  nickname: string
-  garnishName: string
-}
-
-export interface GarnishType {
-  garnishInfo?: GarnishArrType[]
-}
-
-export interface GarnishLocationType {
-  [key: number]: string
-}
