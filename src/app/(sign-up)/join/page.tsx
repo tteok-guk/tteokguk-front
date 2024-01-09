@@ -14,11 +14,9 @@ const StepStatus = {
 export default function JoinPage() {
   // TODO svg 이미지 경로로 분리
   // TODO useInput Hooks 만들기
-
   // 인풋 스타일 - 너무 길어서 변수로 뺏는데 더 나은 방법을 알려주세요..
   const inputStyleClass = 'w-full px-0 py-4 rounded-0 font-lg text-gr-900 border-t-0 border-x-0 border-b-1 border-b-[#ADADAD] bg-transparent placeholder:text-[#ADADAD] placeholder:font-lg'
   
-  // 3단계 밖에 안되서 이렇게 했는데.. stack으로 구현하면 더 좋을거 같긴 해요... 어덯게 하는거죠?
   const [step, setStep] = useState({
       current : 0,
       status : [StepStatus.INITIAL, StepStatus.INITIAL, StepStatus.INITIAL]
@@ -27,10 +25,14 @@ export default function JoinPage() {
 
   // 사용자 닉네임 상태, 상태변경 핸들러
   const [userName, setUserName] = useState('')
+  const [isValidName, setIsValidName] = useState(true)
   const userNameOnChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const typedValue = e.target.value
     if (/^[^\s~`!@#$%\^&*()+=\[\]\\';,./{}|\\":<>\?_-]*$/.test(typedValue)) {
+      setIsValidName(true)
       setUserName(typedValue);
+    }else{
+      setIsValidName(false)
     }
   }
   
@@ -38,7 +40,7 @@ export default function JoinPage() {
     if(userName){
       if(userName.length <= 8){
         //입력 중 상태
-        // x 표시 나타나야함
+        // TODO x 표시 나타나야함
         // 다음 단계 가능 상태
         setStep(prevStep => ({
           ...prevStep,
@@ -58,6 +60,7 @@ export default function JoinPage() {
             ...prevStep.status.slice(step.current + 1),
           ],
         }))
+        setIsValidName(true)
       }else {
         // 8 보다 큰 경우
         // 경고창 빨개지고 마지막 글자 절삭
@@ -104,18 +107,19 @@ export default function JoinPage() {
         <div className={'flex flex-col gap-38'}>
           <div className={'flex flex-col gap-4'}>
             <h1 className={'font-xl text-gr-900'}>내 떡국에 표시될<br />닉네임을 만들어 주세요</h1>
-            <h2 className={'font-xs text-[#ADADAD]'}>최대 8자 / 공백, 특수기호 불가</h2>
+            <h2 className={isValidName?'font-xs text-[#ADADAD]':'font-xs text-[#FF0000]'}>최대 8자 / 공백, 특수기호 불가</h2>
           </div>
           <div>
             <Input
               type={'text'}
               placeholder={'닉네임을 입력해 주세요'}
               maxLength={8}
-              className={`${inputStyleClass} caret-pr-500 focus:outline-none`}
+              className={isValidName?`${inputStyleClass} caret-pr-500 focus:outline-none`: `${inputStyleClass} caret-pr-500 focus:outline-none border-b-[#FF0000]`}
               onChange={(e)=>(userNameOnChangeHandler(e))}
               value={userName}/>
           </div>
         </div>
+        {/* step 2 */}
       </div>
 
       {/* 하단 영역 */}
