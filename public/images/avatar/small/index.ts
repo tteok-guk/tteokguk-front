@@ -5,7 +5,7 @@ import hedgehogSmall from './hedgehogSmall.png'
 import otterSmall from './otterSmall.png'
 import pandaSmall from './pandaSmall.png'
 import rabbitSmall from './rabbitSmall.png'
-import squirrleSmall from './squirrleSmall.png'
+import squirrelSmall from './squirrelSmall.png'
 
 export {
   catSmall,
@@ -15,5 +15,5 @@ export {
   otterSmall,
   pandaSmall,
   rabbitSmall,
-  squirrleSmall,
+  squirrelSmall,
 }

@@ -5,6 +5,6 @@ import hedgehog from './hedgehog.png'
 import otter from './otter.png'
 import panda from './panda.png'
 import rabbit from './rabbit.png'
-import squirrle from './squirrle.png'
+import squirrel from './squirrel.png'
 
-export { cat, dog, dragon, hedgehog, otter, panda, rabbit, squirrle }
+export { cat, dog, dragon, hedgehog, otter, panda, rabbit, squirrel }
