@@ -9,7 +9,6 @@ import { chosenGarnishState, rouletteResultState } from '@/store/WriteAtom'
 import { GarnishesProps } from '@/types/WriteTypes'
 import Image from 'next/image'
 import { garnishes } from '../../../../../data/garnishes'
-import { isMobileDevies } from '@/utils/isMobileDevice'
 
 export default function SetGarnishPage() {
   const [isRouletteOpen, setIsRouletteOpen] = useState(false)
@@ -19,7 +18,6 @@ export default function SetGarnishPage() {
 
   const btnCommonClass = 'aspect-square h-full w-full rounded-6 bg-pr-100 p-20'
 
-  const isMobile = isMobileDevies()
   const setGarnish = (clickedValue: string) => setChosenGarnish(clickedValue)
   const setRouletteOpen = () => setIsRouletteOpen((prev) => !prev)
   const toggleRouletteBtn = () =>
@@ -77,26 +75,13 @@ export default function SetGarnishPage() {
         )}
       </div>
 
-      {isMobile ? (
-        <Button
-          href={{
-            pathname: '/hansol/write',
-            query: { garnish: chosenGarnish },
-          }}
-          size="full"
-          className="mt-56"
-        >
-          덕담 남기기
-        </Button>
-      ) : (
-        <BottomButton
-          fullBtnHref={{
-            pathname: '/hansol/write',
-            query: { garnish: chosenGarnish },
-          }}
-          fullBtnName="덕담 남기기"
-        />
-      )}
+      <BottomButton
+        fullBtnHref={{
+          pathname: '/hansol/write',
+          query: { garnish: chosenGarnish },
+        }}
+        fullBtnName="덕담 남기기"
+      />
 
       {isRouletteOpen && <RouletteModal onClose={setRouletteOpen} />}
     </section>
