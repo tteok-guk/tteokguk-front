@@ -1,11 +1,6 @@
 'use client'
 import { toast } from '@/hooks/use-toast'
-import {
-  GarnishArrType,
-  GarnishItem,
-  GarnishLocationType,
-  GarnishType,
-} from '@/types/MainPageTypes'
+import { GarnishItem, GarnishLocationType, GarnishType } from '@/types/MainPageTypes'
 import Image from 'next/image'
 
 const Garnish = ({ garnishInfo }: GarnishType) => {

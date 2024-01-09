@@ -1,4 +1,4 @@
-export interface GuestTteokgukType {
+export interface TteokgukType {
   code: number
   message: string
   data: {
@@ -6,17 +6,17 @@ export interface GuestTteokgukType {
     tteokGukId: string
     dday: number
     mattType: string
-    public: boolean
-    hasTteokGuk: boolean
+    public?: boolean
+    hasTteokGuk?: boolean
   }
 }
 
-export interface HostTteokgukType {
-  nickname: string
-  tteokGukId: string
-  dday: number
-  mattType: string
-}
+// export interface HostTteokgukType {
+//   nickname: string
+//   tteokGukId: string
+//   dday: number
+//   mattType: string
+// }
 
 export interface GarnishArrType {
   garnishes: {
