@@ -30,6 +30,7 @@ export default async function DishPage({ params: { userId } }: Props) {
   } else {
     const guestTGApi = await getGuestTteokguk(userId)
     guestTG = guestTGApi?.data
+    console.log(guestTGApi.code)
     if (guestTGApi.code === 2001) {
       redirect('/host')
     }
