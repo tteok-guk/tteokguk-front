@@ -7,7 +7,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
 import { garnishes } from '../../../../../data/garnishes'
-import { isMobileDevies } from '@/utils/isMobileDevice'
+import { isMobileDevice } from '@/utils/isMobileDevice'
 
 // todo1.
 // http://localhost:3000/hansol/write?garnish=egg 이거
@@ -21,7 +21,7 @@ export default function WritePage() {
   const pathname = usePathname()
   const params = useSearchParams()
   const router = useRouter()
-  const isMoblie = isMobileDevies()
+  const isMoblie = isMobileDevice()
 
   const getChosenGarnish = params.get('garnish')
   const validGarnish = garnishes.find((garnish) => garnish.id === getChosenGarnish)
