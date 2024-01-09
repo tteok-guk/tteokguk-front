@@ -10,5 +10,7 @@ export interface BottomButtonProps {
   fullBtnClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
   smallBtnHref?: string | object
   fullBtnHref?: string | object
+  smallBtnDisabled?: boolean
+  fullBtnDisabled?: boolean
   bgColor?: string
 }
