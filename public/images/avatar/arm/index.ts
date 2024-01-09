@@ -6,7 +6,7 @@ import hedgehogArm from './hedgehogArm.png'
 import otterArm from './otterArm.png'
 import pandaArm from './pandaArm.png'
 import rabbitArm from './rabbitArm.png'
-import squirrleArm from './squirrleArm.png'
+import squirrelArm from './squirrelArm.png'
 
 export {
   catArm,
@@ -17,5 +17,5 @@ export {
   otterArm,
   pandaArm,
   rabbitArm,
-  squirrleArm,
+  squirrelArm,
 }
