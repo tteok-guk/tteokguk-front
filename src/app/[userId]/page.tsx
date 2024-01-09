@@ -22,10 +22,6 @@ export default async function DishPage({ params: { userId } }: Props) {
   if (userId === 'host') {
     const hostTGApi = await getHostTteokguk()
     hostTG = hostTGApi.data
-    // if (hostTG === null) {
-    //   redirect('/')
-    // }
-    console.log(hostTGApi)
     const tgId = hostTG?.tteokGukId
     garnishes = await getGarnishes(tgId, 1)
   } else {
