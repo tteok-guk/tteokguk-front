@@ -23,21 +23,21 @@ export default function JoinPage() {
   const disabledBtnSt = 'font-semibold border-0 bg-gr-100 text-17 leading-22 text-gr-400 disabled:bg-gr-100 active:bg-gr-100'
 
   // 하단 버튼 활성화 상태
-  const [isStepBtnActive, setIsStepBtnActive] = useState(true)
+  const [isStepBtnActive, setIsStepBtnActive] = useState(false)
   
   // 회원가입 단계 및 진행 상태
   const [step, setStep] = useState({
-      current : 2,
+      current : 0,
       status : [StepStatus.INITIAL, StepStatus.INITIAL, StepStatus.INITIAL]
     }
   )
-
-  // 사용자 닉네임, 닉네임 유효성 상태 상태변경 핸들러
+  // 사용자 닉네임, 닉네임 유효성 상태
   const [userName, setUserName] = useState('')
   const [isValidName, setIsValidName] = useState(true)
   
   // 전체 선택박스 상태
   const [groupTerm, setGroupTerm] = useState(false)
+  
   // 선택박스 상태
   const [terms, setTerms] = useState([
       {
