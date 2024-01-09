@@ -22,6 +22,7 @@ export async function getGuestTteokguk(userId: string): Promise<GuestTteokgukTyp
 
 export async function getHostTteokguk(): Promise<HostTteokgukType> {
   const token = cookies().get('token')?.value
+  console.log('token', token)
   const res = await fetch(`${baseUrl}/api/v1/tteokguk/me`, {
     headers: {
       'Content-Type': 'application/json',
