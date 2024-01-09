@@ -73,9 +73,22 @@
     @apply my-16 border border-gray-200;
   }
   .layout-scroll {
-    @apply overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-track-transparent scrollbar-thumb-gr-100 scrollbar-thumb-rounded-full scrollbar-h-10 scrollbar-h-466;
+    @apply overflow-y-auto
+    overflow-x-hidden
+    scrollbar-thin
+    scrollbar-track-transparent
+    scrollbar-thumb-gr-100
+    scrollbar-thumb-rounded-full
+    scrollbar-w-11;
   }
-  .white-scroll {
-    @apply overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-track-transparent scrollbar-thumb-bg scrollbar-thumb-rounded-full scrollbar-w-11;
+  .blue-scroll {
+    @apply overflow-y-auto
+      overflow-x-hidden
+      scrollbar
+      scrollbar-track-transparent
+      scrollbar-thumb-pr-100
+      scrollbar-thumb-rounded-full
+      scrollbar-w-8
+      scrollbar-h-120;
   }
 }

@@ -33,7 +33,11 @@ export default function SetGarnishPage() {
   return (
     <section>
       <TopButton />
-      <h1 className="font-xl pt-12">고명을 선택해 주세요</h1>
+      <h1 className="font-xl pt-12">
+        편지를 남길
+        <br />
+        고명을 선택해 주세요
+      </h1>
       <div className="flex-center mt-40 grid grid-cols-3 gap-12">
         <Button
           className={`
