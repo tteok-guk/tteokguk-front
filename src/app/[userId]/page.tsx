@@ -3,12 +3,12 @@ import MattEdit from '@/components/MattEdit'
 import ShareButton from '@/components/ShareButton'
 import { PaginationEntire } from '@/components/common'
 import { getGarnishes, getGuestTteokguk, getHostTteokguk } from '@/services/main'
+import { GarnishItem } from '@/types/MainPageTypes'
 import Image from 'next/image'
 import Link from 'next/link'
 import { redirect } from 'next/navigation'
 import { iconDday, iconMypage } from '../../../public/images/icons'
 import { dishesObj, mattObj } from './_object/object'
-import { GarnishItem } from '@/types/MainPageTypes'
 
 interface Props {
   params: {
@@ -20,12 +20,11 @@ export default async function DishPage({ params: { userId } }: Props) {
   let hostTG, garnishes, guestTG
 
   if (userId === 'host') {
-    hostTG = await getHostTteokguk()
-    console.log('hostTG', hostTG)
-
-    if (hostTG === null) {
-      redirect('/')
-    }
+    const hostTGApi = await getHostTteokguk()
+    hostTG = hostTGApi.data
+    // if (hostTG === null) {
+    //   redirect('/')
+    // }
     const tgId = hostTG?.tteokGukId
     garnishes = await getGarnishes(tgId, 1)
   } else {
@@ -80,13 +79,13 @@ export default async function DishPage({ params: { userId } }: Props) {
             <Image width={12} height={11} src={iconDday} alt="D-day icon" />
             <p className="font-base text-pr-800">{`까치까치 설날 D${dDay}`}</p>
           </div>
-          <p className="mb-5">{`${garnish.garnishCnt}개의 덕담을 받았어요!`}</p>
+          <p className="mb-5">{`${garnish?.garnishCnt}개의 덕담을 받았어요!`}</p>
           <div
             className={`relative mb-31 mt-19 h-300 w-300 rounded-full ${
-              dishesObj[determineDishType(garnish.garnishes, userId)]
+              dishesObj[determineDishType(garnish?.garnishes, userId)]
             } bg-cente bg-cover`}
           >
-            <Garnish garnishInfo={garnish.garnishes} />
+            <Garnish garnishInfo={garnish?.garnishes} />
             {userId === 'host' ? (
               <div className="absolute bottom-[-52px] right-[-18px]">
                 <Link href={'/change-matt	'}>

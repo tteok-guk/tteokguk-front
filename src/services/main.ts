@@ -1,9 +1,9 @@
-import { GarnishArrType, GuestTteokgukType, HostTteokgukType } from '@/types/MainPageTypes'
+import { GarnishArrType, TteokgukType } from '@/types/MainPageTypes'
 import { cookies } from 'next/headers'
 
 const baseUrl = process.env.NEXT_PUBLIC_API_KEY
 
-export async function getGuestTteokguk(userId: string): Promise<GuestTteokgukType> {
+export async function getGuestTteokguk(userId: string): Promise<TteokgukType> {
   // ! 이거 왜 함수 바깥에서 못쓰는거지..?ㅠㅠ
   const token = cookies().get('token')?.value
   const res = await fetch(`${baseUrl}/api/v1/tteokguk/${userId}`, {
@@ -20,9 +20,9 @@ export async function getGuestTteokguk(userId: string): Promise<GuestTteokgukTyp
   return res.json()
 }
 
-export async function getHostTteokguk(): Promise<HostTteokgukType> {
+export async function getHostTteokguk(): Promise<TteokgukType> {
   const token = cookies().get('token')?.value
-  console.log('token', token)
+
   const res = await fetch(`${baseUrl}/api/v1/tteokguk/me`, {
     headers: {
       'Content-Type': 'application/json',
@@ -32,8 +32,7 @@ export async function getHostTteokguk(): Promise<HostTteokgukType> {
   if (!res.ok) {
     throw new Error('failed')
   }
-  const { data } = await res.json()
-  return data
+  return res.json()
 }
 
 export async function getGarnishes(userId: string, pageNum: number): Promise<GarnishArrType> {
