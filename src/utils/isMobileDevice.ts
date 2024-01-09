@@ -1,4 +1,4 @@
-export const isMobileDevies = () => {
+export const isMobileDevice = () => {
   const userDevice = window.navigator.userAgent
   const mobileRegex = [
     /iPhone/i,
