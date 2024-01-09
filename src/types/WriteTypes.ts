@@ -10,3 +10,7 @@ export interface GarnishesProps {
   src: StaticImageData
   alt: string
 }
+
+export interface WriteGarnishProps {
+  [key: string]: string
+}
