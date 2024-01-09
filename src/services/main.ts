@@ -9,7 +9,7 @@ export async function getGuestTteokguk(userId: string): Promise<TteokgukType> {
   const res = await fetch(`${baseUrl}/api/v1/tteokguk/${userId}`, {
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `${token}`,
+      Authorization: `Bearer ${token}`,
     },
   })
 
@@ -26,7 +26,7 @@ export async function getHostTteokguk(): Promise<TteokgukType> {
   const res = await fetch(`${baseUrl}/api/v1/tteokguk/me`, {
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `${token}`,
+      Authorization: `Bearer ${token}`,
     },
   })
   if (!res.ok) {
