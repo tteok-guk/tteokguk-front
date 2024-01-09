@@ -1,6 +1,11 @@
 'use client'
 import { toast } from '@/hooks/use-toast'
-import { GarnishArrType, GarnishLocationType, GarnishType } from '@/types/MainPageTypes'
+import {
+  GarnishArrType,
+  GarnishItem,
+  GarnishLocationType,
+  GarnishType,
+} from '@/types/MainPageTypes'
 import Image from 'next/image'
 
 const Garnish = ({ garnishInfo }: GarnishType) => {
@@ -19,7 +24,7 @@ const Garnish = ({ garnishInfo }: GarnishType) => {
 
   return (
     <>
-      {garnishInfo?.map((item: GarnishArrType, idx: number) => (
+      {garnishInfo?.map((item: GarnishItem, idx: number) => (
         <div
           key={item.garnishId}
           className={` absolute text-center ${garnishLocation[idx]} flex cursor-pointer flex-col`}
