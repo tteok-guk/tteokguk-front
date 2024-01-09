@@ -1,10 +1,13 @@
 'use client'
 
 import { BottomButton, TopButton } from '@/components/common'
+import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
-import React, { useState, useEffect } from 'react'
+import { useEffect } from 'react'
+import { garnishes } from '../../../../../data/garnishes'
+import { isMobileDevice } from '@/utils/isMobileDevice'
 
 // todo1.
 // http://localhost:3000/hansol/write?garnish=egg 이거
@@ -15,17 +18,17 @@ import React, { useState, useEffect } from 'react'
 // 저장되지 않는다면 쿼리스트링으로 밀어넣어서 받을지 고민해보기
 
 export default function WritePage() {
-  const [garnish, setGarnish] = useState('')
-
   const pathname = usePathname()
-  const searchParams = useSearchParams()
+  const params = useSearchParams()
   const router = useRouter()
+  const isMoblie = isMobileDevice()
+
+  const getChosenGarnish = params.get('garnish')
+  const validGarnish = garnishes.find((garnish) => garnish.id === getChosenGarnish)
+  const userId = pathname.split('/').filter((item) => item)[0]
 
   useEffect(() => {
-    // todo3. garnish param이 정해진 고명이 아닐 경우 추가
-    const getChosenGarnish = searchParams.get('garnish')
-    if (!getChosenGarnish) {
-      const userId = pathname.split('/').filter((item) => item)[0]
+    if (!validGarnish) {
       router.push(`/${userId}/set-garnish`)
     }
   }, [])
@@ -38,8 +41,8 @@ export default function WritePage() {
         <br />
         덕담을 남겨주세요!
       </h1>
-      <p className="font-sm pb-12 pt-8 text-gr-300">
-        욕설, 비방, 성희롱, 음란성 메세지 등 경고 문구
+      <p className="font-xs pb-12 pt-8 text-gr-300">
+        욕설/비방/음란 메시지는 이용 제한이 있을 수 있어요.
       </p>
       <form>
         <div className="relative">
@@ -60,7 +63,14 @@ export default function WritePage() {
           <span className="font-sm absolute bottom-15 right-24 text-[#4B4B4B]">{`0/700`}</span>
         </div>
       </form>
-      <BottomButton fullBtnName="완료" />
+
+      {isMoblie ? (
+        <Button size="full" className="mt-16">
+          완료
+        </Button>
+      ) : (
+        <BottomButton fullBtnName="완료" />
+      )}
     </div>
   )
 }
