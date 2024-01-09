@@ -268,7 +268,7 @@ export default function JoinPage() {
               {
                 terms.map((term, idx)=>{
                   return (
-                    <div className={'flex items-center w-full gap-10 pl-20'}>
+                    <div key={idx} className={'flex items-center w-full gap-10 pl-20'}>
                       <Checkbox id={'terms'+idx} checked={term.checked} onCheckedChange={()=>(checkboxOnChangeHandler(idx))}  className={'w-20 h-20 rounded-full bg-center border-0 bg-[url(/images/icons/iconCheckCircleBefore.png)] bg-white'} />
                       <Label htmlFor={'terms'+idx}>{term.text}</Label>
                     </div>
