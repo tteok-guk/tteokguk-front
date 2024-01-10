@@ -16,6 +16,8 @@ export default function SetGarnishPage() {
   const [rouletteResult, setRouletteResult] = useRecoilState(rouletteResultState)
   const [findRouletteGarnish, setFindRouletteGarnish] = useState<GarnishesProps>()
 
+  const btnCommonClass = 'aspect-square h-full w-full rounded-6 bg-pr-100 p-20'
+
   const setGarnish = (clickedValue: string) => setChosenGarnish(clickedValue)
   const setRouletteOpen = () => setIsRouletteOpen((prev) => !prev)
   const toggleRouletteBtn = () =>
@@ -31,11 +33,15 @@ export default function SetGarnishPage() {
   return (
     <section>
       <TopButton />
-      <h1 className="font-xl pt-12">고명을 선택해 주세요</h1>
+      <h1 className="font-xl pt-12">
+        편지를 남길
+        <br />
+        고명을 선택해 주세요
+      </h1>
       <div className="flex-center mt-40 grid grid-cols-3 gap-12">
         <Button
           className={`
-            aspect-square h-full w-full rounded-6 bg-pr-100
+            ${btnCommonClass}
             ${chosenGarnish === findRouletteGarnish?.id ? 'border-3 border-pr-500' : ''}
           `}
           onClick={toggleRouletteBtn}
@@ -51,34 +57,28 @@ export default function SetGarnishPage() {
               <Image
                 src={findRouletteGarnish.src}
                 alt={`${findRouletteGarnish.alt} 고명 일러스트`}
-                width={78}
-                height={78}
               />
             )
           )}
-          {/* todo 실제 모바일에서 폰트 굵기 일정하게 나오는지 확인해보기 (pc는 27px정도 되어야 하는 것 같음) */}
         </Button>
+
         {garnishes.map(
           (garnish, idx) =>
             garnish.type === 'basic' && (
               <Button
                 key={idx}
                 className={`
-                  aspect-square h-full w-full rounded-6 bg-pr-100
+                ${btnCommonClass}
                   ${chosenGarnish === garnish.id ? 'border-3 border-pr-500' : ''}
                 `}
                 onClick={() => setGarnish(garnish.id)}
               >
-                <Image
-                  src={garnish.src}
-                  alt={`${garnish.alt} 고명 일러스트`}
-                  width={78}
-                  height={78}
-                />
+                <Image src={garnish.src} alt={`${garnish.alt} 고명 일러스트`} />
               </Button>
             ),
         )}
       </div>
+
       <BottomButton
         fullBtnHref={{
           pathname: '/hansol/write',
