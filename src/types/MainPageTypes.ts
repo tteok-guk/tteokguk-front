@@ -45,3 +45,8 @@ export interface GarnishItem {
   nickname: string
   garnishType: string
 }
+
+export interface paginationType {
+  pageSize: number
+  pageParam: string
+}
