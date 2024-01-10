@@ -95,7 +95,11 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
             )}
           </div>
 
-          <PaginationEntire pageSize={garnish?.pageSize} pageParam={userId} />
+          <PaginationEntire
+            pageSize={garnish?.pageSize}
+            pageParam={userId}
+            currentNum={Number(page)}
+          />
           <ShareButton tteokGukId={tteokGukId} />
         </div>
       </div>
