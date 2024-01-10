@@ -30,7 +30,7 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
     const guestTGApi = await getGuestTteokguk(userId)
     guestTG = guestTGApi?.data
     if (guestTGApi.code === 2001) {
-      redirect('/host?page=2')
+      redirect('/host?page=1')
     }
     if (guestTG === null || guestTGApi.code === 500) {
       redirect('/')
