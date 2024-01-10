@@ -80,7 +80,9 @@ export default function WritePage() {
             placeholder="떡국에 남겨질 닉네임을 입력해주세요"
             className="placeholder:font-sm rounded-4 border-2 border-pr-200 bg-white px-24 py-16 font-soyoThin placeholder:text-gr-300"
           />
-          <span className="font-sm absolute bottom-19 right-24 text-[#4B4B4B]">{`0/8`}</span>
+          <span className="font-sm absolute bottom-19 right-24 text-[#4B4B4B]">
+            {`${data.nickname.length > 8 ? 8 : data.nickname.length}/8`}
+          </span>
         </div>
         <div className="relative">
           <Textarea
@@ -89,10 +91,13 @@ export default function WritePage() {
             maxLength={700}
             placeholder="덕담으로 행복한 새해를 선물해 주세요!"
             className={`
-            ${textareaHeight}
-            placeholder:font-sm my-16 font-soyoThin placeholder:text-gr-300`}
+              ${textareaHeight}
+              placeholder:font-sm my-16 font-soyoThin placeholder:text-gr-300
+            `}
           />
-          <span className="font-sm absolute bottom-15 right-24 text-[#4B4B4B]">{`0/700`}</span>
+          <span className="font-sm absolute bottom-15 right-24 text-[#4B4B4B]">
+            {`${data.content.length > 700 ? 700 : data.content.length}/700`}
+          </span>
         </div>
       </form>
 
