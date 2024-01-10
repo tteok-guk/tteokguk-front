@@ -32,7 +32,7 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
     if (guestTGApi.code === 2001) {
       redirect('/host?page=2')
     }
-    if (guestTG === null) {
+    if (guestTG === null || guestTGApi.code === 500) {
       redirect('/')
     }
     garnishes = await getGarnishes(userId, 1)
