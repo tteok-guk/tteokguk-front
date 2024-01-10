@@ -12,7 +12,7 @@ import { paginationType } from '@/types/MainPageTypes'
 import { useState } from 'react'
 import { useRecoilState } from 'recoil'
 
-const PaginationEntire = ({ pageSize, pageParam }: paginationType) => {
+const PaginationEntire = ({ pageSize, pageParam, currentNum }: paginationType) => {
   const [current, setCurrent] = useRecoilState(paginationState)
   const [isDisable, setDisable] = useState(false)
   console.log(current)
@@ -38,7 +38,7 @@ const PaginationEntire = ({ pageSize, pageParam }: paginationType) => {
         <div className="flex-center">
           <PaginationItem>
             <PaginationLink href="#" className="text-14" isActive>
-              {current}
+              {currentNum}
             </PaginationLink>
           </PaginationItem>
           <span className="mx-4">/</span>
