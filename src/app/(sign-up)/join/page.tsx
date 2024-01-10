@@ -224,7 +224,7 @@ export default function JoinPage() {
 
 
   return (
-    <div className='bg-red-200'>
+    <div>
       {/* 상단 영역 */}
       <div className={'flex mt-[-12px]'}>
         <div className={step.current === 0 ? 'pl-0 pr-24 py-12 invisible' : 'pl-0 pr-24 py-12'} onClick={() => { navBtnOnClickHandler(step.current, 'prev') }}>
