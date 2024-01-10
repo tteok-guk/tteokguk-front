@@ -1,13 +1,13 @@
 'use client'
 
 import Link from 'next/link'
-import { mattObj } from '../app/[userId]/_matt/mattObj'
+import { miniMattObj } from '../app/[userId]/_object/object'
 
-const MattEdit = ({ mattId }: MattEditType) => {
+const MattEdit = ({ mattType }: MattEditType) => {
   return (
     <div className="flex-center flex flex-col">
       <button
-        className={` mb-4 h-60 w-60 rounded-full bg-[url('/images/red.png')] shadow-md ${mattObj[mattId]}`}
+        className={` mb-4 h-60 w-60 rounded-full bg-cover bg-center shadow-md ${miniMattObj[mattType]}`}
       />
       <p className="font-sm ">매트변경</p>
     </div>
@@ -17,5 +17,5 @@ const MattEdit = ({ mattId }: MattEditType) => {
 export default MattEdit
 
 export interface MattEditType {
-  mattId: string
+  mattType: string
 }
