@@ -23,14 +23,14 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
   let hostTG, garnishes, guestTG
   if (userId === 'host') {
     const hostTGApi = await getHostTteokguk()
-    hostTG = hostTGApi.data
+    hostTG = hostTGApi?.data
     const tgId = hostTG?.tteokGukId
     garnishes = await getGarnishes(tgId, Number(page))
   } else {
     const guestTGApi = await getGuestTteokguk(userId)
     guestTG = guestTGApi?.data
     if (guestTGApi.code === 2001) {
-      redirect('/host?page=2')
+      redirect('/host?page=1')
     }
     if (guestTG === null || guestTGApi.code === 500) {
       redirect('/')
@@ -83,7 +83,14 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
               dishesObj[determineDishType(garnish?.garnishes, userId)]
             } bg-cente bg-cover`}
           >
-            <Garnish garnishInfo={garnish?.garnishes} />
+            {garnishes && (
+              <Garnish
+                garnishInfo={garnish.garnishes}
+                Public={guestTG?.public}
+                dDay={guestTG?.dday}
+                userId={userId}
+              />
+            )}
             {userId === 'host' ? (
               <div className="absolute bottom-[-52px] right-[-18px]">
                 <Link href={'/change-matt	'}>
