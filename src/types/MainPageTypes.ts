@@ -34,6 +34,9 @@ export interface GarnishType {
     nickname: string
     garnishType: string
   }[]
+  Public?: boolean
+  dDay?: number
+  userId?: string
 }
 
 export interface GarnishLocationType {
