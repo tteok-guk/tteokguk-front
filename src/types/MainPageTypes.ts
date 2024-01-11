@@ -11,13 +11,6 @@ export interface TteokgukType {
   }
 }
 
-// export interface HostTteokgukType {
-//   nickname: string
-//   tteokGukId: string
-//   dday: number
-//   mattType: string
-// }
-
 export interface GarnishArrType {
   garnishes: {
     garnishId: number
@@ -53,4 +46,9 @@ export interface paginationType {
   pageSize: number
   pageParam: string
   currentNum: number
+}
+export interface BtnType {
+  btnType?: string
+  tteokGukId?: string
+  nickname?: string
 }
