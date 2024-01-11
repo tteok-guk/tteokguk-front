@@ -9,6 +9,7 @@ import Link from 'next/link'
 import { redirect } from 'next/navigation'
 import { iconDday, iconMypage } from '../../../public/images/icons'
 import { dishesObj, mattObj } from './_object/object'
+import { basicDish } from '../../../public/images/dishes/index'
 
 interface Props {
   params: {
@@ -79,9 +80,9 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
           </div>
           <p className="mb-5">{`${garnish?.garnishCnt}개의 덕담을 받았어요!`}</p>
           <div
-            className={`relative mb-31 mt-19 h-300 w-300 rounded-full ${
+            className={`relative mb-31 mt-19 h-300 w-300 lg:h-400 lg:w-400  ${
               dishesObj[determineDishType(garnish?.garnishes, userId)]
-            } bg-cente bg-cover`}
+            } bg-cover bg-center`}
           >
             {garnishes && (
               <Garnish
@@ -101,13 +102,12 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
               ''
             )}
           </div>
-
           <PaginationEntire
             pageSize={garnish?.pageSize}
             pageParam={userId}
             currentNum={Number(page)}
           />
-          <ShareButton tteokGukId={tteokGukId} />
+          <ShareButton tteokGukId={tteokGukId} nickname={guestTG?.nickname} />
         </div>
       </div>
     </section>

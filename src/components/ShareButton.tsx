@@ -3,8 +3,9 @@
 import { toast } from '@/hooks/use-toast'
 import { usePathname } from 'next/navigation'
 import { BottomButton } from './common'
+import { BtnType } from '@/types/MainPageTypes'
 
-const ShareButton = ({ btnType, tteokGukId }: BtnType) => {
+const ShareButton = ({ btnType, tteokGukId, nickname }: BtnType) => {
   const handleCopyClipBoard = async (text: string) => {
     try {
       await navigator.clipboard.writeText(text)
@@ -35,7 +36,7 @@ const ShareButton = ({ btnType, tteokGukId }: BtnType) => {
           smallBtnName="내떡국"
           fullBtnName="덕담 남기기"
           smallBtnHref="/host"
-          fullBtnHref={`/${tteokGukId}/write`}
+          fullBtnHref={`/${tteokGukId}/set-garnish?nickname=${nickname}`}
         />
       )}
     </>
@@ -43,8 +44,3 @@ const ShareButton = ({ btnType, tteokGukId }: BtnType) => {
 }
 
 export default ShareButton
-
-export interface BtnType {
-  btnType?: string
-  tteokGukId?: string
-}
