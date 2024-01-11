@@ -41,6 +41,7 @@ export async function getHostTteokguk(): Promise<TteokgukType> {
 }
 
 export async function getGarnishes(userId: string, pageNum: number): Promise<GarnishArrType> {
+  console.log('pageNum', pageNum)
   const res = await fetch(`${baseUrl}/api/v1/tteokguk/${userId}/garnishes?page=${pageNum}`, {
     headers: {
       'Content-Type': 'application/json',
