@@ -15,7 +15,7 @@ export default function BottomButton({
   fullBtnDisabled,
   bgColor = 'bg-bg',
 }: BottomButtonProps) {
-  const disabledClass = 'bg-gr-100 text-gr-400 border-0 hover:bg-bg-gr-100'
+  const disabledClass = 'bg-gr-100 text-gr-400 border-0 hover:bg-bg-gr-100 active:bg-gr-200'
   const smallHoverClass = 'hover:bg-pr-200 active:bg-pr-200'
   const fullHoverClass = 'hover:bg-pr-600 active:bg-pr-600'
 

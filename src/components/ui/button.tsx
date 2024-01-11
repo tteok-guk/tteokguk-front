@@ -15,7 +15,7 @@ const buttonVariants = cva('flex-center font-base', {
       circle: 'rounded-full',
     },
     disabled: {
-      true: 'bg-gr-100 text-gr-400 hover:bg-gr-100',
+      true: 'bg-gr-100 text-gr-400 hover:bg-gr-100 active:bg-gr-100',
       false: '',
     },
   },
