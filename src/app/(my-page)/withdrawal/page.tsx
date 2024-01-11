@@ -22,7 +22,9 @@ function WithdrawalPage() {
         <Image src={iconError} alt="경고 아이콘" width={18} height={18} />
         <span className="font-sm text-pr-500">탈퇴 후에는 내떡국과 받은 덕담이 모두 삭제돼요.</span>
       </div>
-      <Textarea />
+      <Textarea
+        placeholder={'떠나시는 이유를 알려주세요!\n더 나은 서비스로 돌아오겠습니다.(선택)'}
+      />
       <div className="item-center flex gap-5">
         <Checkbox />
         <span className="font-xs">데이터가 모두 삭제됨을 확인하였으며 동의합니다.</span>
