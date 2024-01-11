@@ -107,7 +107,7 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
             pageParam={userId}
             currentNum={Number(page)}
           />
-          <ShareButton tteokGukId={tteokGukId} />
+          <ShareButton tteokGukId={tteokGukId} nickname={guestTG?.nickname} />
         </div>
       </div>
     </section>
