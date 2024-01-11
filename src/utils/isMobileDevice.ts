@@ -19,8 +19,5 @@ export const isMobileDevice = () => {
     ]
     return mobileRegex.some((mobile) => userDevice.match(mobile))
   }
-<<<<<<< HEAD
-=======
   return false
->>>>>>> feature/shj/TG-58
 }
