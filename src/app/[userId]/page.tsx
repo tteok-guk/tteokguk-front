@@ -14,31 +14,28 @@ interface Props {
   params: {
     userId: string
   }
+  searchParams: {
+    page: string
+  }
 }
 
-export default async function DishPage({ params: { userId } }: Props) {
+export default async function DishPage({ params: { userId }, searchParams: { page } }: Props) {
   let hostTG, garnishes, guestTG
-
   if (userId === 'host') {
     const hostTGApi = await getHostTteokguk()
-    hostTG = hostTGApi.data
-    // if (hostTG === null) {
-    //   redirect('/')
-    // }
+    hostTG = hostTGApi?.data
     const tgId = hostTG?.tteokGukId
-    garnishes = await getGarnishes(tgId, 1)
+    garnishes = await getGarnishes(tgId, Number(page))
   } else {
     const guestTGApi = await getGuestTteokguk(userId)
     guestTG = guestTGApi?.data
-    console.log(guestTGApi.code)
     if (guestTGApi.code === 2001) {
-      redirect('/host')
+      redirect('/host?page=1')
     }
-    if (guestTG === null) {
+    if (guestTG === null || guestTGApi.code === 500) {
       redirect('/')
     }
     garnishes = await getGarnishes(userId, 1)
-    console.log(guestTGApi)
   }
 
   const nickname = hostTG ? hostTG.nickname : guestTG?.nickname
@@ -62,7 +59,7 @@ export default async function DishPage({ params: { userId } }: Props) {
         mattObj[mattType || 'default']
       } bg-cover bg-center px-20 `}
     >
-      <div className={` w-375  `}>
+      <div className={` w-full `}>
         <div className="flex flex-row items-center justify-between pb-36 pt-32 ">
           <h1 className="font-xl">{`${nickname}님의 떡국`}</h1>
           <Link href={'/account'}>
@@ -86,7 +83,14 @@ export default async function DishPage({ params: { userId } }: Props) {
               dishesObj[determineDishType(garnish?.garnishes, userId)]
             } bg-cente bg-cover`}
           >
-            <Garnish garnishInfo={garnish?.garnishes} />
+            {garnishes && (
+              <Garnish
+                garnishInfo={garnish.garnishes}
+                Public={guestTG?.public}
+                dDay={guestTG?.dday}
+                userId={userId}
+              />
+            )}
             {userId === 'host' ? (
               <div className="absolute bottom-[-52px] right-[-18px]">
                 <Link href={'/change-matt	'}>
@@ -98,8 +102,12 @@ export default async function DishPage({ params: { userId } }: Props) {
             )}
           </div>
 
-          <PaginationEntire />
-          <ShareButton tteokGukId={tteokGukId} />
+          <PaginationEntire
+            pageSize={garnish?.pageSize}
+            pageParam={userId}
+            currentNum={Number(page)}
+          />
+          <ShareButton tteokGukId={tteokGukId} nickname={guestTG?.nickname} />
         </div>
       </div>
     </section>
