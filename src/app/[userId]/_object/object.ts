@@ -7,6 +7,8 @@ export const mattObj: MattType = {
   blueGradation: 'bg-[url(/images/matts/blueGradation.png)]',
   pinkGradation: 'bg-[url(/images/matts/pinkGradation.png)]',
   purpleCheck: 'bg-[url(/images/matts/purpleCheck.png)]',
+  blueColCheck: 'bg-[url(/images/matts/blueColCheck.png)]',
+  bubblePattern: 'bg-[url(/images/matts/blueColCheck.png)]',
 }
 
 export const miniMattObj: MattType = {
@@ -16,6 +18,8 @@ export const miniMattObj: MattType = {
   blueGradation: 'bg-[url(/images/matts/miniBlueGradation.png)]',
   pinkGradation: 'bg-[url(/images/matts/miniPinkGradation.png)]',
   purpleCheck: 'bg-[url(/images/matts/miniPurpleCheck.png)]',
+  blueColCheck: 'bg-[url(/images/matts/miniBlueColCheck.png)]',
+  bubblePattern: 'bg-[url(/images/matts/miniBubblePattern.png)]',
 }
 
 export const dishesObj: MattType = {
