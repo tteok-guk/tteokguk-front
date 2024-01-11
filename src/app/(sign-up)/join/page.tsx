@@ -265,7 +265,7 @@ export default function JoinPage() {
           </div>
           <div className={'flex flex-col gap-20'}>
             <div className={'relative flex justify-center'}>
-              <Image src={avatars[selectAvatar.idx].nomalSrc} alt="선택 캐릭터 이미지" width={255} height={255} />
+              <Image src={avatars[selectAvatar.idx].nomalSrc} alt="선택 캐릭터 이미지" width={255} height={255} loading='eager'/>
             </div>
             <div className={step.current === 1 ?'relative grid grid-cols-4 grid-rows-2 justify-center gap-12  bg-bg mt-[-20px] mx-[-20px] pt-[20px] px-[20px]':'relative grid grid-cols-4 grid-rows-2 justify-center gap-12'}>
               {
@@ -287,7 +287,7 @@ export default function JoinPage() {
           </div>
           <div className={'relative flex flex-col gap-y-20'}>
             <div className={isStepBtnActive?'flex items-center w-full gap-10 py-16 pl-20 bg-pr-100 rounded-4 h-52':'flex items-center w-full gap-10 py-16 pl-20 bg-gr-100 rounded-4 h-52'}>
-              <Checkbox id='termsAll' checked={groupTerm} onCheckedChange={groupCheckboxOnChangeHandler} className={'w-20 h-20 rounded-full bg-center border-0 bg-[url(/images/icons/iconCheckCircleBefore.png)] bg-white'} />
+              <Checkbox id='termsAll' checked={groupTerm} onCheckedChange={groupCheckboxOnChangeHandler} className={'w-20 h-20 rounded-full bg-center border-0 bg-[url(/images/icons/iconCheckCircleBefore.png)] bg-white data-[state=checked]:bg-white data-[state=checked]:bg-[url(/images/icons/iconCheckCircleAfter.png)]'} />
               <Label htmlFor='termsAll' className={'font-semibold text-gr-900'}>필수 약관 전체 동의</Label>
             </div>
             <div className={'flex flex-col gap-y-22'}>
@@ -295,7 +295,7 @@ export default function JoinPage() {
                 terms.map((term, idx) => {
                   return (
                     <div key={idx} className={'flex items-center w-full gap-10 pl-20'}>
-                      <Checkbox id={'terms' + idx} checked={term.checked} onCheckedChange={() => (checkboxOnChangeHandler(idx))} className={'w-20 h-20 rounded-full bg-center border-0 bg-[url(/images/icons/iconCheckCircleBefore.png)] bg-white'} />
+                      <Checkbox id={'terms' + idx} checked={term.checked} onCheckedChange={() => (checkboxOnChangeHandler(idx))} className={'w-20 h-20 rounded-full bg-center border-0 bg-[url(/images/icons/iconCheckCircleBefore.png)] bg-white data-[state=checked]:bg-white data-[state=checked]:bg-[url(/images/icons/iconCheckCircleAfter.png)]' } />
                       <Label htmlFor={'terms' + idx}>{term.text}</Label>
                     </div>
                   )
