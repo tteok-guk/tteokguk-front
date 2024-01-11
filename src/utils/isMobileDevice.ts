@@ -19,4 +19,5 @@ export const isMobileDevice = () => {
     ]
     return mobileRegex.some((mobile) => userDevice.match(mobile))
   }
+  return false
 }

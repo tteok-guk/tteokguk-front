@@ -38,8 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body
-        className={`${pretendard.className} ${soyo.variable} ${soyo_thin.variable} h-dvh w-full bg-gray-100`}
-        // className={`${pretendard.className} ${soyo.variable} h-dvh w-full bg-gray-100`}
+        className={`${pretendard.className} ${soyo.variable} ${soyo_thin.variable} h-dvh w-full bg-gray-200`}
       >
         <ReactQueryProvider>
           <RecoilProvider>
