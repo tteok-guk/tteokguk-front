@@ -224,9 +224,9 @@ export default function JoinPage() {
 
 
   return (
-    <div>
+    <div className={step.current === 1 ? 'bg-[url(/images/matts/blueDew.png)] bg-cover bg-[-140px] mt-[-32px] mx-[-20px]':''}>
       {/* 상단 영역 */}
-      <div className={'flex mt-[-12px]'}>
+      <div className={step.current === 1 ?'flex pt-20 px-20':'flex mt-[-12px]'}>
         <div className={step.current === 0 ? 'pl-0 pr-24 py-12 invisible' : 'pl-0 pr-24 py-12'} onClick={() => { navBtnOnClickHandler(step.current, 'prev') }}>
           <Image src={iconArrow} alt="왼쪽을 가르키는 화살표 이미지" width={24} height={24} />
         </div>
@@ -253,13 +253,13 @@ export default function JoinPage() {
               onChange={(e) => (userNameOnChangeHandler(e))}
               value={userName} />
             <div className={userName.length > 0 ? 'absolute right-0 top-4 w-fit' : 'hidden'} onClick={deleteNameOnClickHandler}>
-              <Image src={iconCloseCircle} alt="인풋 내용 삭제 버튼 이미지" width={20} height={20} />
+              <Image src={iconCloseCircle} alt="인풋 내용 삭제 버튼 이미지" width={20} height={20}/>
             </div>
           </div>
         </div>
         {/* step 1 */}
 
-        <div className={step.current === 1 ? 'flex flex-col gap-8' : 'hidden'}>
+        <div className={step.current === 1 ? 'flex flex-col gap-8  px-20' : 'hidden'}>
           <div>
             <h1 className={'font-xl text-gr-900'}>캐릭터를 선택해주세요</h1>
           </div>
@@ -267,10 +267,12 @@ export default function JoinPage() {
             <div className={'relative flex justify-center'}>
               <Image src={avatars[selectAvatar.idx].nomalSrc} alt="선택 캐릭터 이미지" width={255} height={255} />
             </div>
-            <div className={'relative grid grid-cols-[75px_75px_75px_75px] grid-rows-[75px_75px] justify-center gap-12'}>
+            <div className={step.current === 1 ?'relative grid grid-cols-4 grid-rows-2 justify-center gap-12  bg-bg mt-[-20px] mx-[-20px] pt-[20px] px-[20px]':'relative grid grid-cols-4 grid-rows-2 justify-center gap-12'}>
               {
                 avatars.map((avatar, idx) => {
-                  return <div onClick={()=>{selectAvatarOnClickHandler(avatar.name, idx)}} className={avatar.name === selectAvatar.name ? 'rounded-6 bg-pr-100 ring-pr-500 ring-[3px] ring-inset' : 'rounded-6 bg-pr-100'} key={idx} ><Image src={avatar.smallSrc} alt={avatar.alt} width={75} height={75} /></div>
+                  return <div onClick={()=>{selectAvatarOnClickHandler(avatar.name, idx)}} className={avatar.name === selectAvatar.name ? ' flex justify-center items-center min-w-75 min-h-75 aspect-square rounded-6 bg-pr-100 ring-pr-500 ring-[3px] ring-inset' : 'flex justify-center items-center min-w-75 min-h-75 aspect-square rounded-6 bg-pr-100'} key={idx} >
+                      <Image src={avatar.smallSrc} alt={avatar.alt} width={75} height={75} style={{width: '100%', height: 'auto',}} />
+                    </div>
                 })
               }
             </div>
