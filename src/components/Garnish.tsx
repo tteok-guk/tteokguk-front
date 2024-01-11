@@ -9,13 +9,20 @@ import Link from 'next/link'
 
 const Garnish = ({ garnishInfo, Public, dDay, userId }: GarnishType) => {
   const garnishLocation: GarnishLocationType = {
-    0: 'top-[123px] left-[122px]',
-    1: 'top-[81px] left-[51px]',
-    2: 'top-[39px] left-[122px]',
-    3: 'top-[81px] left-[194px]',
-    4: 'top-[164px] left-[51px]',
-    5: 'top-[205px] left-[122px]',
-    6: 'top-[164px] left-[194px]',
+    // 0: 'top-[123px] left-[122px]',
+    // 1: 'top-[81px] left-[51px]',
+    // 2: 'top-[39px] left-[122px]',
+    // 3: 'top-[81px] left-[194px]',
+    // 4: 'top-[164px] left-[51px]',
+    // 5: 'top-[205px] left-[122px]',
+    // 6: 'top-[164px] left-[194px]',
+    0: 'top-[41%] left-[40.67%]',
+    1: 'top-[27%] left-[17%]',
+    2: 'top-[13%] left-[40.67%]',
+    3: 'top-[27%] left-[64.67%]',
+    4: 'top-[54.67%] left-[17%]',
+    5: 'top-[68.33%] left-[40.67%]',
+    6: 'top-[54.67%] left-[64.67%]',
   }
   const guestTG = userId !== 'host'
   const garnishOpen = dDay !== undefined && dDay >= 0
@@ -50,10 +57,10 @@ const Garnish = ({ garnishInfo, Public, dDay, userId }: GarnishType) => {
           className={` absolute text-center ${garnishLocation[idx]} flex cursor-pointer flex-col`}
           onClick={() => GarnishDetailMoveToBtnHandler(item.garnishId)}
         >
-          <div className={`h-54 w-54 `}>
+          <div className={` h-54 w-54 lg:h-80 lg:w-80`}>
             <Image
-              width={54}
-              height={54}
+              width={80}
+              height={80}
               src={`/images/garnishes/${item.garnishType}.png`}
               alt="garnish"
             />
