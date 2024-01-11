@@ -12,8 +12,10 @@ export async function middleware(request: NextRequest) {
     [domain]/host/snap-shot  TODO 유리님 개발 완료하고 나면 막기
     [domain]/!host//garnish-list
   */
+
+  /** 임시 주석 
   if(path.startsWith('/host')){
-    if(path.includes('/set-garnish') || path.includes('/write') /*|| path.includes('/snap-shot')*/){
+    if(path.includes('/set-garnish') || path.includes('/write') || path.includes('/snap-shot')){
       // 접근 불가 URLs
       return NextResponse.redirect(new URL('/', request.url))
     }else{
@@ -74,7 +76,7 @@ export async function middleware(request: NextRequest) {
         const userType =  await getUserType(token)
         if(userType.data.isMember){
           // 쿠키에 토큰 세팅
-          const response = NextResponse.redirect(new URL('/host', request.url))
+          const response = NextResponse.redirect(new URL('/host?page=1', request.url))
           response.cookies.set('token', token || '')
           return response
         }else{
@@ -91,6 +93,7 @@ export async function middleware(request: NextRequest) {
       }
     }
     }
+    */
   }
 
 export const config = {
