@@ -1,11 +1,11 @@
-import catSmall from './catSmall.png'
-import dogSmall from './dogSmall.png'
-import dragonSmall from './dragonSmall.png'
-import hedgehogSmall from './hedgehogSmall.png'
-import otterSmall from './otterSmall.png'
-import pandaSmall from './pandaSmall.png'
-import rabbitSmall from './rabbitSmall.png'
-import squirrelSmall from './squirrelSmall.png'
+import catSmall from './catSmall.svg'
+import dogSmall from './dogSmall.svg'
+import dragonSmall from './dragonSmall.svg'
+import hedgehogSmall from './hedgehogSmall.svg'
+import otterSmall from './otterSmall.svg'
+import pandaSmall from './pandaSmall.svg'
+import rabbitSmall from './rabbitSmall.svg'
+import squirrelSmall from './squirrelSmall.svg'
 
 export {
   catSmall,
