@@ -88,7 +88,7 @@ export default function SetGarnishPage() {
               <Button
                 key={idx}
                 className={`
-                ${btnCommonClass}
+                  ${btnCommonClass}
                   ${chosenGarnish === garnish.id ? 'border-3 border-pr-500' : ''}
                 `}
                 onClick={() => setGarnish(garnish.id)}
