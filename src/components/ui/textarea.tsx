@@ -14,7 +14,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
       <textarea
         className={cn(`
           font-sm blue-scroll placeholder:font-sm my-16 flex w-full resize-none rounded-4 border-2 border-pr-200 bg-white
-          px-20 py-16 font-soyoThin placeholder:text-gr-300 placeholder:text-muted-foreground
+          px-20 py-16 font-soyoThin placeholder:text-gr-300
           focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50
           ${textareaHeight}
           ${className},
