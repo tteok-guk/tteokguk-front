@@ -1,7 +1,5 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { createPortal } from 'react-dom'
 import { useRecoilState } from 'recoil'
 import { chosenGarnishState, rouletteResultState } from '@/store/WriteAtom'
 import Image from 'next/image'
@@ -10,8 +8,7 @@ import { Button } from '../ui/button'
 import { iconClose } from '../../../public/images/icons'
 import { garnishes } from '../../../data/garnishes'
 
-export function RouletteModal({ onClose }: RouletteModalProps) {
-  const [mounted, setMounted] = useState(false)
+export default function RouletteModal({ cancelClick }: RouletteModalProps) {
   const [chosenGarnish, setChosenGarnish] = useRecoilState(chosenGarnishState)
   const [rouletteResult, setRouletteResult] = useRecoilState(rouletteResultState)
 
@@ -19,19 +16,14 @@ export function RouletteModal({ onClose }: RouletteModalProps) {
   const setResult = (clickedValue: string) => setRouletteResult(clickedValue)
   const doneRoulette = () => {
     setChosenGarnish(rouletteResult)
-    onClose()
+    cancelClick && cancelClick()
   }
 
-  useEffect(() => {
-    setMounted(true)
-    return () => setMounted(false)
-  }, [])
-
-  const element = (
-    <div className="absolute top-0 h-full w-full">
-      <div className="flex-center mx-auto h-full min-w-320 max-w-575 flex-grow bg-gr-100 px-20">
-        <section className="h-500 w-full rounded-5 bg-white p-22">
-          <Button onClick={onClose} className="float-right">
+  return (
+    <div className="modal-bg">
+      <div className="modal-wrap">
+        <section className="h-500 w-300 rounded-5 bg-white p-22">
+          <Button onClick={cancelClick} className="float-right">
             <Image src={iconClose} alt="팝업 종료를 위한 엑스 모양 아이콘" width={24} height={24} />
           </Button>
           <div className="flex-center clear-right flex-col">
@@ -58,11 +50,5 @@ export function RouletteModal({ onClose }: RouletteModalProps) {
         </section>
       </div>
     </div>
-  )
-
-  return mounted ? (
-    createPortal(element, document.getElementById('modal-root') as HTMLElement)
-  ) : (
-    <></>
   )
 }
