@@ -9,9 +9,8 @@ import { checkWriteQuery } from '@/utils/checkWriteQuery'
 import { useToast } from '@/hooks/use-toast'
 import { GarnishesProps } from '@/types/WriteTypes'
 import { garnishes } from '../../../../../data/garnishes'
-import { BottomButton, TopButton } from '@/components/common'
+import { BottomButton, TopButton, Modal } from '@/components/common'
 import { Button } from '@/components/ui/button'
-import { RouletteModal } from '@/components/modal/RouletteModal'
 
 export default function SetGarnishPage() {
   const [isRouletteOpen, setIsRouletteOpen] = useState(false)
@@ -107,7 +106,7 @@ export default function SetGarnishPage() {
         fullBtnName="덕담 남기기"
       />
 
-      {isRouletteOpen && <RouletteModal onClose={setRouletteOpen} />}
+      {isRouletteOpen && <Modal type="confirm" cancelClick={setRouletteOpen} />}
     </section>
   )
 }
