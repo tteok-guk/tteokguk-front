@@ -14,3 +14,18 @@ export interface BottomButtonProps {
   fullBtnDisabled?: boolean
   bgColor?: string
 }
+
+export interface ModalProps {
+  type: 'roulette' | 'confirm'
+  cancelClick?: () => void
+  confirmClick?: () => void
+}
+
+export type ModalType = {
+  [key in 'roulette' | 'confirm']: React.ReactNode
+}
+
+export interface ConfirmModalProps {
+  cancelClick: (() => void) | undefined
+  confirmClick: (() => void) | undefined
+}
