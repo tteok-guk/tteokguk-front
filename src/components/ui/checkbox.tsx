@@ -20,7 +20,11 @@ const Checkbox = React.forwardRef<
     {...props}
   >
     <CheckboxPrimitive.Indicator className={cn('flex items-center justify-center text-current')}>
+<<<<<<< HEAD
       <Image src={iconCheckCircleAfter} alt="checkboxIcon" width={20} height={20}/>
+=======
+      {/* <Image src={iconCheckCircleAfter} alt="checkboxIcon" width={20} height={20}/> */}
+>>>>>>> feature/shj/TG-46
     </CheckboxPrimitive.Indicator>
   </CheckboxPrimitive.Root>
 ))

@@ -9,9 +9,14 @@ import { checkWriteQuery } from '@/utils/checkWriteQuery'
 import { useToast } from '@/hooks/use-toast'
 import { GarnishesProps } from '@/types/WriteTypes'
 import { garnishes } from '../../../../../data/garnishes'
+<<<<<<< HEAD
 import { BottomButton, TopButton } from '@/components/common'
 import { Button } from '@/components/ui/button'
 import { RouletteModal } from '@/components/modal/RouletteModal'
+=======
+import { BottomButton, TopButton, Modal } from '@/components/common'
+import { Button } from '@/components/ui/button'
+>>>>>>> feature/shj/TG-46
 
 export default function SetGarnishPage() {
   const [isRouletteOpen, setIsRouletteOpen] = useState(false)
@@ -88,7 +93,7 @@ export default function SetGarnishPage() {
               <Button
                 key={idx}
                 className={`
-                ${btnCommonClass}
+                  ${btnCommonClass}
                   ${chosenGarnish === garnish.id ? 'border-3 border-pr-500' : ''}
                 `}
                 onClick={() => setGarnish(garnish.id)}
@@ -107,7 +112,7 @@ export default function SetGarnishPage() {
         fullBtnName="덕담 남기기"
       />
 
-      {isRouletteOpen && <RouletteModal onClose={setRouletteOpen} />}
+      {isRouletteOpen && <Modal type="confirm" cancelClick={setRouletteOpen} />}
     </section>
   )
 }

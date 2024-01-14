@@ -224,9 +224,13 @@ export default function JoinPage() {
 
 
   return (
-    <div>
+    <div className={step.current === 1 ? 'bg-[url(/images/matts/blueDew.png)] bg-cover bg-[-140px] mt-[-32px] mx-[-20px]':''}>
       {/* 상단 영역 */}
+<<<<<<< HEAD
       <div className={'flex mt-[-12px]'}>
+=======
+      <div className={step.current === 1 ?'flex pt-20 px-20':'flex mt-[-12px]'}>
+>>>>>>> feature/shj/TG-46
         <div className={step.current === 0 ? 'pl-0 pr-24 py-12 invisible' : 'pl-0 pr-24 py-12'} onClick={() => { navBtnOnClickHandler(step.current, 'prev') }}>
           <Image src={iconArrow} alt="왼쪽을 가르키는 화살표 이미지" width={24} height={24} />
         </div>
@@ -253,24 +257,43 @@ export default function JoinPage() {
               onChange={(e) => (userNameOnChangeHandler(e))}
               value={userName} />
             <div className={userName.length > 0 ? 'absolute right-0 top-4 w-fit' : 'hidden'} onClick={deleteNameOnClickHandler}>
+<<<<<<< HEAD
               <Image src={iconCloseCircle} alt="인풋 내용 삭제 버튼 이미지" width={20} height={20} />
+=======
+              <Image src={iconCloseCircle} alt="인풋 내용 삭제 버튼 이미지" width={20} height={20}/>
+>>>>>>> feature/shj/TG-46
             </div>
           </div>
         </div>
         {/* step 1 */}
 
+<<<<<<< HEAD
         <div className={step.current === 1 ? 'flex flex-col gap-8' : 'hidden'}>
+=======
+        <div className={step.current === 1 ? 'flex flex-col gap-8  px-20' : 'hidden'}>
+>>>>>>> feature/shj/TG-46
           <div>
             <h1 className={'font-xl text-gr-900'}>캐릭터를 선택해주세요</h1>
           </div>
           <div className={'flex flex-col gap-20'}>
             <div className={'relative flex justify-center'}>
+<<<<<<< HEAD
               <Image src={avatars[selectAvatar.idx].nomalSrc} alt="선택 캐릭터 이미지" width={255} height={255} />
             </div>
             <div className={'relative grid grid-cols-[75px_75px_75px_75px] grid-rows-[75px_75px] justify-center gap-12'}>
               {
                 avatars.map((avatar, idx) => {
                   return <div onClick={()=>{selectAvatarOnClickHandler(avatar.name, idx)}} className={avatar.name === selectAvatar.name ? 'rounded-6 bg-pr-100 ring-pr-500 ring-[3px] ring-inset' : 'rounded-6 bg-pr-100'} key={idx} ><Image src={avatar.smallSrc} alt={avatar.alt} width={75} height={75} /></div>
+=======
+              <Image src={avatars[selectAvatar.idx].nomalSrc} alt="선택 캐릭터 이미지" width={255} height={255} loading='eager'/>
+            </div>
+            <div className={step.current === 1 ?'relative grid grid-cols-4 grid-rows-2 justify-center gap-12  bg-bg mt-[-20px] mx-[-20px] pt-[20px] px-[20px]':'relative grid grid-cols-4 grid-rows-2 justify-center gap-12'}>
+              {
+                avatars.map((avatar, idx) => {
+                  return <div onClick={()=>{selectAvatarOnClickHandler(avatar.name, idx)}} className={avatar.name === selectAvatar.name ? ' flex justify-center items-center min-w-75 min-h-75 aspect-square rounded-6 bg-pr-100 ring-pr-500 ring-[3px] ring-inset' : 'flex justify-center items-center min-w-75 min-h-75 aspect-square rounded-6 bg-pr-100'} key={idx} >
+                      <Image src={avatar.smallSrc} alt={avatar.alt} width={75} height={75} style={{width: '100%', height: 'auto',}} />
+                    </div>
+>>>>>>> feature/shj/TG-46
                 })
               }
             </div>
@@ -285,7 +308,11 @@ export default function JoinPage() {
           </div>
           <div className={'relative flex flex-col gap-y-20'}>
             <div className={isStepBtnActive?'flex items-center w-full gap-10 py-16 pl-20 bg-pr-100 rounded-4 h-52':'flex items-center w-full gap-10 py-16 pl-20 bg-gr-100 rounded-4 h-52'}>
+<<<<<<< HEAD
               <Checkbox id='termsAll' checked={groupTerm} onCheckedChange={groupCheckboxOnChangeHandler} className={'w-20 h-20 rounded-full bg-center border-0 bg-[url(/images/icons/iconCheckCircleBefore.png)] bg-white'} />
+=======
+              <Checkbox id='termsAll' checked={groupTerm} onCheckedChange={groupCheckboxOnChangeHandler} className={'w-20 h-20 rounded-full bg-center border-0 bg-[url(/images/icons/iconCheckCircleBefore.png)] bg-white data-[state=checked]:bg-white data-[state=checked]:bg-[url(/images/icons/iconCheckCircleAfter.png)]'} />
+>>>>>>> feature/shj/TG-46
               <Label htmlFor='termsAll' className={'font-semibold text-gr-900'}>필수 약관 전체 동의</Label>
             </div>
             <div className={'flex flex-col gap-y-22'}>
@@ -293,7 +320,11 @@ export default function JoinPage() {
                 terms.map((term, idx) => {
                   return (
                     <div key={idx} className={'flex items-center w-full gap-10 pl-20'}>
+<<<<<<< HEAD
                       <Checkbox id={'terms' + idx} checked={term.checked} onCheckedChange={() => (checkboxOnChangeHandler(idx))} className={'w-20 h-20 rounded-full bg-center border-0 bg-[url(/images/icons/iconCheckCircleBefore.png)] bg-white'} />
+=======
+                      <Checkbox id={'terms' + idx} checked={term.checked} onCheckedChange={() => (checkboxOnChangeHandler(idx))} className={'w-20 h-20 rounded-full bg-center border-0 bg-[url(/images/icons/iconCheckCircleBefore.png)] bg-white data-[state=checked]:bg-white data-[state=checked]:bg-[url(/images/icons/iconCheckCircleAfter.png)]' } />
+>>>>>>> feature/shj/TG-46
                       <Label htmlFor={'terms' + idx}>{term.text}</Label>
                     </div>
                   )

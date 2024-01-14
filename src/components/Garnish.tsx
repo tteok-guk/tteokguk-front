@@ -2,10 +2,7 @@
 
 import { toast } from '@/hooks/use-toast'
 import { GarnishItem, GarnishLocationType, GarnishType } from '@/types/MainPageTypes'
-import { redirect } from 'next/navigation'
 import Image from 'next/image'
-import { useState } from 'react'
-import Link from 'next/link'
 
 const Garnish = ({ garnishInfo, Public, dDay, userId }: GarnishType) => {
   const garnishLocation: GarnishLocationType = {
