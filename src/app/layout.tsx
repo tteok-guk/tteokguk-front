@@ -38,12 +38,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body
-        className={`${pretendard.className} ${soyo.variable} ${soyo_thin.variable} h-dvh w-full bg-gray-100`}
-        // className={`${pretendard.className} ${soyo.variable} h-dvh w-full bg-gray-100`}
+        className={`${pretendard.className} ${soyo.variable} ${soyo_thin.variable} h-dvh w-full bg-gray-200`}
       >
         <ReactQueryProvider>
           <RecoilProvider>
-            <main className="layout-scroll relative mx-auto h-full min-w-320 max-w-575 overflow-y-auto bg-bg px-20 pt-32">
+            <main className="layout-scroll relative mx-auto h-full min-w-320 max-w-575 overflow-y-auto bg-bg px-20 pt-32 text-gr-900">
               {children}
             </main>
             <div id="modal-root"></div>

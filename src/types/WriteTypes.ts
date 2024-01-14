@@ -10,3 +10,12 @@ export interface GarnishesProps {
   src: StaticImageData
   alt: string
 }
+
+export interface WriteGarnishProps {
+  [key: string]: string
+}
+
+export interface WriteQueryProps {
+  nickname?: string | null
+  garnish?: string | null
+}
