@@ -1,7 +1,7 @@
 import { StaticImageData } from 'next/image'
 
 export interface RouletteModalProps {
-  onClose: () => void
+  cancelClick: (() => void) | undefined
 }
 
 export interface GarnishesProps {
@@ -9,4 +9,13 @@ export interface GarnishesProps {
   type: string
   src: StaticImageData
   alt: string
+}
+
+export interface WriteGarnishProps {
+  [key: string]: string
+}
+
+export interface WriteQueryProps {
+  nickname?: string | null
+  garnish?: string | null
 }

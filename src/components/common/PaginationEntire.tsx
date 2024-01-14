@@ -15,7 +15,7 @@ import { useRecoilState } from 'recoil'
 const PaginationEntire = ({ pageSize, pageParam, currentNum }: paginationType) => {
   const [current, setCurrent] = useRecoilState(paginationState)
   const [isDisable, setDisable] = useState(false)
-  console.log(current)
+
   const nextButton = () => {
     if (current < pageSize) {
       setCurrent(current + 1)
