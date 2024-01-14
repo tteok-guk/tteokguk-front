@@ -1,7 +1,7 @@
 import { StaticImageData } from 'next/image'
 
 export interface RouletteModalProps {
-  onClose: () => void
+  cancelClick: (() => void) | undefined
 }
 
 export interface GarnishesProps {
