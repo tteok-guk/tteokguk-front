@@ -77,16 +77,15 @@ export default function WritePage() {
       tteokGukId: hostId,
       nickname: data.writerNickname,
       garnishType: params.get('garnish') || '',
-      content: data.content,
+      content: data.content.replaceAll(/\r\n|\r|\n/gm, '\n'),
     }
-    // todo api 연동
     onSubmit.mutate(garnishData)
   }
 
   // * 뒤로가기 버튼 클릭
   const backBtnClick = () => {
     if (!disabled) {
-      // alert 모달
+      // todo alert 모달
       console.log('이전페이지로 돌아가면\n작성한 내용은 저장되지 않아요!')
     }
     router.back()
