@@ -7,7 +7,7 @@ import Image from 'next/image'
 import { chosenGarnishState, rouletteResultState } from '@/store/WriteAtom'
 import { checkWriteQuery } from '@/utils/checkWriteQuery'
 import { useToast } from '@/hooks/use-toast'
-import { GarnishesProps } from '@/types/WriteTypes'
+import { AllGarnishesType } from '@/types/GarnishTypes'
 import { garnishes } from '../../../../../data/garnishes'
 import { BottomButton, TopButton, Modal } from '@/components/common'
 import { Button } from '@/components/ui/button'
@@ -16,7 +16,7 @@ export default function SetGarnishPage() {
   const [isRouletteOpen, setIsRouletteOpen] = useState(false)
   const [chosenGarnish, setChosenGarnish] = useRecoilState(chosenGarnishState)
   const [rouletteResult, setRouletteResult] = useRecoilState(rouletteResultState)
-  const [findRouletteGarnish, setFindRouletteGarnish] = useState<GarnishesProps>()
+  const [findRouletteGarnish, setFindRouletteGarnish] = useState<AllGarnishesType>()
 
   const pathname = usePathname()
   const params = useSearchParams()
@@ -34,6 +34,14 @@ export default function SetGarnishPage() {
   const toggleRouletteBtn = () =>
     !findRouletteGarnish ? setRouletteOpen() : setGarnish(findRouletteGarnish.id)
 
+  // * 룰렛에서 선택한 값 세팅
+  useEffect(() => {
+    if (rouletteResult) {
+      const findGarnish = garnishes.find((garnish) => garnish.id === rouletteResult)
+      setFindRouletteGarnish(findGarnish)
+    }
+  }, [rouletteResult])
+
   useEffect(() => {
     const [isNicknameValid, msg] = checkWriteQuery({ nickname: hostNickname })
     if (!isNicknameValid) {
@@ -41,13 +49,6 @@ export default function SetGarnishPage() {
       router.push(`/${hostId}?page=1`)
     }
   }, [])
-
-  useEffect(() => {
-    if (rouletteResult) {
-      const findGarnish = garnishes.find((garnish) => garnish.id === rouletteResult)
-      setFindRouletteGarnish(findGarnish)
-    }
-  }, [rouletteResult])
 
   return (
     <section className="pb-40">
@@ -106,7 +107,7 @@ export default function SetGarnishPage() {
         fullBtnName="덕담 남기기"
       />
 
-      {isRouletteOpen && <Modal type="confirm" cancelClick={setRouletteOpen} />}
+      {isRouletteOpen && <Modal type="roulette" cancelClick={setRouletteOpen} />}
     </section>
   )
 }
