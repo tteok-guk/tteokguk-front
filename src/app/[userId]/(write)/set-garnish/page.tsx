@@ -34,7 +34,7 @@ export default function SetGarnishPage() {
   const toggleRouletteBtn = () =>
     !findRouletteGarnish ? setRouletteOpen() : setGarnish(findRouletteGarnish.id)
 
-  // * 룰렛에서 선택한 값 세팅
+  // * 룰렛에서 선택 완료한 값 세팅
   useEffect(() => {
     if (rouletteResult) {
       const findGarnish = garnishes.find((garnish) => garnish.id === rouletteResult)

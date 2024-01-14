@@ -1,19 +1,25 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react'
+import { useRef, useEffect } from 'react'
+import { useRecoilState } from 'recoil'
+import { rouletteResultState } from '@/store/WriteAtom'
 import { OptionGarnishes } from '../../data/garnishRoulette'
 import NextImage from 'next/image' // HTML Image와 이름 중복되어 별칭으로 import
 import { Button } from './ui/button'
 import { iconLocation } from '../../public/images/icons'
 
 export default function Roulette() {
+  const [rouletteResult, setRouletteResult] = useRecoilState(rouletteResultState) // 룰렛 결과값
+
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const [selectedItem, setSelectedItem] = useState<string | null>(null) // 선택된 음식 저장
 
   // * 룰렛 회전 함수
   const rotate = () => {
     const canvas = canvasRef.current
     if (!canvas) return
+
+    canvas.style.transition = 'initial'
+    canvas.style.transform = 'initial'
 
     const TOTAL_ROTATION_TIME = 3000 // 룰렛 회전에 소요되는 시간
     const totalDegrees = 3600 // 총 회전할 각도
@@ -34,7 +40,7 @@ export default function Roulette() {
 
     // 회전 후 랜덤 선택된 고명 설정
     setTimeout(() => {
-      setSelectedItem(OptionGarnishes[randomIdx]['id'])
+      setRouletteResult(OptionGarnishes[randomIdx]['id'])
     }, TOTAL_ROTATION_TIME)
   }
 
@@ -123,13 +129,16 @@ export default function Roulette() {
       <canvas ref={canvasRef} width="300" height="300"></canvas>
       <Button
         onClick={rotate}
-        className="absolute left-107 top-107 h-90 w-90 rounded-full bg-pr-500 font-soyoThin font-bold text-white"
+        disabled={!!rouletteResult}
+        className={`
+          absolute left-107 top-107 h-90 w-90 rounded-full font-soyoThin font-bold text-white
+          ${rouletteResult ? 'bg-gr-100' : 'bg-pr-500'}
+        `}
       >
         룰렛
         <br />
         돌리기!
       </Button>
-      {selectedItem && <div>{selectedItem}</div>}
     </div>
   )
 }
