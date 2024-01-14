@@ -1,6 +1,5 @@
 import iconArrow from './iconArrow.png'
 import iconArrow2 from './iconArrow2.png'
-<<<<<<< HEAD
 import iconCheckCircleAfter from './iconCheckCircleAfter.png'
 import iconCheckCircleBefore from './iconCheckCircleBefore.png'
 import iconClose from './iconClose.png'
@@ -19,19 +18,4 @@ export {
   iconDday,
   iconError,
   iconMypage,
-=======
-import iconCloseCircle from './iconCloseCircle.png'
-import iconCheckCircleBefore from './iconCheckCircleBefore.png'
-import iconCheckCircleAfter from './iconCheckCircleAfter.png'
-
-export {
-  iconArrow,
-  iconClose,
-  iconDday,
-  iconMypage,
-  iconArrow2,
-  iconCloseCircle,
-  iconCheckCircleBefore,
-  iconCheckCircleAfter,
->>>>>>> feature/shj/TG-46
 }

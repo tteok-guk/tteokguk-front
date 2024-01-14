@@ -7,6 +7,9 @@ import { isMobileDevice } from '@/utils/isMobileDevice'
 import { checkWriteQuery } from '@/utils/checkWriteQuery'
 import { useGarnishInput } from '@/hooks/useGarnishInput'
 import { useToast } from '@/hooks/use-toast'
+import { useMutation } from '@tanstack/react-query'
+import { postGarnish } from '@/services/write'
+import { RequestParamType } from '@/types/apiTypes'
 import { BottomButton, TopButton } from '@/components/common'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -46,25 +49,47 @@ export default function WritePage() {
       garnish: getChosenGarnish,
     })
     if (!isQueryValid) {
+      setDisabled(true)
+      // todo 페이지 넘어가기 전에 toast 활성화하고 넘어가는지 확인
       toast({ description: msg })
       router.push(`/${hostId}?page=1`)
     }
     return isQueryValid
   }
 
-  // * 고명 작성
-  const onSubmit = () => {
+  // * 고명 작성하기
+  const onSubmit = useMutation({
+    mutationFn: (garnishData: RequestParamType) => postGarnish(garnishData),
+    onSuccess: (res) => {
+      if (res.code === 200) router.push(`/${hostId}/snap-shot?nickname=${hostNickname}`)
+    },
+    onError: (err) => console.log('err', err), // todo 에러핸들링 추가
+  })
+
+  // * 완료 버튼 클릭
+  const doneBtnClick = () => {
     const isQueryValid = checkQueryValid()
-    if (isQueryValid) {
-      const garnishData = {
-        tteokGukId: hostId,
-        nickname: data.writerNickname,
-        garnishType: params.get('garnish'),
-        content: data.content,
-      }
-      // todo api 연동
-      console.log(garnishData)
+    if (!isQueryValid) {
+      setDisabled(true)
     }
+    setDisabled(false)
+    const garnishData = {
+      tteokGukId: hostId,
+      nickname: data.writerNickname,
+      garnishType: params.get('garnish') || '',
+      content: data.content,
+    }
+    // todo api 연동
+    onSubmit.mutate(garnishData)
+  }
+
+  // * 뒤로가기 버튼 클릭
+  const backBtnClick = () => {
+    if (!disabled) {
+      // alert 모달
+      console.log('이전페이지로 돌아가면\n작성한 내용은 저장되지 않아요!')
+    }
+    router.back()
   }
 
   useEffect(() => {
@@ -79,7 +104,7 @@ export default function WritePage() {
 
   return (
     <div className="">
-      <TopButton />
+      <TopButton onClick={backBtnClick} />
       <form>
         <h1 className="font-xl pt-12">
           {`${hostNickname}에게`}
@@ -123,11 +148,11 @@ export default function WritePage() {
       </form>
 
       {isMobile ? (
-        <Button size="full" className="mb-20 mt-16" onClick={onSubmit} disabled={disabled}>
+        <Button size="full" className="mb-20 mt-16" onClick={doneBtnClick} disabled={disabled}>
           완료
         </Button>
       ) : (
-        <BottomButton fullBtnName="완료" fullBtnClick={onSubmit} fullBtnDisabled={disabled} />
+        <BottomButton fullBtnName="완료" fullBtnClick={doneBtnClick} fullBtnDisabled={disabled} />
       )}
     </div>
   )
