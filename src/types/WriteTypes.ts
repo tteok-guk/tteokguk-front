@@ -4,13 +4,6 @@ export interface RouletteModalProps {
   cancelClick: (() => void) | undefined
 }
 
-export interface GarnishesProps {
-  id: string
-  type: string
-  src: StaticImageData
-  alt: string
-}
-
 export interface WriteGarnishProps {
   [key: string]: string
 }
