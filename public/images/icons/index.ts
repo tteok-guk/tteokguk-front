@@ -13,6 +13,7 @@ export {
   iconClose,
   iconDday,
   iconMypage,
+  iconError,
   iconArrow2,
   iconCloseCircle,
   iconCheckCircleBefore,
