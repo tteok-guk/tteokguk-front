@@ -36,7 +36,7 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
     if (guestTG === null || guestTGApi.code === 500) {
       redirect('/')
     }
-    garnishes = await getGarnishes(userId, 1)
+    garnishes = await getGarnishes(userId, Number(page))
   }
 
   const nickname = hostTG ? hostTG.nickname : guestTG?.nickname
