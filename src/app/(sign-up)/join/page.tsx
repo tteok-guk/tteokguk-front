@@ -156,6 +156,8 @@ export default function JoinPage() {
         Cookies.set('token', token)
         router.push(`/host?page=1`)
       }else if (res.code === 400){
+        const token = res.data.token?res.data.token:''
+        Cookies.set('token', token)
         router.push(`/host?page=1`)
       }
     },
