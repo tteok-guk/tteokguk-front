@@ -1,59 +1,46 @@
 'use client'
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from '@/components/ui/pagination'
+
 import { paginationState } from '@/store/paginationAtom'
 import { paginationType } from '@/types/MainPageTypes'
-import { useState } from 'react'
+import { useEffect } from 'react'
 import { useRecoilState } from 'recoil'
+import { Button } from '../ui/button'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 const PaginationEntire = ({ pageSize, pageParam, currentNum }: paginationType) => {
   const [current, setCurrent] = useRecoilState(paginationState)
-  const [isDisable, setDisable] = useState(false)
 
-  const nextButton = () => {
-    if (current < pageSize) {
-      setCurrent(current + 1)
+  const params = useSearchParams()
+  const router = useRouter()
+
+  const currentPage: number = Number(params.get('page')) || 1
+
+  const movePage = (flag: string) => {
+    if ((flag === 'prev' && currentPage <= 1) || (flag === 'next' && currentPage >= pageSize)) {
+      return
     }
+    const movePageNum = flag === 'prev' ? currentPage - 1 : currentPage + 1
+    setCurrent(movePageNum)
   }
 
-  const prevButton = () => {
-    if (current > 1) {
-      // setCurrent({ page: current.page - 1 })
-      setCurrent(current - 1)
-    }
-  }
+  useEffect(() => {
+    router.push(`/${pageParam}?page=${current}`)
+  }, [current])
 
   return (
-    <Pagination>
-      <PaginationContent>
-        <PaginationItem>
-          <PaginationPrevious href={`/${pageParam}?page=${current}`} onClick={prevButton} />
-        </PaginationItem>
-        <div className="flex-center">
-          <PaginationItem>
-            <PaginationLink href="#" className="text-14" isActive>
-              {currentNum}
-            </PaginationLink>
-          </PaginationItem>
-          <span className="mx-4">/</span>
-          <PaginationItem>
-            <PaginationLink href="#" className="text-14">
-              {pageSize}
-            </PaginationLink>
-          </PaginationItem>
-          <span className="ml-4 text-14">그릇</span>
-        </div>
-        <PaginationItem>
-          <PaginationNext href={`/${pageParam}?page=${current}`} onClick={nextButton} />
-        </PaginationItem>
-      </PaginationContent>
-    </Pagination>
+    <nav className="w-full">
+      <ul className="flex-center gap-5 text-14">
+        <li>
+          <Button onClick={() => movePage('prev')}>&lt;</Button>
+        </li>
+        <li>{currentNum}</li>
+        <li>/</li>
+        <li>{pageSize} 그릇</li>
+        <li>
+          <Button onClick={() => movePage('next')}>&gt;</Button>
+        </li>
+      </ul>
+    </nav>
   )
 }
 
