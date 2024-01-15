@@ -1,31 +1,40 @@
 'use client'
 
-import { paginationState } from '@/store/paginationAtom'
 import { paginationType } from '@/types/MainPageTypes'
-import { useEffect } from 'react'
-import { useRecoilState } from 'recoil'
+import { useState, useEffect } from 'react'
 import { Button } from '../ui/button'
 import { useRouter, useSearchParams } from 'next/navigation'
+import { toast } from '@/hooks/use-toast'
 
 const PaginationEntire = ({ pageSize, pageParam, currentNum }: paginationType) => {
-  const [current, setCurrent] = useRecoilState(paginationState)
-
   const params = useSearchParams()
   const router = useRouter()
 
-  const currentPage: number = Number(params.get('page')) || 1
+  const [page, setPage] = useState<number>(Number(params.get('page')) || 1)
 
-  const movePage = (flag: string) => {
+  const currentPage: number = Number(params.get('page'))
+
+  const movePage = (flag?: string) => {
     if ((flag === 'prev' && currentPage <= 1) || (flag === 'next' && currentPage >= pageSize)) {
       return
     }
     const movePageNum = flag === 'prev' ? currentPage - 1 : currentPage + 1
-    setCurrent(movePageNum)
+    setPage(movePageNum)
   }
 
   useEffect(() => {
-    router.push(`/${pageParam}?page=${current}`)
-  }, [current])
+    if (!Number.isInteger(currentPage) || currentPage < 1 || currentPage > pageSize) {
+      // todo ?page=100과 같이 유효하지 않은 번호 입력하면 일단 undefined 떡국 떴다가 1페이지로 넘어감
+      toast({ description: '유효한 페이지 번호가 아닙니다.' })
+      setPage(1)
+      return
+    }
+    setPage(currentPage)
+  }, [])
+
+  useEffect(() => {
+    router.push(`/${pageParam}?page=${page}`)
+  }, [page])
 
   return (
     <nav className="w-full">
