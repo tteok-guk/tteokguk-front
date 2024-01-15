@@ -9,7 +9,6 @@ import Link from 'next/link'
 import { redirect } from 'next/navigation'
 import { iconDday, iconMypage } from '../../../public/images/icons'
 import { dishesObj, mattObj } from './_object/object'
-import { basicDish } from '../../../public/images/dishes/index'
 
 interface Props {
   params: {
@@ -25,8 +24,11 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
   if (userId === 'host') {
     const hostTGApi = await getHostTteokguk()
     hostTG = hostTGApi?.data
-    const tgId = hostTG?.tteokGukId
-    garnishes = await getGarnishes(tgId, Number(page))
+
+    if (hostTG.tteokGukId) {
+      const tgId = hostTG?.tteokGukId
+      garnishes = await getGarnishes(tgId, Number(page))
+    }
   } else {
     const guestTGApi = await getGuestTteokguk(userId)
     guestTG = guestTGApi?.data
@@ -46,6 +48,9 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
   const garnish = garnishes
 
   const determineDishType = (garnish: GarnishItem[] | undefined, userId: string) => {
+    if (!tteokGukId) {
+      return 'makeDish'
+    }
     if ((garnish?.length === 0 || !garnish) && userId !== 'host') {
       return 'firstDish'
     } else if (garnish?.length === 0 && userId === 'host') {
@@ -78,7 +83,11 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
             <Image width={12} height={11} src={iconDday} alt="D-day icon" />
             <p className="font-base text-pr-800">{`까치까치 설날 D${dDay}`}</p>
           </div>
-          <p className="mb-5">{`${garnish?.garnishCnt}개의 덕담을 받았어요!`}</p>
+          {hostTG?.tteokGukId || guestTG ? (
+            <p className="mb-5">{`${garnish?.garnishCnt}개의 덕담을 받았어요!`}</p>
+          ) : (
+            <></>
+          )}
           <div
             className={`relative mb-31 mt-19 h-300 w-300 lg:h-400 lg:w-400  ${
               dishesObj[determineDishType(garnish?.garnishes, userId)]
@@ -86,7 +95,7 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
           >
             {garnishes && (
               <Garnish
-                garnishInfo={garnish.garnishes}
+                garnishInfo={garnish?.garnishes}
                 Public={guestTG?.public}
                 dDay={guestTG?.dday}
                 userId={userId}

@@ -43,7 +43,7 @@ export interface GarnishItem {
 }
 
 export interface paginationType {
-  pageSize: number
+  pageSize?: number
   pageParam: string
   currentNum: number
 }
