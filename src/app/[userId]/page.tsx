@@ -62,7 +62,7 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
   return (
     <section
       className={` mx-[-20px] mt-[-32px] flex h-dvh justify-center ${
-        mattObj[mattType || 'default']
+        tteokGukId ? mattObj[mattType || 'default'] : mattObj['blueDew']
       } bg-cover bg-center px-20 `}
     >
       <div className={` w-full `}>
