@@ -101,7 +101,7 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
                 userId={userId}
               />
             )}
-            {userId === 'host' ? (
+            {userId === 'host' && tteokGukId ? (
               <div className="absolute bottom-[-52px] right-[-18px]">
                 <Link href={'/change-matt	'}>
                   <MattEdit mattType={mattType || 'default'} />
@@ -111,11 +111,13 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
               ''
             )}
           </div>
-          <PaginationEntire
-            pageSize={garnish?.pageSize}
-            pageParam={userId}
-            currentNum={Number(page)}
-          />
+          {tteokGukId && (
+            <PaginationEntire
+              pageSize={garnish?.pageSize}
+              pageParam={userId}
+              currentNum={Number(page)}
+            />
+          )}
           <ShareButton tteokGukId={tteokGukId} nickname={guestTG?.nickname} />
         </div>
       </div>
