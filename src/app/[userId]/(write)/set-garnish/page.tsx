@@ -77,6 +77,7 @@ export default function SetGarnishPage() {
               <Image
                 src={findRouletteGarnish.src}
                 alt={`${findRouletteGarnish.alt} 고명 일러스트`}
+                className="object-contain"
               />
             )
           )}
