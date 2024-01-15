@@ -7,7 +7,7 @@ import { OptionGarnishes } from '../../data/garnishRoulette'
 import Image from 'next/image'
 import { Button } from './ui/button'
 import { iconLocation } from '../../public/images/icons'
-import { rouletteBoard } from '../../public/images/favicon'
+import { rouletteBoard } from '../../public/images/etc'
 
 export default function Roulette() {
   const [rouletteResult, setRouletteResult] = useRecoilState(rouletteResultState) // 룰렛 결과값
