@@ -61,7 +61,8 @@ export default function WritePage() {
   const onSubmit = useMutation({
     mutationFn: (garnishData: RequestParamType) => postGarnish(garnishData),
     onSuccess: (res) => {
-      if (res.code === 200) router.push(`/${hostId}/snap-shot?nickname=${hostNickname}`)
+      if (res.code === 200)
+        router.push(`/${hostId}/snap-shot?garnish=${params.get('garnish') || ''}`)
     },
     onError: (err) => console.log('err', err), // todo 에러핸들링 추가
   })
