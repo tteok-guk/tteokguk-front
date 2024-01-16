@@ -7,43 +7,46 @@ import { AllMatt } from '../../../../data/change-matt'
 import { useState } from 'react'
 import { putMatt } from '@/services/changeMatt'
 import { useMutation } from '@tanstack/react-query'
-import { MattParamsType } from '@/types/changeMattType'
 import { RequestParamType } from '@/types/apiTypes'
+import { useRouter } from 'next/navigation'
+import { useToast } from '@/hooks/use-toast'
 
 export default function ChangeMattPage() {
   const [chosenMatt, setChosenMatt] = useState('')
   const setMatt = (clickedValue: string) => setChosenMatt(clickedValue)
+  const router = useRouter()
+  // const { toast } = useToast()
 
   const onChangeMatt = useMutation({
     mutationFn: (chosenMatt: RequestParamType) => putMatt(chosenMatt),
     onSuccess: (res) => {
-      console.log('Success', res)
+      // toast({ description: '매트가 변경되었습니다.' })
+      router.push(`/${res.data.tteokGukId}?page=1`)
     },
     onError: (err) => console.log('err', err),
   })
+
+  const completeBtn = () => {
+    onChangeMatt.mutate({ mattType: chosenMatt })
+  }
   return (
     <>
-      <div className="mx-[-20px] mt-[-32px]">
-        <div className="bg h-364 bg-[url(/images/matts/purpleCheck.png)] bg-cover bg-no-repeat">
+      <div className="h-dvh">
+        <div className="mx-[-20px] mt-[-32px] h-[55%] bg-[url(/images/matts/purpleCheck.png)] bg-cover bg-no-repeat px-20 pt-32">
           <TopButton />
-          <p className="font-xl pl-20">
+          <p className="font-xl">
             변경할 테이블 매트를 <br /> 선택해 주세요
           </p>
-          <Image
-            width={184}
-            height={184}
-            src={basicDish}
-            alt="dish image"
-            className="m-auto mt-20"
-          />
+          <div className="absolute left-1/2 h-350 w-350 -translate-x-1/2 p-65">
+            <Image src={basicDish} alt="dish image" className="" />
+          </div>
         </div>
-        {/* 메트이미지 클릭시 border 선택표시 활성화 */}
-        <div className="grid grid-cols-4 grid-rows-2 gap-x-12">
+        <div className="grid basis-1/4 grid-cols-4 grid-rows-2 gap-12">
           {AllMatt.map((matt, idx) => (
             <button key={idx} onClick={() => setMatt(matt.id)}>
               <Image
-                width={75}
-                height={75}
+                width={95}
+                height={95}
                 src={matt.src}
                 alt={matt.alt}
                 className={`m-auto mt-20 ${
@@ -53,7 +56,7 @@ export default function ChangeMattPage() {
             </button>
           ))}
         </div>
-        <BottomButton fullBtnName="완료" fullBtnClick={onChangeMatt} />
+        <BottomButton fullBtnName="완료" fullBtnClick={completeBtn} />
       </div>
     </>
   )
