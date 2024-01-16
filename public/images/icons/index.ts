@@ -6,6 +6,7 @@ import iconClose from './iconClose.png'
 import iconCloseCircle from './iconCloseCircle.png'
 import iconDday from './iconDday.png'
 import iconError from './iconError.png'
+import iconLocation from './iconLocation.png'
 import iconMypage from './iconMypage.png'
 
 export {
@@ -17,5 +18,6 @@ export {
   iconCloseCircle,
   iconDday,
   iconError,
+  iconLocation,
   iconMypage,
 }
