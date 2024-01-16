@@ -10,6 +10,7 @@ import { useMutation } from '@tanstack/react-query'
 import { RequestParamType } from '@/types/apiTypes'
 import { useRouter } from 'next/navigation'
 import { useToast } from '@/hooks/use-toast'
+import { sampleDish } from '../../../../public/images/dishes'
 
 export default function ChangeMattPage() {
   const [chosenMatt, setChosenMatt] = useState('')
@@ -38,7 +39,7 @@ export default function ChangeMattPage() {
             변경할 테이블 매트를 <br /> 선택해 주세요
           </p>
           <div className="absolute left-1/2 h-350 w-350 -translate-x-1/2 p-65">
-            <Image src={basicDish} alt="dish image" className="" />
+            <Image src={sampleDish} alt="dish image" className="" />
           </div>
         </div>
         <div className="grid basis-1/4 grid-cols-4 grid-rows-2 gap-12">
