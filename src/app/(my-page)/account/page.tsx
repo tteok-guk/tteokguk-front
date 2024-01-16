@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import { TopButton } from '@/components/common'
 import Partition from '@/components/common/Partition'
 import Link from 'next/link'
@@ -12,6 +12,7 @@ import { getMyPage } from '@/services/accout'
 //todo 4. 슬라이드 기능
 
 function MyPage() {
+  const [modifyBtn, setModifyBtn] = useState(false)
   //? React Query v5에서 query 함수 호출 시 새로운 형식을 사용해야된다
   //? query 함수 호출시 Object형태만 허용된다. exuseQuery({queryKey: ['myPageInfo'],queryFn: getMyPage,})
   //? "queryKey" 속성은 쿼리의 고유 키를 나타내며 queryKey는 타입이 필요한데 "배열" 혹은 "함수"의 형태를 갖는다
@@ -23,15 +24,52 @@ function MyPage() {
   })
 
   console.log(data?.data.public)
+
+  const [onChangeInputValue, setOnChangeInputValue] = useState<string>('')
+  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const inputValue = e.target.value
+
+    if (inputValue.length <= 8) {
+      setOnChangeInputValue(inputValue)
+    }
+  }
+  console.log('onChangeInputValue', onChangeInputValue)
   return (
     <>
       <TopButton />
       <span className="text-xs text-gr-400">닉네임</span>
       <div className="flex items-center justify-between">
-        <p className="font-xl">{data?.data.nickname}</p>
-        <button className="h-24 w-64 rounded-full border-1 border-gray-400 text-xs">
-          수정하기
-        </button>
+        {!modifyBtn ? (
+          <p className="font-xl">{data?.data.nickname}</p>
+        ) : (
+          <input
+            className="font-xl h-32 bg-transparent outline-none"
+            type="text"
+            value={onChangeInputValue}
+            onChange={(e) => {
+              onChangeHandler(e)
+            }}
+          ></input>
+        )}
+        {!modifyBtn ? (
+          <button
+            className="h-24 w-64 rounded-full border-1 border-gray-400 text-xs"
+            onClick={() => {
+              setModifyBtn(!modifyBtn)
+            }}
+          >
+            수정하기
+          </button>
+        ) : (
+          <button
+            className="h-24 w-64 rounded-full border-1 border-pr-500 text-xs text-pr-500"
+            onClick={() => {
+              setModifyBtn(!modifyBtn)
+            }}
+          >
+            수정완료
+          </button>
+        )}
       </div>
       <Partition />
       <span className="text-xs text-gr-400">편지 개수 및 내용</span>
@@ -46,7 +84,7 @@ function MyPage() {
       <div className="">
         {/* 로그아웃은 button 회원탈퇴는 Link로 변경 */}
         <p className="font-base mb-16">로그아웃</p>
-        <Link href={'/'} className="font-base">
+        <Link href={'/withdrawal'} className="font-base">
           회원탈퇴
         </Link>
       </div>
