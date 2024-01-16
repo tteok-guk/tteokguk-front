@@ -62,8 +62,8 @@ export default function Roulette() {
         src={rouletteBoard}
         height={270}
         width={270}
-        className="mt-20"
-        alt=""
+        className="mt-18"
+        alt="룰렛 원판 이미지"
         priority
       />
       <Button
