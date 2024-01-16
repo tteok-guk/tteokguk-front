@@ -1,19 +1,21 @@
 'use client'
 
 import { toast } from '@/hooks/use-toast'
-import { usePathname } from 'next/navigation'
-import { BottomButton } from './common'
 import { BtnType } from '@/types/MainPageTypes'
+import { redirect, usePathname } from 'next/navigation'
+import { BottomButton } from './common'
 
 const ShareButton = ({ btnType, tteokGukId, nickname }: BtnType) => {
   const handleCopyClipBoard = async (text: string) => {
-    try {
-      await navigator.clipboard.writeText(text)
-      toast({ description: 'URL 복사가 완료되었습니다.' })
+    if (tteokGukId) {
+      try {
+        await navigator.clipboard.writeText(text)
+        toast({ description: 'URL 복사가 완료되었습니다.' })
 
-      // alert('복사 성공!')
-    } catch (error) {
-      alert('복사 실패!')
+        // alert('복사 성공!')
+      } catch (error) {
+        alert('복사 실패!')
+      }
     }
   }
   const pathname = usePathname()
@@ -23,7 +25,8 @@ const ShareButton = ({ btnType, tteokGukId, nickname }: BtnType) => {
       {pathname === '/host' && (
         <BottomButton
           bgColor="bg-transperant"
-          fullBtnName="내떡국 공유하기"
+          fullBtnName={tteokGukId ? '내떡국 공유하기' : '내떡국 만들기'}
+          fullBtnHref={!tteokGukId ? '/make-dish' : ''}
           fullBtnClick={() =>
             handleCopyClipBoard(`https://develop-tteokguk.vercel.app/${tteokGukId}?page=1`)
           }
