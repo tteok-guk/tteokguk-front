@@ -10,6 +10,10 @@ import minipinkDew from './miniPinkDew.png'
 import minipinkGradation from './miniPinkGradation.png'
 import miniPurpleCheck from './miniPurpleCheck.png'
 import miniYellowCheck from './miniYellowCheck.png'
+import blueColCheck from './blueColCheck.png'
+import bubblePattern from './bubblePattern.png'
+import miniBlueColCheck from './miniBlueColCheck.png'
+import miniBubblePattern from './miniBubblePattern.png'
 
 export {
   blueDew,
@@ -24,4 +28,8 @@ export {
   minipinkGradation,
   miniPurpleCheck,
   miniYellowCheck,
+  blueColCheck,
+  bubblePattern,
+  miniBlueColCheck,
+  miniBubblePattern,
 }
