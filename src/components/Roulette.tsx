@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useRef } from 'react'
-import { useRecoilState } from 'recoil'
+import { useSetRecoilState } from 'recoil'
 import { rouletteResultState } from '@/store/WriteAtom'
 import { OptionGarnishes } from '../../data/garnishRoulette'
 import { getRandomGarnish } from '@/utils/getRandomGarnish'
@@ -12,7 +12,7 @@ import { iconLocation } from '../../public/images/icons'
 import { rouletteBoard } from '../../public/images/etc'
 
 export default function Roulette() {
-  const [rouletteResult, setRouletteResult] = useRecoilState(rouletteResultState) // 룰렛 결과값
+  const setRouletteResult = useSetRecoilState(rouletteResultState) // 룰렛 결과값
   const [disabled, setDisabled] = useState(false)
 
   const imageRef = useRef<HTMLImageElement>(null)
