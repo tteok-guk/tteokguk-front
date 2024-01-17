@@ -78,15 +78,6 @@ export default function SaveAsImageHandler() {
 
           <div className=" flex-center  relative mt-40 ">
             <SaveImage type="basic" />
-            <div className=" absolute block w-1/4 ">
-              <Image
-                src={'/images/garnishes/dumpling.png'}
-                width={71}
-                height={57}
-                layout="responsive"
-                alt="garnishes"
-              />
-            </div>
           </div>
 
           <BottomButton
