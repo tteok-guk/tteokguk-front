@@ -47,9 +47,9 @@ export default function SaveAsImageHandler() {
       } catch (error) {
         console.error('Error converting div to image:', error)
       } finally {
-        setTimeout(() => {
-          setScreenshot(false)
-        }, 3000)
+        // setTimeout(() => {
+        //   setScreenshot(false)
+        // }, 3000)
       }
     }, 0)
   }
@@ -60,7 +60,7 @@ export default function SaveAsImageHandler() {
   return (
     <>
       {basic && (
-        <div className="mx-[-20px] mt-[-32px] h-dvh bg-[url(/images/avatar/savePhoto.png)] bg-cover bg-center p-20">
+        <div className=" relative mx-[-20px] mt-[-32px] h-dvh bg-[url(/images/avatar/savePhoto.png)] bg-cover bg-center p-20">
           <div className="flex flex-row-reverse">
             <Link href={'/host'}>
               <Image src={iconClose} width={24} height={24} alt="iconClose" className=" m-12 " />
@@ -74,9 +74,15 @@ export default function SaveAsImageHandler() {
             <Image src={iconError} alt="iconError" width={18} height={18} className="py-2" />
             <p>현재 페이지는 벗어나면 다시 돌아올 수 없어요!</p>
           </div>
+          <div className=" absolute left-[41%] top-[59.50%] ">
+            <div className="relative h-57 w-71 lg:h-90 lg:w-120">
+              <Image src={'/images/garnishes/dumpling.png'} layout="fill" alt="garnishes" />
+            </div>
+          </div>
           <div className="relative">
             <SaveImage />
           </div>
+
           <BottomButton
             bgColor="bg-transperant"
             fullBtnName="사진 공유"
