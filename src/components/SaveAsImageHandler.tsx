@@ -80,7 +80,7 @@ export default function SaveAsImageHandler() {
             </div>
           </div>
           <div className="relative">
-            <SaveImage />
+            <SaveImage type="basic" />
           </div>
 
           <BottomButton
@@ -96,7 +96,12 @@ export default function SaveAsImageHandler() {
             ref={divRef}
             className="relative flex h-dvh bg-[url(/images/avatar/photo.png)] bg-cover bg-center p-20"
           >
-            <SaveImage type="snap-shot" />
+            <div className=" absolute left-[41%] top-[52.50%] ">
+              <div className="relative h-57 w-71 lg:h-90 lg:w-120">
+                <Image src={'/images/garnishes/dumpling.png'} layout="fill" alt="garnishes" />
+              </div>
+            </div>
+            <SaveImage type="snapShot" />
           </div>
           <Image
             src={iconClose}
