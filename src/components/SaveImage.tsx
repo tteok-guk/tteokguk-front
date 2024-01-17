@@ -1,17 +1,23 @@
 import Image from 'next/image'
 import React from 'react'
+import { isMobileDevice } from '@/utils/isMobileDevice'
+import { MattType } from '@/types/mattType'
 
 const SaveImage = ({ type }: snapShotType) => {
+  console.log(type)
+  const isMobile = isMobileDevice()
+
   const tempData = {
     hostAvatar: 'rabbit',
     visitorAvatar: 'dragon',
   }
-
+  const location: MattType = {
+    basic: isMobile ? 'left-[0px] top-[203px]' : 'left-[0px] top-[262px]',
+    snapShot: isMobile ? 'left-[0px] top-[310px]' : 'left-[0px] top-[350px]',
+  }
   return (
     <div
-      className={`flex-center absolute ${
-        type === 'snap-shot' ? 'left-[0px] top-[350px]' : 'left-[0px] top-[262px]'
-      } flex  w-full flex-row gap-27 lg:gap-70 `}
+      className={`flex-center absolute ${location[type]} flex  w-full flex-row gap-27 lg:gap-70 `}
     >
       {/* <div
         className={` absolute ${
@@ -44,5 +50,5 @@ const SaveImage = ({ type }: snapShotType) => {
 export default SaveImage
 
 export interface snapShotType {
-  type?: string
+  type: string
 }
