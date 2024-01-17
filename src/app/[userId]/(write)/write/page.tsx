@@ -8,17 +8,15 @@ import { checkWriteQuery } from '@/utils/checkWriteQuery'
 import { useGarnishInput } from '@/hooks/useGarnishInput'
 import { useMutation } from '@tanstack/react-query'
 import { postGarnish } from '@/services/write'
-import { useRecoilState } from 'recoil'
-import { ToastState } from '@/store/ToastAtom'
 import { RequestParamType } from '@/types/apiTypes'
-import { BottomButton, TopButton, Modal } from '@/components/common'
+import { BottomButton, TopButton } from '@/components/common'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { dragonSmall, dogSmall, rabbitSmall } from '../../../../../public/images/avatar/small'
+import { toast } from '@/hooks/use-toast'
 
 export default function WritePage() {
-  const [isToast, setIsToast] = useRecoilState(ToastState)
   const [disabled, setDisabled] = useState(true)
   const [data, onChange] = useGarnishInput({
     writerNickname: '',
@@ -51,8 +49,8 @@ export default function WritePage() {
     })
     if (!isQueryValid) {
       setDisabled(true)
-      // todo 페이지 넘어가기 전에 toast 활성화하고 넘어가는지 확인
-      setIsToast({ open: true, msg: msg })
+      // todo 페이지 넘어가면서 toast 확실하게 뜨는지 테스트 진행
+      toast({ description: msg })
       router.push(`/${hostId}?page=1`)
     }
     return isQueryValid
@@ -104,7 +102,7 @@ export default function WritePage() {
   }, [data])
 
   return (
-    <div className="">
+    <>
       <TopButton onClick={backBtnClick} />
       <form>
         <h1 className="font-xl pt-12">
@@ -155,7 +153,6 @@ export default function WritePage() {
       ) : (
         <BottomButton fullBtnName="완료" fullBtnClick={doneBtnClick} fullBtnDisabled={disabled} />
       )}
-      {isToast.open && <Modal type="toast" />}
-    </div>
+    </>
   )
 }
