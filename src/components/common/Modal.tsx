@@ -2,23 +2,26 @@
 
 import { createPortal } from 'react-dom'
 import { useEffect, useState } from 'react'
-import { ModalProps, ModalType } from '@/types/CommonTypes'
-import { ConfirmModal, RouletteModal } from '../modal'
+import { ModalProps, ModalComponentType } from '@/types/CommonTypes'
+import { ConfirmModal, RouletteModal, ToastModal } from '../modal'
 
 export default function Modal({ type, cancelClick, confirmClick }: ModalProps) {
   const [mounted, setMounted] = useState(false)
 
-  const componentType: ModalType = {
+  const componentType: ModalComponentType = {
     confirm: <ConfirmModal cancelClick={cancelClick} confirmClick={confirmClick} />,
     roulette: <RouletteModal cancelClick={cancelClick} />,
+    toast: <ToastModal />,
   }
   const componentToRender = componentType[type]
-  const modalRoot = document.getElementById('modal-root') as HTMLElement
 
   useEffect(() => {
     setMounted(true)
     return () => setMounted(false)
   }, [])
 
-  return mounted ? createPortal(componentToRender, modalRoot) : <></>
+  if (!mounted) return null
+
+  const modalRoot = document.getElementById('modal-root') as HTMLElement
+  return createPortal(componentToRender, modalRoot)
 }

@@ -6,28 +6,29 @@ import Image from 'next/image'
 import { isMobileDevice } from '@/utils/isMobileDevice'
 import { checkWriteQuery } from '@/utils/checkWriteQuery'
 import { useGarnishInput } from '@/hooks/useGarnishInput'
-import { useToast } from '@/hooks/use-toast'
 import { useMutation } from '@tanstack/react-query'
 import { postGarnish } from '@/services/write'
+import { useRecoilState } from 'recoil'
+import { ToastState } from '@/store/ToastAtom'
 import { RequestParamType } from '@/types/apiTypes'
-import { BottomButton, TopButton } from '@/components/common'
+import { BottomButton, TopButton, Modal } from '@/components/common'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { dragonSmall, dogSmall, rabbitSmall } from '../../../../../public/images/avatar/small'
 
 export default function WritePage() {
+  const [isToast, setIsToast] = useRecoilState(ToastState)
+  const [disabled, setDisabled] = useState(true)
   const [data, onChange] = useGarnishInput({
     writerNickname: '',
     content: '',
   })
-  const [disabled, setDisabled] = useState(true)
 
   const pathname = usePathname()
   const params = useSearchParams()
   const router = useRouter()
   const isMobile = isMobileDevice()
-  const { toast } = useToast()
 
   const hostId = pathname.split('/').filter((item) => item)[0]
   const hostNickname = params.get('nickname')
@@ -51,7 +52,7 @@ export default function WritePage() {
     if (!isQueryValid) {
       setDisabled(true)
       // todo 페이지 넘어가기 전에 toast 활성화하고 넘어가는지 확인
-      toast({ description: msg })
+      setIsToast({ open: true, msg: msg })
       router.push(`/${hostId}?page=1`)
     }
     return isQueryValid
@@ -154,6 +155,7 @@ export default function WritePage() {
       ) : (
         <BottomButton fullBtnName="완료" fullBtnClick={doneBtnClick} fullBtnDisabled={disabled} />
       )}
+      {isToast.open && <Modal type="toast" />}
     </div>
   )
 }

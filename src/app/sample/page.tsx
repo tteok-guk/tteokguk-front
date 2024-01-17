@@ -48,6 +48,9 @@ export default function SamplePage() {
         <Button href={`sample/button`} className="mr-20 border p-4 hover:bg-gray-100">
           버튼
         </Button>
+        <Button href={`sample/toast`} className="mr-20 border p-4 hover:bg-gray-100">
+          토스트
+        </Button>
         <Button href={`sample/etc`} className="border p-4 hover:bg-gray-100">
           폰트 외 기타
         </Button>
