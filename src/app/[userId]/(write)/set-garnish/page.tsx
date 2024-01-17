@@ -29,7 +29,6 @@ export default function SetGarnishPage() {
   // * 공통/동적 스타일 변수
   const btnCommonClass = 'aspect-square h-full w-full rounded-6 bg-pr-100 p-20'
   const fontResponsiveClass = 'font-soyo font-black font-lg md:font-xl lg:text-30'
-  // const btnCommonClass = 'aspect-square h-full w-full rounded-6 bg-pr-100'
 
   const setGarnish = (clickedValue: string) => setChosenGarnish(clickedValue)
   const setRouletteOpen = () => setIsRouletteOpen((prev) => !prev)
