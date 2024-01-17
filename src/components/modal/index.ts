@@ -1,4 +1,5 @@
 import ConfirmModal from './ConfirmModal'
 import RouletteModal from './RouletteModal'
+import ToastModal from './ToastModal'
 
-export { ConfirmModal, RouletteModal }
+export { ConfirmModal, RouletteModal, ToastModal }
