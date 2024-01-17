@@ -3,7 +3,7 @@
 import { createPortal } from 'react-dom'
 import { useEffect, useState } from 'react'
 import { ModalProps, ModalComponentType } from '@/types/CommonTypes'
-import { ConfirmModal, RouletteModal, ToastModal } from '../modal'
+import { ConfirmModal, RouletteModal } from '../modal'
 
 export default function Modal({ type, cancelClick, confirmClick }: ModalProps) {
   const [mounted, setMounted] = useState(false)
