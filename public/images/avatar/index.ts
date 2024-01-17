@@ -3,5 +3,6 @@
 import avatar1 from './avatar1.png'
 import cryingAvatars from './cryingAvatars.png'
 import defaultAvatar from './defaultAvatar.png'
+import speechBubble from './speechBubble.png'
 
-export { avatar1, cryingAvatars, defaultAvatar }
+export { avatar1, cryingAvatars, defaultAvatar, speechBubble }

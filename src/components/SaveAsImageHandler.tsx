@@ -9,6 +9,7 @@ import SaveImage from './SaveImage'
 import { iconClose, iconError } from '../../public/images/icons'
 import { toast } from '@/hooks/use-toast'
 import Link from 'next/link'
+import { speechBubble } from '../../public/images/avatar'
 
 export default function SaveAsImageHandler() {
   const divRef = useRef<HTMLDivElement>(null)
@@ -40,7 +41,7 @@ export default function SaveAsImageHandler() {
               setCapturedImage(imageURL)
               return
             } else {
-              toast({ description: '사진이 저장되었습니다.' })
+              toast({ description: '이미지 저장이 완료되었어요!' })
             }
           }
         })
@@ -60,7 +61,7 @@ export default function SaveAsImageHandler() {
   return (
     <>
       {basic && (
-        <div className=" relative mx-[-20px] mt-[-32px] h-dvh bg-[url(/images/avatar/savePhoto.png)] bg-cover bg-center p-20">
+        <div className=" relative mx-[-20px] mt-[-32px] h-dvh bg-[url(/images/avatar/photo.png)] bg-cover bg-center p-20">
           <div className="flex flex-row-reverse">
             <Link href={'/host'}>
               <Image src={iconClose} width={24} height={24} alt="iconClose" className=" m-12 " />
@@ -74,13 +75,18 @@ export default function SaveAsImageHandler() {
             <Image src={iconError} alt="iconError" width={18} height={18} className="py-2" />
             <p>현재 페이지는 벗어나면 다시 돌아올 수 없어요!</p>
           </div>
-          <div className=" absolute left-[41%] top-[59.50%] ">
-            <div className="relative h-57 w-71 lg:h-90 lg:w-120">
-              <Image src={'/images/garnishes/dumpling.png'} layout="fill" alt="garnishes" />
-            </div>
-          </div>
-          <div className="relative">
+
+          <div className=" flex-center  relative mt-40 ">
             <SaveImage type="basic" />
+            <div className=" absolute block w-1/4 ">
+              <Image
+                src={'/images/garnishes/dumpling.png'}
+                width={71}
+                height={57}
+                layout="responsive"
+                alt="garnishes"
+              />
+            </div>
           </div>
 
           <BottomButton
@@ -94,14 +100,16 @@ export default function SaveAsImageHandler() {
         <div className="mx-[-20px] mt-[-32px] ">
           <div
             ref={divRef}
-            className="relative flex h-dvh bg-[url(/images/avatar/photo.png)] bg-cover bg-center p-20"
+            className="relative h-dvh bg-[url(/images/avatar/savePhoto.png)] bg-cover bg-center p-20"
           >
-            <div className=" absolute left-[41%] top-[52.50%] ">
+            {/* <div className=" absolute left-[41%] top-[52.50%] ">
               <div className="relative h-57 w-71 lg:h-90 lg:w-120">
                 <Image src={'/images/garnishes/dumpling.png'} layout="fill" alt="garnishes" />
               </div>
+            </div> */}
+            <div className=" flex-center mt-152 ">
+              <SaveImage type="snapShot" />
             </div>
-            <SaveImage type="snapShot" />
           </div>
           <Image
             src={iconClose}
