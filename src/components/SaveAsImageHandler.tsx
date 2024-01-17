@@ -10,13 +10,18 @@ import { iconClose, iconError, iconSave } from '../../public/images/icons'
 import { toast } from '@/hooks/use-toast'
 import Link from 'next/link'
 import { captureInfo, speechBubble } from '../../public/images/avatar'
+import { useSearchParams } from 'next/navigation'
 
-export default function SaveAsImageHandler() {
+export interface Props {
+  userId: string
+}
+
+export default function SaveAsImageHandler({ userId }: Props) {
   const divRef = useRef<HTMLDivElement>(null)
   const [capturedImage, setCapturedImage] = useState('')
   const [screenshot, setScreenshot] = useState(false)
   const [isKakao, setIsKakao] = useState(false)
-  // const [isMobileOpen, setIsMobileOpen] = useState(false)
+  const params = useSearchParams()
 
   const handleDownload = async () => {
     setScreenshot(true)
@@ -63,7 +68,7 @@ export default function SaveAsImageHandler() {
       {basic && (
         <div className=" relative mx-[-20px] mt-[-32px] h-dvh bg-[url(/images/avatar/photo.png)] bg-cover bg-center p-20">
           <div className="flex flex-row-reverse">
-            <Link href={'/host'}>
+            <Link href={`/${userId}?page=1`}>
               <Image src={iconClose} width={24} height={24} alt="iconClose" className=" m-12 " />
             </Link>
           </div>
@@ -109,7 +114,7 @@ export default function SaveAsImageHandler() {
         </div>
       )}
       {isKakao && capturedImage && (
-        <div className="relative mx-[-20px] mt-[-32px] h-full">
+        <div className="relative mx-[-20px] mt-[-32px] h-dvh">
           <Image src={capturedImage} alt="snap-shot" layout="fill" className=" cursor-pointer" />
           <Image
             src={iconClose}
