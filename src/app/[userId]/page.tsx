@@ -10,7 +10,7 @@ import { redirect } from 'next/navigation'
 import { iconDday, iconMypage } from '../../../public/images/icons'
 import { dishesObj, mattObj } from './_object/object'
 
-interface Props {
+export interface Props {
   params: {
     userId: string
   }
