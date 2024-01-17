@@ -23,7 +23,7 @@ export interface BottomButtonProps {
   bgColor?: string
 }
 
-type ModalType = 'roulette' | 'confirm' | 'toast'
+type ModalType = 'roulette' | 'confirm'
 
 export interface ModalProps {
   type: ModalType

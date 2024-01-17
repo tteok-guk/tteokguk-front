@@ -6,10 +6,10 @@ import Image from 'next/image'
 import { RouletteModalProps } from '@/types/WriteTypes'
 import { Button } from '../ui/button'
 import { iconClose } from '../../../public/images/icons'
-import { garnishes } from '../../../data/garnishes'
 import Roulette from '../Roulette'
 
 export default function RouletteModal({ cancelClick }: RouletteModalProps) {
+  // todo getRecoilValue, setRecoilState로 수정
   const [chosenGarnish, setChosenGarnish] = useRecoilState(chosenGarnishState) // 사용자가 최종 선택한 고명값
   const [rouletteResult, setRouletteResult] = useRecoilState(rouletteResultState) // 룰렛 결과값
 

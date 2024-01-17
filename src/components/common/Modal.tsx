@@ -11,7 +11,6 @@ export default function Modal({ type, cancelClick, confirmClick }: ModalProps) {
   const componentType: ModalComponentType = {
     confirm: <ConfirmModal cancelClick={cancelClick} confirmClick={confirmClick} />,
     roulette: <RouletteModal cancelClick={cancelClick} />,
-    toast: <ToastModal />,
   }
   const componentToRender = componentType[type]
 
@@ -20,8 +19,7 @@ export default function Modal({ type, cancelClick, confirmClick }: ModalProps) {
     return () => setMounted(false)
   }, [])
 
-  if (!mounted) return null
-
-  const modalRoot = document.getElementById('modal-root') as HTMLElement
-  return createPortal(componentToRender, modalRoot)
+  return mounted
+    ? createPortal(componentToRender, document.getElementById('modal-root') as HTMLElement)
+    : null
 }
