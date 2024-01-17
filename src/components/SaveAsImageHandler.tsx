@@ -9,7 +9,7 @@ import SaveImage from './SaveImage'
 import { iconClose, iconError } from '../../public/images/icons'
 import { toast } from '@/hooks/use-toast'
 import Link from 'next/link'
-import { speechBubble } from '../../public/images/avatar'
+import { captureInfo, speechBubble } from '../../public/images/avatar'
 
 export default function SaveAsImageHandler() {
   const divRef = useRef<HTMLDivElement>(null)
@@ -48,9 +48,9 @@ export default function SaveAsImageHandler() {
       } catch (error) {
         console.error('Error converting div to image:', error)
       } finally {
-        // setTimeout(() => {
-        //   setScreenshot(false)
-        // }, 3000)
+        setTimeout(() => {
+          setScreenshot(false)
+        }, 3000)
       }
     }, 0)
   }
@@ -93,11 +93,6 @@ export default function SaveAsImageHandler() {
             ref={divRef}
             className="relative h-dvh bg-[url(/images/avatar/savePhoto.png)] bg-cover bg-center p-20"
           >
-            {/* <div className=" absolute left-[41%] top-[52.50%] ">
-              <div className="relative h-57 w-71 lg:h-90 lg:w-120">
-                <Image src={'/images/garnishes/dumpling.png'} layout="fill" alt="garnishes" />
-              </div>
-            </div> */}
             <div className=" flex-center mt-152 ">
               <SaveImage type="snapShot" />
             </div>
@@ -114,7 +109,7 @@ export default function SaveAsImageHandler() {
       )}
       {isKakao && capturedImage && (
         <div className="relative mx-[-20px] mt-[-32px] h-dvh">
-          <Image src={capturedImage} alt="snap-shot" layout="fill" />
+          <Image src={capturedImage} alt="snap-shot" layout="fill" className=" cursor-pointer" />
           <Image
             src={iconClose}
             width={24}
@@ -122,6 +117,13 @@ export default function SaveAsImageHandler() {
             alt="iconClose"
             className=" absolute right-20 top-20 m-12"
             onClick={() => setIsKakao(false)}
+          />
+          <Image
+            src={captureInfo}
+            alt="capturedImage"
+            width={310}
+            height={104}
+            className=" absolute bottom-[69px] left-[33px]"
           />
         </div>
       )}
