@@ -44,7 +44,7 @@ export default function SetGarnishPage() {
   }, [rouletteResult])
 
   useEffect(() => {
-    const [isNicknameValid, msg] = checkWriteQuery({ nickname: hostNickname })
+    const [isNicknameValid, msg] = checkWriteQuery({ nickname: hostNickname, garnishCheck: false })
     if (!isNicknameValid) {
       toast({ description: msg })
       router.push(`/${hostId}?page=1`)
@@ -121,6 +121,7 @@ export default function SetGarnishPage() {
           query: { nickname: hostNickname, garnish: chosenGarnish },
         }}
         fullBtnName="덕담 남기기"
+        fullBtnDisabled={!chosenGarnish}
       />
 
       {isRouletteOpen && <Modal type="roulette" cancelClick={setRouletteOpen} />}

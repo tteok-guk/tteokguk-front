@@ -10,5 +10,6 @@ export interface WriteGarnishProps {
 
 export interface WriteQueryProps {
   nickname?: string | null
+  garnishCheck: boolean
   garnish?: string | null
 }

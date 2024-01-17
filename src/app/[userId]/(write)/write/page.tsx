@@ -45,6 +45,7 @@ export default function WritePage() {
     const getChosenGarnish = params.get('garnish')
     const [isQueryValid, msg] = await checkWriteQuery({
       nickname: hostNickname,
+      garnishCheck: true,
       garnish: getChosenGarnish,
     })
     if (!isQueryValid) {
