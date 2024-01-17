@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 import Image from 'next/image'
 import { chosenGarnishState, rouletteResultState } from '@/store/WriteAtom'
@@ -13,9 +13,9 @@ import { BottomButton, TopButton, Modal } from '@/components/common'
 import { Button } from '@/components/ui/button'
 
 export default function SetGarnishPage() {
-  const [isRouletteOpen, setIsRouletteOpen] = useState(false)
   const [chosenGarnish, setChosenGarnish] = useRecoilState(chosenGarnishState)
-  const [rouletteResult, setRouletteResult] = useRecoilState(rouletteResultState)
+  const rouletteResult = useRecoilValue(rouletteResultState)
+  const [isRouletteOpen, setIsRouletteOpen] = useState(false)
   const [findRouletteGarnish, setFindRouletteGarnish] = useState<AllGarnishesType>()
 
   const pathname = usePathname()
