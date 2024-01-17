@@ -41,15 +41,14 @@ export default function WritePage() {
   ]
 
   // * URL 쿼리 고명, 닉네임 검증
-  const checkQueryValid = (): boolean => {
+  const checkQueryValid = async (): Promise<boolean> => {
     const getChosenGarnish = params.get('garnish')
-    const [isQueryValid, msg] = checkWriteQuery({
+    const [isQueryValid, msg] = await checkWriteQuery({
       nickname: hostNickname,
       garnish: getChosenGarnish,
     })
     if (!isQueryValid) {
       setDisabled(true)
-      // todo 페이지 넘어가면서 toast 확실하게 뜨는지 테스트 진행
       toast({ description: msg })
       router.push(`/${hostId}?page=1`)
     }
@@ -60,10 +59,25 @@ export default function WritePage() {
   const onSubmit = useMutation({
     mutationFn: (garnishData: RequestParamType) => postGarnish(garnishData),
     onSuccess: (res) => {
-      if (res.code === 200)
+      if (res.code === 200) {
         router.push(`/${hostId}/snap-shot?garnish=${params.get('garnish') || ''}`)
+        return
+      }
+
+      let msg = res.message
+      if (res.code === 400) {
+        msg = res.message.includes('garnishType')
+          ? '유효하지 않은 고명입니다. 고명을 다시 선택해주세요.'
+          : '존재하지 않는 떡국입니다. URL을 다시 확인해주세요.'
+      } else if (res.code === 500) {
+        msg = '존재하지 않는 ID입니다.'
+      }
+      toast({ description: msg })
     },
-    onError: (err) => console.log('err', err), // todo 에러핸들링 추가
+    onError: (err) => {
+      toast({ description: '네트워크 요청에 실패했습니다.' })
+      console.error('err', err)
+    },
   })
 
   // * 완료 버튼 클릭

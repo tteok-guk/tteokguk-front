@@ -28,6 +28,7 @@ export default function SetGarnishPage() {
 
   // * 공통/동적 스타일 변수
   const btnCommonClass = 'aspect-square h-full w-full rounded-6 bg-pr-100 p-20'
+  const fontResponsiveClass = 'font-soyo font-black font-lg md:font-xl lg:text-30'
 
   const setGarnish = (clickedValue: string) => setChosenGarnish(clickedValue)
   const setRouletteOpen = () => setIsRouletteOpen((prev) => !prev)
@@ -67,7 +68,12 @@ export default function SetGarnishPage() {
           onClick={toggleRouletteBtn}
         >
           {!rouletteResult ? (
-            <span className="font-lg lg:font-xl bg-gradient-to-r from-pr-500 to-[#9C38FF] bg-clip-text font-soyo font-black text-transparent">
+            <span
+              className={`
+                ${fontResponsiveClass}
+                bg-gradient-to-r from-pr-500 to-[#9C38FF] bg-clip-text text-transparent
+              `}
+            >
               랜덤
               <br />
               룰렛
@@ -76,6 +82,9 @@ export default function SetGarnishPage() {
             findRouletteGarnish && (
               <Image
                 src={findRouletteGarnish.src}
+                width={80}
+                height={80}
+                layout="responsive"
                 alt={`${findRouletteGarnish.alt} 고명 일러스트`}
                 className="object-contain"
               />
@@ -94,7 +103,13 @@ export default function SetGarnishPage() {
                 `}
                 onClick={() => setGarnish(garnish.id)}
               >
-                <Image src={garnish.src} alt={`${garnish.alt} 고명 일러스트`} />
+                <Image
+                  src={garnish.src}
+                  width={80}
+                  height={80}
+                  layout="responsive"
+                  alt={`${garnish.alt} 고명 일러스트`}
+                />
               </Button>
             ),
         )}
