@@ -1,13 +1,19 @@
 'use client'
 import Image from 'next/image'
 import { useToast } from '@/hooks/use-toast'
-import { useEffect, useState } from "react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { iconArrow, iconCloseCircle } from '../../../../public/images/icons';
+import { useEffect, useState } from 'react'
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
+import { iconArrow, iconCloseCircle } from '../../../../public/images/icons'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Label } from '@/components/ui/label'
 import { avatars } from '../_object/object'
+import { putJoinUser } from '@/services/join'
+import { useMutation } from '@tanstack/react-query'
+import { RequestParamType } from '@/types/apiTypes'
+import Cookies from 'js-cookie'
+import { useRouter } from 'next/navigation'
+
 
 // 상태 Enum
 const StepStatus = {
@@ -16,6 +22,7 @@ const StepStatus = {
 }
 export default function JoinPage() {
   const { toast } = useToast()
+  const router = useRouter()
 
   // input style
   const iptSt = 'w-full px-0 py-4 rounded-0 font-lg text-gr-900 border-t-0 border-x-0 border-b-1 bg-transparent placeholder:text-[#ADADAD] placeholder:font-lg caret-pr-500 focus:outline-none'
@@ -70,7 +77,9 @@ export default function JoinPage() {
   // 닉네임 상태변경 핸들러
   const userNameOnChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const typedValue = e.target.value
-    if (/^[^\s~`!@#$%\^&*()+=\[\]\\';,./{}|\\":<>\?_-]*$/.test(typedValue)) {
+    // if (/^[^\s~`!@#$%\^&*()+=\[\]\\';,./{}|\\":<>\?_-]*$/.test(typedValue)) {
+    // 정규식 변경 - 한글, 영문자, 숫자만 입력 가능
+    if (/^[a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ]*$/.test(typedValue)) {
       setIsValidName(true)
       setUserName(typedValue);
     } else {
@@ -112,9 +121,9 @@ export default function JoinPage() {
     )
   }
 
-  // 단계 이동 핸들러
-  const navBtnOnClickHandler = (curr: number, dire: string) => {
-    if (dire === 'prev') {
+  // 단계 이동, 회원가입 핸들러
+  const navBtnOnClickHandler = (curr: number, type: string) => {
+    if (type === 'prev') {
       // 이전으로
       if (curr !== 0) {
         setStep(prevStep => ({
@@ -137,10 +146,34 @@ export default function JoinPage() {
     }
   }
 
+  // 뮤테이션
+  const onSubmit = useMutation({
+    mutationFn: (userData: RequestParamType) => putJoinUser(userData),
+    onSuccess: (res) => {
+      console.log('res', res)
+      if (res.code === 200) {
+        const token = res.data.token?res.data.token:''
+        Cookies.set('token', token)
+        router.push(`/host?page=1`)
+      }else if (res.code === 400){
+        const token = res.data.token?res.data.token:''
+        Cookies.set('token', token)
+        router.push(`/host?page=1`)
+      }
+    },
+    onError: (err) => console.log('err', err), // todo 에러핸들링 추가
+  })
+
   // 완료 클릭 핸들러
   const joinCompliteOnClickHandler = () => {
     if(step.current === 2 && step.status.every((status)=> status === StepStatus.COMPLETE)){
-      // 회원가입 함수
+      // 회원가입 함수 - 저장
+      const userData = {
+        nickname : userName,
+        privacyConsent : true,
+        avatar : selectAvatar.name
+      }
+      onSubmit.mutate(userData)
     }else{
       // 토스트
       toast({ 
@@ -312,7 +345,7 @@ export default function JoinPage() {
             <Button
               size="full"
               className={isStepBtnActive ? `${activeBtnSt}` : `${disabledBtnSt}`}
-              onClick={() => { navBtnOnClickHandler(step.current, 'next') }}
+              onClick={() => { navBtnOnClickHandler(step.current, step.current === 2 ? 'fin' : 'next') }}
               disabled={step.current === 2 ?false:!isStepBtnActive}>
               {step.current === 2 ? '완료' : '다음'}
             </Button>
