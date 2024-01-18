@@ -7,7 +7,7 @@ import Partition from './Partition'
 
 export default function SideBar() {
   return (
-    <>
+    <div>
       <TopButton />
       <div className="mb-20 flex gap-8">
         {/* 로그인 안했을 때 */}
@@ -71,6 +71,6 @@ export default function SideBar() {
         </span>
         <span className="font-xs text-gr-400">개인정보 수집이용</span>
       </div>
-    </>
+    </div>
   )
 }
