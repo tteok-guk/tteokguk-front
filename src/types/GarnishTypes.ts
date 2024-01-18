@@ -30,8 +30,5 @@ export type AllGarnishesType = {
 
 export type OptionGarnishesType = {
   id: OptionGarnishId
-  name: string
-  src: `/images/garnishes/${OptionGarnishId}.png`
-  proportion: number
-  color: string
+  weight: number
 }

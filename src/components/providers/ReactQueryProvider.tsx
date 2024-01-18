@@ -1,4 +1,3 @@
-// 리액트쿼리 프로바이저
 'use client'
 
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
@@ -15,8 +14,9 @@ const ReactQueryProvider: FC<ProvidersProps> = ({ children }) => {
   return (
     <QueryClientProvider client={queryClient}>
       {children}
-      {/* //todo env 설정 후 production 환경에서만 devtools 실행되도록 연산자 설정 */}
-      <ReactQueryDevtools initialIsOpen={false} />
+      {['local', 'develop'].includes(`${process.env.NEXT_PUBLIC_RUN_MODE}`) && (
+        <ReactQueryDevtools initialIsOpen={false} />
+      )}
     </QueryClientProvider>
   )
 }
