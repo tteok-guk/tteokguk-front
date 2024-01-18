@@ -26,4 +26,5 @@ export const dishesObj: MattType = {
   basicDish: 'bg-[url(/images/dishes/basicDish.png)]',
   emptyDish: 'bg-[url(/images/dishes/emptyDish.png)]',
   firstDish: 'bg-[url(/images/dishes/firstDish.png)]',
+  makeDish: 'bg-[url(/images/dishes/makeDish.png)]',
 }
