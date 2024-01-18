@@ -1,17 +1,16 @@
 'use client'
 
-import { useRecoilState } from 'recoil'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { chosenGarnishState, rouletteResultState } from '@/store/WriteAtom'
 import Image from 'next/image'
 import { RouletteModalProps } from '@/types/WriteTypes'
 import { Button } from '../ui/button'
 import { iconClose } from '../../../public/images/icons'
-import { garnishes } from '../../../data/garnishes'
 import Roulette from '../Roulette'
 
 export default function RouletteModal({ cancelClick }: RouletteModalProps) {
-  const [chosenGarnish, setChosenGarnish] = useRecoilState(chosenGarnishState) // 사용자가 최종 선택한 고명값
-  const [rouletteResult, setRouletteResult] = useRecoilState(rouletteResultState) // 룰렛 결과값
+  const setChosenGarnish = useSetRecoilState(chosenGarnishState) // 사용자가 최종 선택한 고명값
+  const rouletteResult = useRecoilValue(rouletteResultState) // 룰렛 결과값
 
   const doneRoulette = () => {
     setChosenGarnish(rouletteResult)

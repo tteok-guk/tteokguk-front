@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { Button } from '../ui/button'
 import { BottomButtonProps } from '@/types/CommonTypes'
 
@@ -13,6 +14,7 @@ export default function BottomButton({
   fullBtnHref,
   smallBtnDisabled,
   fullBtnDisabled,
+  icon,
   bgColor = 'bg-bg',
 }: BottomButtonProps) {
   const disabledClass = 'bg-gr-100 text-gr-400 border-0 hover:bg-bg-gr-100 active:bg-gr-200'
@@ -59,6 +61,7 @@ export default function BottomButton({
             disabled={fullBtnDisabled}
             className={`${fullHoverClass} ${fullBtnDisabled && disabledClass}`}
           >
+            {icon && <Image src={icon} alt="아이콘" width={24} height={24} className="mr-6" />}
             {fullBtnName}
           </Button>
         )}

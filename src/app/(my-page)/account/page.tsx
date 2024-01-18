@@ -1,22 +1,29 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { TopButton } from '@/components/common'
 import Partition from '@/components/common/Partition'
 import Link from 'next/link'
-import { useQuery } from '@tanstack/react-query'
+import { QueryKey, useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { getMyPage } from '@/services/accout'
+import { RequestParamType } from '@/types/apiTypes'
+import { putNickname } from '@/services/modifyNickname'
 
-//todo 1. 수정하기기능
 //todo 2. 회원탈퇴기능
 //todo 3. 로그아웃 팝업 및 로그아웃 기능
 //todo 4. 슬라이드 기능
 
+//? React Query v5에서 query 함수 호출 시 새로운 형식을 사용해야된다
+//? query 함수 호출시 Object형태만 허용된다. exuseQuery({queryKey: ['myPageInfo'],queryFn: getMyPage,})
+//? "queryKey" 속성은 쿼리의 고유 키를 나타내며 queryKey는 타입이 필요한데 "배열" 혹은 "함수"의 형태를 갖는다
+//? "queryFn" 실제 쿼리 함수를 나타낸다.
+
 function MyPage() {
+  const queryClient = useQueryClient()
   const [modifyBtn, setModifyBtn] = useState(false)
-  //? React Query v5에서 query 함수 호출 시 새로운 형식을 사용해야된다
-  //? query 함수 호출시 Object형태만 허용된다. exuseQuery({queryKey: ['myPageInfo'],queryFn: getMyPage,})
-  //? "queryKey" 속성은 쿼리의 고유 키를 나타내며 queryKey는 타입이 필요한데 "배열" 혹은 "함수"의 형태를 갖는다
-  //? "queryFn" 실제 쿼리 함수를 나타낸다.
+  const inputFocus = useRef<any>(null)
+  useEffect(() => {
+    inputFocus.current?.focus()
+  }, [modifyBtn])
 
   const { isLoading, error, data } = useQuery({
     queryKey: ['myPageInfo'],
@@ -34,6 +41,19 @@ function MyPage() {
     }
   }
   console.log('onChangeInputValue', onChangeInputValue)
+
+  const onChangeNickname = useMutation({
+    mutationFn: (onChangeInputValue: RequestParamType) => putNickname(onChangeInputValue),
+    onSuccess: (res) => {
+      queryClient.invalidateQueries({ queryKey: ['myPageInfo'] })
+      console.log('res', res)
+    },
+    onError: (err) => console.log('err', err),
+  })
+
+  const completeBtn = () => {
+    onChangeNickname.mutate({ nickname: onChangeInputValue })
+  }
   return (
     <>
       <TopButton />
@@ -49,6 +69,7 @@ function MyPage() {
             onChange={(e) => {
               onChangeHandler(e)
             }}
+            ref={inputFocus}
           ></input>
         )}
         {!modifyBtn ? (
@@ -64,6 +85,7 @@ function MyPage() {
           <button
             className="h-24 w-64 rounded-full border-1 border-pr-500 text-xs text-pr-500"
             onClick={() => {
+              completeBtn()
               setModifyBtn(!modifyBtn)
             }}
           >

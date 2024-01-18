@@ -9,6 +9,7 @@ import Link from 'next/link'
 import { redirect } from 'next/navigation'
 import { iconDday, iconMypage } from '../../../public/images/icons'
 import { dishesObj, mattObj } from './_object/object'
+import SideBar from '@/components/common/SideBar'
 
 interface Props {
   params: {
@@ -60,67 +61,69 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
     }
   }
   return (
-    <section
-      className={` mx-[-20px] mt-[-32px] flex h-dvh justify-center ${
-        tteokGukId ? mattObj[mattType || 'default'] : mattObj['blueDew']
-      } bg-cover bg-center px-20 `}
-    >
-      <div className={` w-full `}>
-        <div className="flex flex-row items-center justify-between pb-36 pt-32 ">
-          <h1 className="font-xl">{`${nickname}님의 떡국`}</h1>
-          <Link href={'/account'}>
-            <Image
-              src={iconMypage}
-              width={28}
-              height={28}
-              alt="myPageButton"
-              className="pb-1 pt-2"
-            />
-          </Link>
-        </div>
-        <div className="flex flex-col items-center">
-          <div className="font-sm flex-center mb-8 flex flex-row gap-1.5 rounded-2xl bg-pr-100 px-15 py-3">
-            <Image width={12} height={11} src={iconDday} alt="D-day icon" />
-            <p className="font-base text-pr-800">{`까치까치 설날 D${dDay}`}</p>
+    <div className="relative">
+      <section
+        className={` mx-[-20px] mt-[-32px] flex h-dvh justify-center ${
+          tteokGukId ? mattObj[mattType || 'default'] : mattObj['blueDew']
+        } bg-cover bg-center px-20 `}
+      >
+        <div className={` w-full `}>
+          <div className="flex flex-row items-center justify-between pb-36 pt-32 ">
+            <h1 className="font-xl">{`${nickname}님의 떡국`}</h1>
+            <Link href={'/account'}>
+              <Image
+                src={iconMypage}
+                width={28}
+                height={28}
+                alt="myPageButton"
+                className="pb-1 pt-2"
+              />
+            </Link>
           </div>
-          {hostTG?.tteokGukId || guestTG ? (
-            <p className="mb-5">{`${garnish?.garnishCnt}개의 덕담을 받았어요!`}</p>
-          ) : (
-            <></>
-          )}
-          <div
-            className={`relative mb-31 mt-19 h-300 w-300 lg:h-400 lg:w-400  ${
-              dishesObj[determineDishType(garnish?.garnishes, userId)]
-            } bg-cover bg-center`}
-          >
-            {garnishes && (
-              <Garnish
-                garnishInfo={garnish?.garnishes}
-                Public={guestTG?.public}
-                dDay={guestTG?.dday}
-                userId={userId}
+          <div className="flex flex-col items-center">
+            <div className="font-sm flex-center mb-8 flex flex-row gap-1.5 rounded-2xl bg-pr-100 px-15 py-3">
+              <Image width={12} height={11} src={iconDday} alt="D-day icon" />
+              <p className="font-base text-pr-800">{`까치까치 설날 D${dDay}`}</p>
+            </div>
+            {hostTG?.tteokGukId || guestTG ? (
+              <p className="mb-5">{`${garnish?.garnishCnt}개의 덕담을 받았어요!`}</p>
+            ) : (
+              <></>
+            )}
+            <div
+              className={`relative mb-31 mt-19 h-300 w-300 lg:h-400 lg:w-400  ${
+                dishesObj[determineDishType(garnish?.garnishes, userId)]
+              } bg-cover bg-center`}
+            >
+              {garnishes && (
+                <Garnish
+                  garnishInfo={garnish?.garnishes}
+                  Public={guestTG?.public}
+                  dDay={guestTG?.dday}
+                  userId={userId}
+                />
+              )}
+              {userId === 'host' && tteokGukId ? (
+                <div className="absolute bottom-[-52px] right-[-18px]">
+                  <Link href={'/change-matt	'}>
+                    <MattEdit mattType={mattType || 'default'} />
+                  </Link>
+                </div>
+              ) : (
+                ''
+              )}
+            </div>
+            {tteokGukId && (
+              <PaginationEntire
+                pageSize={garnish?.pageSize}
+                pageParam={userId}
+                currentNum={Number(page)}
               />
             )}
-            {userId === 'host' && tteokGukId ? (
-              <div className="absolute bottom-[-52px] right-[-18px]">
-                <Link href={'/change-matt	'}>
-                  <MattEdit mattType={mattType || 'default'} />
-                </Link>
-              </div>
-            ) : (
-              ''
-            )}
+            <ShareButton tteokGukId={tteokGukId} nickname={guestTG?.nickname} />
           </div>
-          {tteokGukId && (
-            <PaginationEntire
-              pageSize={garnish?.pageSize}
-              pageParam={userId}
-              currentNum={Number(page)}
-            />
-          )}
-          <ShareButton tteokGukId={tteokGukId} nickname={guestTG?.nickname} />
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   )
 }
