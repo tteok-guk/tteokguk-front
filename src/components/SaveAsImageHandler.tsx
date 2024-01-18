@@ -6,16 +6,22 @@ import { BottomButton } from './common'
 import Image from 'next/image'
 import html2canvas from 'html2canvas' // Import html2canvas
 import SaveImage from './SaveImage'
-import { iconClose } from '../../public/images/icons'
+import { iconClose, iconError, iconSave } from '../../public/images/icons'
 import { toast } from '@/hooks/use-toast'
 import Link from 'next/link'
+import { captureInfo, speechBubble } from '../../public/images/avatar'
+import { useSearchParams } from 'next/navigation'
 
-export default function SaveAsImageHandler({}) {
+export interface Props {
+  userId: string
+}
+
+export default function SaveAsImageHandler({ userId }: Props) {
   const divRef = useRef<HTMLDivElement>(null)
   const [capturedImage, setCapturedImage] = useState('')
   const [screenshot, setScreenshot] = useState(false)
   const [isKakao, setIsKakao] = useState(false)
-  // const [isMobileOpen, setIsMobileOpen] = useState(false)
+  const params = useSearchParams()
 
   const handleDownload = async () => {
     setScreenshot(true)
@@ -40,7 +46,7 @@ export default function SaveAsImageHandler({}) {
               setCapturedImage(imageURL)
               return
             } else {
-              toast({ description: '사진이 저장되었습니다.' })
+              toast({ description: '이미지 저장이 완료되었어요!' })
             }
           }
         })
@@ -60,37 +66,42 @@ export default function SaveAsImageHandler({}) {
   return (
     <>
       {basic && (
-        <div className="mx-[-20px] mt-[-32px] h-dvh bg-[url(/images/matts/red.png)] p-20">
+        <div className=" relative mx-[-20px] mt-[-32px] h-dvh bg-[url(/images/avatar/photo.png)] bg-cover bg-center p-20">
           <div className="flex flex-row-reverse">
-            <Link href={'/host'}>
+            <Link href={`/${userId}?page=1`}>
               <Image src={iconClose} width={24} height={24} alt="iconClose" className=" m-12 " />
             </Link>
           </div>
-          <div className="font-xl mb-75">
-            <p>덕담 남기기 완료</p>
-            <p>같이 사진 찍고 소원빌래?</p>
+          <div className="font-xl ">
+            <p>덕담 남기기 완료!</p>
+            <p>사진을 저장하고 공유해 보세요.</p>
           </div>
-          <SaveImage />
+          <div className="font-sm flex flex-row items-center gap-4 text-pr-500">
+            <Image src={iconError} alt="iconError" width={18} height={18} className="py-2" />
+            <p>현재 페이지는 벗어나면 다시 돌아올 수 없어요!</p>
+          </div>
+
+          <div className=" flex-center  relative mt-40 ">
+            <SaveImage type="basic" />
+          </div>
+
           <BottomButton
             bgColor="bg-transperant"
-            split="twice"
-            smallBtnName="저장"
-            fullBtnName="사진 공유"
-            smallBtnClick={handleDownload}
+            fullBtnName="사진 저장하기"
+            fullBtnClick={handleDownload}
+            icon={iconSave}
           />
         </div>
       )}
       {screenshot && (
-        <div className="relative mx-[-20px] mt-[-32px] h-dvh bg-red-200">
+        <div className="mx-[-20px] mt-[-32px] ">
           <div
             ref={divRef}
-            className=" flex-center    flex h-dvh flex-col items-center bg-[url(/images/matts/red.png)] "
+            className="relative h-dvh bg-[url(/images/avatar/savePhoto.png)] bg-cover bg-center p-20"
           >
-            <div className="font-lg mt-50 pb-20">
-              <p>2024 어쩌구 이런 멘트랑</p>
-              <p>뒷 배경은 일러스트</p>
+            <div className=" flex-center mt-152 ">
+              <SaveImage type="snapShot" />
             </div>
-            <SaveImage />
           </div>
           <Image
             src={iconClose}
@@ -104,7 +115,7 @@ export default function SaveAsImageHandler({}) {
       )}
       {isKakao && capturedImage && (
         <div className="relative mx-[-20px] mt-[-32px] h-dvh">
-          <Image src={capturedImage} alt="snap-shot" layout="fill" />
+          <Image src={capturedImage} alt="snap-shot" layout="fill" className=" cursor-pointer" />
           <Image
             src={iconClose}
             width={24}
@@ -112,6 +123,13 @@ export default function SaveAsImageHandler({}) {
             alt="iconClose"
             className=" absolute right-20 top-20 m-12"
             onClick={() => setIsKakao(false)}
+          />
+          <Image
+            src={captureInfo}
+            alt="capturedImage"
+            width={310}
+            height={104}
+            className=" absolute bottom-[50px] left-[33px]"
           />
         </div>
       )}

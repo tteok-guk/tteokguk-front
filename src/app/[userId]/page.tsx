@@ -11,7 +11,7 @@ import { iconDday, iconMypage } from '../../../public/images/icons'
 import { dishesObj, mattObj } from './_object/object'
 import SideBar from '@/components/common/SideBar'
 
-interface Props {
+export interface Props {
   params: {
     userId: string
   }
