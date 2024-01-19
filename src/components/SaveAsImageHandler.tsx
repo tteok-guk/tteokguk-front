@@ -21,7 +21,6 @@ export default function SaveAsImageHandler({ userId }: Props) {
   const [capturedImage, setCapturedImage] = useState('')
   const [screenshot, setScreenshot] = useState(false)
   const [isKakao, setIsKakao] = useState(false)
-  const params = useSearchParams()
 
   const handleDownload = async () => {
     setScreenshot(true)
