@@ -2,6 +2,8 @@ import Image from 'next/image'
 import { speechBubble } from '../../public/images/avatar'
 
 const SaveImage = ({ type, avatar, garnish }: snapShotType) => {
+  const isWindows = navigator.userAgent.includes('Windows')
+  console.log(isWindows)
   const visitorAvatar = avatar.visitorAvatar !== 'NONE' ? avatar.visitorAvatar : 'dragon'
   return (
     <>
