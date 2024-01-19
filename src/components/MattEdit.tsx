@@ -1,6 +1,5 @@
 'use client'
 
-import Link from 'next/link'
 import { miniMattObj } from '../app/[userId]/_object/object'
 
 const MattEdit = ({ mattType }: MattEditType) => {

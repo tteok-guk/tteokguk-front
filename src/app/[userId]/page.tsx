@@ -16,7 +16,8 @@ export interface Props {
     userId: string
   }
   searchParams: {
-    page: string
+    page?: string
+    garnish?: string
   }
 }
 

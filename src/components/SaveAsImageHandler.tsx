@@ -1,26 +1,33 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
-import saveAs from 'file-saver'
-import { BottomButton } from './common'
-import Image from 'next/image'
-import html2canvas from 'html2canvas' // Import html2canvas
-import SaveImage from './SaveImage'
-import { iconClose, iconError, iconSave } from '../../public/images/icons'
 import { toast } from '@/hooks/use-toast'
+import { getAvatar } from '@/services/snapShot'
+import { useQuery } from '@tanstack/react-query'
+import saveAs from 'file-saver'
+import html2canvas from 'html2canvas' // Import html2canvas
+import Image from 'next/image'
 import Link from 'next/link'
-import { captureInfo, speechBubble } from '../../public/images/avatar'
-import { useSearchParams } from 'next/navigation'
+import { useEffect, useRef, useState } from 'react'
+import { captureInfo } from '../../public/images/avatar'
+import { iconClose, iconError, iconSave } from '../../public/images/icons'
+import SaveImage from './SaveImage'
+import { BottomButton } from './common'
 
 export interface Props {
   userId: string
+  garnish?: string
 }
 
-export default function SaveAsImageHandler({ userId }: Props) {
+export default function SaveAsImageHandler({ userId, garnish }: Props) {
   const divRef = useRef<HTMLDivElement>(null)
   const [capturedImage, setCapturedImage] = useState('')
   const [screenshot, setScreenshot] = useState(false)
   const [isKakao, setIsKakao] = useState(false)
+
+  const { data } = useQuery({
+    queryKey: ['getAvatar'],
+    queryFn: () => getAvatar({ userId }),
+  })
 
   const handleDownload = async () => {
     setScreenshot(true)
@@ -81,7 +88,7 @@ export default function SaveAsImageHandler({ userId }: Props) {
           </div>
 
           <div className=" flex-center  relative mt-40 ">
-            <SaveImage type="basic" />
+            {data && garnish && <SaveImage type="basic" avatar={data} garnish={garnish} />}
           </div>
 
           <BottomButton
@@ -99,7 +106,7 @@ export default function SaveAsImageHandler({ userId }: Props) {
             className="relative h-dvh bg-[url(/images/avatar/savePhoto.png)] bg-cover bg-center p-20"
           >
             <div className=" flex-center mt-152 ">
-              <SaveImage type="snapShot" />
+              {data && garnish && <SaveImage type="snapShot" avatar={data} garnish={garnish} />}
             </div>
           </div>
           <Image
