@@ -1,12 +1,8 @@
 import Image from 'next/image'
 import { speechBubble } from '../../public/images/avatar'
 
-const SaveImage = ({ type }: snapShotType) => {
-  const tempData = {
-    hostAvatar: 'rabbit',
-    visitorAvatar: 'dragon',
-  }
-
+const SaveImage = ({ type, avatar, garnish }: snapShotType) => {
+  const visitorAvatar = avatar.visitorAvatar !== 'NONE' ? avatar.visitorAvatar : 'dragon'
   return (
     <>
       <div className="relative  h-full w-full px-2">
@@ -16,7 +12,7 @@ const SaveImage = ({ type }: snapShotType) => {
         <div className=" flex flex-row gap-30 ">
           <div className=" relative z-[99] block h-160 w-1/2 scale-x-[-1]">
             <Image
-              src={`/images/avatar/arm/${tempData.hostAvatar}Arm.png`}
+              src={`/images/avatar/arm/${avatar.hostAvatar}Arm.png`}
               width={164}
               height={164}
               layout="responsive"
@@ -25,7 +21,7 @@ const SaveImage = ({ type }: snapShotType) => {
           </div>
           <div className="relative mx-[-55px] mt-[20%] block h-57 w-1/5">
             <Image
-              src={'/images/garnishes/dumpling.png'}
+              src={`/images/garnishes/${garnish}.png`}
               width={71}
               height={57}
               layout="responsive"
@@ -34,7 +30,7 @@ const SaveImage = ({ type }: snapShotType) => {
           </div>
           <div className="relative block h-160 w-1/2 ">
             <Image
-              src={`/images/avatar/arm/${tempData.visitorAvatar}Arm.png`}
+              src={`/images/avatar/arm/${visitorAvatar}Arm.png`}
               width={164}
               height={164}
               layout="responsive"
@@ -51,4 +47,9 @@ export default SaveImage
 
 export interface snapShotType {
   type: string
+  avatar: {
+    hostAvatar: string
+    visitorAvatar: string
+  }
+  garnish: string
 }
