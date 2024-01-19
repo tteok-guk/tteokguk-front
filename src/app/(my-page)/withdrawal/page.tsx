@@ -6,9 +6,27 @@ import { iconError } from '../../../../public/images/icons'
 import { Checkbox } from '@/components/ui/checkbox'
 import Image from 'next/image'
 import { BottomButton } from '@/components/common'
+import { useMutation } from '@tanstack/react-query'
+import { RequestParamType } from '@/types/apiTypes'
+import { deleteNickname } from '@/services/withdrawal'
+import { useRouter } from 'next/navigation'
 
 function WithdrawalPage() {
   const [disabled, setDisabled] = useState(false)
+  const router = useRouter()
+
+  const onChangeMatt = useMutation({
+    mutationFn: () => deleteNickname(),
+    onSuccess: (res) => {
+      console.log('res', res)
+      router.push('/')
+    },
+    onError: (err) => console.log('err', err),
+  })
+
+  const completeBtn = () => {
+    onChangeMatt.mutate()
+  }
 
   return (
     <>
@@ -34,7 +52,8 @@ function WithdrawalPage() {
         smallBtnName={`취소`}
         // smallBtnDisabled={!disabled}
         fullBtnName={`회원 탈퇴`}
-        fullBtnDisabled={!disabled}
+        // fullBtnDisabled={!disabled}
+        fullBtnClick={completeBtn}
       />
     </>
   )
