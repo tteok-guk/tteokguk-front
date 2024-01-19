@@ -62,7 +62,7 @@ export default function SaveAsImageHandler({ userId }: Props) {
 
   useEffect(() => {}, [])
 
-  const basic = !screenshot && !isKakao && !capturedImage
+  const basic = !screenshot && !isKakao
   return (
     <>
       {basic && (
@@ -122,7 +122,10 @@ export default function SaveAsImageHandler({ userId }: Props) {
             height={24}
             alt="iconClose"
             className=" absolute right-20 top-20 m-12"
-            onClick={() => setIsKakao(false)}
+            onClick={() => {
+              setIsKakao(false)
+              setScreenshot(false)
+            }}
           />
           <Image
             src={captureInfo}
