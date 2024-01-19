@@ -8,6 +8,7 @@ import iconDday from './iconDday.png'
 import iconError from './iconError.png'
 import iconLocation from './iconLocation.png'
 import iconMypage from './iconMypage.png'
+import iconSave from './iconSave.png'
 
 export {
   iconArrow,
@@ -20,4 +21,5 @@ export {
   iconError,
   iconLocation,
   iconMypage,
+  iconSave,
 }
