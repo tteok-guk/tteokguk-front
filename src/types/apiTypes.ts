@@ -36,3 +36,8 @@ interface Garnish {
   nickname: string
   garnishType: string
 }
+
+export interface GetAvatarType {
+  hostAvatar: string
+  visitorAvatar: string
+}
