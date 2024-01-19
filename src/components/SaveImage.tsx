@@ -7,7 +7,7 @@ const SaveImage = ({ type, avatar, garnish }: snapShotType) => {
   const visitorAvatar = avatar.visitorAvatar !== 'NONE' ? avatar.visitorAvatar : 'dragon'
   return (
     <>
-      {/* <div className="relative  h-full w-full px-2">
+      <div className="relative  h-full w-full px-2">
         <div className="relative block  w-full">
           <Image src={speechBubble} alt="말풍선" layout="responsive" />
         </div>
@@ -40,8 +40,8 @@ const SaveImage = ({ type, avatar, garnish }: snapShotType) => {
             />
           </div>
         </div>
-      </div> */}
-      <div className="relative  flex h-full w-full flex-col items-center justify-center px-2">
+      </div>
+      {/* <div className="relative  flex h-full w-full flex-col items-center justify-center px-2">
         <div className="relative block  h-120  w-272">
           <Image src={speechBubble} alt="말풍선" layout="fill" />
         </div>
@@ -74,7 +74,7 @@ const SaveImage = ({ type, avatar, garnish }: snapShotType) => {
             />
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   )
 }
