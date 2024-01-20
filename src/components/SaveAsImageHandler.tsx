@@ -44,7 +44,6 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
           if (blob !== null) {
             const imageURL = URL.createObjectURL(blob)
 
-            saveAs(blob, '떡국.png')
             const isKakaoTalkInAppBrowser = /KAKAOTALK/i.test(window.navigator.userAgent)
             if (isKakaoTalkInAppBrowser) {
               setIsKakao(true)
@@ -121,12 +120,7 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
       )}
       {isKakao && capturedImage && (
         <div className="relative mx-[-20px] mt-[-32px] h-dvh">
-          <Image
-            src={capturedImage}
-            alt="snap-shot"
-            layout="fill"
-            className="z-10 cursor-pointer"
-          />
+          <Image src={capturedImage} alt="snap-shot" layout="fill" className="cursor-pointer" />
           <Image
             src={iconClose}
             width={24}
