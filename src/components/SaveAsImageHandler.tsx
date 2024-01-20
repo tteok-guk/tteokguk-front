@@ -66,15 +66,13 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
     }, 0)
   }
 
-  useEffect(() => {}, [])
-
   const basic = !screenshot && !isKakao
   return (
     <>
       {basic && (
         <div className=" relative mx-[-20px] mt-[-32px] h-dvh bg-[url(/images/avatar/photo.png)] bg-cover bg-center p-20">
           <div className="flex flex-row-reverse">
-            <Link href={`/${userId}?page=1`}>
+            <Link href={`/${userId}?page=${data?.lastPage}`}>
               <Image src={iconClose} width={24} height={24} alt="iconClose" className=" m-12 " />
             </Link>
           </div>
@@ -122,17 +120,15 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
       {isKakao && capturedImage && (
         <div className="relative mx-[-20px] mt-[-32px] h-dvh">
           <Image src={capturedImage} alt="snap-shot" layout="fill" className=" cursor-pointer" />
-          <Image
-            src={iconClose}
-            width={24}
-            height={24}
-            alt="iconClose"
-            className=" absolute right-20 top-20 m-12"
-            onClick={() => {
-              setIsKakao(false)
-              setScreenshot(false)
-            }}
-          />
+          <Link href={`/${userId}?page=${data?.lastPage}`}>
+            <Image
+              src={iconClose}
+              width={24}
+              height={24}
+              alt="iconClose"
+              className=" absolute right-20 top-20 m-12"
+            />
+          </Link>
           <Image
             src={captureInfo}
             alt="capturedImage"

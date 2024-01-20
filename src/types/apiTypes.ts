@@ -40,4 +40,5 @@ interface Garnish {
 export interface GetAvatarType {
   hostAvatar: string
   visitorAvatar: string
+  lastPage: number
 }
