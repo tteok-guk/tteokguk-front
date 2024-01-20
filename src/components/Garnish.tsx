@@ -47,7 +47,7 @@ const Garnish = ({ garnishInfo, Public, dDay, userId }: GarnishType) => {
           className={` absolute text-center ${garnishLocation[idx]} flex cursor-pointer flex-col`}
           onClick={() => GarnishDetailMoveToBtnHandler(item.garnishId)}
         >
-          <div className={` h-54 w-54 lg:h-80 lg:w-80`}>
+          <div className={` block h-54 w-54 lg:h-80 lg:w-80`}>
             <Image
               width={80}
               height={80}
