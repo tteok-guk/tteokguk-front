@@ -24,6 +24,8 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
   const [screenshot, setScreenshot] = useState(false)
   const [isKakao, setIsKakao] = useState(false)
 
+  const basic = !screenshot && !isKakao
+
   const { data } = useQuery({
     queryKey: ['getAvatar'],
     queryFn: () => getAvatar({ userId }),
@@ -37,19 +39,15 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
 
       try {
         const div = divRef.current
-
         const canvas = await html2canvas(div, { logging: true })
 
         canvas.toBlob((blob) => {
           if (blob !== null) {
-            const imageURL = URL.createObjectURL(blob)
-
             saveAs(blob, '떡국.png')
             const isKakaoTalkInAppBrowser = /KAKAOTALK/i.test(window.navigator.userAgent)
             if (isKakaoTalkInAppBrowser) {
               setIsKakao(true)
               setScreenshot(false)
-              // setCapturedImage(imageURL)
               blobToDataURL(blob).then((dataUrl) => setCapturedImage(dataUrl))
               return
             } else {
@@ -59,20 +57,16 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
         })
       } catch (error) {
         console.error('Error converting div to image:', error)
-      } finally {
-        // setTimeout(() => {
-        //   setScreenshot(false)
-        // }, 3000)
       }
     }, 0)
   }
 
-  // ! test: blob -> base64 인코딩된 DataURL 로 변환
+  // * blob -> base64 인코딩된 DataURL 로 변환
   const blobToDataURL = (imageURL: Blob): Promise<string> => {
     return new Promise((resolve, reject) => {
       const reader = new FileReader()
       reader.onload = () => {
-        // 결과가 null이 아닌지 확인하고 string으로 캐스팅
+        // 결과가 null이 아닌지 확인하고 string으로 형변환
         if (reader.result) {
           resolve(reader.result as string)
         } else {
@@ -88,21 +82,11 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
     const location = `/${userId}?page=${data?.lastPage}`
     window.location.href = location
   }
-  const basic = !screenshot && !isKakao
+
   return (
     <>
       {basic && (
         <div className=" relative mx-[-20px] mt-[-32px] h-dvh bg-[url(/images/avatar/photo.png)] bg-cover bg-center p-20">
-          {/* <a href={`${capturedImage}`} download={'떡국.png'} className="z-50">
-            <p>카카오 인앱 다운로드 테스트</p>
-          </a> */}
-          <button onClick={handleDownload}>테스트</button>
-          {capturedImage && <Image src={capturedImage} alt="" width={200} height={200} />}
-
-          {/* <div className="flex flex-row-reverse">
-            <Link href={`/${userId}?page=${data?.lastPage}`}>
-              <Image src={iconClose} width={24} height={24} alt="iconClose" className=" m-12 " />
-            </Link>
           <div className="flex flex-row-reverse">
             <Image
               src={iconClose}
@@ -124,7 +108,7 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
 
           <div className=" flex-center  relative mt-40 ">
             {data && garnish && <SaveImage type="basic" avatar={data} garnish={garnish} />}
-        </div> */}
+          </div>
 
           <BottomButton
             bgColor="bg-transperant"
@@ -156,28 +140,7 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
       )}
       {isKakao && capturedImage && (
         <div className="relative mx-[-20px] mt-[-32px] h-dvh">
-          {/* <Image src={capturedImage} alt="snap-shot" layout="fill" className=" cursor-pointer" />
-          <Link href={`/${userId}?page=${data?.lastPage}`}>
-            <Image
-              src={iconClose}
-              width={24}
-              height={24}
-              alt="iconClose"
-              className=" absolute right-20 top-20 m-12"
-            />
-          </Link> */}
-          {/* <a href={`${capturedImage}`} download={'떡국.png'}>
-            <Image
-              src={capturedImage}
-              alt="capturedImage"
-              width={310}
-              height={104}
-              className="absolute bottom-[50px] left-[33px]"
-            />
-          </a> */}
-          <Image src={capturedImage} alt="" width={200} height={200} />
           <Image src={capturedImage} alt="snap-shot" layout="fill" className=" cursor-pointer" />
-
           <Image
             src={iconClose}
             width={24}
@@ -186,14 +149,13 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
             className=" absolute right-20 top-20 m-12"
             onClick={moveToMainPageLocationHandler}
           />
-
           <Image
             src={captureInfo}
             alt="capturedImage"
             width={310}
             height={104}
             className=" absolute bottom-[50px] left-[33px]"
-          />
+          />{' '}
         </div>
       )}
     </>
