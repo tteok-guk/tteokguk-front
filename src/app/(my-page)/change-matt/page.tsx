@@ -13,7 +13,7 @@ import { useToast } from '@/hooks/use-toast'
 import { sampleDish } from '../../../../public/images/dishes'
 
 export default function ChangeMattPage() {
-  const [chosenMatt, setChosenMatt] = useState('')
+  const [chosenMatt, setChosenMatt] = useState('blueDew')
   const setMatt = (clickedValue: string) => setChosenMatt(clickedValue)
   const router = useRouter()
   // const { toast } = useToast()
@@ -33,7 +33,9 @@ export default function ChangeMattPage() {
   return (
     <>
       <div className="h-dvh">
-        <div className="mx-[-20px] mt-[-32px] h-[55%] bg-[url(/images/matts/purpleCheck.png)] bg-cover bg-no-repeat px-20 pt-32">
+        <div
+          className={`mx-[-20px] mt-[-32px] h-[55%] bg-[url(/images/matts/${chosenMatt}.png)] bg-cover bg-no-repeat px-20 pt-32`}
+        >
           <TopButton />
           <p className="font-xl">
             변경할 테이블 매트를 <br /> 선택해 주세요
