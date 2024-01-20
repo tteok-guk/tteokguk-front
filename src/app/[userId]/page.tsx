@@ -11,12 +11,13 @@ import { iconDday, iconMypage } from '../../../public/images/icons'
 import { dishesObj, mattObj } from './_object/object'
 import SideBar from '@/components/common/SideBar'
 
-interface Props {
+export interface Props {
   params: {
     userId: string
   }
   searchParams: {
-    page: string
+    page?: string
+    garnish?: string
   }
 }
 
@@ -81,12 +82,13 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
             </Link>
           </div>
           <div className="flex flex-col items-center">
-            <div className="font-sm flex-center mb-8 flex flex-row gap-1.5 rounded-2xl bg-pr-100 px-15 py-3">
+            <div className="font-sm flex-center mb-8 flex flex-row gap-1.5 rounded-2xl bg-pr-100 px-15 py-3 lg:px-20 lg:py-6">
               <Image width={12} height={11} src={iconDday} alt="D-day icon" />
-              <p className="font-base text-pr-800">{`까치까치 설날 D${dDay}`}</p>
+              <p className="font-base lg:font-lg text-pr-800">{`까치까치 설날 D${dDay}`}</p>
             </div>
+
             {hostTG?.tteokGukId || guestTG ? (
-              <p className="mb-5">{`${garnish?.garnishCnt}개의 덕담을 받았어요!`}</p>
+              <p className="lg:font-lg font-base mb-5">{`${garnish?.garnishCnt}개의 덕담을 받았어요!`}</p>
             ) : (
               <></>
             )}

@@ -55,7 +55,7 @@ const Garnish = ({ garnishInfo, Public, dDay, userId }: GarnishType) => {
               alt="garnish"
             />
           </div>
-          <p className="font-xs">{item.nickname}</p>
+          <p className="font-xs font-soyo">{item.nickname}</p>
         </div>
       ))}
     </>
