@@ -28,7 +28,7 @@ export async function middleware(request: NextRequest) {
           return NextResponse.next()
         } else {
           const response = NextResponse.redirect(new URL('/', request.url))
-            response.cookies.delete('token')
+          response.cookies.delete('token')
           return response
         }
       } else {
@@ -38,7 +38,9 @@ export async function middleware(request: NextRequest) {
   } else {
     if (path.includes('/garnish-list')) {
       if (request.cookies.get('token')?.value) {
-        return NextResponse.redirect(new URL('/', request.url)).cookies.delete('token')
+        const response = NextResponse.redirect(new URL('/', request.url))
+        response.cookies.delete('token')
+        return response
       } else {
         return NextResponse.redirect(new URL('/', request.url))
       }
@@ -49,7 +51,9 @@ export async function middleware(request: NextRequest) {
         // 사용자 타입 확인
         const userType = await getUserType(token)
         if (userType.data.isMember) {
-          return NextResponse.redirect(new URL('/', request.url)).cookies.delete('token')
+          const response = NextResponse.redirect(new URL('/', request.url))
+          response.cookies.delete('token')
+          return response
         } else {
           return NextResponse.next()
         }
@@ -65,7 +69,9 @@ export async function middleware(request: NextRequest) {
         if (userType.data.isMember) {
           return NextResponse.next()
         } else {
-          return NextResponse.redirect(new URL('/', request.url)).cookies.delete('token')
+          const response = NextResponse.redirect(new URL('/', request.url))
+          response.cookies.delete('token')
+          return response
         }
       } else {
         return NextResponse.redirect(new URL('/', request.url))
