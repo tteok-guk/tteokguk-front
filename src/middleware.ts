@@ -37,13 +37,17 @@ export async function middleware(request: NextRequest) {
     }
   } else {
     if (path.includes('/garnish-list')) {
-      if (request.cookies.get('token')?.value) {
-        const response = NextResponse.redirect(new URL('/', request.url))
-        response.cookies.delete('token')
-        return response
-      } else {
-        return NextResponse.redirect(new URL('/', request.url))
+      if(!path.startsWith('/host')){
+        // redirect 접근권한이 없다. 하고  접근권흔
+        return NextResponse.redirect(new URL('/error', request.url))
       }
+      // if (request.cookies.get('token')?.value) {
+      //   const response = NextResponse.redirect(new URL('/', request.url))
+      //   response.cookies.delete('token')
+      //   return response
+      // } else {
+      //   return NextResponse.redirect(new URL('/', request.url))
+      // }
     } else if (path.startsWith('/join')) {
       // 쿠키 확인
       const token = request.cookies.get('token')?.value
