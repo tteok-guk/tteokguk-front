@@ -36,7 +36,7 @@ export async function middleware(request: NextRequest) {
       }
     }
   } else {
-    if (path.includes('/garnish-list')) {
+    /*if (path.includes('/garnish-list')) {
       if(!path.startsWith('/host')){
         // redirect 접근권한이 없다. 하고  접근권흔
         return NextResponse.redirect(new URL('/error', request.url))
@@ -48,15 +48,15 @@ export async function middleware(request: NextRequest) {
       // } else {
       //   return NextResponse.redirect(new URL('/', request.url))
       // }
-    } else if (path.startsWith('/join')) {
+    } else*/ 
+    if (path.startsWith('/join')) {
       // 쿠키 확인
       const token = request.cookies.get('token')?.value
       if (token) {
         // 사용자 타입 확인
         const userType = await getUserType(token)
         if (userType.data.isMember) {
-          const response = NextResponse.redirect(new URL('/', request.url))
-          response.cookies.delete('token')
+          const response = NextResponse.redirect(new URL('/host?page=1', request.url))
           return response
         } else {
           return NextResponse.next()
