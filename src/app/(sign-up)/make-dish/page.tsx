@@ -131,15 +131,17 @@ export default function MakeDishPage() {
       }))
       setIsStepBtnActive(true)
     }else{
-      setStep(prevStep => ({
-        ...prevStep,
-        status: [
-          ...prevStep.status.slice(0, step.current),
-          StepStatus.INITIAL,
-          ...prevStep.status.slice(step.current + 1),
-        ],
-      }))
-      setIsStepBtnActive(false)
+      if(step.current == 1){
+        setStep(prevStep => ({
+          ...prevStep,
+          status: [
+            ...prevStep.status.slice(0, step.current),
+            StepStatus.INITIAL,
+            ...prevStep.status.slice(step.current + 1),
+          ],
+        }))
+        setIsStepBtnActive(false)
+      }
     }
   }, [isPublic])
 
@@ -178,8 +180,8 @@ export default function MakeDishPage() {
             <div className={step.current === 0 ?'relative grid grid-cols-4 grid-rows-2 justify-center gap-12 bg-white mx-[-20px] pt-20 px-20 flex-grow-0 flex-shrink-0 pb-20':'relative grid grid-cols-4 grid-rows-2 justify-center gap-12'}>
               {
                 matts.map((matt, idx) => {
-                  return <div onClick={()=>{selectMattOnClickHandler(matt.id, idx)}} className={matt.id === selectMatt.id ? ' flex justify-center items-center min-w-75 min-h-75 aspect-square rounded-6 bg-pr-100 ring-pr-500 ring-[3px]' : 'flex justify-center items-center min-w-75 min-h-75 aspect-square rounded-6 bg-pr-100'} key={idx} >
-                      <Image src={matt.miniSrc} alt={matt.alt} width={75} height={75} style={{width: '100%', height: 'auto',}} />
+                  return <div onClick={()=>{selectMattOnClickHandler(matt.id, idx)}} className={matt.id === selectMatt.id ? ' flex justify-center items-center min-w-75 min-h-75 aspect-square rounded-6 bg-pr-100 ring-pr-500 ring-[3px] overflow-hidden' : 'flex justify-center items-center min-w-75 min-h-75 aspect-square rounded-6 bg-pr-100 overflow-hidden'} key={idx} >
+                      <Image src={matt.miniSrc} alt={matt.alt} width={75} height={75} layout='responsive' />
                     </div>
                 })
               }
