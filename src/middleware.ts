@@ -13,88 +13,87 @@ export async function middleware(request: NextRequest) {
     [domain]/!host//garnish-list
   */
 
-  /** 임시 주석 
-  if(path.startsWith('/host')){
-    if(path.includes('/set-garnish') || path.includes('/write') || path.includes('/snap-shot')){
+  // 임시 주석 
+  if (path.startsWith('/host')) {
+    if (path.includes('/set-garnish') || path.includes('/write') || path.includes('/snap-shot')) {
       // 접근 불가 URLs
       return NextResponse.redirect(new URL('/', request.url))
-    }else{
+    } else {
       // 쿠키 확인
       const token = request.cookies.get('token')?.value
-      if(token){
+      if (token) {
         // 사용자 타입 확인
-        const userType =  await getUserType(token)
-        if(userType.data.isMember){
+        const userType = await getUserType(token)
+        if (userType.data.isMember) {
           return NextResponse.next()
-        }else{
+        } else {
           return NextResponse.redirect(new URL('/', request.url)).cookies.delete('token')
         }
-      }else{
+      } else {
         return NextResponse.redirect(new URL('/', request.url))
       }
     }
-  }else{
-    if(path.includes('/garnish-list')){
-      if(request.cookies.get('token')?.value){
+  } else {
+    if (path.includes('/garnish-list')) {
+      if (request.cookies.get('token')?.value) {
         return NextResponse.redirect(new URL('/', request.url)).cookies.delete('token')
-      }else{
+      } else {
         return NextResponse.redirect(new URL('/', request.url))
       }
-    }else if(path.startsWith('/join')){
+    } else if (path.startsWith('/join')) {
       // 쿠키 확인
       const token = request.cookies.get('token')?.value
-      if(token){
+      if (token) {
         // 사용자 타입 확인
-        const userType =  await getUserType(token)
-        if(userType.data.isMember){
+        const userType = await getUserType(token)
+        if (userType.data.isMember) {
           return NextResponse.redirect(new URL('/', request.url)).cookies.delete('token')
-        }else{
+        } else {
           return NextResponse.next()
         }
-      }else{
+      } else {
         return NextResponse.redirect(new URL('/', request.url))
       }
-    }else if(path.startsWith('/change-matt') || path.startsWith('/make-dish') || path.startsWith('/account')){
+    } else if (path.startsWith('/change-matt') || path.startsWith('/make-dish') || path.startsWith('/account')) {
       // 쿠키 확인
       const token = request.cookies.get('token')?.value
-      if(token){
+      if (token) {
         // 사용자 타입 확인
-        const userType =  await getUserType(token)
-        if(userType.data.isMember){
+        const userType = await getUserType(token)
+        if (userType.data.isMember) {
           return NextResponse.next()
-        }else{
+        } else {
           return NextResponse.redirect(new URL('/', request.url)).cookies.delete('token')
         }
-      }else{
+      } else {
         return NextResponse.redirect(new URL('/', request.url))
       }
-    }else if (path.startsWith('/login/success')){
-      if(request.nextUrl.searchParams.get('token')){
+    } else if (path.startsWith('/login/success')) {
+      if (request.nextUrl.searchParams.get('token')) {
         // 쿼리파람 - 토큰
         const token = request.nextUrl.searchParams.get('token')
         // 사용자 타입 확인
-        const userType =  await getUserType(token)
-        if(userType.data.isMember){
+        const userType = await getUserType(token)
+        if (userType.data.isMember) {
           // 쿠키에 토큰 세팅
           const response = NextResponse.redirect(new URL('/host?page=1', request.url))
           response.cookies.set('token', token || '')
           return response
-        }else{
+        } else {
           const response = NextResponse.redirect(new URL('/join', request.url))
           response.cookies.set('token', token || '')
           return response
         }
-      }else{
+      } else {
         const response = NextResponse.redirect(new URL('/', request.url))
-        if(request.cookies.has('token')){
+        if (request.cookies.has('token')) {
           response.cookies.delete('token')
         }
         return response
       }
     }
-    }
-    */
   }
+}
 
 export const config = {
   matcher: [
