@@ -27,7 +27,9 @@ export async function middleware(request: NextRequest) {
         if (userType.data.isMember) {
           return NextResponse.next()
         } else {
-          return NextResponse.redirect(new URL('/', request.url)).cookies.delete('token')
+          const response = NextResponse.redirect(new URL('/', request.url))
+            response.cookies.delete('token')
+          return response
         }
       } else {
         return NextResponse.redirect(new URL('/', request.url))
