@@ -6,10 +6,11 @@ import { getGarnishes, getGuestTteokguk, getHostTteokguk } from '@/services/main
 import { GarnishItem } from '@/types/MainPageTypes'
 import Image from 'next/image'
 import Link from 'next/link'
-import { redirect } from 'next/navigation'
+import { notFound, redirect } from 'next/navigation'
 import { iconDday, iconMypage } from '../../../public/images/icons'
 import { dishesObj, mattObj } from './_object/object'
 import SideBar from '@/components/common/SideBar'
+import NotFoundPage from '../not-found'
 
 export interface Props {
   params: {
@@ -38,7 +39,7 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
       redirect('/host?page=1')
     }
     if (guestTG === null || guestTGApi.code === 500) {
-      redirect('/')
+      notFound()
     }
     garnishes = await getGarnishes(userId, Number(page))
   }
@@ -84,7 +85,9 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
           <div className="flex flex-col items-center">
             <div className="font-sm flex-center mb-8 flex flex-row gap-1.5 rounded-2xl bg-pr-100 px-15 py-3 lg:px-20 lg:py-6">
               <Image width={12} height={11} src={iconDday} alt="D-day icon" />
-              <p className="font-base lg:font-lg text-pr-800">{`까치까치 설날 D${dDay}`}</p>
+              <p className="font-base lg:font-lg text-pr-800">{`까치까치 설날 D${
+                dDay === 0 ? '-Day' : dDay
+              }`}</p>
             </div>
 
             {hostTG?.tteokGukId || guestTG ? (
