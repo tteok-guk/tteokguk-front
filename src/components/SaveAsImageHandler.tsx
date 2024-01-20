@@ -119,7 +119,7 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
       )}
       {isKakao && capturedImage && (
         <div className="relative mx-[-20px] mt-[-32px] h-dvh">
-          <Image src={capturedImage} alt="snap-shot" layout="fill" className=" cursor-pointer" />
+          {/* <Image src={capturedImage} alt="snap-shot" layout="fill" className=" cursor-pointer" />
           <Link href={`/${userId}?page=${data?.lastPage}`}>
             <Image
               src={iconClose}
@@ -128,17 +128,17 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
               alt="iconClose"
               className=" absolute right-20 top-20 m-12"
             />
-          </Link>
-          <a href={`${captureInfo}`} download={'떡국.png'}>
+          </Link> */}
+          {/* <a href={`${capturedImage}`} download={'떡국.png'}>
             <Image
-              src={captureInfo}
+              src={capturedImage}
               alt="capturedImage"
               width={310}
               height={104}
               className="absolute bottom-[50px] left-[33px]"
             />
-          </a>
-          <a href={`${captureInfo}`} download={'떡국.png'} className="z-50">
+          </a> */}
+          <a href={`${capturedImage}`} download={'떡국.png'} className="z-50">
             <p>카카오 인앱 다운로드 테스트</p>
           </a>
         </div>
