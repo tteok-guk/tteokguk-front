@@ -9,6 +9,7 @@ import { Checkbox } from '@/components/ui/checkbox'
 import { Label } from '@/components/ui/label'
 import { sampleDish } from '../../../../public/images/dishes'
 import { matts } from './_object/object';
+import { sampleDishPublic, sampleDishPrivate } from '../../../../public/images/etc';
 
 // 상태 Enum
 const StepStatus = {
@@ -33,26 +34,26 @@ export default function MakeDishPage() {
 
   // 선택 매트
   const [selectMatt, setSelectMatt] = useState({id :'blueDew', idx:0})
+  
+  // 공개 범위
+  const [isPublic, setIsPublic] = useState<undefined | boolean>(undefined)
 
   // 선택박스 상태
   const [terms, setTerms] = useState([
     {
-      'type': 'required',
-      'text': '(필수) 만 14세 이상입니다.',
+      'type': 'optional',
+      'text': '전체공개 할래요!',
       'checked': false,
+      'sampleImg' : sampleDishPublic,
+      'value' : true,
     },
     {
-      'type': 'required',
-      'text': '(필수) 서비스 이용 약관에 동의합니다.',
+      'type': 'optional',
+      'text': '나만 볼래요!',
       'checked': false,
-      'link': '',
+      'sampleImg' : sampleDishPrivate,
+      'value' : false,
     },
-    {
-      'type': 'required',
-      'text': '(필수) 개인정보 수집이용에 동의합니다.',
-      'checked': false,
-      'link': '',
-    }
   ])
 
   // 매트 선택 핸들러
@@ -66,22 +67,13 @@ export default function MakeDishPage() {
   // 선택박스 상태 변경 핸들러
   const checkboxOnChangeHandler = (idx: number) => {
     setTerms((prevTerms) => {
-      const newTerms = [...prevTerms]
-      newTerms[idx] = {
-        ...newTerms[idx],
-        checked: !newTerms[idx].checked,
-      }
-      return newTerms
+      const updatedTerms = terms.map((term, i) => ({
+        ...term,
+        'checked': i === idx ? !term.checked : false,
+      }))
+      return updatedTerms
     })
-  }
-
-  // 전체 선택 박스 상태 변경 핸들러
-  const groupCheckboxOnChangeHandler = (groupChecked: boolean) => {
-    setTerms((prevTerms) =>
-      prevTerms.map((term) =>
-        term.type === 'required' ? { ...term, checked: groupChecked } : term
-      )
-    )
+    setIsPublic(terms[idx].value)
   }
 
   // 단계 이동 핸들러
@@ -94,6 +86,8 @@ export default function MakeDishPage() {
           current: prevStep.current - 1
         }))
         setIsStepBtnActive(false)
+      }else if (curr == 0){
+        // 이전 화면으로 리다이렉트!!
       }
     } else {
       // 다음으로
@@ -111,18 +105,43 @@ export default function MakeDishPage() {
 
   // 완료 클릭 핸들러
   const joinCompliteOnClickHandler = () => {
-    if(step.current === 2 && step.status.every((status)=> status === StepStatus.COMPLETE)){
-      // 회원가입 함수
+    if(step.current === 1 && step.status.every((status)=> status === StepStatus.COMPLETE)){
+      // make-dish 함수
     }else{
       // 토스트
       toast({ 
         duration : 1850 ,
-        description: '필수 약관에 모두 동의해 주세요.' 
+        description: '떡국 공개범위를 선택해주세요.' 
       })
     }
   }
 
   // Hooks
+
+  // [isPublic] useEffect Hook
+  useEffect(() => {
+    if(isPublic !== undefined){
+      setStep(prevStep => ({
+        ...prevStep,
+        status: [
+          ...prevStep.status.slice(0, step.current),
+          StepStatus.COMPLETE,
+          ...prevStep.status.slice(step.current + 1),
+        ],
+      }))
+      setIsStepBtnActive(true)
+    }else{
+      setStep(prevStep => ({
+        ...prevStep,
+        status: [
+          ...prevStep.status.slice(0, step.current),
+          StepStatus.INITIAL,
+          ...prevStep.status.slice(step.current + 1),
+        ],
+      }))
+      setIsStepBtnActive(false)
+    }
+  }, [isPublic])
 
   // [step] useEffect Hook
   useEffect(() => {
@@ -143,7 +162,6 @@ export default function MakeDishPage() {
         <div className={'flex gap-6 items-center  ml-[calc(50%-48px)]'}>
           <div className={step.current === 0 ? 'w-8 h-8 rounded-full bg-pr-300' : 'w-8 h-8 rounded-full bg-gr-100'}></div>
           <div className={step.current === 1 ? 'w-8 h-8 rounded-full bg-pr-300' : 'w-8 h-8 rounded-full bg-gr-100'}></div>
-          <div className={step.current === 2 ? 'w-8 h-8 rounded-full bg-pr-300' : 'w-8 h-8 rounded-full bg-gr-100'}></div>
         </div>
       </div>
       {/* 컨텐츠 영역 */}
@@ -169,50 +187,28 @@ export default function MakeDishPage() {
           </div>
         </div>
         {/* step 1 */}
-        <div className={step.current === 1 ? 'flex flex-col gap-8 px-20' : 'hidden'}>
+        <div className={step.current === 1 ? 'flex flex-col gap-y-16 px-20' : 'hidden'}>
           <div>
             <h1 className={'font-xl text-gr-900'}>받은 편지 내용과 개수<br/>공개 범위를 설정해 주세요</h1>
           </div>
-          {/* <div className={'flex flex-col gap-20'}>
-            <div className={'relative flex justify-center'}>
-              <Image src={avatars[selectAvatar.idx].nomalSrc} alt="선택 캐릭터 이미지" width={255} height={255} loading='eager'/>
-            </div>
-            <div className={step.current === 1 ?'relative grid grid-cols-4 grid-rows-2 justify-center gap-12  bg-bg mt-[-20px] mx-[-20px] pt-[20px] px-[20px]':'relative grid grid-cols-4 grid-rows-2 justify-center gap-12'}>
-              {
-                avatars.map((avatar, idx) => {
-                  return <div onClick={()=>{selectAvatarOnClickHandler(avatar.name, idx)}} className={avatar.name === selectAvatar.name ? ' flex justify-center items-center min-w-75 min-h-75 aspect-square rounded-6 bg-pr-100 ring-pr-500 ring-[3px] ring-inset' : 'flex justify-center items-center min-w-75 min-h-75 aspect-square rounded-6 bg-pr-100'} key={idx} >
-                      <Image src={avatar.smallSrc} alt={avatar.alt} width={75} height={75} style={{width: '100%', height: 'auto',}} />
-                    </div>
-                })
-              }
-            </div>
-          </div> */}
-
-        </div>
-
-        {/* step 2 */}
-        <div className={step.current === 2 ? 'flex flex-col gap-38' : 'hidden'}>
-          <div>
-            <h1 className={'font-xl text-gr-900'}>니떡국 내떡국<br />서비스 이용에 동의해 주세요</h1>
-          </div>
-          <div className={'relative flex flex-col gap-y-20'}>
-            <div className={isStepBtnActive?'flex items-center w-full gap-10 py-16 pl-20 bg-pr-100 rounded-4 h-52':'flex items-center w-full gap-10 py-16 pl-20 bg-gr-100 rounded-4 h-52'}>
-              {/* <Checkbox id='termsAll' checked={groupTerm} onCheckedChange={groupCheckboxOnChangeHandler} className={'w-20 h-20 rounded-full bg-center border-0 bg-[url(/images/icons/iconCheckCircleBefore.png)] bg-white data-[state=checked]:bg-white data-[state=checked]:bg-[url(/images/icons/iconCheckCircleAfter.png)]'} />
-              <Label htmlFor='termsAll' className={'font-semibold text-gr-900'}>필수 약관 전체 동의</Label> */}
-            </div>
-            <div className={'flex flex-col gap-y-22'}>
+            <div className={'flex flex-col gap-y-10'}>
               {
                 terms.map((term, idx) => {
                   return (
-                    <div key={idx} className={'flex items-center w-full gap-10 pl-20'}>
-                      <Checkbox id={'terms' + idx} checked={term.checked} onCheckedChange={() => (checkboxOnChangeHandler(idx))} className={'w-20 h-20 rounded-full bg-center border-0 bg-[url(/images/icons/iconCheckCircleBefore.png)] bg-white data-[state=checked]:bg-white data-[state=checked]:bg-[url(/images/icons/iconCheckCircleAfter.png)]' } />
-                      <Label htmlFor={'terms' + idx}>{term.text}</Label>
+                    <div key={idx} className={term.checked?'flex flex-col gap-y-16 w-full rounded-4 border-1 border-pr-500':'flex flex-col gap-y-16 w-full rounded-4 border-1 border-gr-100 h-52'}>
+                        <div className={'flex items-center w-full gap-10 py-16 pl-20'}>
+                          <Checkbox id={'terms' + idx} checked={term.checked} onCheckedChange={() => (checkboxOnChangeHandler(idx))} className={'w-20 h-20 rounded-full bg-center border-0 bg-[url(/images/icons/iconCheckCircleBefore.png)] bg-white data-[state=checked]:bg-white data-[state=checked]:bg-[url(/images/icons/iconCheckCircleAfter.png)]' } />
+                          <Label htmlFor={'terms' + idx}>{term.text}</Label>
+                        </div>
+                        
+                        {term.checked?<div className={'px-20 pb-20'}>
+                          <Image src={term.sampleImg} alt={'공개범위설정예시이미지'} width={295} height={270} layout='responsive' />
+                        </div>:''}
                     </div>
                   )
                 })
               }
             </div>
-          </div>
         </div>
       </div>
       {/* 하단 영역 */}
@@ -223,8 +219,8 @@ export default function MakeDishPage() {
               size="full"
               className={isStepBtnActive ? `${activeBtnSt}` : `${disabledBtnSt}`}
               onClick={() => { navBtnOnClickHandler(step.current, 'next') }}
-              disabled={step.current === 2 ?false:!isStepBtnActive}>
-              {step.current === 2 ? '완료' : '다음'}
+              disabled={step.current === 0 ?false:!isStepBtnActive}>
+              {step.current === 1 ? '완료' : '다음'}
             </Button>
           </div>
         </div>
