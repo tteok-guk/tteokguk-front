@@ -89,7 +89,13 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
     <>
       {basic && (
         <div className=" relative mx-[-20px] mt-[-32px] h-dvh bg-[url(/images/avatar/photo.png)] bg-cover bg-center p-20">
-          <div className="flex flex-row-reverse">
+          {/* <a href={`${capturedImage}`} download={'떡국.png'} className="z-50">
+            <p>카카오 인앱 다운로드 테스트</p>
+          </a> */}
+          <button onClick={handleDownload}>테스트</button>
+          {capturedImage && <Image src={capturedImage} alt="" width={200} height={200} />}
+
+          {/* <div className="flex flex-row-reverse">
             <Link href={`/${userId}?page=${data?.lastPage}`}>
               <Image src={iconClose} width={24} height={24} alt="iconClose" className=" m-12 " />
             </Link>
@@ -105,7 +111,7 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
 
           <div className=" flex-center  relative mt-40 ">
             {data && garnish && <SaveImage type="basic" avatar={data} garnish={garnish} />}
-          </div>
+        </div> */}
 
           <BottomButton
             bgColor="bg-transperant"
@@ -156,9 +162,7 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
               className="absolute bottom-[50px] left-[33px]"
             />
           </a> */}
-          <a href={`${capturedImage}`} download={'떡국.png'} className="z-50">
-            <p>카카오 인앱 다운로드 테스트</p>
-          </a>
+          <Image src={capturedImage} alt="" width={200} height={200} />
         </div>
       )}
     </>
