@@ -119,7 +119,12 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
       )}
       {isKakao && capturedImage && (
         <div className="relative mx-[-20px] mt-[-32px] h-dvh">
-          <Image src={capturedImage} alt="snap-shot" layout="fill" className=" cursor-pointer" />
+          <Image
+            src={capturedImage}
+            alt="snap-shot"
+            layout="fill"
+            className="z-10 cursor-pointer"
+          />
           <Link href={`/${userId}?page=${data?.lastPage}`}>
             <Image
               src={iconClose}
@@ -134,7 +139,7 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
             alt="capturedImage"
             width={310}
             height={104}
-            className=" absolute bottom-[50px] left-[33px]"
+            className="absolute bottom-[50px] left-[33px]"
           />
           <Image src={capturedImage} alt="snap-shot" layout="fill" className=" cursor-pointer" />
         </div>
