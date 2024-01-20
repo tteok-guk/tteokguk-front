@@ -129,7 +129,7 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
               className=" absolute right-20 top-20 m-12"
             />
           </Link>
-          <a href="captureInfo" download={'떡국.png'}>
+          <a href={`${captureInfo}`} download={'떡국.png'}>
             <Image
               src={captureInfo}
               alt="capturedImage"
