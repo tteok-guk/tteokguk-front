@@ -84,6 +84,10 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
     })
   }
 
+  const moveToMainPageLocationHandler = () => {
+    const location = `/${userId}?page=${data?.lastPage}`
+    window.location.href = location
+  }
   const basic = !screenshot && !isKakao
   return (
     <>
@@ -99,6 +103,15 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
             <Link href={`/${userId}?page=${data?.lastPage}`}>
               <Image src={iconClose} width={24} height={24} alt="iconClose" className=" m-12 " />
             </Link>
+          <div className="flex flex-row-reverse">
+            <Image
+              src={iconClose}
+              width={24}
+              height={24}
+              alt="iconClose"
+              className=" m-12 "
+              onClick={moveToMainPageLocationHandler}
+            />
           </div>
           <div className="font-xl ">
             <p>덕담 남기기 완료!</p>
@@ -163,6 +176,24 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
             />
           </a> */}
           <Image src={capturedImage} alt="" width={200} height={200} />
+          <Image src={capturedImage} alt="snap-shot" layout="fill" className=" cursor-pointer" />
+
+          <Image
+            src={iconClose}
+            width={24}
+            height={24}
+            alt="iconClose"
+            className=" absolute right-20 top-20 m-12"
+            onClick={moveToMainPageLocationHandler}
+          />
+
+          <Image
+            src={captureInfo}
+            alt="capturedImage"
+            width={310}
+            height={104}
+            className=" absolute bottom-[50px] left-[33px]"
+          />
         </div>
       )}
     </>
