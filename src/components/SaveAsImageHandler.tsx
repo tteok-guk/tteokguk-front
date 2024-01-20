@@ -138,6 +138,9 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
               className="absolute bottom-[50px] left-[33px]"
             />
           </a>
+          <a href={`${captureInfo}`} download={'떡국.png'} className="z-50">
+            <p>카카오 인앱 다운로드 테스트</p>
+          </a>
         </div>
       )}
     </>
