@@ -6,10 +6,11 @@ import { getGarnishes, getGuestTteokguk, getHostTteokguk } from '@/services/main
 import { GarnishItem } from '@/types/MainPageTypes'
 import Image from 'next/image'
 import Link from 'next/link'
-import { redirect } from 'next/navigation'
+import { notFound, redirect } from 'next/navigation'
 import { iconDday, iconMypage } from '../../../public/images/icons'
 import { dishesObj, mattObj } from './_object/object'
 import SideBar from '@/components/common/SideBar'
+import NotFoundPage from '../not-found'
 
 export interface Props {
   params: {
@@ -38,7 +39,7 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
       redirect('/host?page=1')
     }
     if (guestTG === null || guestTGApi.code === 500) {
-      redirect('/')
+      notFound()
     }
     garnishes = await getGarnishes(userId, Number(page))
   }
