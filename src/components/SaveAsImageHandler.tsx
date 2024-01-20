@@ -49,7 +49,8 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
             if (isKakaoTalkInAppBrowser) {
               setIsKakao(true)
               setScreenshot(false)
-              setCapturedImage(imageURL)
+              // setCapturedImage(imageURL)
+              blobToDataURL(blob).then((dataUrl) => setCapturedImage(dataUrl))
               return
             } else {
               toast({ description: '이미지 저장이 완료되었어요!' })
@@ -64,6 +65,23 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
         // }, 3000)
       }
     }, 0)
+  }
+
+  // ! test: blob -> base64 인코딩된 DataURL 로 변환
+  const blobToDataURL = (imageURL: Blob): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader()
+      reader.onload = () => {
+        // 결과가 null이 아닌지 확인하고 string으로 캐스팅
+        if (reader.result) {
+          resolve(reader.result as string)
+        } else {
+          reject(new Error('FileReader의 결과값이 null입니다.'))
+        }
+      }
+      reader.onerror = reject
+      reader.readAsDataURL(imageURL)
+    })
   }
 
   const basic = !screenshot && !isKakao
