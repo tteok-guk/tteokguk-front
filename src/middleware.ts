@@ -64,7 +64,7 @@ export async function middleware(request: NextRequest) {
       } else {
         return NextResponse.redirect(new URL('/', request.url))
       }
-    } else if (path.startsWith('/change-matt') || path.startsWith('/make-dish') || path.startsWith('/account')) {
+    } else if (path.startsWith('/change-matt') || path.startsWith('/make-dish')) {
       // 쿠키 확인
       const token = request.cookies.get('token')?.value
       if (token) {
@@ -77,6 +77,14 @@ export async function middleware(request: NextRequest) {
           response.cookies.delete('token')
           return response
         }
+      } else {
+        return NextResponse.redirect(new URL('/', request.url))
+      }
+    }else if (path.startsWith('/account')) {
+      // 쿠키 확인
+      const token = request.cookies.get('token')?.value
+      if (token){
+        return NextResponse.next()
       } else {
         return NextResponse.redirect(new URL('/', request.url))
       }
