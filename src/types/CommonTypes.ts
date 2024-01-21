@@ -24,13 +24,13 @@ export interface BottomButtonProps {
 }
 
 export interface ModalProps {
-  type: 'roulette' | 'confirm'
+  type: 'roulette' | 'sideBar'
   cancelClick?: () => void
   confirmClick?: () => void
 }
 
 export type ModalType = {
-  [key in 'roulette' | 'confirm']: React.ReactNode
+  [key in 'roulette' | 'sideBar']: React.ReactNode
 }
 
 export interface ConfirmModalProps {
