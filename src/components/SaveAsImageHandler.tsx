@@ -24,6 +24,8 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
   const [screenshot, setScreenshot] = useState(false)
   const [isKakao, setIsKakao] = useState(false)
 
+  const basic = !screenshot && !isKakao
+
   const { data } = useQuery({
     queryKey: ['getAvatar'],
     queryFn: () => getAvatar({ userId }),
@@ -37,19 +39,16 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
 
       try {
         const div = divRef.current
-
         const canvas = await html2canvas(div, { logging: true })
 
         canvas.toBlob((blob) => {
           if (blob !== null) {
-            const imageURL = URL.createObjectURL(blob)
-
             saveAs(blob, '떡국.png')
             const isKakaoTalkInAppBrowser = /KAKAOTALK/i.test(window.navigator.userAgent)
             if (isKakaoTalkInAppBrowser) {
               setIsKakao(true)
               setScreenshot(false)
-              setCapturedImage(imageURL)
+              blobToDataURL(blob).then((dataUrl) => setCapturedImage(dataUrl))
               return
             } else {
               toast({ description: '이미지 저장이 완료되었어요!' })
@@ -58,25 +57,45 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
         })
       } catch (error) {
         console.error('Error converting div to image:', error)
-      } finally {
-        setTimeout(() => {
-          setScreenshot(false)
-        }, 3000)
       }
     }, 0)
   }
 
-  useEffect(() => {}, [])
+  // * blob -> base64 인코딩된 DataURL 로 변환
+  const blobToDataURL = (imageURL: Blob): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader()
+      reader.onload = () => {
+        // 결과가 null이 아닌지 확인하고 string으로 형변환
+        if (reader.result) {
+          resolve(reader.result as string)
+        } else {
+          reject(new Error('FileReader의 결과값이 null입니다.'))
+        }
+      }
+      reader.onerror = reject
+      reader.readAsDataURL(imageURL)
+    })
+  }
 
-  const basic = !screenshot && !isKakao
+  const moveToMainPageLocationHandler = () => {
+    const location = `/${userId}?page=${data?.lastPage}`
+    window.location.href = location
+  }
+
   return (
     <>
       {basic && (
         <div className=" relative mx-[-20px] mt-[-32px] h-dvh bg-[url(/images/avatar/photo.png)] bg-cover bg-center p-20">
           <div className="flex flex-row-reverse">
-            <Link href={`/${userId}?page=1`}>
-              <Image src={iconClose} width={24} height={24} alt="iconClose" className=" m-12 " />
-            </Link>
+            <Image
+              src={iconClose}
+              width={24}
+              height={24}
+              alt="iconClose"
+              className=" m-12 "
+              onClick={moveToMainPageLocationHandler}
+            />
           </div>
           <div className="font-xl ">
             <p>덕담 남기기 완료!</p>
@@ -128,10 +147,7 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
             height={24}
             alt="iconClose"
             className=" absolute right-20 top-20 m-12"
-            onClick={() => {
-              setIsKakao(false)
-              setScreenshot(false)
-            }}
+            onClick={moveToMainPageLocationHandler}
           />
           <Image
             src={captureInfo}
@@ -139,7 +155,7 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
             width={310}
             height={104}
             className=" absolute bottom-[50px] left-[33px]"
-          />
+          />{' '}
         </div>
       )}
     </>

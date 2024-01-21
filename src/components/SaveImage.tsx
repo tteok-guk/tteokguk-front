@@ -53,6 +53,7 @@ const SaveImage = ({ type, avatar, garnish }: snapShotType) => {
               height={164}
               layout="responsive"
               alt="hostAvatar"
+              className=" min-h-164 min-w-164"
             />
           </div>
           <div className="relative mx-[-55px] mt-[20%] block h-57 w-1/5">
@@ -71,6 +72,7 @@ const SaveImage = ({ type, avatar, garnish }: snapShotType) => {
               height={164}
               layout="responsive"
               alt="hostAvatar"
+              className=" min-h-164 min-w-164"
             />
           </div>
         </div>
