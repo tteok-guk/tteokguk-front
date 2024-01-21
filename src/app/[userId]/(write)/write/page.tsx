@@ -6,7 +6,6 @@ import Image from 'next/image'
 import { isMobileDevice } from '@/utils/isMobileDevice'
 import { checkWriteQuery } from '@/utils/checkWriteQuery'
 import { useGarnishInput } from '@/hooks/useGarnishInput'
-import { useToast } from '@/hooks/use-toast'
 import { useMutation } from '@tanstack/react-query'
 import { postGarnish } from '@/services/write'
 import { RequestParamType } from '@/types/apiTypes'
@@ -15,19 +14,19 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { dragonSmall, dogSmall, rabbitSmall } from '../../../../../public/images/avatar/small'
+import { toast } from '@/hooks/use-toast'
 
 export default function WritePage() {
+  const [disabled, setDisabled] = useState(true)
   const [data, onChange] = useGarnishInput({
     writerNickname: '',
     content: '',
   })
-  const [disabled, setDisabled] = useState(true)
 
   const pathname = usePathname()
   const params = useSearchParams()
   const router = useRouter()
   const isMobile = isMobileDevice()
-  const { toast } = useToast()
 
   const hostId = pathname.split('/').filter((item) => item)[0]
   const hostNickname = params.get('nickname')
@@ -118,7 +117,7 @@ export default function WritePage() {
   }, [data])
 
   return (
-    <div className="">
+    <>
       <TopButton onClick={backBtnClick} />
       <form>
         <h1 className="font-xl pt-12">
@@ -169,6 +168,6 @@ export default function WritePage() {
       ) : (
         <BottomButton fullBtnName="완료" fullBtnClick={doneBtnClick} fullBtnDisabled={disabled} />
       )}
-    </div>
+    </>
   )
 }
