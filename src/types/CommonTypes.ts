@@ -23,7 +23,7 @@ export interface BottomButtonProps {
   bgColor?: string
 }
 
-type ModalType = 'roulette' | 'sideBar'
+type ModalType = 'roulette'
 
 export interface ModalProps {
   type: ModalType
