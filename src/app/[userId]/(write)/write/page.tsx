@@ -14,6 +14,7 @@ import { BottomButton, TopButton } from '@/components/common'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
+import Logout from '@/components/Logout'
 import { dragonSmall, dogSmall, rabbitSmall } from '../../../../../public/images/avatar/small'
 
 export default function WritePage() {
@@ -22,6 +23,7 @@ export default function WritePage() {
     content: '',
   })
   const [disabled, setDisabled] = useState(true)
+  const [showAlert, setShowAlert] = useState(false)
 
   const pathname = usePathname()
   const params = useSearchParams()
@@ -99,11 +101,14 @@ export default function WritePage() {
   }
 
   // * 뒤로가기 버튼 클릭
-  const backBtnClick = () => {
-    if (!disabled) {
-      // todo alert 모달
-      console.log('이전페이지로 돌아가면\n작성한 내용은 저장되지 않아요!')
-    }
+  const backBtnClick = () => !disabled && setShowAlert(true)
+
+  // * alert 모달 닫기
+  const setAlertClose = () => setShowAlert(false)
+
+  // * alert 모달 종료 후 뒤로가기
+  const setAlertConfirm = () => {
+    setAlertClose()
     router.back()
   }
 
@@ -118,7 +123,7 @@ export default function WritePage() {
   }, [data])
 
   return (
-    <div className="">
+    <>
       <TopButton onClick={backBtnClick} />
       <form>
         <h1 className="font-xl pt-12">
@@ -161,6 +166,15 @@ export default function WritePage() {
           </span>
         </div>
       </form>
+      {showAlert && (
+        <Logout
+          title="이전페이지로 돌아가면\n작성한 내용은 저장되지 않아요!"
+          cancelBtnTitle="취소"
+          confirmTitle="괜찮아요"
+          cancelBtnFn={setAlertClose}
+          confirmBtnFn={setAlertConfirm}
+        />
+      )}
 
       {isMobile ? (
         <Button size="full" className="mb-20 mt-16" onClick={doneBtnClick} disabled={disabled}>
@@ -169,6 +183,6 @@ export default function WritePage() {
       ) : (
         <BottomButton fullBtnName="완료" fullBtnClick={doneBtnClick} fullBtnDisabled={disabled} />
       )}
-    </div>
+    </>
   )
 }

@@ -26,7 +26,7 @@ export default function RouletteModal({ cancelClick }: RouletteModalProps) {
           </Button>
           <div className="clear-right flex h-full w-full flex-col items-center gap-8 pt-10">
             <h2 className="font-soyo text-22 font-semibold">랜덤 고명 뽑기!</h2>
-            <p className="text-12 font-medium leading-14">특별한 고명으로 편지를 남길 수 있어요.</p>
+            <p className="text-12 font-medium leading-14">뽑기는 한 번만 할 수 있어요.</p>
             <Roulette />
           </div>
           <Button size="full" onClick={doneRoulette} disabled={!rouletteResult}>
