@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react'
 import { ModalProps, ModalType } from '@/types/CommonTypes'
 import { SideBarModal, RouletteModal } from '../modal'
 
+//
+
 export default function Modal({ type, cancelClick, confirmClick }: ModalProps) {
   const [mounted, setMounted] = useState(false)
 
