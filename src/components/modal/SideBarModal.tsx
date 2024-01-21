@@ -1,6 +1,7 @@
 import { ConfirmModalProps } from '@/types/CommonTypes'
 import SideBar from '../common/SideBar'
 
+// * modal
 export default function SideBarModal({ cancelClick, confirmClick }: ConfirmModalProps) {
   return (
     <div className="modal-bg">
