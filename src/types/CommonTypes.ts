@@ -23,14 +23,16 @@ export interface BottomButtonProps {
   bgColor?: string
 }
 
+type ModalType = 'roulette'
+
 export interface ModalProps {
-  type: 'roulette' | 'sideBar'
+  type: ModalType
   cancelClick?: () => void
   confirmClick?: () => void
 }
 
-export type ModalType = {
-  [key in 'roulette' | 'sideBar']: React.ReactNode
+export type ModalComponentType = {
+  [key in ModalType]: React.ReactNode
 }
 
 export interface ConfirmModalProps {
