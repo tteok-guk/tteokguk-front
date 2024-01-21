@@ -51,7 +51,7 @@ export default function GarnishListpage() {
     {/* <Button onClick={getGarnishDetailsHandler}> 테스트 </Button> */}
     <div className={'bg-cover'}>
       <div className={'flex mt-[-12px]'}>
-        <div className={'pl-0 pr-24 py-12'}>
+        <div className={'pl-0 pr-24 py-12 cursor-pointer'} onClick={()=>(router.push('/account'))}>
           <Image src={iconArrow} alt="왼쪽을 가르키는 화살표 이미지" width={24} height={24} />
         </div>
         <div className={'absolute right-20 top-24'}>
