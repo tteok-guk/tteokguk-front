@@ -1,7 +1,7 @@
 import { OptionGarnishesType } from '@/types/GarnishTypes'
 
 // * 고명 영문명, 확률 가중치
-export const OptionGarnishes: OptionGarnishesType[] = [
+export const optionGarnishes: OptionGarnishesType[] = [
   {
     id: 'pineapple',
     weight: 17,
