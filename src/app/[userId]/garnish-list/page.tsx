@@ -4,7 +4,7 @@ import { useMutation, useQuery} from '@tanstack/react-query'
 import Image from 'next/image'
 import { iconArrow } from '../../../../public/images/icons'
 import { dragonHeart } from '../../../../public/images/avatar/arm'
-import { garnishes as grnisheImgs } from '../../../../data/garnishes'
+import { garnishes, garnishes as grnisheImgs } from '../../../../data/garnishes'
 import { useRouter } from 'next/navigation'
 import { useToast } from '@/hooks/use-toast'
 
@@ -17,6 +17,8 @@ export default function GarnishListpage() {
     queryKey: ['garnishAllList'],
     queryFn: getGarnishList,
   })
+
+  console.log(">>>>",data)
 
   const onSubmit = useMutation({
     mutationFn: (garnishId: string) => getGarnishDetail(garnishId),
@@ -31,10 +33,10 @@ export default function GarnishListpage() {
     onError: (err) => console.log('err', err), // todo 에러핸들링 추가
   })
 
-  const getGarnishDetailsHandler = (isDday:boolean, garnishId:string) => {
+  const getGarnishDetailsHandler = (isDday:boolean, garnishId:string, tteokGukId:string) => {
     //onSubmit.mutate(garnishId)
     if(isDday){
-      router.push(`/host/${garnishId}`)
+      router.push(`/${tteokGukId}/${garnishId}`)
     }else{
       toast({
         duration: 1850,
@@ -64,7 +66,7 @@ export default function GarnishListpage() {
             {
               data?.data?.garnishes?.map((garnish, idx) => {
                 return (
-                  <div key={garnish.nickname + idx} className={'w-full flex gap-x-12 truncate cursor-pointer flex-shrink-0'} onClick={()=>(getGarnishDetailsHandler( garnish.content==='2월9일 이후에 확인 할 수 있어요'?false:true, String(garnish.garnishId)))}>
+                  <div key={garnish.nickname + idx} className={'w-full flex gap-x-12 truncate cursor-pointer flex-shrink-0'} onClick={()=>(getGarnishDetailsHandler( garnish.content==='2월9일 이후에 확인 할 수 있어요'?false:true, String(garnish.garnishId), garnish.tteokGukId ))}>
                     <div className={'w-54 h-54 p-7 bg-white rounded-full flex justify-center items-center flex-shrink-0 flex-grow-0'}>
                       <Image src={grnisheImgs.find((garnishImg) => garnishImg.id === garnish.garnishType)?.src || grnisheImgs[6].src} alt={'고명이미지'} width={40} height={40} ></Image>
                     </div>

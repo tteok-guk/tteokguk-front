@@ -36,7 +36,7 @@ interface Garnish {
   nickname: string
   garnishType: string
   content: string
-  tteokgukId: string
+  tteokGukId: string
   public: boolean
 }
 
