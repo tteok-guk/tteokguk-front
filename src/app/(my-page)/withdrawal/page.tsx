@@ -7,11 +7,12 @@ import { Checkbox } from '@/components/ui/checkbox'
 import Image from 'next/image'
 import { BottomButton } from '@/components/common'
 import { useMutation } from '@tanstack/react-query'
-import { RequestParamType } from '@/types/apiTypes'
 import { deleteNickname } from '@/services/withdrawal'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 function WithdrawalPage() {
+  const params = useSearchParams()
+  const hostNickname = params.get('nickname')
   const [disabled, setDisabled] = useState(false)
   const router = useRouter()
 
@@ -32,7 +33,7 @@ function WithdrawalPage() {
     <>
       <TopButton />
       <p className="font-xl">
-        닉네임닉네임닉네임
+        {hostNickname}
         <br />
         정말 탈퇴하시겠습니까?
       </p>
@@ -55,9 +56,6 @@ function WithdrawalPage() {
         <span className="font-xs">데이터가 모두 삭제됨을 확인하였으며 동의합니다.</span>
       </div>
       <BottomButton
-        split="twice"
-        smallBtnName={`취소`}
-        // smallBtnDisabled={!disabled}
         fullBtnName={`회원 탈퇴`}
         fullBtnDisabled={!disabled}
         fullBtnClick={completeBtn}

@@ -1,4 +1,4 @@
-import ConfirmModal from './ConfirmModal'
+import SideBarModal from './SideBarModal'
 import RouletteModal from './RouletteModal'
 
-export { ConfirmModal, RouletteModal }
+export { SideBarModal, RouletteModal }

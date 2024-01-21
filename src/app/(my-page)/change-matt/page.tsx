@@ -22,7 +22,7 @@ export default function ChangeMattPage() {
     mutationFn: (chosenMatt: RequestParamType) => putMatt(chosenMatt),
     onSuccess: (res) => {
       // toast({ description: '매트가 변경되었습니다.' })
-      router.push(`/${res.data.tteokGukId}?page=1`)
+      window.location.href = `/${res.data.tteokGukId}?page=1`
     },
     onError: (err) => console.log('err', err),
   })

@@ -7,10 +7,8 @@ import { QueryKey, useMutation, useQuery, useQueryClient } from '@tanstack/react
 import { getMyPage } from '@/services/accout'
 import { RequestParamType } from '@/types/apiTypes'
 import { putNickname } from '@/services/modifyNickname'
-
-//todo 2. 회원탈퇴기능
-//todo 3. 로그아웃 팝업 및 로그아웃 기능
-//todo 4. 슬라이드 기능
+import Logout from '@/components/Logout'
+import Cookies from 'js-cookie'
 
 //? React Query v5에서 query 함수 호출 시 새로운 형식을 사용해야된다
 //? query 함수 호출시 Object형태만 허용된다. exuseQuery({queryKey: ['myPageInfo'],queryFn: getMyPage,})
@@ -20,6 +18,15 @@ import { putNickname } from '@/services/modifyNickname'
 function MyPage() {
   const queryClient = useQueryClient()
   const [modifyBtn, setModifyBtn] = useState(false)
+  const [logout, setlogout] = useState(false)
+
+  const LogoutHandler = () => {
+    Cookies.remove('token')
+    setlogout(!logout)
+  }
+  const logoutModalToggle = () => {
+    setlogout(!logout)
+  }
   const inputFocus = useRef<any>(null)
   useEffect(() => {
     inputFocus.current?.focus()
@@ -104,11 +111,21 @@ function MyPage() {
       <Partition />
       <span className="text-xs text-gr-400">로그인 관리</span>
       <div className="">
-        {/* 로그아웃은 button 회원탈퇴는 Link로 변경 */}
-        <p className="font-base mb-16">로그아웃</p>
-        <Link href={'/withdrawal'} className="font-base">
+        <button className="font-base mb-16 block" onClick={logoutModalToggle}>
+          로그아웃
+        </button>
+        <Link href={`/withdrawal?nickname=${data?.data.nickname}`} className="font-base">
           회원탈퇴
         </Link>
+        {logout && (
+          <Logout
+            title="로그아웃 하시겠습니까?"
+            cancelBtnTitle="취소"
+            confirmTitle="로그아웃"
+            cancelBtnFn={logoutModalToggle}
+            confirmBtnFn={LogoutHandler}
+          />
+        )}
       </div>
     </>
   )
