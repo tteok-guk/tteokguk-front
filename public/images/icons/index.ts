@@ -9,6 +9,10 @@ import iconError from './iconError.png'
 import iconLocation from './iconLocation.png'
 import iconMypage from './iconMypage.png'
 import iconSave from './iconSave.png'
+import iconLink from './iconLink.png'
+import iconMail from './iconMail.png'
+import iconTeam from './iconTeam.png'
+import iconCs from './iconCs.png'
 
 export {
   iconArrow,
@@ -22,4 +26,8 @@ export {
   iconLocation,
   iconMypage,
   iconSave,
+  iconLink,
+  iconMail,
+  iconCs,
+  iconTeam,
 }
