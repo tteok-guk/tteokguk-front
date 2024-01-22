@@ -5,5 +5,15 @@ import serviceDragon from './serviceDragon.png'
 import servicePreviewDish from './servicePreviewDish.svg'
 import sampleDishPrivate from './sampleDishPrivate.png'
 import sampleDishPublic from './sampleDishPublic.png'
+import makeDishBubble from './makeDishBubble.png'
 
-export { faviconMedium, faviconSmall, rouletteBoard, serviceDragon, servicePreviewDish, sampleDishPrivate, sampleDishPublic }
+export {
+  faviconMedium,
+  faviconSmall,
+  rouletteBoard,
+  serviceDragon,
+  servicePreviewDish,
+  sampleDishPrivate,
+  sampleDishPublic,
+  makeDishBubble,
+}

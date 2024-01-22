@@ -11,6 +11,7 @@ import { iconDday, iconMypage } from '../../../public/images/icons'
 import { dishesObj, mattObj } from './_object/object'
 import SideBar from '@/components/common/SideBar'
 import NotFoundPage from '../not-found'
+import { makeDishBubble } from '../../../public/images/etc'
 
 export interface Props {
   params: {
@@ -126,10 +127,22 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
                 pageParam={userId}
               />
             )}
+
             <ShareButton tteokGukId={tteokGukId} nickname={guestTG?.nickname} />
           </div>
         </div>
       </section>
+      {!guestTG?.hasTteokGuk && guestTG && (
+        <Link href={'/host?page=1'}>
+          <Image
+            src={makeDishBubble}
+            alt="makeDishBubble"
+            width={159}
+            height={36}
+            className=" absolute bottom-[105px]"
+          />
+        </Link>
+      )}
     </div>
   )
 }
