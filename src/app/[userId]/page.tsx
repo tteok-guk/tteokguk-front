@@ -48,8 +48,9 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
   const nickname = hostTG ? hostTG.nickname : guestTG?.nickname
   const tteokGukId = hostTG ? hostTG.tteokGukId : guestTG?.tteokGukId
   const mattType = hostTG ? hostTG.mattType : guestTG?.mattType
-  const dDay = hostTG ? hostTG.dday : guestTG?.dday
   const garnish = garnishes
+  const dDay = hostTG ? hostTG.dday : guestTG?.dday
+  const dDayUi = dDay === 0 ? 'D-Day' : dDay && dDay >= 1 ? `+${dDay}` : dDay
 
   const determineDishType = (garnish: GarnishItem[] | undefined, userId: string) => {
     if (!tteokGukId) {
@@ -86,9 +87,7 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
           <div className="flex flex-col items-center">
             <div className="font-sm flex-center mb-8 flex flex-row gap-1.5 rounded-2xl bg-pr-100 px-15 py-3 lg:px-20 lg:py-6">
               <Image width={12} height={11} src={iconDday} alt="D-day icon" />
-              <p className="font-base lg:font-lg text-pr-800">{`까치까치 설날 D${
-                dDay === 0 ? '-Day' : dDay
-              }`}</p>
+              <p className="font-base lg:font-lg text-pr-800">{`까치까치 설날 D${dDayUi}`}</p>
             </div>
 
             {hostTG?.tteokGukId || guestTG ? (
