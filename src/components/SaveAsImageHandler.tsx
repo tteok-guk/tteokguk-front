@@ -32,10 +32,6 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
   })
 
   const handleDownload = async () => {
-    if (isKakao && capturedImage) {
-      alert('열리긴 하는지? 이게 작동은 하니?')
-      toast({ description: '화면을 꾹~ 눌러서 이미지를 저장 할 수 있어요!' })
-    }
     setScreenshot(true)
 
     setTimeout(async () => {
@@ -61,6 +57,10 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
         })
       } catch (error) {
         console.error('Error converting div to image:', error)
+      }
+      if (isKakao && capturedImage) {
+        alert('열리긴 하는지? 이게 작동은 하니?')
+        toast({ description: '화면을 꾹~ 눌러서 이미지를 저장 할 수 있어요!' })
       }
     }, 0)
   }
