@@ -45,7 +45,6 @@ export interface GarnishItem {
 export interface paginationType {
   pageSize?: number
   pageParam: string
-  currentNum: number
 }
 export interface BtnType {
   btnType?: string

@@ -35,6 +35,9 @@ interface Garnish {
   garnishId: number
   nickname: string
   garnishType: string
+  content: string
+  tteokGukId: string
+  public: boolean
 }
 
 export interface GetAvatarType {

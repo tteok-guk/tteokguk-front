@@ -12,12 +12,13 @@ export default function Modal({ type, cancelClick, confirmClick }: ModalProps) {
     roulette: <RouletteModal cancelClick={cancelClick} />,
   }
   const componentToRender = componentType[type]
-  const modalRoot = document.getElementById('modal-root') as HTMLElement
 
   useEffect(() => {
     setMounted(true)
     return () => setMounted(false)
   }, [])
 
-  return mounted ? createPortal(componentToRender, modalRoot) : <></>
+  return mounted
+    ? createPortal(componentToRender, document.getElementById('modal-root') as HTMLElement)
+    : null
 }

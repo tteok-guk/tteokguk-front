@@ -6,7 +6,6 @@ import Image from 'next/image'
 import { isMobileDevice } from '@/utils/isMobileDevice'
 import { checkWriteQuery } from '@/utils/checkWriteQuery'
 import { useGarnishInput } from '@/hooks/useGarnishInput'
-import { useToast } from '@/hooks/use-toast'
 import { useMutation } from '@tanstack/react-query'
 import { postGarnish } from '@/services/write'
 import { RequestParamType } from '@/types/apiTypes'
@@ -16,6 +15,7 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import Logout from '@/components/Logout'
 import { dragonSmall, dogSmall, rabbitSmall } from '../../../../../public/images/avatar/small'
+import { toast } from '@/hooks/use-toast'
 
 export default function WritePage() {
   const [data, onChange] = useGarnishInput({
@@ -29,7 +29,6 @@ export default function WritePage() {
   const params = useSearchParams()
   const router = useRouter()
   const isMobile = isMobileDevice()
-  const { toast } = useToast()
 
   const hostId = pathname.split('/').filter((item) => item)[0]
   const hostNickname = params.get('nickname')
