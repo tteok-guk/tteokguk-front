@@ -56,7 +56,7 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
     }
     if ((garnish?.length === 0 || !garnish) && userId !== 'host') {
       return 'firstDish'
-    } else if (garnish?.length === 0 && userId === 'host') {
+    } else if (!garnish && userId === 'host') {
       return 'emptyDish'
     } else {
       return 'basicDish'
@@ -91,7 +91,9 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
             </div>
 
             {hostTG?.tteokGukId || guestTG ? (
-              <p className="lg:font-lg font-base mb-5">{`${garnish?.garnishCnt}개의 덕담을 받았어요!`}</p>
+              <p className="lg:font-lg font-base mb-5">{`${
+                garnish?.garnishCnt ? garnish.garnishCnt : 0
+              }개의 덕담을 받았어요!`}</p>
             ) : (
               <></>
             )}
@@ -120,9 +122,8 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
             </div>
             {tteokGukId && (
               <PaginationEntire
-                pageSize={garnish?.pageSize}
+                pageSize={garnish?.pageSize ? garnish.pageSize : 1}
                 pageParam={userId}
-                currentNum={Number(page)}
               />
             )}
             <ShareButton tteokGukId={tteokGukId} nickname={guestTG?.nickname} />
