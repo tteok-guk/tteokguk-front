@@ -32,6 +32,9 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
   })
 
   const handleDownload = async () => {
+    if (isKakao && capturedImage) {
+      toast({ description: '화면을 꾹~ 눌러서 이미지를 저장 할 수 있어요!' })
+    }
     setScreenshot(true)
 
     setTimeout(async () => {
@@ -93,7 +96,7 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
               width={24}
               height={24}
               alt="iconClose"
-              className=" m-12 "
+              className=" m-12 cursor-pointer"
               onClick={moveToMainPageLocationHandler}
             />
           </div>
@@ -149,13 +152,13 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
             className=" absolute right-20 top-20 m-12"
             onClick={moveToMainPageLocationHandler}
           />
-          <Image
+          {/* <Image
             src={captureInfo}
             alt="capturedImage"
             width={310}
             height={104}
             className=" absolute bottom-[50px] left-[33px]"
-          />{' '}
+          />{' '} */}
         </div>
       )}
     </>
