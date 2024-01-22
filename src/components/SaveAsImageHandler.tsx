@@ -23,6 +23,7 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
   const [capturedImage, setCapturedImage] = useState('')
   const [screenshot, setScreenshot] = useState(false)
   const [isKakao, setIsKakao] = useState(false)
+  const [isKakaoSnapShot, setIsKakaoSnapShot] = useState(false)
 
   const basic = !screenshot && !isKakao
 
@@ -58,13 +59,14 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
       } catch (error) {
         console.error('Error converting div to image:', error)
       }
-      if (isKakao && capturedImage) {
-        alert('열리긴 하는지? 이게 작동은 하니?')
-        toast({ description: '화면을 꾹~ 눌러서 이미지를 저장 할 수 있어요!' })
-      }
     }, 0)
   }
-
+  useEffect(() => {
+    if (isKakao && capturedImage) {
+      setIsKakaoSnapShot(true)
+      toast({ description: '화면을 꾹~ 눌러서 이미지를 저장 할 수 있어요!' })
+    }
+  }, [isKakao, capturedImage])
   // * blob -> base64 인코딩된 DataURL 로 변환
   const blobToDataURL = (imageURL: Blob): Promise<string> => {
     return new Promise((resolve, reject) => {
@@ -142,7 +144,7 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
           />
         </div>
       )}
-      {isKakao && capturedImage && (
+      {isKakaoSnapShot && (
         <div className="relative mx-[-20px] mt-[-32px] h-dvh">
           <Image src={capturedImage} alt="snap-shot" layout="fill" className=" cursor-pointer" />
           <Image
