@@ -1,9 +1,10 @@
 'use client'
 
-import { useState, useRef } from 'react'
-import { useSetRecoilState } from 'recoil'
+import { useState, useRef, useEffect } from 'react'
+import { useRecoilState } from 'recoil'
 import { rouletteResultState } from '@/store/WriteAtom'
-import { OptionGarnishes } from '../../data/garnishRoulette'
+import { optionGarnishes } from '../../data/optionGarnishes'
+import { garnishes } from '../../data/garnishes'
 import { getRandomGarnish } from '@/utils/getRandomGarnish'
 import Image from 'next/image'
 import { toast } from '@/hooks/use-toast'
@@ -12,7 +13,8 @@ import { iconLocation } from '../../public/images/icons'
 import { rouletteBoard } from '../../public/images/etc'
 
 export default function Roulette() {
-  const setRouletteResult = useSetRecoilState(rouletteResultState) // 룰렛 결과값
+  const [rouletteResult, setRouletteResult] = useRecoilState(rouletteResultState) // 룰렛 결과값
+  const [btnName, setBtnName] = useState('룰렛\n돌리기!')
   const [disabled, setDisabled] = useState(false)
 
   const imageRef = useRef<HTMLImageElement>(null)
@@ -39,7 +41,7 @@ export default function Roulette() {
     }
 
     // OptionGarnishes 배열의 weight을 기반으로 부채꼴(arcurate) 각도 계산
-    const arc = OptionGarnishes.map((item) => (item.weight / 100) * 360)
+    const arc = optionGarnishes.map((item) => (item.weight / 100) * 360)
 
     // 랜덤 선택된 고명까지 회전시킬 각도 계산
     let rotationAngle = 0
@@ -56,6 +58,14 @@ export default function Roulette() {
       setRouletteResult(randomGarnish)
     }, TOTAL_ROTATION_TIME)
   }
+
+  useEffect(() => {
+    if (rouletteResult) {
+      const resultInfo = garnishes.find((item) => item.id === rouletteResult && item.alt)
+      resultInfo && setBtnName(resultInfo.alt)
+      // console.log('resultName', resultName)
+    }
+  }, [rouletteResult])
 
   return (
     <div className="relative">
@@ -79,13 +89,12 @@ export default function Roulette() {
         onClick={rotate}
         disabled={disabled}
         className={`
-          absolute left-90 top-107 z-10 h-90 w-90 rounded-full font-soyoThin font-bold text-white
-          ${disabled ? 'bg-gr-100' : 'bg-pr-500'}
+          absolute left-90 top-107 z-10 h-90 w-90 whitespace-pre-line break-keep
+          rounded-full bg-pr-500 font-soyoThin font-bold text-white
+          ${disabled && 'hover:bg-pr-500 active:bg-pr-500'}
         `}
       >
-        룰렛
-        <br />
-        돌리기!
+        {btnName}
       </Button>
     </div>
   )
