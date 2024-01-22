@@ -1,6 +1,6 @@
-import { NextRequest } from "next/server";
-import { NextResponse } from "next/server";
-import { getUserType } from "@/services/userCheck";
+import { NextRequest } from 'next/server'
+import { NextResponse } from 'next/server'
+import { getUserType } from '@/services/userCheck'
 
 export async function middleware(request: NextRequest) {
   // 접근 불가 URL 차단 + 접근 가능 URL? => 쿠키값 확인 => 사용자 타입 확인 타입별 valid 체크
@@ -13,7 +13,7 @@ export async function middleware(request: NextRequest) {
     [domain]/!host//garnish-list
   */
 
-  // 임시 주석 
+  // 임시 주석
   if (path.startsWith('/host')) {
     if (path.includes('/set-garnish') || path.includes('/write') || path.includes('/snap-shot')) {
       // 접근 불가 URLs
@@ -48,7 +48,7 @@ export async function middleware(request: NextRequest) {
       // } else {
       //   return NextResponse.redirect(new URL('/', request.url))
       // }
-    } else*/ 
+    } else*/
     if (path.startsWith('/join')) {
       // 쿠키 확인
       const token = request.cookies.get('token')?.value
@@ -80,10 +80,10 @@ export async function middleware(request: NextRequest) {
       } else {
         return NextResponse.redirect(new URL('/', request.url))
       }
-    }else if (path.startsWith('/account')) {
+    } else if (path.startsWith('/account')) {
       // 쿠키 확인
       const token = request.cookies.get('token')?.value
-      if (token){
+      if (token) {
         return NextResponse.next()
       } else {
         return NextResponse.redirect(new URL('/', request.url))
@@ -116,8 +116,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: [
-    '/login/success', '/host/:path*', '/join', '/change-matt', '/make-dish', '/account'
-  ]
+  matcher: ['/login/success', '/host/:path*', '/join', '/change-matt', '/make-dish', '/account'],
 }
-
