@@ -24,10 +24,8 @@ export default function MakeDishPage() {
   const router = useRouter()
 
   // button style
-  const activeBtnSt =
-    'font-semibold border-0 bg-pr-500 text-17 leading-22 text-white active:bg-pr-500'
-  const disabledBtnSt =
-    'font-semibold border-0 bg-gr-100 text-17 leading-22 text-gr-400 disabled:bg-gr-100 active:bg-gr-100 hover:bg-gr-100'
+  const activeBtnSt = 'font-semibold border-0 bg-pr-500 text-17 leading-22 text-white active:bg-pr-500 cursor-pointer'
+  const disabledBtnSt = 'font-semibold border-0 bg-gr-100 text-17 leading-22 text-gr-400 disabled:bg-gr-100 active:bg-gr-100 hover:bg-gr-100 '
 
   // 하단 버튼 활성화 상태
   const [isStepBtnActive, setIsStepBtnActive] = useState(true)
@@ -183,13 +181,7 @@ export default function MakeDishPage() {
   }, [step])
 
   return (
-    <div
-      className={
-        step.current === 0
-          ? `bg-[url(/images/matts/${selectMatt.id}.png)] mx-[-20px] mt-[-32px] h-[calc(100%-70px)] bg-cover bg-[-140px] px-20 pt-32`
-          : 'mx-[-20px] mt-[-32px] h-[calc(100%-70px)] bg-white px-20 pt-32'
-      }
-    >
+    <div className={step.current === 0 ? `bg-[url(/images/matts/${selectMatt.id}.png)] bg-cover bg-center mt-[-32px] mx-[-20px] pt-32 px-20 h-[calc(100%-70px)]` : 'mt-[-32px] mx-[-20px] pt-32 px-20 h-[calc(100%-70px)] bg-white'}>
       {/* 상단 영역 */}
       <div className={step.current === 2 ? 'flex px-20 pt-20' : 'mt-[-12px] flex'}>
         <div
@@ -237,36 +229,15 @@ export default function MakeDishPage() {
                 loading="eager"
               />
             </div>
-            <div
-              className={
-                step.current === 0
-                  ? 'relative mx-[-20px] grid flex-shrink-0 flex-grow-0 grid-cols-4 grid-rows-2 justify-center gap-12 bg-white px-20 pb-20 pt-20'
-                  : 'relative grid grid-cols-4 grid-rows-2 justify-center gap-12'
-              }
-            >
-              {matts.map((matt, idx) => {
-                return (
-                  <div
-                    onClick={() => {
-                      selectMattOnClickHandler(matt.id, idx)
-                    }}
-                    className={
-                      matt.id === selectMatt.id
-                        ? ' flex aspect-square min-h-75 min-w-75 items-center justify-center overflow-hidden rounded-6 bg-pr-100 ring-[3px] ring-pr-500'
-                        : 'flex aspect-square min-h-75 min-w-75 items-center justify-center overflow-hidden rounded-6 bg-pr-100'
-                    }
-                    key={idx}
-                  >
-                    <Image
-                      src={matt.miniSrc}
-                      alt={matt.alt}
-                      width={75}
-                      height={75}
-                      layout="responsive"
-                    />
+            <div className={step.current === 0 ? 'relative grid grid-cols-4 grid-rows-2 justify-center gap-12 bg-white mx-[-20px] pt-20 px-20 flex-grow-0 flex-shrink-0 pb-20' : 'relative grid grid-cols-4 grid-rows-2 justify-center gap-12'}>
+              {
+                matts.map((matt, idx) => {
+                  return <div onClick={() => { selectMattOnClickHandler(matt.id, idx) }} className={matt.id === selectMatt.id ? ' flex justify-center items-center min-w-75 min-h-75 aspect-square rounded-6 bg-pr-100 ring-pr-500 ring-[3px] overflow-hidden cursor-pointer' : 'flex justify-center items-center min-w-75 min-h-75 aspect-square rounded-6 bg-pr-100 overflow-hidden cursor-pointer'} key={idx} >
+                    <Image src={matt.miniSrc} alt={matt.alt} width={75} height={75} layout='responsive' loading='eager'/>
                   </div>
-                )
-              })}
+                })
+              }
+
             </div>
           </div>
         </div>
@@ -280,41 +251,19 @@ export default function MakeDishPage() {
             </h1>
           </div>
           <div className={'flex flex-col gap-y-10'}>
-            {terms.map((term, idx) => {
-              return (
-                <div
-                  key={idx}
-                  className={
-                    term.checked
-                      ? 'flex w-full flex-col gap-y-16 rounded-4 border-1 border-pr-500'
-                      : 'flex h-52 w-full flex-col gap-y-16 rounded-4 border-1 border-gr-100'
-                  }
-                >
-                  <div className={'flex w-full items-center gap-10 py-16 pl-20'}>
-                    <Checkbox
-                      id={'terms' + idx}
-                      checked={term.checked}
-                      onCheckedChange={() => checkboxOnChangeHandler(idx)}
-                      className={
-                        'h-20 w-20 rounded-full border-0 bg-white bg-[url(/images/icons/iconCheckCircleBefore.png)] bg-center data-[state=checked]:bg-white data-[state=checked]:bg-[url(/images/icons/iconCheckCircleAfter.png)]'
-                      }
-                    />
-                    <Label htmlFor={'terms' + idx}>{term.text}</Label>
-                  </div>
-
-                  {term.checked ? (
-                    <div className={'px-20 pb-20'}>
-                      <Image
-                        src={term.sampleImg}
-                        alt={'공개범위설정예시이미지'}
-                        width={295}
-                        height={270}
-                        layout="responsive"
-                      />
+            {
+              terms.map((term, idx) => {
+                return (
+                  <div key={idx} className={term.checked ? 'flex flex-col gap-y-16 w-full rounded-4 border-1 border-pr-500' : 'flex flex-col gap-y-16 w-full rounded-4 border-1 border-gr-100 h-52'}>
+                    <div className={'flex items-center w-full gap-10 py-16 pl-20'}>
+                      <Checkbox id={'terms' + idx} checked={term.checked} onCheckedChange={() => (checkboxOnChangeHandler(idx))} className={'w-20 h-20 rounded-full bg-center border-0 bg-[url(/images/icons/iconCheckCircleBefore.png)] bg-white data-[state=checked]:bg-white data-[state=checked]:bg-[url(/images/icons/iconCheckCircleAfter.png)]'} />
+                      <Label htmlFor={'terms' + idx}>{term.text}</Label>
                     </div>
-                  ) : (
-                    ''
-                  )}
+
+                    {term.checked ? <div className={'px-20 pb-20'}>
+                      <Image src={term.sampleImg} alt={'공개범위설정예시이미지'} width={295} height={270} layout='responsive' loading='eager'/>
+                    </div> : ''}
+
                 </div>
               )
             })}
