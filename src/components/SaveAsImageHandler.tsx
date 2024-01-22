@@ -58,6 +58,10 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
         })
       } catch (error) {
         console.error('Error converting div to image:', error)
+      } finally {
+        setTimeout(() => {
+          setScreenshot(false)
+        }, 3000)
       }
     }, 0)
   }
