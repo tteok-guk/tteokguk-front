@@ -1,3 +1,4 @@
+import LogoutModal from './LogoutModal'
 import RouletteModal from './RouletteModal'
 
-export { RouletteModal }
+export { LogoutModal, RouletteModal }

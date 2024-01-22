@@ -1,13 +1,12 @@
 'use client'
 import React, { useEffect, useRef, useState } from 'react'
-import { TopButton } from '@/components/common'
+import { Modal, TopButton } from '@/components/common'
 import Partition from '@/components/common/Partition'
 import Link from 'next/link'
-import { QueryKey, useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { getMyPage } from '@/services/accout'
 import { RequestParamType } from '@/types/apiTypes'
 import { putNickname } from '@/services/modifyNickname'
-import Logout from '@/components/Logout'
 import Cookies from 'js-cookie'
 
 //? React Query v5에서 query 함수 호출 시 새로운 형식을 사용해야된다
@@ -118,7 +117,8 @@ function MyPage() {
           회원탈퇴
         </Link>
         {logout && (
-          <Logout
+          <Modal
+            type="logout"
             title="로그아웃 하시겠습니까?"
             cancelBtnTitle="취소"
             confirmTitle="로그아웃"
