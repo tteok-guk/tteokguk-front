@@ -11,6 +11,7 @@ import { iconDday, iconMypage } from '../../../public/images/icons'
 import { dishesObj, mattObj } from './_object/object'
 import SideBar from '@/components/common/SideBar'
 import NotFoundPage from '../not-found'
+import { makeDishBubble } from '../../../public/images/etc'
 
 export interface Props {
   params: {
@@ -56,7 +57,7 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
     }
     if ((garnish?.length === 0 || !garnish) && userId !== 'host') {
       return 'firstDish'
-    } else if (garnish?.length === 0 && userId === 'host') {
+    } else if ((garnish?.length === 0 || !garnish) && userId === 'host') {
       return 'emptyDish'
     } else {
       return 'basicDish'
@@ -91,7 +92,9 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
             </div>
 
             {hostTG?.tteokGukId || guestTG ? (
-              <p className="lg:font-lg font-base mb-5">{`${garnish?.garnishCnt}개의 덕담을 받았어요!`}</p>
+              <p className="lg:font-lg font-base mb-5">{`${
+                garnish?.garnishCnt ? garnish.garnishCnt : 0
+              }개의 덕담을 받았어요!`}</p>
             ) : (
               <></>
             )}
@@ -120,15 +123,26 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
             </div>
             {tteokGukId && (
               <PaginationEntire
-                pageSize={garnish?.pageSize}
+                pageSize={garnish?.pageSize ? garnish.pageSize : 1}
                 pageParam={userId}
-                currentNum={Number(page)}
               />
             )}
+
             <ShareButton tteokGukId={tteokGukId} nickname={guestTG?.nickname} />
           </div>
         </div>
       </section>
+      {!guestTG?.hasTteokGuk && guestTG && (
+        <Link href={'/host?page=1'}>
+          <Image
+            src={makeDishBubble}
+            alt="makeDishBubble"
+            width={159}
+            height={36}
+            className=" absolute bottom-[105px]"
+          />
+        </Link>
+      )}
     </div>
   )
 }

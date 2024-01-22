@@ -8,7 +8,7 @@ export const mattObj: MattType = {
   pinkGradation: 'bg-[url(/images/matts/pinkGradation.png)]',
   purpleCheck: 'bg-[url(/images/matts/purpleCheck.png)]',
   blueColCheck: 'bg-[url(/images/matts/blueColCheck.png)]',
-  bubblePattern: 'bg-[url(/images/matts/blueColCheck.png)]',
+  bubblePattern: 'bg-[url(/images/matts/bubblePattern.png)]',
 }
 
 export const miniMattObj: MattType = {
