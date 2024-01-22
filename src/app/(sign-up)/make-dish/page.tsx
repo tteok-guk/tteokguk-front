@@ -24,8 +24,8 @@ export default function MakeDishPage() {
   const router = useRouter()
 
   // button style
-  const activeBtnSt = 'font-semibold border-0 bg-pr-500 text-17 leading-22 text-white active:bg-pr-500'
-  const disabledBtnSt = 'font-semibold border-0 bg-gr-100 text-17 leading-22 text-gr-400 disabled:bg-gr-100 active:bg-gr-100 hover:bg-gr-100'
+  const activeBtnSt = 'font-semibold border-0 bg-pr-500 text-17 leading-22 text-white active:bg-pr-500 cursor-pointer'
+  const disabledBtnSt = 'font-semibold border-0 bg-gr-100 text-17 leading-22 text-gr-400 disabled:bg-gr-100 active:bg-gr-100 hover:bg-gr-100 '
 
   // 하단 버튼 활성화 상태
   const [isStepBtnActive, setIsStepBtnActive] = useState(true)
@@ -207,7 +207,7 @@ export default function MakeDishPage() {
             <div className={step.current === 0 ? 'relative grid grid-cols-4 grid-rows-2 justify-center gap-12 bg-white mx-[-20px] pt-20 px-20 flex-grow-0 flex-shrink-0 pb-20' : 'relative grid grid-cols-4 grid-rows-2 justify-center gap-12'}>
               {
                 matts.map((matt, idx) => {
-                  return <div onClick={() => { selectMattOnClickHandler(matt.id, idx) }} className={matt.id === selectMatt.id ? ' flex justify-center items-center min-w-75 min-h-75 aspect-square rounded-6 bg-pr-100 ring-pr-500 ring-[3px] overflow-hidden' : 'flex justify-center items-center min-w-75 min-h-75 aspect-square rounded-6 bg-pr-100 overflow-hidden'} key={idx} >
+                  return <div onClick={() => { selectMattOnClickHandler(matt.id, idx) }} className={matt.id === selectMatt.id ? ' flex justify-center items-center min-w-75 min-h-75 aspect-square rounded-6 bg-pr-100 ring-pr-500 ring-[3px] overflow-hidden cursor-pointer' : 'flex justify-center items-center min-w-75 min-h-75 aspect-square rounded-6 bg-pr-100 overflow-hidden cursor-pointer'} key={idx} >
                     <Image src={matt.miniSrc} alt={matt.alt} width={75} height={75} layout='responsive' loading='eager'/>
                   </div>
                 })
