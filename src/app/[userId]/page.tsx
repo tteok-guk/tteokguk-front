@@ -57,7 +57,7 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
     }
     if ((garnish?.length === 0 || !garnish) && userId !== 'host') {
       return 'firstDish'
-    } else if (!garnish && userId === 'host') {
+    } else if ((garnish?.length === 0 || !garnish) && userId === 'host') {
       return 'emptyDish'
     } else {
       return 'basicDish'
