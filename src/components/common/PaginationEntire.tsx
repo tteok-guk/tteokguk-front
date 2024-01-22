@@ -7,7 +7,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { Button } from '../ui/button'
 
-const PaginationEntire = ({ pageSize, pageParam, currentNum }: paginationType) => {
+const PaginationEntire = ({ pageSize, pageParam }: paginationType) => {
   const params = useSearchParams()
   const router = useRouter()
 
@@ -37,7 +37,7 @@ const PaginationEntire = ({ pageSize, pageParam, currentNum }: paginationType) =
     if (!Number.isInteger(currentPage) || currentPage < 1 || currentPage > pagesize) {
       // todo ?page=100과 같이 유효하지 않은 번호 입력하면 일단 undefined 떡국 떴다가 1페이지로 넘어감
       toast({ description: '유효한 페이지 번호가 아닙니다.' })
-      setPage(1)
+      setCurrentPage(1)
       return
     }
     setPage(currentPage)
@@ -46,9 +46,9 @@ const PaginationEntire = ({ pageSize, pageParam, currentNum }: paginationType) =
   useEffect(() => {
     setPage(currentPage)
   }, [currentPage])
+
   useEffect(() => {
     router.push(`/${pageParam}?page=${page}`)
-    console.log(page)
   }, [page])
 
   return (
@@ -57,7 +57,7 @@ const PaginationEntire = ({ pageSize, pageParam, currentNum }: paginationType) =
         <li>
           <Button onClick={() => movePage('prev')}>&lt;</Button>
         </li>
-        <li>{currentNum}</li>
+        <li>{currentPage}</li>
         <li>/</li>
         <li>{pageSize} 그릇</li>
         <li>
