@@ -10,11 +10,10 @@ import { useToast } from '@/hooks/use-toast'
 import { useMutation } from '@tanstack/react-query'
 import { postGarnish } from '@/services/write'
 import { RequestParamType } from '@/types/apiTypes'
-import { BottomButton, TopButton } from '@/components/common'
+import { BottomButton, Modal, TopButton } from '@/components/common'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
-import Logout from '@/components/Logout'
 import { dragonSmall, dogSmall, rabbitSmall } from '../../../../../public/images/avatar/small'
 
 export default function WritePage() {
@@ -166,9 +165,11 @@ export default function WritePage() {
           </span>
         </div>
       </form>
+
       {showAlert && (
-        <Logout
-          title="이전페이지로 돌아가면\n작성한 내용은 저장되지 않아요!"
+        <Modal
+          type="logout"
+          title={`이전페이지로 돌아가면\n작성한 내용은 저장되지 않아요!`}
           cancelBtnTitle="취소"
           confirmTitle="괜찮아요"
           cancelBtnFn={setAlertClose}
