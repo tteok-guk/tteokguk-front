@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 import Image from 'next/image'
+import { debounce } from 'lodash'
 import { isMobileDevice } from '@/utils/isMobileDevice'
 import { checkWriteQuery } from '@/utils/checkWriteQuery'
 import { useGarnishInput } from '@/hooks/useGarnishInput'
@@ -32,6 +33,7 @@ export default function WritePage() {
 
   const hostId = pathname.split('/').filter((item) => item)[0]
   const hostNickname = params.get('nickname')
+  const DEBOUNCE_TIME = 1000
 
   // * 공통/동적 스타일 변수
   const avatarHeight = isMobile ? 54 : 84
@@ -84,7 +86,7 @@ export default function WritePage() {
   })
 
   // * 완료 버튼 클릭
-  const doneBtnClick = () => {
+  const doneBtnClick = debounce(() => {
     const isQueryValid = checkQueryValid()
     if (!isQueryValid) {
       setDisabled(true)
@@ -97,7 +99,7 @@ export default function WritePage() {
       content: data.content.replaceAll(/\r\n|\r|\n/gm, '\n'),
     }
     onSubmit.mutate(garnishData)
-  }
+  }, DEBOUNCE_TIME)
 
   // * 뒤로가기 버튼 클릭
   const backBtnClick = () => !disabled && setShowAlert(true)
