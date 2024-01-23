@@ -28,8 +28,6 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
 
   const basic = !screenshot && !isKakao
 
-  const selectedGarnish = garnish && garnishes.includes(garnish) ? garnish : 'basicRc'
-  console.log(selectedGarnish)
   const { data } = useQuery({
     queryKey: ['getAvatar'],
     queryFn: () => getAvatar({ userId }),
@@ -120,7 +118,7 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
           </div>
 
           <div className=" flex-center  relative mt-40 ">
-            {data && <SaveImage avatar={data} garnish={selectedGarnish} />}
+            {data && <SaveImage avatar={data} garnish={garnish} />}
           </div>
 
           <BottomButton
@@ -138,7 +136,7 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
             className="relative h-dvh bg-[url(/images/avatar/savePhoto.png)] bg-cover bg-center p-20"
           >
             <div className=" flex-center mt-152 ">
-              {data && garnish && <SaveImage avatar={data} garnish={selectedGarnish} />}
+              {data && <SaveImage avatar={data} garnish={garnish} />}
             </div>
           </div>
           <Image
