@@ -13,19 +13,19 @@ export const AllMatt: changeMattType[] = [
     alt: 'miniYellowCheck-matt',
   },
   {
-    id: 'pinkDew',
-    src: img.minipinkDew,
-    alt: 'miniPinkDew-matt',
-  },
-  {
-    id: 'blueGradation',
-    src: img.miniBlueGradation,
-    alt: 'miniBlueGradation-matt',
-  },
-  {
     id: 'pinkGradation',
     src: img.minipinkGradation,
     alt: 'miniPinkGradation-matt',
+  },
+  {
+    id: 'bubblePattern',
+    src: img.miniBubblePattern,
+    alt: 'miniBubblePattern-matt',
+  },
+  {
+    id: 'pinkDew',
+    src: img.minipinkDew,
+    alt: 'miniPinkDew-matt',
   },
   {
     id: 'purpleCheck',
@@ -33,13 +33,13 @@ export const AllMatt: changeMattType[] = [
     alt: 'miniPurpleCheck-matt',
   },
   {
+    id: 'blueGradation',
+    src: img.miniBlueGradation,
+    alt: 'miniBlueGradation-matt',
+  },
+  {
     id: 'blueColCheck',
     src: img.miniBlueColCheck,
     alt: 'miniBlueColCheck-matt',
-  },
-  {
-    id: 'bubblePattern',
-    src: img.miniBubblePattern,
-    alt: 'miniBubblePattern-matt',
   },
 ]

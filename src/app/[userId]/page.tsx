@@ -9,7 +9,6 @@ import Link from 'next/link'
 import { notFound, redirect } from 'next/navigation'
 import { iconDday, iconMypage } from '../../../public/images/icons'
 import { dishesObj, mattObj } from './_object/object'
-import SideBar from '@/components/common/SideBar'
 import NotFoundPage from '../not-found'
 import { makeDishBubble } from '../../../public/images/etc'
 
