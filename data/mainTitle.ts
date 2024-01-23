@@ -14,7 +14,7 @@ export const OnboardingData: onboardingType[] = [
     src: img.step2,
     alt: '내 떡국 페이지 스크린샷',
     title: '덕담을 주고 받아요!',
-    desc: '????',
+    desc: '떡국을 공유하고',
   },
   {
     step: 3,
