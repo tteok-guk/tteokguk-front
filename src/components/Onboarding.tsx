@@ -40,11 +40,13 @@ export default function Onboarding({ step }: { step: number }) {
                   <>
                     <Image
                       src={dragonImg}
+                      loading="eager"
                       alt="걷는 용 일러스트"
-                      className="z-10 mb-[-5px] ml-18 border"
+                      className="z-10 mb-[-5px] ml-18"
                     />
                     <Image
                       src={sampleDish}
+                      loading="eager"
                       alt="떡국 샘플 일러스트"
                       className="animate-spin-slow"
                     />
