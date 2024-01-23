@@ -37,7 +37,7 @@ export default function Onboarding({ step }: { step: number }) {
               </h1>
               <div
                 className={`flex-center mt-10 h-[80%] flex-col p-20
-                ${step === 1 ? 'p-30' : 'p-20'}
+                ${step === 1 ? 'p-50' : 'p-20'}
               `}
               >
                 {step === 1 && (
