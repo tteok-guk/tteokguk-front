@@ -265,7 +265,7 @@ export default function JoinPage() {
       {/* 상단 영역 */}
       <div className={step.current === 1 ?'flex pt-20 px-20':'flex mt-[-12px]'}>
         <div className={step.current === 0 ? 'pl-0 pr-24 py-12 invisible' : 'pl-0 pr-24 py-12 cursor-pointer'} onClick={() => { navBtnOnClickHandler(step.current, 'prev') }}>
-          <Image src={iconArrow} alt="왼쪽을 가르키는 화살표 이미지" width={24} height={24} />
+          <Image src={iconArrow} alt="왼쪽을 가르키는 화살표 이미지" width={24} height={24}/>
         </div>
         <div className={'flex gap-6 items-center  ml-[calc(50%-56px)]'}>
           <div className={step.current === 0 ? 'w-8 h-8 rounded-full bg-pr-300' : 'w-8 h-8 rounded-full bg-gr-100'}></div>
@@ -300,8 +300,8 @@ export default function JoinPage() {
             <h1 className={'font-xl text-gr-900'}>캐릭터를 선택해주세요</h1>
           </div>
           <div className={'flex flex-col gap-20 h-full justify-between'}>
-            <div className={'relative flex justify-center'}>
-              <Image src={avatars[selectAvatar.idx].nomalSrc} alt="선택 캐릭터 이미지" width={255} height={255} loading='eager'/>
+            <div className={'relative flex justify-center h-full'}>
+              <Image src={avatars[selectAvatar.idx].nomalSrc} alt="선택 캐릭터 이미지" loading='eager' fill={true} style={{objectFit: "contain"}}/>
             </div>
             <div className={step.current === 1 ?'relative grid grid-cols-4 grid-rows-2 justify-center gap-12 bg-white mt-[-20px] mx-[-20px] pt-[20px] px-[20px]':'relative grid grid-cols-4 grid-rows-2 justify-center gap-12'}>
               {

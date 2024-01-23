@@ -201,8 +201,8 @@ export default function MakeDishPage() {
             <h1 className={'font-xl text-gr-900'}>내 떡국이 올라갈<br /> 테이블 매트를 선택해 주세요</h1>
           </div>
           <div className={'flex flex-col gap-28 h-full justify-between'}>
-            <div className={'relative flex justify-center flex-grow-0 flex-shrink-0'}>
-              <Image src={sampleDish} alt="샘플 떡국 이미지" width={184} height={184} loading='eager' />
+            <div className={'relative flex justify-center h-full'}>
+              <Image src={sampleDish} alt="샘플 떡국 이미지" loading='eager' fill={true} style={{objectFit: "scale-down"}}/>
             </div>
             <div className={step.current === 0 ? 'relative grid grid-cols-4 grid-rows-2 justify-center gap-12 bg-white mx-[-20px] pt-20 px-20 flex-grow-0 flex-shrink-0 pb-20' : 'relative grid grid-cols-4 grid-rows-2 justify-center gap-12'}>
               {
