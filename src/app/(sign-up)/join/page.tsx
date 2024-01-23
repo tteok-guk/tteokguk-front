@@ -14,7 +14,6 @@ import { RequestParamType } from '@/types/apiTypes'
 import Cookies from 'js-cookie'
 import { useRouter } from 'next/navigation'
 
-
 // 상태 Enum
 const StepStatus = {
   INITIAL: 'stepInitial',
@@ -32,7 +31,7 @@ export default function JoinPage() {
 
   // button style
   const activeBtnSt =
-    'font-semibold border-0 bg-pr-500 text-17 leading-22 text-white active:bg-pr-500'
+    'font-semibold border-0 bg-pr-500 text-17 leading-22 text-white active:bg-pr-500 cursor-pointer'
   const disabledBtnSt =
     'font-semibold border-0 bg-gr-100 text-17 leading-22 text-gr-400 disabled:bg-gr-100 active:bg-gr-100 hover:bg-gr-100'
 
@@ -154,11 +153,11 @@ export default function JoinPage() {
     onSuccess: (res) => {
       console.log('res', res)
       if (res.code === 200) {
-        const token = res.data.token?res.data.token:''
+        const token = res.data.token ? res.data.token : ''
         Cookies.set('token', token)
         router.push(`/host?page=1`)
-      }else if (res.code === 400){
-        const token = res.data.token?res.data.token:''
+      } else if (res.code === 400) {
+        const token = res.data.token ? res.data.token : ''
         Cookies.set('token', token)
         router.push(`/host?page=1`)
       }
@@ -168,15 +167,15 @@ export default function JoinPage() {
 
   // 완료 클릭 핸들러
   const joinCompliteOnClickHandler = () => {
-    if(step.current === 2 && step.status.every((status)=> status === StepStatus.COMPLETE)){
+    if (step.current === 2 && step.status.every((status) => status === StepStatus.COMPLETE)) {
       // 회원가입 함수 - 저장
       const userData = {
-        nickname : userName,
-        privacyConsent : true,
-        avatar : selectAvatar.name
+        nickname: userName,
+        privacyConsent: true,
+        avatar: selectAvatar.name,
       }
       onSubmit.mutate(userData)
-    }else{
+    } else {
       // 토스트
       toast({
         duration: 1850,
@@ -248,8 +247,6 @@ export default function JoinPage() {
 
   // [step] useEffect Hook
   useEffect(() => {
-    console.log('>>>>>', step.current)
-    console.log('>>>>>', step.status)
     if (step.status[step.current] === StepStatus.COMPLETE) {
       setIsStepBtnActive(true)
     } else {
@@ -261,14 +258,16 @@ export default function JoinPage() {
     <div
       className={
         step.current === 1
-          ? 'mx-[-20px] mt-[-32px] bg-[url(/images/matts/blueDew.png)] bg-cover bg-[-140px]'
+          ? 'mx-[-20px] mt-[-32px] h-[calc(100%-117px)] bg-[url(/images/matts/blueDew.png)] bg-cover bg-[-140px]'
           : ''
       }
     >
       {/* 상단 영역 */}
       <div className={step.current === 1 ? 'flex px-20 pt-20' : 'mt-[-12px] flex'}>
         <div
-          className={step.current === 0 ? 'invisible py-12 pl-0 pr-24' : 'py-12 pl-0 pr-24'}
+          className={
+            step.current === 0 ? 'invisible py-12 pl-0 pr-24' : 'cursor-pointer py-12 pl-0 pr-24'
+          }
           onClick={() => {
             navBtnOnClickHandler(step.current, 'prev')
           }}
@@ -300,7 +299,7 @@ export default function JoinPage() {
         </div>
       </div>
       {/* 컨텐츠 영역 */}
-      <div>
+      <div className={'h-[calc(100%-35px)]'}>
         {/* step 0 */}
         <div className={step.current === 0 ? 'flex flex-col gap-38' : 'hidden'}>
           <div className={'flex flex-col gap-4'}>
@@ -322,7 +321,9 @@ export default function JoinPage() {
               value={userName}
             />
             <div
-              className={userName.length > 0 ? 'absolute right-0 top-4 w-fit' : 'hidden'}
+              className={
+                userName.length > 0 ? 'absolute right-0 top-4 w-fit cursor-pointer' : 'hidden'
+              }
               onClick={deleteNameOnClickHandler}
             >
               <Image
@@ -335,12 +336,11 @@ export default function JoinPage() {
           </div>
         </div>
         {/* step 1 */}
-
-        <div className={step.current === 1 ? 'flex flex-col gap-8  px-20' : 'hidden'}>
+        <div className={step.current === 1 ? 'flex h-full flex-col  gap-8 px-20' : 'hidden'}>
           <div>
             <h1 className={'font-xl text-gr-900'}>캐릭터를 선택해주세요</h1>
           </div>
-          <div className={'flex flex-col gap-20'}>
+          <div className={'flex h-full flex-col justify-between gap-20'}>
             <div className={'relative flex justify-center'}>
               <Image
                 src={avatars[selectAvatar.idx].nomalSrc}
@@ -353,7 +353,7 @@ export default function JoinPage() {
             <div
               className={
                 step.current === 1
-                  ? 'relative mx-[-20px] mt-[-20px] grid grid-cols-4 grid-rows-2  justify-center gap-12 bg-bg px-[20px] pt-[20px]'
+                  ? 'relative mx-[-20px] mt-[-20px] grid grid-cols-4 grid-rows-2 justify-center gap-12 bg-white px-[20px] pt-[20px]'
                   : 'relative grid grid-cols-4 grid-rows-2 justify-center gap-12'
               }
             >
@@ -365,8 +365,8 @@ export default function JoinPage() {
                     }}
                     className={
                       avatar.name === selectAvatar.name
-                        ? ' flex aspect-square min-h-75 min-w-75 items-center justify-center rounded-6 bg-pr-100 ring-[3px] ring-inset ring-pr-500'
-                        : 'flex aspect-square min-h-75 min-w-75 items-center justify-center rounded-6 bg-pr-100'
+                        ? ' flex aspect-square min-h-75 min-w-75 cursor-pointer items-center justify-center rounded-6 bg-pr-100 ring-[3px] ring-inset ring-pr-500'
+                        : 'flex aspect-square min-h-75 min-w-75 cursor-pointer items-center justify-center rounded-6 bg-pr-100'
                     }
                     key={idx}
                   >
@@ -376,6 +376,7 @@ export default function JoinPage() {
                       width={75}
                       height={75}
                       style={{ width: '100%', height: 'auto' }}
+                      loading="eager"
                     />
                   </div>
                 )
@@ -397,8 +398,8 @@ export default function JoinPage() {
             <div
               className={
                 isStepBtnActive
-                  ? 'flex h-52 w-full items-center gap-10 rounded-4 bg-pr-100 py-16 pl-20'
-                  : 'flex h-52 w-full items-center gap-10 rounded-4 bg-gr-100 py-16 pl-20'
+                  ? 'flex h-52 w-full cursor-pointer items-center gap-10 rounded-4 bg-pr-100 py-16 pl-20'
+                  : 'flex h-52 w-full cursor-pointer items-center gap-10 rounded-4 bg-gr-100 py-16 pl-20'
               }
             >
               <Checkbox
@@ -416,7 +417,7 @@ export default function JoinPage() {
             <div className={'flex flex-col gap-y-22'}>
               {terms.map((term, idx) => {
                 return (
-                  <div key={idx} className={'flex w-full items-center gap-10 pl-20'}>
+                  <div key={idx} className={'flex w-full cursor-pointer items-center gap-10 pl-20'}>
                     <Checkbox
                       id={'terms' + idx}
                       checked={term.checked}
@@ -437,13 +438,16 @@ export default function JoinPage() {
       <div>
         <div className="fixed bottom-0 left-0 h-117 w-full">
           <div
-            className={`mx-auto flex h-full min-w-320 max-w-575 justify-center bg-bg px-20 pt-16`}
+            className={`mx-auto flex h-full min-w-320 max-w-575 justify-center bg-white px-20 pt-16`}
           >
             <Button
               size="full"
               className={isStepBtnActive ? `${activeBtnSt}` : `${disabledBtnSt}`}
-              onClick={() => { navBtnOnClickHandler(step.current, step.current === 2 ? 'fin' : 'next') }}
-              disabled={step.current === 2 ?false:!isStepBtnActive}>
+              onClick={() => {
+                navBtnOnClickHandler(step.current, step.current === 2 ? 'fin' : 'next')
+              }}
+              disabled={step.current === 2 ? false : !isStepBtnActive}
+            >
               {step.current === 2 ? '완료' : '다음'}
             </Button>
           </div>

@@ -51,6 +51,17 @@
     @apply flex items-center justify-center;
   }
 
+  /* height */
+  .content-height {
+    @apply layout-scroll h-auto;
+    height: calc(100% - 117px);
+  }
+  .bottom-height {
+    @apply h-auto;
+    padding-top: 16px;
+    height: 117px;
+  }
+
   /* font */
   .font-xl {
     @apply text-24 font-semibold leading-32;

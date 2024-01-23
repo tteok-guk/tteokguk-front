@@ -13,6 +13,7 @@ import iconLink from './iconLink.png'
 import iconMail from './iconMail.png'
 import iconTeam from './iconTeam.png'
 import iconCs from './iconCs.png'
+import iconKakao from './iconKakao.png'
 
 export {
   iconArrow,
@@ -30,4 +31,5 @@ export {
   iconMail,
   iconCs,
   iconTeam,
+  iconKakao,
 }

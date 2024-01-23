@@ -25,9 +25,9 @@ export default function MakeDishPage() {
 
   // button style
   const activeBtnSt =
-    'font-semibold border-0 bg-pr-500 text-17 leading-22 text-white active:bg-pr-500'
+    'font-semibold border-0 bg-pr-500 text-17 leading-22 text-white active:bg-pr-500 cursor-pointer'
   const disabledBtnSt =
-    'font-semibold border-0 bg-gr-100 text-17 leading-22 text-gr-400 disabled:bg-gr-100 active:bg-gr-100 hover:bg-gr-100'
+    'font-semibold border-0 bg-gr-100 text-17 leading-22 text-gr-400 disabled:bg-gr-100 active:bg-gr-100 hover:bg-gr-100 '
 
   // 하단 버튼 활성화 상태
   const [isStepBtnActive, setIsStepBtnActive] = useState(true)
@@ -186,7 +186,7 @@ export default function MakeDishPage() {
     <div
       className={
         step.current === 0
-          ? `bg-[url(/images/matts/${selectMatt.id}.png)] mx-[-20px] mt-[-32px] h-[calc(100%-70px)] bg-cover bg-[-140px] px-20 pt-32`
+          ? `bg-[url(/images/matts/${selectMatt.id}.png)] mx-[-20px] mt-[-32px] h-[calc(100%-70px)] bg-cover bg-center px-20 pt-32`
           : 'mx-[-20px] mt-[-32px] h-[calc(100%-70px)] bg-white px-20 pt-32'
       }
     >
@@ -252,8 +252,8 @@ export default function MakeDishPage() {
                     }}
                     className={
                       matt.id === selectMatt.id
-                        ? ' flex aspect-square min-h-75 min-w-75 items-center justify-center overflow-hidden rounded-6 bg-pr-100 ring-[3px] ring-pr-500'
-                        : 'flex aspect-square min-h-75 min-w-75 items-center justify-center overflow-hidden rounded-6 bg-pr-100'
+                        ? ' flex aspect-square min-h-75 min-w-75 cursor-pointer items-center justify-center overflow-hidden rounded-6 bg-pr-100 ring-[3px] ring-pr-500'
+                        : 'flex aspect-square min-h-75 min-w-75 cursor-pointer items-center justify-center overflow-hidden rounded-6 bg-pr-100'
                     }
                     key={idx}
                   >
@@ -263,6 +263,7 @@ export default function MakeDishPage() {
                       width={75}
                       height={75}
                       layout="responsive"
+                      loading="eager"
                     />
                   </div>
                 )
@@ -310,6 +311,7 @@ export default function MakeDishPage() {
                         width={295}
                         height={270}
                         layout="responsive"
+                        loading="eager"
                       />
                     </div>
                   ) : (

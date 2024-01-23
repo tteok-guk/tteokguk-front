@@ -1,4 +1,4 @@
-import SideBarModal from './SideBarModal'
+import LogoutModal from './LogoutModal'
 import RouletteModal from './RouletteModal'
 
-export { SideBarModal, RouletteModal }
+export { LogoutModal, RouletteModal }

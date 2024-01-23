@@ -3,14 +3,30 @@
 import { createPortal } from 'react-dom'
 import { useEffect, useState } from 'react'
 import { ModalProps, ModalComponentType } from '@/types/CommonTypes'
-import { ConfirmModal, RouletteModal } from '../modal'
+import { RouletteModal, LogoutModal } from '../modal'
 
-export default function Modal({ type, cancelClick, confirmClick }: ModalProps) {
+export default function Modal({
+  type,
+  cancelClick,
+  title,
+  cancelBtnTitle,
+  confirmTitle,
+  cancelBtnFn,
+  confirmBtnFn,
+}: ModalProps) {
   const [mounted, setMounted] = useState(false)
 
   const componentType: ModalComponentType = {
-    confirm: <ConfirmModal cancelClick={cancelClick} confirmClick={confirmClick} />,
     roulette: <RouletteModal cancelClick={cancelClick} />,
+    logout: (
+      <LogoutModal
+        title={title}
+        cancelBtnTitle={cancelBtnTitle}
+        confirmTitle={confirmTitle}
+        cancelBtnFn={cancelBtnFn}
+        confirmBtnFn={confirmBtnFn}
+      />
+    ),
   }
   const componentToRender = componentType[type]
 

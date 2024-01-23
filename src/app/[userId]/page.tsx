@@ -11,6 +11,7 @@ import { iconDday, iconMypage } from '../../../public/images/icons'
 import { dishesObj, mattObj } from './_object/object'
 import SideBar from '@/components/common/SideBar'
 import NotFoundPage from '../not-found'
+import { makeDishBubble } from '../../../public/images/etc'
 
 export interface Props {
   params: {
@@ -47,8 +48,9 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
   const nickname = hostTG ? hostTG.nickname : guestTG?.nickname
   const tteokGukId = hostTG ? hostTG.tteokGukId : guestTG?.tteokGukId
   const mattType = hostTG ? hostTG.mattType : guestTG?.mattType
-  const dDay = hostTG ? hostTG.dday : guestTG?.dday
   const garnish = garnishes
+  const dDay = hostTG ? hostTG.dday : guestTG?.dday
+  const dDayUi = dDay === 0 ? 'D-Day' : dDay && dDay >= 1 ? `+${dDay}` : dDay
 
   const determineDishType = (garnish: GarnishItem[] | undefined, userId: string) => {
     if (!tteokGukId) {
@@ -56,7 +58,7 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
     }
     if ((garnish?.length === 0 || !garnish) && userId !== 'host') {
       return 'firstDish'
-    } else if (garnish?.length === 0 && userId === 'host') {
+    } else if ((garnish?.length === 0 || !garnish) && userId === 'host') {
       return 'emptyDish'
     } else {
       return 'basicDish'
@@ -85,13 +87,13 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
           <div className="flex flex-col items-center">
             <div className="font-sm flex-center mb-8 flex flex-row gap-1.5 rounded-2xl bg-pr-100 px-15 py-3 lg:px-20 lg:py-6">
               <Image width={12} height={11} src={iconDday} alt="D-day icon" />
-              <p className="font-base lg:font-lg text-pr-800">{`까치까치 설날 D${
-                dDay === 0 ? '-Day' : dDay
-              }`}</p>
+              <p className="font-base lg:font-lg text-pr-800">{`까치까치 설날 D${dDayUi}`}</p>
             </div>
 
             {hostTG?.tteokGukId || guestTG ? (
-              <p className="lg:font-lg font-base mb-5">{`${garnish?.garnishCnt}개의 덕담을 받았어요!`}</p>
+              <p className="lg:font-lg font-base mb-5">{`${
+                garnish?.garnishCnt ? garnish.garnishCnt : 0
+              }개의 덕담을 받았어요!`}</p>
             ) : (
               <></>
             )}
@@ -120,15 +122,26 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
             </div>
             {tteokGukId && (
               <PaginationEntire
-                pageSize={garnish?.pageSize}
+                pageSize={garnish?.pageSize ? garnish.pageSize : 1}
                 pageParam={userId}
-                currentNum={Number(page)}
               />
             )}
+
             <ShareButton tteokGukId={tteokGukId} nickname={guestTG?.nickname} />
           </div>
         </div>
       </section>
+      {!guestTG?.hasTteokGuk && guestTG && (
+        <Link href={'/host?page=1'}>
+          <Image
+            src={makeDishBubble}
+            alt="makeDishBubble"
+            width={159}
+            height={36}
+            className=" absolute bottom-[105px]"
+          />
+        </Link>
+      )}
     </div>
   )
 }
