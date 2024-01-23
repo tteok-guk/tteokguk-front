@@ -143,7 +143,7 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
             width={24}
             height={24}
             alt="iconClose"
-            className=" absolute right-20 top-20 m-12"
+            className=" absolute right-20 top-20 m-12 cursor-pointer"
             onClick={() => setScreenshot(false)}
           />
         </div>
