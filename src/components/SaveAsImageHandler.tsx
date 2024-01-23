@@ -12,10 +12,11 @@ import { captureInfo } from '../../public/images/avatar'
 import { iconClose, iconError, iconSave } from '../../public/images/icons'
 import SaveImage from './SaveImage'
 import { BottomButton } from './common'
+import { garnishes } from '@/app/[userId]/_object/object'
 
 export interface Props {
   userId: string
-  garnish?: string
+  garnish: string
 }
 
 export default function SaveAsImageHandler({ userId, garnish }: Props) {
@@ -27,6 +28,8 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
 
   const basic = !screenshot && !isKakao
 
+  const selectedGarnish = garnish && garnishes.includes(garnish) ? garnish : 'basicRc'
+  console.log(selectedGarnish)
   const { data } = useQuery({
     queryKey: ['getAvatar'],
     queryFn: () => getAvatar({ userId }),
@@ -117,7 +120,7 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
           </div>
 
           <div className=" flex-center  relative mt-40 ">
-            {data && garnish && <SaveImage type="basic" avatar={data} garnish={garnish} />}
+            {data && <SaveImage avatar={data} garnish={selectedGarnish} />}
           </div>
 
           <BottomButton
@@ -135,12 +138,11 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
             className="relative h-dvh bg-[url(/images/avatar/savePhoto.png)] bg-cover bg-center p-20"
           >
             <div className=" flex-center mt-152 ">
-              {data && garnish && <SaveImage type="snapShot" avatar={data} garnish={garnish} />}
+              {data && garnish && <SaveImage avatar={data} garnish={selectedGarnish} />}
             </div>
           </div>
           <Image
             src={iconClose}
-            width={24}
             height={24}
             alt="iconClose"
             className=" absolute right-20 top-20 m-12 cursor-pointer"
@@ -159,13 +161,6 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
             className=" absolute right-20 top-20 m-12"
             onClick={moveToMainPageLocationHandler}
           />
-          {/* <Image
-            src={captureInfo}
-            alt="capturedImage"
-            width={310}
-            height={104}
-            className=" absolute bottom-[50px] left-[33px]"
-          />{' '} */}
         </div>
       )}
     </>

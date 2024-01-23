@@ -28,3 +28,23 @@ export const dishesObj: MattType = {
   firstDish: 'bg-[url(/images/dishes/firstDish.png)]',
   makeDish: 'bg-[url(/images/dishes/makeDish.png)]',
 }
+
+export const garnishes: string[] = [
+  'basicRc',
+  'cheese',
+  'coloredRc',
+  'coriander',
+  'cucumber',
+  'dumpling',
+  'egg',
+  'greenOnion',
+  'heartEgg',
+  'meat',
+  'mushroom',
+  'pepperoncino',
+  'pineapple',
+  'seaweed',
+  'shapedRc',
+  'strawberry',
+  'vegetable',
+]
