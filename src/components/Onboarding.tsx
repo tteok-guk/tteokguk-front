@@ -28,14 +28,18 @@ export default function Onboarding({ step }: { step: number }) {
                   {item.desc}
                 </span>
                 <span
-                  className={`font-soyo text-28 font-bold leading-36 ${
-                    step === 1 ? 'text-pr-500' : 'text-gr-900'
-                  }`}
+                  className={`font-soyoThin text-28 font-bold leading-36
+                    ${step === 1 ? 'text-pr-500' : 'text-gr-900'}
+                `}
                 >
                   {item.title}
                 </span>
               </h1>
-              <div className="flex-center mt-10 h-[80%] flex-col p-20">
+              <div
+                className={`flex-center mt-10 h-[80%] flex-col p-20
+                ${step === 1 ? 'p-30' : 'p-20'}
+              `}
+              >
                 {step === 1 && (
                   <>
                     <Image
