@@ -42,7 +42,7 @@ export default function AuthPage() {
         <Button
           size="full"
           onClick={loginHandler}
-          className="rounded-12 bg-[#FFE42D] text-17 font-semibold text-[#181818] hover:bg-[#f5dd44] active:bg-[#f5dd44]"
+          className="rounded-12 bg-[#FFE42D] text-17 font-medium text-[#181818] hover:bg-[#f5dd44] active:bg-[#f5dd44]"
         >
           <Image src={iconKakao} width={24} height={21} alt="카카오톡 아이콘" className="mr-8" />
           카카오로 시작하기
