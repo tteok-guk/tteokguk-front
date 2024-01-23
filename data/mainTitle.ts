@@ -1,7 +1,7 @@
 import * as img from '../public/images/onboarding'
 import { onboardingType } from '@/types/OnboardingTypes'
 
-export const Onboarding: onboardingType[] = [
+export const OnboardingData: onboardingType[] = [
   {
     step: 1,
     src: '',
