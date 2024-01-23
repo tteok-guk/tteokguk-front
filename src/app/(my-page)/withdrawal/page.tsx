@@ -34,12 +34,12 @@ function WithdrawalPage() {
       <div className="content-height">
         <TopButton />
         <p className="font-xl">
-          {hostNickname}
+          {hostNickname}님
           <br />
           정말 탈퇴하시겠습니까?
         </p>
         <div className="item-center mt-10 flex gap-4">
-          <Image src={iconError} alt="경고 아이콘" width={18} height={18} />
+          <Image src={iconError} alt="경고 아이콘" width={20} height={20} />
           <span className="font-sm text-pr-500">
             탈퇴 후에는 내떡국과 받은 덕담이 모두 삭제돼요.
           </span>
@@ -50,7 +50,7 @@ function WithdrawalPage() {
         <div className="item-center flex gap-5">
           <Checkbox
             className={
-              'h-24 w-24 border-2 border-pr-200 bg-white bg-center data-[state=checked]:border-0 data-[state=checked]:bg-pr-500 data-[state=checked]:bg-[url(/images/icons/check.png)] data-[state=checked]:bg-no-repeat'
+              'h-24 w-24 rounded-md border-2 border-pr-200 bg-white bg-center data-[state=checked]:border-0 data-[state=checked]:bg-pr-500 data-[state=checked]:bg-[url(/images/icons/check.png)] data-[state=checked]:bg-no-repeat'
             }
             onClick={() => {
               setDisabled(!disabled)

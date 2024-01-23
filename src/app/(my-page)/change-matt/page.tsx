@@ -44,16 +44,14 @@ export default function ChangeMattPage() {
             <Image src={sampleDish} alt="dish image" className="" />
           </div>
         </div>
-        <div className="grid basis-1/4 grid-cols-4 grid-rows-2 gap-12">
+        <div className="mt-20 grid basis-1/4 grid-cols-4 grid-rows-2 gap-12">
           {AllMatt.map((matt, idx) => (
             <button key={idx} onClick={() => setMatt(matt.id)}>
               <Image
-                width={95}
-                height={95}
                 src={matt.src}
                 alt={matt.alt}
-                className={`m-auto mt-20 ${
-                  chosenMatt === matt.id ? 'rounded-md border-3 border-pr-500' : ''
+                className={`m-auto rounded-lg mt-0${
+                  chosenMatt === matt.id ? 'rounded-lg border-3 border-pr-500' : ''
                 }`}
               />
             </button>
