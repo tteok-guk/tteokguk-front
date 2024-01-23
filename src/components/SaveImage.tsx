@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { speechBubble } from '../../public/images/avatar'
+import { garnishes } from '@/app/[userId]/_object/object'
 
 const SaveImage = ({ avatar, garnish }: snapShotType) => {
   const visitorAvatar = avatar.visitorAvatar !== 'NONE' ? avatar.visitorAvatar : 'dragon'
