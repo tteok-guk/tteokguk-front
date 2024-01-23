@@ -1,68 +1,39 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { createPortal } from 'react-dom'
-import { useRecoilState } from 'recoil'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { chosenGarnishState, rouletteResultState } from '@/store/WriteAtom'
 import Image from 'next/image'
 import { RouletteModalProps } from '@/types/WriteTypes'
 import { Button } from '../ui/button'
 import { iconClose } from '../../../public/images/icons'
-import { garnishes } from '../../../data/garnishes'
+import Roulette from '../Roulette'
 
-export function RouletteModal({ onClose }: RouletteModalProps) {
-  const [mounted, setMounted] = useState(false)
-  const [chosenGarnish, setChosenGarnish] = useRecoilState(chosenGarnishState)
-  const [rouletteResult, setRouletteResult] = useRecoilState(rouletteResultState)
+export default function RouletteModal({ cancelClick }: RouletteModalProps) {
+  const setChosenGarnish = useSetRecoilState(chosenGarnishState) // 사용자가 최종 선택한 고명값
+  const rouletteResult = useRecoilValue(rouletteResultState) // 룰렛 결과값
 
-  // todo 룰렛 기능 완성되면 해당 결과값 담기도록 세팅
-  const setResult = (clickedValue: string) => setRouletteResult(clickedValue)
   const doneRoulette = () => {
     setChosenGarnish(rouletteResult)
-    onClose()
+    cancelClick && cancelClick()
   }
 
-  useEffect(() => {
-    setMounted(true)
-    return () => setMounted(false)
-  }, [])
-
-  const element = (
-    <div className="absolute top-0 h-full w-full">
-      <div className="flex-center mx-auto h-full min-w-320 max-w-575 flex-grow bg-gr-100 px-20">
-        <section className="h-500 w-full rounded-5 bg-white p-22">
-          <Button onClick={onClose} className="float-right">
-            <Image src={iconClose} alt="팝업 종료를 위한 엑스 모양 아이콘" width={24} height={24} />
+  return (
+    <div className="modal-bg">
+      <div className="modal-wrap">
+        <section className="flex h-500 w-335 flex-col items-end justify-between rounded-5 bg-white p-20">
+          <Button onClick={cancelClick} className="float-right m-5">
+            <Image src={iconClose} alt="모달 종료를 위한 엑스 모양 아이콘" width={18} height={18} />
           </Button>
-          <div className="flex-center clear-right flex-col">
-            <h1 className="text-22 font-semibold leading-28">랜덤 고명 뽑기</h1>
-            <p className="font-xs pt-8">룰렛에 대한 설명</p>
-            <div className="flex-center w-full flex-col gap-4 py-20">
-              {garnishes.map(
-                (garnish, idx) =>
-                  garnish.type === 'option' && (
-                    <Button
-                      key={idx}
-                      className={rouletteResult === garnish.id ? 'border-3 border-pr-500 p-2' : ''}
-                      onClick={() => setResult(garnish.id)}
-                    >
-                      {garnish.id}
-                    </Button>
-                  ),
-              )}
-            </div>
+          <div className="clear-right flex h-full w-full flex-col items-center gap-8 pt-10">
+            <h2 className="font-soyo text-22 font-semibold">랜덤 고명 뽑기!</h2>
+            <p className="text-12 font-medium leading-14">뽑기는 한 번만 할 수 있어요.</p>
+            <Roulette />
           </div>
-          <Button size="full" onClick={doneRoulette}>
+          <Button size="full" onClick={doneRoulette} disabled={!rouletteResult}>
             완료
           </Button>
         </section>
       </div>
     </div>
-  )
-
-  return mounted ? (
-    createPortal(element, document.getElementById('modal-root') as HTMLElement)
-  ) : (
-    <></>
   )
 }

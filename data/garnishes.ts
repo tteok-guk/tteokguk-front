@@ -1,6 +1,7 @@
 import * as img from '../public/images/garnishes'
+import { AllGarnishesType } from '@/types/GarnishTypes'
 
-export const garnishes = [
+export const garnishes: AllGarnishesType[] = [
   {
     id: 'greenOnion',
     type: 'basic',

@@ -1,26 +1,54 @@
-import path from 'path'
-import { promises as fs } from 'fs'
+import { GarnishArrType, TteokgukType } from '@/types/MainPageTypes'
+import { cookies } from 'next/headers'
+import { useSearchParams } from 'next/navigation'
+import { NextRequest } from 'next/server'
 
-export type Tteokguk = {
-  nickname: string
-  id: string
-  dDay: number
-  garnishCnt: number
-  garnish: [{ garnishId: number; nickname: string; garnishName: string }]
-  mattId: string
-  lastPageNum: number
-  isPublic?: boolean
+const baseUrl = process.env.NEXT_PUBLIC_API_KEY
+export const tokens = () => {
+  const token = cookies().get('token')?.value
+  return token
 }
 
-export async function getTteokguks(): Promise<Tteokguk[]> {
-  // JSON파일 경로 가져오기
-  const filePath = path.join(process.cwd(), 'data', 'main.json')
-  // 가져온 JSON파일에 데이터 가져오기
-  const data = await fs.readFile(filePath, 'utf-8')
-  return JSON.parse(data)
+export async function getGuestTteokguk(userId: string): Promise<TteokgukType> {
+  // ! 이거 왜 함수 바깥에서 못쓰는거지..?ㅠㅠ
+  const token = tokens()
+  const res = await fetch(`${baseUrl}/api/v1/tteokguk/${userId}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  })
+
+  if (!res.ok) {
+    throw new Error('failed')
+  }
+
+  return res.json()
 }
 
-export async function getTteokguk(id: string): Promise<Tteokguk | undefined> {
-  const tteokguk = await getTteokguks()
-  return tteokguk.find((item) => item.id === id)
+export async function getHostTteokguk(): Promise<TteokgukType> {
+  const token = tokens()
+  const res = await fetch(`${baseUrl}/api/v1/tteokguk/me`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  })
+  if (!res.ok) {
+    throw new Error('failed')
+  }
+  return res.json()
+}
+
+export async function getGarnishes(userId: string, pageNum: number): Promise<GarnishArrType> {
+  const res = await fetch(`${baseUrl}/api/v1/tteokguk/${userId}/garnishes?page=${pageNum}`, {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+  if (!res.ok) {
+    throw new Error('failed')
+  }
+  const { data } = await res.json()
+  return data
 }

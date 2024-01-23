@@ -1,43 +1,70 @@
 'use client'
-import React from 'react'
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from '@/components/ui/pagination'
 
-const PaginationEntire = () => {
-  const nextButton = () => {
-    alert('오른쪽화살표 눌림')
-  }
+import { toast } from '@/hooks/use-toast'
+import { paginationType } from '@/types/MainPageTypes'
+import { debounce } from 'lodash'
+import { useRouter, useSearchParams } from 'next/navigation'
+import { useEffect, useState } from 'react'
+import { Button } from '../ui/button'
+
+const PaginationEntire = ({ pageSize, pageParam }: paginationType) => {
+  const params = useSearchParams()
+  const router = useRouter()
+
+  const [page, setPage] = useState<number>(Number(params.get('page')) || 1)
+
+  // const currentPage: number = Number(params.get('page'))
+  const [currentPage, setCurrentPage] = useState(Number(params.get('page')))
+
+  const pagesize = pageSize ? pageSize : 1
+  // const movePage = (flag?: string) => {
+  //   if ((flag === 'prev' && currentPage <= 1) || (flag === 'next' && currentPage >= pagesize)) {
+  //     return
+  //   }
+  //   const movePageNum = flag === 'prev' ? currentPage - 1 : currentPage + 1
+
+  //   setPage(movePageNum)
+  // }
+  const movePage = debounce((flag?: string) => {
+    if ((flag === 'prev' && currentPage <= 1) || (flag === 'next' && currentPage >= pagesize)) {
+      return
+    }
+    const movePageNum = flag === 'prev' ? currentPage - 1 : currentPage + 1
+    setCurrentPage(movePageNum)
+    // setPage(movePageNum)
+  }, 500)
+  useEffect(() => {
+    if (!Number.isInteger(currentPage) || currentPage < 1 || currentPage > pagesize) {
+      // todo ?page=100과 같이 유효하지 않은 번호 입력하면 일단 undefined 떡국 떴다가 1페이지로 넘어감
+      toast({ description: '유효한 페이지 번호가 아닙니다.' })
+      setCurrentPage(1)
+      return
+    }
+    setPage(currentPage)
+  }, [])
+
+  useEffect(() => {
+    setPage(currentPage)
+  }, [currentPage])
+
+  useEffect(() => {
+    router.push(`/${pageParam}?page=${page}`)
+  }, [page])
+
   return (
-    <Pagination>
-      <PaginationContent>
-        <PaginationItem>
-          <PaginationPrevious href="#" />
-        </PaginationItem>
-        <div className="flex-center">
-          <PaginationItem>
-            <PaginationLink href="#" className="text-14" isActive>
-              1
-            </PaginationLink>
-          </PaginationItem>
-          <span className="mx-4">/</span>
-          <PaginationItem>
-            <PaginationLink href="#" className="text-14">
-              1
-            </PaginationLink>
-          </PaginationItem>
-          <span className="text-14 ml-4">그릇</span>
-        </div>
-        <PaginationItem>
-          <PaginationNext href="#" onClick={nextButton} />
-        </PaginationItem>
-      </PaginationContent>
-    </Pagination>
+    <nav className="w-full">
+      <ul className="flex-center gap-5 text-14">
+        <li>
+          <Button onClick={() => movePage('prev')}>&lt;</Button>
+        </li>
+        <li>{currentPage}</li>
+        <li>/</li>
+        <li>{pageSize} 그릇</li>
+        <li>
+          <Button onClick={() => movePage('next')}>&gt;</Button>
+        </li>
+      </ul>
+    </nav>
   )
 }
 

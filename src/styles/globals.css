@@ -34,36 +34,6 @@
 
     --radius: 0.5rem;
   }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-  }
 }
 
 @layer base {
@@ -79,6 +49,17 @@
   /* position */
   .flex-center {
     @apply flex items-center justify-center;
+  }
+
+  /* height */
+  .content-height {
+    @apply layout-scroll h-auto;
+    height: calc(100% - 117px);
+  }
+  .bottom-height {
+    @apply h-auto;
+    padding-top: 16px;
+    height: 117px;
   }
 
   /* font */
@@ -98,14 +79,37 @@
     @apply text-11 font-medium leading-22;
   }
 
+  /* modal */
+  .modal-bg {
+    @apply absolute top-0 h-full w-full;
+  }
+  .modal-wrap {
+    @apply flex-center mx-auto h-full min-w-320 max-w-575 flex-grow bg-black bg-opacity-70;
+  }
+
+  /* scroll */
+  .layout-scroll {
+    @apply overflow-y-auto
+    overflow-x-hidden
+    scrollbar-thin
+    scrollbar-track-transparent
+    scrollbar-thumb-gr-100
+    scrollbar-thumb-rounded-full
+    scrollbar-w-11;
+  }
+  .blue-scroll {
+    @apply overflow-y-auto
+      overflow-x-hidden
+      scrollbar
+      scrollbar-track-transparent
+      scrollbar-thumb-pr-100
+      scrollbar-thumb-rounded-full
+      scrollbar-w-8
+      scrollbar-h-120;
+  }
+
   /* etc */
   .hr {
     @apply my-16 border border-gray-200;
-  }
-  .layout-scroll {
-    @apply scrollbar-h-466 scrollbar-h-10 scrollbar-thumb-rounded-full scrollbar-thin scrollbar-thumb-gr-100 scrollbar-track-transparent overflow-y-auto overflow-x-hidden;
-  }
-  .white-scroll {
-    @apply scrollbar-w-11 scrollbar-thumb-rounded-full scrollbar-thin scrollbar-thumb-bg scrollbar-track-transparent overflow-y-auto overflow-x-hidden;
   }
 }

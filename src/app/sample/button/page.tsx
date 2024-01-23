@@ -1,9 +1,12 @@
 'use client'
 
+import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { BottomButton, TopButton } from '@/components/common'
 
 export default function SampleButtonPage() {
+  const [disabled, setDisabled] = useState(false)
+
   return (
     <>
       <TopButton />
@@ -18,7 +21,8 @@ export default function SampleButtonPage() {
       <div className="mb-130">
         <span className="font-bold">
           📢 기본 사이즈 지정 되어있더라도 className에 추가 지정해주면 className에 정의된 속성이
-          우선하도록 설정해뒀음
+          우선하도록 설정해뒀음 <br />
+          📢 일반 default 버튼에는 hover 적용되어있지 않음
         </span>
 
         <hr className="hr" />
@@ -49,9 +53,36 @@ export default function SampleButtonPage() {
         <Button href="/" className="bg-slate-300 p-8">
           클릭 시 메인페이지로 이동
         </Button>
+
+        <hr className="hr" />
+
+        <p className="mb-4 font-bold">☑️ 버튼에 disabled 설정하기</p>
+        <Button className="mb-10 bg-pr-100 p-10" onClick={() => setDisabled(!disabled)}>
+          클릭하면 아래 버튼 disabled 상태 바뀜
+        </Button>
+        <Button size="full" disabled={disabled}>
+          {`현재 disabled 상태 : ${disabled}`}
+        </Button>
+        <br />
+        <p className="mb-10">
+          이때 그냥 일반 버튼일 경우 disabled 내려주면 배경 색이 생기니까,
+          <br />
+          className에 <b className="font-bold text-blue-600">bg-transparent hover:bg-transparent</b>
+          를<br /> 별도로 내려줘야 함!
+        </p>
+        <Button className="bg-transparent hover:bg-transparent" disabled={disabled}>
+          {`현재 disabled 상태 : ${disabled}`}
+        </Button>
       </div>
 
-      <BottomButton split="twice" fullBtnName="긴 버튼" smallBtnName="작은버튼" />
+      {/* bottomButton에 disabled 내려야 할 경우 아래와 같이 각각 내려주면 됨 */}
+      <BottomButton
+        split="twice"
+        smallBtnName={`${!disabled}`}
+        smallBtnDisabled={!disabled}
+        fullBtnName={`${disabled}`}
+        fullBtnDisabled={disabled}
+      />
     </>
   )
 }
