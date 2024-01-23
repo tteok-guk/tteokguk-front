@@ -29,6 +29,7 @@ interface ResponseData {
   dday?: number
   pageSize?: number
   garnishCnt?: number
+  nickName?: string
 }
 
 interface Garnish {
