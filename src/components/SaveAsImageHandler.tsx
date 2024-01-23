@@ -12,10 +12,11 @@ import { captureInfo } from '../../public/images/avatar'
 import { iconClose, iconError, iconSave } from '../../public/images/icons'
 import SaveImage from './SaveImage'
 import { BottomButton } from './common'
+import { garnishes } from '@/app/[userId]/_object/object'
 
 export interface Props {
   userId: string
-  garnish?: string
+  garnish: string
 }
 
 export default function SaveAsImageHandler({ userId, garnish }: Props) {
@@ -23,6 +24,7 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
   const [capturedImage, setCapturedImage] = useState('')
   const [screenshot, setScreenshot] = useState(false)
   const [isKakao, setIsKakao] = useState(false)
+  const [isKakaoSnapShot, setIsKakaoSnapShot] = useState(false)
 
   const basic = !screenshot && !isKakao
 
@@ -57,10 +59,19 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
         })
       } catch (error) {
         console.error('Error converting div to image:', error)
+      } finally {
+        setTimeout(() => {
+          setScreenshot(false)
+        }, 3000)
       }
     }, 0)
   }
-
+  useEffect(() => {
+    if (isKakao && capturedImage) {
+      setIsKakaoSnapShot(true)
+      toast({ description: '화면을 꾹~ 눌러서 이미지를 저장 할 수 있어요!' })
+    }
+  }, [isKakao, capturedImage])
   // * blob -> base64 인코딩된 DataURL 로 변환
   const blobToDataURL = (imageURL: Blob): Promise<string> => {
     return new Promise((resolve, reject) => {
@@ -93,7 +104,7 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
               width={24}
               height={24}
               alt="iconClose"
-              className=" m-12 "
+              className=" m-12 cursor-pointer"
               onClick={moveToMainPageLocationHandler}
             />
           </div>
@@ -107,7 +118,7 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
           </div>
 
           <div className=" flex-center  relative mt-40 ">
-            {data && garnish && <SaveImage type="basic" avatar={data} garnish={garnish} />}
+            {data && <SaveImage avatar={data} garnish={garnish} />}
           </div>
 
           <BottomButton
@@ -125,20 +136,19 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
             className="relative h-dvh bg-[url(/images/avatar/savePhoto.png)] bg-cover bg-center p-20"
           >
             <div className=" flex-center mt-152 ">
-              {data && garnish && <SaveImage type="snapShot" avatar={data} garnish={garnish} />}
+              {data && <SaveImage avatar={data} garnish={garnish} />}
             </div>
           </div>
           <Image
             src={iconClose}
-            width={24}
             height={24}
             alt="iconClose"
-            className=" absolute right-20 top-20 m-12"
+            className=" absolute right-20 top-20 m-12 cursor-pointer"
             onClick={() => setScreenshot(false)}
           />
         </div>
       )}
-      {isKakao && capturedImage && (
+      {isKakaoSnapShot && (
         <div className="relative mx-[-20px] mt-[-32px] h-dvh">
           <Image src={capturedImage} alt="snap-shot" layout="fill" className=" cursor-pointer" />
           <Image
@@ -149,13 +159,6 @@ export default function SaveAsImageHandler({ userId, garnish }: Props) {
             className=" absolute right-20 top-20 m-12"
             onClick={moveToMainPageLocationHandler}
           />
-          <Image
-            src={captureInfo}
-            alt="capturedImage"
-            width={310}
-            height={104}
-            className=" absolute bottom-[50px] left-[33px]"
-          />{' '}
         </div>
       )}
     </>
