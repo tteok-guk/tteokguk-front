@@ -2,11 +2,9 @@
 
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
-import { Onboarding } from '../../data/mainTitle'
 import { useEffect, useState } from 'react'
 import { iconKakao } from '../../public/images/icons'
-import { dragonSmall, dragonWalkSmall } from '../../public/images/avatar/small'
-import { sampleDish } from '../../public/images/dishes'
+import Onboarding from '../components/Onboarding'
 
 export default function AuthPage() {
   const [step, setStep] = useState(1)
@@ -28,32 +26,15 @@ export default function AuthPage() {
     <section className="h-full">
       <div className="content-height">
         <div className="flex-center h-[90%] flex-col">
-          {Onboarding.map(
-            (item) =>
-              item.step === step && (
-                <>
-                  <h1 className="flex-center flex-col gap-4">
-                    <span className="font-soyoThin text-12 font-bold leading-15 text-gr-400">
-                      {item.desc}
-                    </span>
-                    <span className="font-soyo text-28 font-bold leading-36 text-pr-500">
-                      {item.title}
-                    </span>
-                  </h1>
-                  <div className="flex-center mt-50">step별 이미지</div>
-                </>
-              ),
-          )}
+          <Onboarding step={step} />
         </div>
-        <div className="flex h-[10%] items-start justify-center gap-4">
+        <div className="flex h-[10%] items-start justify-center gap-4 pt-24">
           {[1, 2, 3, 4].map((item, idx) => (
             <Button
               key={idx}
               onClick={() => setStep(item)}
               className={`h-8 w-8 ${step === item ? 'bg-pr-300' : 'bg-gr-100'}`}
-            >
-              {''}
-            </Button>
+            ></Button>
           ))}
         </div>
       </div>
