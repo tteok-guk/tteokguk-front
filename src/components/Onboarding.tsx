@@ -28,7 +28,7 @@ export default function Onboarding({ step }: { step: number }) {
                   {item.desc}
                 </span>
                 <span
-                  className={`font-soyoThin text-28 font-bold leading-36
+                  className={`font-soyo text-28 leading-36
                     ${step === 1 ? 'text-pr-500' : 'text-gr-900'}
                 `}
                 >
