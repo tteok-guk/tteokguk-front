@@ -92,7 +92,7 @@ export default function MakeDishPage() {
         }))
         setIsStepBtnActive(false)
       } else if (curr == 0) {
-        router.push(`/host?page=1`)
+        window.location.href = `/host?page=1`
       }
     } else {
       // 다음으로
@@ -227,15 +227,9 @@ export default function MakeDishPage() {
               <br /> 테이블 매트를 선택해 주세요
             </h1>
           </div>
-          <div className={'flex h-full flex-col justify-between gap-28'}>
-            <div className={'relative flex flex-shrink-0 flex-grow-0 justify-center'}>
-              <Image
-                src={sampleDish}
-                alt="샘플 떡국 이미지"
-                width={184}
-                height={184}
-                loading="eager"
-              />
+          <div className={'flex flex-col gap-28 h-full justify-between'}>
+            <div className={'relative flex justify-center h-full'}>
+              <Image src={sampleDish} alt="샘플 떡국 이미지" loading='eager' fill={true} style={{objectFit: "scale-down"}}/>
             </div>
             <div
               className={
