@@ -10,7 +10,7 @@ export default function AuthPage() {
   const [step, setStep] = useState(1)
 
   const kakaoLink = process.env.NEXT_PUBLIC_KAKAO_KEY
-  const CHANGE_STEP_TIME = 3000
+  const CHANGE_STEP_TIME = 3800
   const STEP_LENGTH = 4
 
   const loginHandler = () => (window.location.href = `${kakaoLink && kakaoLink}`)
