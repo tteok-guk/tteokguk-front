@@ -13,6 +13,7 @@ import { useMutation } from '@tanstack/react-query'
 import { RequestParamType } from '@/types/apiTypes'
 import Cookies from 'js-cookie'
 import { useRouter } from 'next/navigation'
+import { iconArrow2 } from '../../../../public/images/icons'
 
 // 상태 Enum
 const StepStatus = {
@@ -182,6 +183,11 @@ export default function JoinPage() {
         description: '필수 약관에 모두 동의해 주세요.',
       })
     }
+  }
+
+  // 약관 내용 페이지 이동
+  const termsDetailPageOnClickHandler = (url: string) => {
+    window.open(`${url}`)
   }
 
   // Hooks
@@ -384,7 +390,6 @@ export default function JoinPage() {
             </div>
           </div>
         </div>
-
         {/* step 2 */}
         <div className={step.current === 2 ? 'flex flex-col gap-38' : 'hidden'}>
           <div>

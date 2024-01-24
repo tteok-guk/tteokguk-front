@@ -58,9 +58,9 @@ function MyPage() {
   const [onChangeInputValue, setOnChangeInputValue] = useState<string>('')
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value
-
-    if (inputValue.length <= 8) {
-      setOnChangeInputValue(inputValue)
+    const filteredValue = inputValue.replace(/[^a-zA-Z0-9ㄱ-ㅎㅏ-ㅣ가-힣]/g, '')
+    if (filteredValue.length <= 8) {
+      setOnChangeInputValue(filteredValue)
     }
   }
   console.log('onChangeInputValue', onChangeInputValue)
@@ -105,7 +105,7 @@ function MyPage() {
                 />
                 <p className="font-sm">내떡국 바로가기</p>
               </Link>
-              <Link href={`/${id}/garnish-list`}>
+              <Link href={`/host/garnish-list`}>
                 <Image
                   src={iconMail}
                   alt="mypage enter btn"
@@ -132,12 +132,14 @@ function MyPage() {
             <Link
               href={'https://tteokguk.notion.site/5e0171c5524446ea84b5f2ffc2cb39b1?pvs=4'}
               className="font-xs relative mr-10 text-gr-400 after:absolute after:-right-6 after:top-0 after:h-full after:w-2 after:bg-gray-400 after:content-['']"
+              target="_blank"
             >
               이용약관
             </Link>
             <Link
               href={'https://tteokguk.notion.site/87fde28ebf8940bb85576e1a68563d10?pvs=4'}
               className="font-xs text-gr-400"
+              target="_blank"
             >
               개인정보 수집이용
             </Link>
@@ -152,7 +154,7 @@ function MyPage() {
               <p className="font-xl">{data?.data.nickname}</p>
             ) : (
               <input
-                className="font-xl h-32 bg-transparent outline-none"
+                className="font-xl relative h-32 bg-transparent outline-none"
                 type="text"
                 value={onChangeInputValue}
                 onChange={(e) => {
@@ -173,7 +175,7 @@ function MyPage() {
               </button>
             ) : (
               <button
-                className="h-24 w-64 rounded-full border-1 border-pr-500 text-xs text-pr-500"
+                className="absolute right-20 h-24 w-64 rounded-full border-1 border-pr-500 text-xs text-pr-500"
                 onClick={() => {
                   completeBtn()
                   setModifyBtn(!modifyBtn)

@@ -92,7 +92,7 @@ export default function MakeDishPage() {
         }))
         setIsStepBtnActive(false)
       } else if (curr == 0) {
-        router.push(`/host?page=1`)
+        window.location.href = `/host?page=1`
       }
     } else {
       // 다음으로

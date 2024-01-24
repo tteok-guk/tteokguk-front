@@ -9,6 +9,7 @@ import { BottomButton } from '@/components/common'
 import { useMutation } from '@tanstack/react-query'
 import { deleteNickname } from '@/services/withdrawal'
 import { useRouter, useSearchParams } from 'next/navigation'
+import Cookies from 'js-cookie'
 
 function WithdrawalPage() {
   const params = useSearchParams()
@@ -19,7 +20,7 @@ function WithdrawalPage() {
   const onChangeMatt = useMutation({
     mutationFn: () => deleteNickname(),
     onSuccess: (res) => {
-      console.log('res', res)
+      Cookies.remove('token')
       router.push('/')
     },
     onError: (err) => console.log('err', err),
