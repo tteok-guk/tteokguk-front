@@ -37,10 +37,10 @@ export default function ChangeMattPage() {
           className={`mx-[-20px] mt-[-32px] h-[55%] bg-[url(/images/matts/${chosenMatt}.png)] bg-cover bg-no-repeat px-20 pt-32`}
         >
           <TopButton />
-          <p className="font-xl">
+          <p className="font-xl mb-10">
             변경할 테이블 매트를 <br /> 선택해 주세요
           </p>
-          <div className="absolute left-1/2 h-350 w-350 -translate-x-1/2 p-65">
+          <div className="absolute left-1/2 -translate-x-1/2">
             <Image src={sampleDish} alt="dish image" className="" />
           </div>
         </div>
