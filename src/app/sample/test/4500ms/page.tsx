@@ -1,19 +1,19 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
-import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import { iconKakao } from '../../public/images/icons'
+import { useRouter } from 'next/navigation'
+import { Button } from '@/components/ui/button'
 import Onboarding from '@/components/Onboarding'
 
-export default function AuthPage() {
+export default function Test4500() {
   const [step, setStep] = useState(1)
 
-  const kakaoLink = process.env.NEXT_PUBLIC_KAKAO_KEY
-  const CHANGE_STEP_TIME = 3800
+  const router = useRouter()
+
+  const CHANGE_STEP_TIME = 4500
   const STEP_LENGTH = 4
 
-  const loginHandler = () => (window.location.href = `${kakaoLink && kakaoLink}`)
+  const movePage = () => (window.location.href = '/sample/test')
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -24,7 +24,7 @@ export default function AuthPage() {
 
   return (
     <section className="h-full">
-      <div className="content-height overflow-y-hidden">
+      <div className="content-height">
         <div className="flex-center h-[90%] flex-col">
           <Onboarding step={step} />
         </div>
@@ -41,11 +41,10 @@ export default function AuthPage() {
       <div className="bottom-height">
         <Button
           size="full"
-          onClick={loginHandler}
+          onClick={movePage}
           className="rounded-12 bg-[#FFE42D] text-17 font-medium text-[#181818] hover:bg-[#f5dd44] active:bg-[#f5dd44]"
         >
-          <Image src={iconKakao} width={24} height={21} alt="카카오톡 아이콘" className="mr-8" />
-          카카오로 시작하기
+          뒤로가기 (여기는 4500ms)
         </Button>
       </div>
     </section>
