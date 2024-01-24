@@ -23,9 +23,6 @@ export default function Garnishpage() {
   const onSubmit = useMutation({
     mutationFn: (garnishId: string) => getGarnishDetail(garnishId),
     onSuccess: (res) => {
-      console.log('res', res, "greenOnion")
-      console.log('res', res.data.garnishType)
-      console.log('res', res)
       if (res.code === 200) {
         setGarnishType(res.data.garnishType?res.data.garnishType:'basicRc')
         setNickname(res.data.nickName?res.data.nickName:'')
@@ -47,7 +44,7 @@ export default function Garnishpage() {
   return (
     <div className={'bg-cover h-full'}>
       <div className={'flex mt-[-12px]'}>
-        <div className={'pl-0 pr-24 py-12 cursor-pointer'} onClick={() => (router.push('/account'))}>
+        <div className={'pl-0 pr-24 py-12 cursor-pointer'} onClick={() => (router.back())}>
           <Image src={iconArrow} alt="왼쪽을 가르키는 화살표 이미지" width={24} height={24} />
         </div>
       </div>

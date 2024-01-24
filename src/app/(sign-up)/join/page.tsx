@@ -13,6 +13,7 @@ import { useMutation } from '@tanstack/react-query'
 import { RequestParamType } from '@/types/apiTypes'
 import Cookies from 'js-cookie'
 import { useRouter } from 'next/navigation'
+import { iconArrow2 } from '../../../../public/images/icons'
 
 
 // 상태 Enum
@@ -63,13 +64,13 @@ export default function JoinPage() {
       'type': 'required',
       'text': '(필수) 서비스 이용 약관에 동의합니다.',
       'checked': false,
-      'link': '',
+      'link': 'https://tteokguk.notion.site/5e0171c5524446ea84b5f2ffc2cb39b1?pvs=4',
     },
     {
       'type': 'required',
       'text': '(필수) 개인정보 수집이용에 동의합니다.',
       'checked': false,
-      'link': '',
+      'link': 'https://tteokguk.notion.site/87fde28ebf8940bb85576e1a68563d10?pvs=4',
     }
   ])
 
@@ -183,6 +184,11 @@ export default function JoinPage() {
     }
   }
 
+  // 약관 내용 페이지 이동
+  const termsDetailPageOnClickHandler = (url:string) => {
+    window.open (`${url}`)
+  }
+
   // Hooks
   // [userName] useEffect Hook
   useEffect(() => {
@@ -259,7 +265,7 @@ export default function JoinPage() {
       {/* 상단 영역 */}
       <div className={step.current === 1 ?'flex pt-20 px-20':'flex mt-[-12px]'}>
         <div className={step.current === 0 ? 'pl-0 pr-24 py-12 invisible' : 'pl-0 pr-24 py-12 cursor-pointer'} onClick={() => { navBtnOnClickHandler(step.current, 'prev') }}>
-          <Image src={iconArrow} alt="왼쪽을 가르키는 화살표 이미지" width={24} height={24} />
+          <Image src={iconArrow} alt="왼쪽을 가르키는 화살표 이미지" width={24} height={24}/>
         </div>
         <div className={'flex gap-6 items-center  ml-[calc(50%-56px)]'}>
           <div className={step.current === 0 ? 'w-8 h-8 rounded-full bg-pr-300' : 'w-8 h-8 rounded-full bg-gr-100'}></div>
@@ -294,8 +300,8 @@ export default function JoinPage() {
             <h1 className={'font-xl text-gr-900'}>캐릭터를 선택해주세요</h1>
           </div>
           <div className={'flex flex-col gap-20 h-full justify-between'}>
-            <div className={'relative flex justify-center'}>
-              <Image src={avatars[selectAvatar.idx].nomalSrc} alt="선택 캐릭터 이미지" width={255} height={255} loading='eager'/>
+            <div className={'relative flex justify-center h-full'}>
+              <Image src={avatars[selectAvatar.idx].nomalSrc} alt="선택 캐릭터 이미지" loading='eager' fill={true} style={{objectFit: "contain"}}/>
             </div>
             <div className={step.current === 1 ?'relative grid grid-cols-4 grid-rows-2 justify-center gap-12 bg-white mt-[-20px] mx-[-20px] pt-[20px] px-[20px]':'relative grid grid-cols-4 grid-rows-2 justify-center gap-12'}>
               {
@@ -307,9 +313,7 @@ export default function JoinPage() {
               }
             </div>
           </div>
-
         </div>
-
         {/* step 2 */}
         <div className={step.current === 2 ? 'flex flex-col gap-38' : 'hidden'}>
           <div>
@@ -324,9 +328,12 @@ export default function JoinPage() {
               {
                 terms.map((term, idx) => {
                   return (
-                    <div key={idx} className={'flex items-center w-full gap-10 pl-20 cursor-pointer'}>
-                      <Checkbox id={'terms' + idx} checked={term.checked} onCheckedChange={() => (checkboxOnChangeHandler(idx))} className={'w-20 h-20 rounded-full bg-center border-0 bg-[url(/images/icons/iconCheckCircleBefore.png)] bg-white data-[state=checked]:bg-white data-[state=checked]:bg-[url(/images/icons/iconCheckCircleAfter.png)]' } />
-                      <Label htmlFor={'terms' + idx}>{term.text}</Label>
+                    <div key={idx} className={'flex items-center w-full pl-20 cursor-pointer pr-3'}>
+                      <div className={'flex w-full cursor-pointer items-center gap-x-10'}>
+                        <Checkbox id={'terms' + idx} checked={term.checked} onCheckedChange={() => (checkboxOnChangeHandler(idx))} className={'w-20 h-20 rounded-full bg-center border-0 bg-[url(/images/icons/iconCheckCircleBefore.png)] bg-white data-[state=checked]:bg-white data-[state=checked]:bg-[url(/images/icons/iconCheckCircleAfter.png)]' } />
+                        <Label htmlFor={'terms' + idx}>{term.text}</Label>
+                      </div>
+                      {term.link?<div className='cursor-pointer' onClick={()=>(termsDetailPageOnClickHandler(term.link))}><Image src={iconArrow2} alt={'관련 약관 바로가기 링크 아이콘'} width={16} height={16}></Image></div>:<></>}
                     </div>
                   )
                 })
