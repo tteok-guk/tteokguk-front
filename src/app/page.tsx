@@ -24,7 +24,7 @@ export default function AuthPage() {
 
   return (
     <section className="h-full">
-      <div className="content-height">
+      <div className="content-height overflow-y-hidden">
         <div className="flex-center h-[90%] flex-col">
           <Onboarding step={step} />
         </div>
