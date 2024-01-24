@@ -59,7 +59,12 @@ export default function Onboarding({ step }: { step: number }) {
                   </>
                 )}
                 {step !== 1 && (
-                  <Image src={item.src} alt={item.alt} className="h-full w-full object-contain" />
+                  <Image
+                    src={item.src}
+                    loading="eager"
+                    alt={item.alt}
+                    className="h-full w-full object-contain"
+                  />
                 )}
               </div>
             </>
