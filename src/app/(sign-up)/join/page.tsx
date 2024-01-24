@@ -66,13 +66,13 @@ export default function JoinPage() {
       type: 'required',
       text: '(필수) 서비스 이용 약관에 동의합니다.',
       checked: false,
-      link: '',
+      link: 'https://tteokguk.notion.site/5e0171c5524446ea84b5f2ffc2cb39b1?pvs=4',
     },
     {
       type: 'required',
       text: '(필수) 개인정보 수집이용에 동의합니다.',
       checked: false,
-      link: '',
+      link: 'https://tteokguk.notion.site/87fde28ebf8940bb85576e1a68563d10?pvs=4',
     },
   ])
 
@@ -347,13 +347,13 @@ export default function JoinPage() {
             <h1 className={'font-xl text-gr-900'}>캐릭터를 선택해주세요</h1>
           </div>
           <div className={'flex h-full flex-col justify-between gap-20'}>
-            <div className={'relative flex justify-center'}>
+            <div className={'relative flex h-full justify-center'}>
               <Image
                 src={avatars[selectAvatar.idx].nomalSrc}
                 alt="선택 캐릭터 이미지"
-                width={255}
-                height={255}
                 loading="eager"
+                fill={true}
+                style={{ objectFit: 'contain' }}
               />
             </div>
             <div
@@ -422,16 +422,33 @@ export default function JoinPage() {
             <div className={'flex flex-col gap-y-22'}>
               {terms.map((term, idx) => {
                 return (
-                  <div key={idx} className={'flex w-full cursor-pointer items-center gap-10 pl-20'}>
-                    <Checkbox
-                      id={'terms' + idx}
-                      checked={term.checked}
-                      onCheckedChange={() => checkboxOnChangeHandler(idx)}
-                      className={
-                        'h-20 w-20 rounded-full border-0 bg-white bg-[url(/images/icons/iconCheckCircleBefore.png)] bg-center data-[state=checked]:bg-white data-[state=checked]:bg-[url(/images/icons/iconCheckCircleAfter.png)]'
-                      }
-                    />
-                    <Label htmlFor={'terms' + idx}>{term.text}</Label>
+                  <div key={idx} className={'flex w-full cursor-pointer items-center pl-20 pr-3'}>
+                    <div className={'flex w-full cursor-pointer items-center gap-x-10'}>
+                      <Checkbox
+                        id={'terms' + idx}
+                        checked={term.checked}
+                        onCheckedChange={() => checkboxOnChangeHandler(idx)}
+                        className={
+                          'h-20 w-20 rounded-full border-0 bg-white bg-[url(/images/icons/iconCheckCircleBefore.png)] bg-center data-[state=checked]:bg-white data-[state=checked]:bg-[url(/images/icons/iconCheckCircleAfter.png)]'
+                        }
+                      />
+                      <Label htmlFor={'terms' + idx}>{term.text}</Label>
+                    </div>
+                    {term.link ? (
+                      <div
+                        className="cursor-pointer"
+                        onClick={() => termsDetailPageOnClickHandler(term.link)}
+                      >
+                        <Image
+                          src={iconArrow2}
+                          alt={'관련 약관 바로가기 링크 아이콘'}
+                          width={16}
+                          height={16}
+                        ></Image>
+                      </div>
+                    ) : (
+                      <></>
+                    )}
                   </div>
                 )
               })}
