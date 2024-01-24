@@ -108,6 +108,7 @@ export default function SetGarnishPage() {
                     src={garnish.src}
                     width={80}
                     height={80}
+                    loading="eager"
                     layout="responsive"
                     alt={`${garnish.alt} 고명 일러스트`}
                   />
