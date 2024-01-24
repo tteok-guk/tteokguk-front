@@ -45,6 +45,7 @@ export default function AuthPage() {
               src={iconCarousel}
               width={10}
               height={18}
+              loading="eager"
               alt={`${item.alt}을 향하고 있는 화살표 아이콘`}
               onClick={() => moveStep(item.move)}
               className={`absolute top-1/2 -translate-y-1/2 cursor-pointer ${item.styleClass}`}
