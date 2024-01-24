@@ -38,7 +38,7 @@ export default function Onboarding({ step }: { step: number }) {
                 </span>
               </h1>
               <div
-                className={`flex-center mt-10 h-[80%] flex-col
+                className={`flex-center mt-10 h-[80%] flex-col p-20
                 ${step === 1 ? 'p-50' : 'p-20'}
               `}
               >
@@ -54,7 +54,7 @@ export default function Onboarding({ step }: { step: number }) {
                       src={sampleDish}
                       loading="eager"
                       alt="떡국 샘플 일러스트"
-                      className={`animate-spin-slow object-contain ${sizeFitClass}`}
+                      className={`animate-spin-slow ${sizeFitClass}`}
                     />
                   </>
                 )}
