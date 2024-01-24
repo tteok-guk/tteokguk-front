@@ -10,6 +10,8 @@ export default function Onboarding({ step }: { step: number }) {
   const CHANGE_STEP_TIME = 300
   const dragonImg: StaticImageData = !walk ? dragonNotWalkSmall : dragonWalkSmall
 
+  const sizeFitClass = 'max-w-full max-h-full object-contain'
+
   useEffect(() => {
     const interval = setInterval(() => {
       setWalk((prev) => !prev)
@@ -36,7 +38,7 @@ export default function Onboarding({ step }: { step: number }) {
                 </span>
               </h1>
               <div
-                className={`flex-center mt-10 h-[80%] flex-col p-20
+                className={`flex-center mt-10 h-[80%] flex-col
                 ${step === 1 ? 'p-50' : 'p-20'}
               `}
               >
@@ -46,13 +48,13 @@ export default function Onboarding({ step }: { step: number }) {
                       src={dragonImg}
                       loading="eager"
                       alt="걷는 용 일러스트"
-                      className="z-10 mb-[-5px] ml-18"
+                      className={`z-10 mb-[-5px] ml-18 ${sizeFitClass}`}
                     />
                     <Image
                       src={sampleDish}
                       loading="eager"
                       alt="떡국 샘플 일러스트"
-                      className="animate-spin-slow"
+                      className={`animate-spin-slow object-contain ${sizeFitClass}`}
                     />
                   </>
                 )}
