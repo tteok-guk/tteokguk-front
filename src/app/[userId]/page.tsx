@@ -63,6 +63,7 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
       return 'basicDish'
     }
   }
+
   return (
     <div className="relative">
       <section
@@ -73,15 +74,17 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
         <div className={` w-full `}>
           <div className="flex flex-row items-center justify-between pb-36 pt-32 ">
             <h1 className="font-xl">{`${nickname}님의 떡국`}</h1>
-            <Link href={'/account'}>
-              <Image
-                src={iconMypage}
-                width={28}
-                height={28}
-                alt="myPageButton"
-                className="pb-1 pt-2"
-              />
-            </Link>
+            {hostTG && (
+              <Link href={'/account'}>
+                <Image
+                  src={iconMypage}
+                  width={28}
+                  height={28}
+                  alt="myPageButton"
+                  className="pb-1 pt-2"
+                />
+              </Link>
+            )}
           </div>
           <div className="flex flex-col items-center">
             <div className="font-sm flex-center mb-8 flex flex-row gap-1.5 rounded-2xl bg-pr-100 px-15 py-3 lg:px-20 lg:py-6">
