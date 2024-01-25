@@ -31,7 +31,6 @@ export default function Modal({
     cs: <CsModal cancelBtnFn={cancelBtnFn} />,
   }
   const componentToRender = componentType[type]
-  const modalRoot = document.getElementById('modal-root') as HTMLElement
 
   useEffect(() => {
     setMounted(true)
