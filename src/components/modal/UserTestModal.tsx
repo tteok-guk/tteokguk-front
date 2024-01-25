@@ -28,11 +28,11 @@ function UserTestModal({ cancelBtnFn, confirmBtnFn }: UserTestProps) {
             >
               <p>유저테스트 참여하기</p>
             </Link>
-            {/* <div className="flex-center mt-12">
+            <div className="flex-center mt-12">
               <button className="w-100 text-pr-400" onClick={confirmBtnFn}>
                 다시 보지 않기
               </button>
-            </div> */}
+            </div>
           </div>
         </div>
       </div>
