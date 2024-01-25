@@ -38,7 +38,3 @@ export interface ModalProps {
 export type ModalComponentType = {
   [key in ModalType]: React.ReactNode
 }
-
-export interface ErrorType {
-  type?: string
-}
