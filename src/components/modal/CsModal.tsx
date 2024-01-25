@@ -21,11 +21,13 @@ function CsModal({ cancelBtnFn }: CsProps) {
               <h1 className="text-xl font-semibold text-black">문의사항이 생기셨나요?</h1>
               <h2>궁금하거나 불편한 사항을 남겨주세요!</h2>
             </div>
-            <button className="h-60 w-full rounded-md bg-pr-500 text-lg text-white">
-              <Link href={'https://forms.gle/KEcBmqZeZBt2kU5x7'} target="_blank">
-                문의하기
-              </Link>
-            </button>
+            <Link
+              href={'https://forms.gle/KEcBmqZeZBt2kU5x7'}
+              target="_blank"
+              className="flex-center h-60 w-full rounded-md bg-pr-500 text-lg text-white"
+            >
+              <p>문의하기</p>
+            </Link>
             {/* <div className="flex-center mt-12">
               <button className="w-100 text-pr-400" onClick={confirmBtnFn}>
                 다시 보지 않기
