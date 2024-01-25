@@ -28,10 +28,26 @@ function MyPage() {
   const queryClient = useQueryClient()
   const [modifyBtn, setModifyBtn] = useState(false)
   const [logout, setlogout] = useState(false)
-  const [userTest, setUserTest] = useState(false)
+  const [showModal, setShowModal] = useState(true)
   const [cs, setCs] = useState(false)
   const [mypageToggle, setMypageToggle] = useState(false)
   const route = useRouter()
+
+  useEffect(() => {
+    const hideModal = Cookies.get('hideModal')
+    if (hideModal) {
+      setShowModal(false)
+    }
+  }, [])
+
+  const hideModalForADay = () => {
+    Cookies.set('hideModal', 'true', { expires: 1 })
+    setShowModal(false)
+  }
+
+  const closeModal = () => {
+    setShowModal(false)
+  }
 
   const LogoutHandler = () => {
     Cookies.remove('token')
@@ -41,10 +57,6 @@ function MyPage() {
 
   const mypageHandler = () => {
     setMypageToggle(!mypageToggle)
-  }
-
-  const userTestModalToggle = () => {
-    setUserTest(!userTest)
   }
 
   const csModalToggle = () => {
@@ -99,7 +111,9 @@ function MyPage() {
     <>
       {!mypageToggle ? (
         <div>
-          {userTest && <Modal type="userTest" cancelBtnFn={userTestModalToggle} />}
+          {showModal && (
+            <Modal type="userTest" cancelBtnFn={closeModal} confirmBtnFn={hideModalForADay} />
+          )}
           {cs && <Modal type="cs" cancelBtnFn={csModalToggle} />}
           {data?.data.nickname ? <TopButton onClick={homeRoute} /> : <TopButton />}
           <div className="mb-20 flex gap-8">
@@ -137,10 +151,14 @@ function MyPage() {
             </div>
           ) : null}
           <div className="flex flex-col gap-16">
-            <button className="flex items-center gap-6" onClick={userTestModalToggle}>
+            <Link
+              className="flex items-center gap-6"
+              href={'https://forms.gle/oavk3yJND7A8JrMh7'}
+              target="_blank"
+            >
               <Image src={iconUserTest} alt="mypage enter btn" width={20} height={20} />
               <p className="font-base">유저테스트 참여하기</p>
-            </button>
+            </Link>
             <Link
               className="flex items-center gap-6"
               href={'https://tteokguk.notion.site/6a5ab7200f6d434aaf7c7524d889ef8a?pvs=4'}

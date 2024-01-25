@@ -37,7 +37,9 @@ export default function Modal({
     return () => setMounted(false)
   }, [])
 
-  return mounted
-    ? createPortal(componentToRender, document.getElementById('modal-root') as HTMLElement)
-    : null
+  return mounted ? (
+    createPortal(componentToRender, document.getElementById('modal-root') as HTMLElement)
+  ) : (
+    <></>
+  )
 }
