@@ -81,6 +81,7 @@ export default function Roulette() {
         src={rouletteBoard}
         height={270}
         width={270}
+        loading="eager"
         className="mt-19"
         alt="룰렛 원판 이미지"
         priority

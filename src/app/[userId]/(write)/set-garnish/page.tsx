@@ -53,76 +53,81 @@ export default function SetGarnishPage() {
 
   return (
     <section className="pb-40">
-      <TopButton />
-      <h1 className="font-xl pt-12">
-        편지를 남길
-        <br />
-        고명을 선택해 주세요
-      </h1>
-      <div className="flex-center mt-40 grid grid-cols-3 gap-12">
-        <Button
-          className={`
+      <div className="content-height">
+        <TopButton />
+        <h1 className="font-xl pt-12">
+          편지를 남길
+          <br />
+          고명을 선택해 주세요
+        </h1>
+        <div className="flex-center mt-40 grid grid-cols-3 gap-12">
+          <Button
+            className={`
             ${btnCommonClass}
             ${chosenGarnish === findRouletteGarnish?.id ? 'border-3 border-pr-500' : ''}
           `}
-          onClick={toggleRouletteBtn}
-        >
-          {!rouletteResult ? (
-            <span
-              className={`
+            onClick={toggleRouletteBtn}
+          >
+            {!rouletteResult ? (
+              <span
+                className={`
                 ${fontResponsiveClass}
                 bg-gradient-to-r from-pr-500 to-[#9C38FF] bg-clip-text text-transparent
               `}
-            >
-              랜덤
-              <br />
-              룰렛
-            </span>
-          ) : (
-            findRouletteGarnish && (
-              <Image
-                src={findRouletteGarnish.src}
-                width={80}
-                height={80}
-                layout="responsive"
-                alt={`${findRouletteGarnish.alt} 고명 일러스트`}
-                className="object-contain"
-              />
-            )
-          )}
-        </Button>
-
-        {garnishes.map(
-          (garnish, idx) =>
-            garnish.type === 'basic' && (
-              <Button
-                key={idx}
-                className={`
-                  ${btnCommonClass}
-                  ${chosenGarnish === garnish.id ? 'border-3 border-pr-500' : ''}
-                `}
-                onClick={() => setGarnish(garnish.id)}
               >
+                랜덤
+                <br />
+                룰렛
+              </span>
+            ) : (
+              findRouletteGarnish && (
                 <Image
-                  src={garnish.src}
+                  src={findRouletteGarnish.src}
                   width={80}
                   height={80}
                   layout="responsive"
-                  alt={`${garnish.alt} 고명 일러스트`}
+                  alt={`${findRouletteGarnish.alt} 고명 일러스트`}
+                  className="object-contain"
                 />
-              </Button>
-            ),
-        )}
+              )
+            )}
+          </Button>
+
+          {garnishes.map(
+            (garnish, idx) =>
+              garnish.type === 'basic' && (
+                <Button
+                  key={idx}
+                  className={`
+                  ${btnCommonClass}
+                  ${chosenGarnish === garnish.id ? 'border-3 border-pr-500' : ''}
+                `}
+                  onClick={() => setGarnish(garnish.id)}
+                >
+                  <Image
+                    src={garnish.src}
+                    width={80}
+                    height={80}
+                    loading="eager"
+                    layout="responsive"
+                    alt={`${garnish.alt} 고명 일러스트`}
+                  />
+                </Button>
+              ),
+          )}
+        </div>
       </div>
 
-      <BottomButton
-        fullBtnHref={{
-          pathname: `/${hostId}/write`,
-          query: { nickname: hostNickname, garnish: chosenGarnish },
-        }}
-        fullBtnName="덕담 남기기"
-        fullBtnDisabled={!chosenGarnish}
-      />
+      <div className="bottom-height">
+        <BottomButton
+          fullBtnHref={{
+            pathname: `/${hostId}/write`,
+            query: { nickname: hostNickname, garnish: chosenGarnish },
+          }}
+          fullBtnName="덕담 남기기"
+          fullBtnDisabled={!chosenGarnish}
+        />
+      </div>
 
       {isRouletteOpen && <Modal type="roulette" cancelClick={setRouletteOpen} />}
     </section>

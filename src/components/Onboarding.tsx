@@ -10,6 +10,8 @@ export default function Onboarding({ step }: { step: number }) {
   const CHANGE_STEP_TIME = 300
   const dragonImg: StaticImageData = !walk ? dragonNotWalkSmall : dragonWalkSmall
 
+  const sizeFitClass = 'max-w-full max-h-full object-contain'
+
   useEffect(() => {
     const interval = setInterval(() => {
       setWalk((prev) => !prev)
@@ -28,32 +30,41 @@ export default function Onboarding({ step }: { step: number }) {
                   {item.desc}
                 </span>
                 <span
-                  className={`font-soyo text-28 font-bold leading-36 ${
-                    step === 1 ? 'text-pr-500' : 'text-gr-900'
-                  }`}
+                  className={`font-soyo text-28 leading-36
+                    ${step === 1 ? 'text-pr-500' : 'text-gr-900'}
+                `}
                 >
                   {item.title}
                 </span>
               </h1>
-              <div className="flex-center mt-10 h-[80%] flex-col p-20">
+              <div
+                className={`flex-center mt-10 h-[80%] flex-col p-20
+                ${step === 1 ? 'p-50' : 'p-20'}
+              `}
+              >
                 {step === 1 && (
                   <>
                     <Image
                       src={dragonImg}
                       loading="eager"
                       alt="걷는 용 일러스트"
-                      className="z-10 mb-[-5px] ml-18"
+                      className={`z-10 mb-[-5px] ml-18 ${sizeFitClass}`}
                     />
                     <Image
                       src={sampleDish}
                       loading="eager"
                       alt="떡국 샘플 일러스트"
-                      className="animate-spin-slow"
+                      className={`animate-spin-slow ${sizeFitClass}`}
                     />
                   </>
                 )}
                 {step !== 1 && (
-                  <Image src={item.src} alt={item.alt} className="h-full w-full object-contain" />
+                  <Image
+                    src={item.src}
+                    loading="eager"
+                    alt={item.alt}
+                    className="h-full w-full object-contain"
+                  />
                 )}
               </div>
             </>
