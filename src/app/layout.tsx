@@ -22,7 +22,7 @@ const soyo_thin = localFont({
 
 export const metadata: Metadata = {
   title: '니떡국 내떡국',
-  description: '떡국 고명에 마음을 담아 덕담을 주고 받아요!',
+  description: '떡국을 나누고 덕담을 주고 받아요!',
 }
 
 export const viewport = {
