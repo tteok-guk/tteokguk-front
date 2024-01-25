@@ -24,7 +24,7 @@ export async function middleware(request: NextRequest) {
       if (token) {
         // 사용자 타입 확인
         const userType = await getUserType(token)
-        if (userType.data.isMember) {
+        if (userType?.data?.isMember) {
           return NextResponse.next()
         } else {
           const response = NextResponse.redirect(new URL('/', request.url))
@@ -55,7 +55,7 @@ export async function middleware(request: NextRequest) {
       if (token) {
         // 사용자 타입 확인
         const userType = await getUserType(token)
-        if (userType.data.isMember) {
+        if (userType?.data?.isMember) {
           const response = NextResponse.redirect(new URL('/host?page=1', request.url))
           return response
         } else {
@@ -70,7 +70,7 @@ export async function middleware(request: NextRequest) {
       if (token) {
         // 사용자 타입 확인
         const userType = await getUserType(token)
-        if (userType.data.isMember) {
+        if (userType?.data?.isMember) {
           return NextResponse.next()
         } else {
           const response = NextResponse.redirect(new URL('/', request.url))
@@ -94,7 +94,7 @@ export async function middleware(request: NextRequest) {
         const token = request.nextUrl.searchParams.get('token')
         // 사용자 타입 확인
         const userType = await getUserType(token)
-        if (userType.data.isMember) {
+        if (userType?.data?.isMember) {
           // 쿠키에 토큰 세팅
           const response = NextResponse.redirect(new URL('/host?page=1', request.url))
           response.cookies.set('token', token || '')

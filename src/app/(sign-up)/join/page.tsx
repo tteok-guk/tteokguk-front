@@ -160,6 +160,8 @@ export default function JoinPage() {
         const token = res.data.token?res.data.token:''
         Cookies.set('token', token)
         router.push(`/host?page=1`)
+      }else if (res.code === 401){
+        router.push(`/`)
       }
     },
     onError: (err) => console.log('err', err), // todo 에러핸들링 추가

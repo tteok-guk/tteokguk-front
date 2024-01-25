@@ -25,7 +25,9 @@ export const getUserType = async (token: string | null | undefined): Promise<Use
     }
   }
 
-  return response.json()
+  const result = await response.json();
+  console.log('result', result)
+  return result
 }
 
 // if (response.status === 200 && response.statusText === 'OK') {
