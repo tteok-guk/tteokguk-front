@@ -1,5 +1,5 @@
 'use client'
-import { Suspense, useState } from 'react'
+import { useState } from 'react'
 import { getGarnishList } from '@/services/garnish'
 import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
@@ -9,7 +9,6 @@ import { sorryNoGarnishDragon } from '../../../../public/images/etc'
 import { garnishes as grnisheImgs } from '../../../../data/garnishes'
 import { useRouter } from 'next/navigation'
 import { useToast } from '@/hooks/use-toast'
-import { notFound } from 'next/navigation'
 import LoadingPage from '@/app/loading'
 
 export default function GarnishListpage() {
@@ -20,10 +19,15 @@ export default function GarnishListpage() {
   const [isDDay, setIsDDay] = useState(false)
 
   // 가니시 상세 조회 핸들러
-  const getGarnishDetailsHandler = (isDday: boolean, garnishId: string, tteokGukId: string) => {
-    if (isDday) {
+  const getGarnishDetailsHandler = (isOpen: boolean, garnishId: string, tteokGukId: string, isPublic: boolean) => {
+    if (isOpen && isPublic) {
       router.push(`/${tteokGukId}/${garnishId}`)
-    } else {
+    } else if (isOpen && !isPublic) {
+      toast({
+        duration: 1850,
+        description: '떡국 주인만 볼 수 있어요!'
+      })
+    } else if (!isOpen){
       toast({
         duration: 1850,
         description: '덕담 확인은 2월 9일까지 기다려 주세요!'
@@ -41,8 +45,13 @@ export default function GarnishListpage() {
     // todo 솔님이 만들어준 에러 컴포넌트 붙이기
   }
 
+  if (data?.data?.dday === 0){
+    setIsDDay(true)
+  }
+
   if (data) {
     console.log('data :', data)
+    
     if (data?.code === 2002) {
       return (
         <div className={'bg-cover'}>
@@ -88,8 +97,6 @@ export default function GarnishListpage() {
         </div>
       )
     } else {
-      // 고명이 존재하는 케이스
-      //
       return (
         <div className={'bg-cover'}>
           <div className={'flex mt-[-12px]'}>
@@ -107,7 +114,7 @@ export default function GarnishListpage() {
             {
               data?.data?.garnishes?.map((garnish, idx) => {
                 return (
-                  <div key={garnish.nickname + idx} className={'w-full flex gap-x-12 truncate cursor-pointer flex-shrink-0'} onClick={() => (getGarnishDetailsHandler(garnish.content === '2월9일 이후에 확인 할 수 있어요' ? false : true, String(garnish.garnishId), garnish.tteokGukId))}>
+                  <div key={garnish.nickname + idx} className={'w-full flex gap-x-12 truncate cursor-pointer flex-shrink-0'} onClick={() => (getGarnishDetailsHandler(isDDay, String(garnish.garnishId), garnish.tteokGukId, garnish.public))}>
                     <div className={'w-54 h-54 p-7 bg-white rounded-full flex justify-center items-center flex-shrink-0 flex-grow-0'}>
                       <Image src={grnisheImgs.find((garnishImg) => garnishImg.id === garnish.garnishType)?.src || grnisheImgs[6].src} alt={'고명이미지'} width={40} height={40} ></Image>
                     </div>
@@ -124,6 +131,7 @@ export default function GarnishListpage() {
       )
     }
   }
+
   return (
     <LoadingPage />
   )
