@@ -38,7 +38,7 @@ const ShareButton = ({ btnType, tteokGukId, nickname }: BtnType) => {
           split="twice"
           smallBtnName="내떡국"
           fullBtnName="덕담 남기기"
-          smallBtnHref="/host"
+          smallBtnHref="/host?page=1"
           fullBtnHref={`/${tteokGukId}/set-garnish?nickname=${nickname}`}
         />
       )}
