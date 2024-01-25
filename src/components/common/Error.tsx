@@ -1,9 +1,10 @@
 import React from 'react'
 import Image from 'next/image'
+import { ErrorType } from '@/types/CommonTypes'
 import { Button } from '../ui/button'
 import { cryingAvatars } from '../../../public/images/avatar'
 
-export default function Error({ type = '404' }: { type?: string }) {
+export default function Error({ type = '404' }: ErrorType) {
   const title = type === 'error' ? '빈 페이지를 발견하셨어요!' : '길을 잃으셨어요!'
   const desc =
     type === 'error'
