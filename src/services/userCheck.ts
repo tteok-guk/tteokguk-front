@@ -4,7 +4,7 @@ export type UserType = {
   data : {
     isMember: boolean
   } 
-}
+}|null
 
 export const getUserType = async (token: string | null | undefined): Promise<UserType> => {
   // 토큰 정보로 유저 정보 가져오기
@@ -21,7 +21,12 @@ export const getUserType = async (token: string | null | undefined): Promise<Use
 
   if (response) {
     if (response.status !== 200) {
-      throw new Error('fail')
+      if(response.status === 401){
+        console.log('response', '유효하지 않은 토큰입니다.')
+        return null
+      }else{
+        throw new Error('fail')
+      }
     }
   }
 

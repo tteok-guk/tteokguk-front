@@ -105,7 +105,7 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
                 <Garnish
                   garnishInfo={garnish?.garnishes}
                   Public={guestTG?.public}
-                  dDay={guestTG?.dday}
+                  dDay={guestTG ? guestTG.dday : hostTG?.dday}
                   userId={userId}
                 />
               )}
