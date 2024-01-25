@@ -6,6 +6,7 @@ import servicePreviewDish from './servicePreviewDish.svg'
 import sampleDishPrivate from './sampleDishPrivate.png'
 import sampleDishPublic from './sampleDishPublic.png'
 import makeDishBubble from './makeDishBubble.png'
+import sorryNoGarnishDragon from './sorryNoGarnishDragon.svg'
 
 export {
   faviconMedium,
@@ -16,4 +17,5 @@ export {
   sampleDishPrivate,
   sampleDishPublic,
   makeDishBubble,
+  sorryNoGarnishDragon,
 }

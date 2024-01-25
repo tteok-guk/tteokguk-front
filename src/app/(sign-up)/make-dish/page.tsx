@@ -121,6 +121,12 @@ export default function MakeDishPage() {
           description: '이미 만들어진 떡국이 있습니다.',
         })
         router.push(`/host?page=1`)
+      }else if (res.code === 403) {
+        toast({
+          duration: 2000,
+          description: '니떡내떡 가입을 완료해주세요.'
+        })
+        router.push(`/join`)
       }
     },
     onError: (err) => console.log('err', err), // todo 에러핸들링 추가
