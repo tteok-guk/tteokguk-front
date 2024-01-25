@@ -34,7 +34,7 @@ export default function Garnishpage() {
           duration: 1850,
           description: '존재하지 않는 고명입니다.'
         })
-        router.push(`/host?page=1`)
+        router.push(`/error`)
       } else if (res.code === 1000) {
         // todo 1000 에러처리
       }

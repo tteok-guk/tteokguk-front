@@ -45,9 +45,9 @@ export default function GarnishListpage() {
     // todo 솔님이 만들어준 페이지로 라우트
     toast({
       duration: 1850,
-      description: '요청이상한 요청'
+      description: '로그인이 풀리셨나요?'
     })
-    router.push(`/host?page=1`)
+    router.push(`/error`)
   }
 
   if (data?.data?.dday === 0){
