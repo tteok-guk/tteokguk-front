@@ -222,7 +222,7 @@ export default function MakeDishPage() {
           </div>
         </div>
         {/* step 1 */}
-        <div className={step.current === 1 ? 'flex flex-col gap-y-16 px-20' : 'hidden'}>
+        <div className={step.current === 1 ? 'flex flex-col gap-y-16' : 'hidden'}>
           <div>
             <h1 className={'font-xl text-gr-900'}>받은 편지 내용과 개수<br />공개 범위를 설정해 주세요</h1>
           </div>
@@ -231,9 +231,9 @@ export default function MakeDishPage() {
               terms.map((term, idx) => {
                 return (
                   <div key={idx} className={term.checked ? 'flex flex-col gap-y-16 w-full rounded-4 border-1 border-pr-500' : 'flex flex-col gap-y-16 w-full rounded-4 border-1 border-gr-100 h-52'}>
-                    <div className={'flex items-center w-full gap-10 py-16 pl-20'}>
+                    <div className={'flex items-center w-full gap-10 pl-20'}>
                       <Checkbox id={'terms' + idx} checked={term.checked} onCheckedChange={() => (checkboxOnChangeHandler(idx))} className={'w-20 h-20 rounded-full bg-center border-0 bg-[url(/images/icons/iconCheckCircleBefore.png)] bg-white data-[state=checked]:bg-white data-[state=checked]:bg-[url(/images/icons/iconCheckCircleAfter.png)]'} />
-                      <Label htmlFor={'terms' + idx}>{term.text}</Label>
+                      <Label className={'cursor-pointer py-16 w-full'} htmlFor={'terms' + idx}>{term.text}</Label>
                     </div>
 
                     {term.checked ? <div className={'px-20 pb-20'}>

@@ -1,5 +1,5 @@
 'use client'
-import { Suspense } from 'react'
+import { Suspense, useState } from 'react'
 import { getGarnishList } from '@/services/garnish'
 import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
@@ -15,6 +15,9 @@ import LoadingPage from '@/app/loading'
 export default function GarnishListpage() {
   const { toast } = useToast()
   const router = useRouter()
+
+  // 고명 목록 오픈일
+  const [isDDay, setIsDDay] = useState(false)
 
   // 가니시 상세 조회 핸들러
   const getGarnishDetailsHandler = (isDday: boolean, garnishId: string, tteokGukId: string) => {
@@ -35,12 +38,34 @@ export default function GarnishListpage() {
   })
 
   if (isError) {
-    notFound()
+    // todo 솔님이 만들어준 에러 컴포넌트 붙이기
   }
 
   if (data) {
     console.log('data :', data)
-    if (data?.data?.garnishes?.length === 0) {
+    if (data?.code === 2002) {
+      return (
+        <div className={'bg-cover'}>
+          <div className={'flex mt-[-12px]'}>
+            <div className={'pl-0 pr-24 py-12 cursor-pointer'} onClick={() => (router.push('/account'))}>
+              <Image src={iconArrow} alt="왼쪽을 가르키는 화살표 이미지" width={24} height={24} />
+            </div>
+          </div>
+          <div className={'flex flex-col gap-12 mb-78 items-center'}>
+            <h1 className={'text-28 leading-[32.4px] font-bold text-pr-500'}>아직 떡국을 만들지 않았어요!</h1>
+            <h2 className={'text-12 leading-[15.6px] font-normal text-gr-400'}>떡국을 만들면 고명에 덕담을 받을 수 있어요!</h2>
+          </div>
+          <div className='flex flex-col h-[calc(100vh-206px)] gap-y-70'>
+            <div className={'flex justify-center'}>
+              <Image src={sorryNoGarnishDragon} alt={`덕담이 없어서 아쉬운 청룡이`} width={273} height={240} loading='eager' style={{ paddingLeft: "68px" }} />
+            </div>
+            <div className={'flex justify-center'}>
+              <button className={'w-164 h-46 bg-pr-500 text-white rounded-full'} onClick={() => (router.push('/host?page=1'))}>떡국 만들러 가기</button>
+            </div>
+          </div>
+        </div>
+      )
+    } else if (data?.data?.garnishes?.length === 0) {
       return (
         <div className={'bg-cover'}>
           <div className={'flex mt-[-12px]'}>
@@ -63,6 +88,8 @@ export default function GarnishListpage() {
         </div>
       )
     } else {
+      // 고명이 존재하는 케이스
+      //
       return (
         <div className={'bg-cover'}>
           <div className={'flex mt-[-12px]'}>
