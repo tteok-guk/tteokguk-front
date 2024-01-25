@@ -86,7 +86,9 @@
   .modal-wrap {
     @apply flex-center mx-auto h-full min-w-320 max-w-575 flex-grow bg-black bg-opacity-70;
   }
-
+  .modal-wrapper {
+    @apply mx-auto flex h-full min-w-320 max-w-575 flex-grow bg-black bg-opacity-70;
+  }
   /* scroll */
   .layout-scroll {
     @apply overflow-y-auto

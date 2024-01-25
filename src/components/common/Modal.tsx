@@ -3,7 +3,7 @@
 import { createPortal } from 'react-dom'
 import { useEffect, useState } from 'react'
 import { ModalProps, ModalComponentType } from '@/types/CommonTypes'
-import { RouletteModal, LogoutModal } from '../modal'
+import { RouletteModal, LogoutModal, UserTestModal, CsModal } from '../modal'
 
 export default function Modal({
   type,
@@ -27,6 +27,8 @@ export default function Modal({
         confirmBtnFn={confirmBtnFn}
       />
     ),
+    userTest: <UserTestModal cancelBtnFn={cancelBtnFn} confirmBtnFn={confirmBtnFn} />,
+    cs: <CsModal cancelBtnFn={cancelBtnFn} />,
   }
   const componentToRender = componentType[type]
   const modalRoot = document.getElementById('modal-root') as HTMLElement
