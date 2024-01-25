@@ -4,7 +4,7 @@ import { useMutation } from '@tanstack/react-query'
 import Image from 'next/image'
 import { iconArrow } from '../../../../public/images/icons'
 import { garnishes as grnisheImgs } from '../../../../data/garnishes'
-import { useRouter } from 'next/navigation'
+import { redirect, useRouter } from 'next/navigation'
 import { useToast } from '@/hooks/use-toast'
 import { useEffect, useState } from 'react'
 import { useParams } from 'next/navigation'
@@ -29,13 +29,17 @@ export default function Garnishpage() {
       } else if (res.code === 400) {
         // 존재하지 않는 고명입니다.
         console.log('존재하지 않는 고명입니다.')
-        // todo 솔님이 만들어준 컴포넌트 붙이기
+        // todo 솔님이 만들어준 페이지로 라우트
+        toast({
+          duration: 1850,
+          description: '존재하지 않는 고명입니다.'
+        })
+        router.push(`/host?page=1`)
       } else if (res.code === 1000) {
         // todo 1000 에러처리
       }
     },
     onError: (err) => console.log('tteok err>>', err), // todo 에러핸들링 추가
-
   })
 
   useEffect(() => {

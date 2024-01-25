@@ -42,7 +42,12 @@ export default function GarnishListpage() {
   })
 
   if (isError) {
-    // todo 솔님이 만들어준 에러 컴포넌트 붙이기
+    // todo 솔님이 만들어준 페이지로 라우트
+    toast({
+      duration: 1850,
+      description: '요청이상한 요청'
+    })
+    router.push(`/host?page=1`)
   }
 
   if (data?.data?.dday === 0){
