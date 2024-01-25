@@ -39,6 +39,7 @@ export default function GarnishListpage() {
   }
 
   if (data) {
+    console.log('data :', data)
     if (data?.data?.garnishes?.length === 0) {
       return (
         <div className={'bg-cover'}>
