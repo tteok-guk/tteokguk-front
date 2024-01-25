@@ -8,7 +8,14 @@ import { getMyPage } from '@/services/accout'
 import { RequestParamType } from '@/types/apiTypes'
 import { putNickname } from '@/services/modifyNickname'
 import Cookies from 'js-cookie'
-import { iconArrow2, iconLink, iconMail, iconTeam, iconCs } from '../../../../public/images/icons'
+import {
+  iconArrow2,
+  iconLink,
+  iconMail,
+  iconTeam,
+  iconCs,
+  iconUserTest,
+} from '../../../../public/images/icons'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
@@ -21,6 +28,8 @@ function MyPage() {
   const queryClient = useQueryClient()
   const [modifyBtn, setModifyBtn] = useState(false)
   const [logout, setlogout] = useState(false)
+  const [userTest, setUserTest] = useState(false)
+  const [cs, setCs] = useState(false)
   const [mypageToggle, setMypageToggle] = useState(false)
   const route = useRouter()
 
@@ -32,6 +41,14 @@ function MyPage() {
 
   const mypageHandler = () => {
     setMypageToggle(!mypageToggle)
+  }
+
+  const userTestModalToggle = () => {
+    setUserTest(!userTest)
+  }
+
+  const csModalToggle = () => {
+    setCs(!cs)
   }
 
   const logoutModalToggle = () => {
@@ -82,6 +99,8 @@ function MyPage() {
     <>
       {!mypageToggle ? (
         <div>
+          {userTest && <Modal type="userTest" cancelBtnFn={userTestModalToggle} />}
+          {cs && <Modal type="cs" cancelBtnFn={csModalToggle} />}
           {data?.data.nickname ? <TopButton onClick={homeRoute} /> : <TopButton />}
           <div className="mb-20 flex gap-8">
             <h2 className="text-2xl font-semibold">{nickname}</h2>
@@ -118,11 +137,19 @@ function MyPage() {
             </div>
           ) : null}
           <div className="flex flex-col gap-16">
-            <button className="flex items-center gap-6">
+            <button className="flex items-center gap-6" onClick={userTestModalToggle}>
+              <Image src={iconUserTest} alt="mypage enter btn" width={20} height={20} />
+              <p className="font-base">유저테스트 참여하기</p>
+            </button>
+            <Link
+              className="flex items-center gap-6"
+              href={'https://tteokguk.notion.site/6a5ab7200f6d434aaf7c7524d889ef8a?pvs=4'}
+              target="_blank"
+            >
               <Image src={iconTeam} alt="mypage enter btn" width={20} height={20} />
               <p className="font-base">팀소개</p>
-            </button>
-            <button className="flex items-center gap-6">
+            </Link>
+            <button className="flex items-center gap-6" onClick={csModalToggle}>
               <Image src={iconCs} alt="mypage enter btn" width={20} height={20} />
               <p className="font-base">CS | 문의</p>
             </button>
