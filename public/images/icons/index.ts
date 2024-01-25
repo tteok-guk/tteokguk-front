@@ -1,5 +1,6 @@
 import iconArrow from './iconArrow.png'
 import iconArrow2 from './iconArrow2.png'
+import iconCarousel from './iconCarousel.png'
 import iconCheckCircleAfter from './iconCheckCircleAfter.png'
 import iconCheckCircleBefore from './iconCheckCircleBefore.png'
 import iconClose from './iconClose.png'
@@ -14,10 +15,12 @@ import iconMail from './iconMail.png'
 import iconTeam from './iconTeam.png'
 import iconCs from './iconCs.png'
 import iconKakao from './iconKakao.png'
+import iconUserTest from './iconUserTest.png'
 
 export {
   iconArrow,
   iconArrow2,
+  iconCarousel,
   iconCheckCircleAfter,
   iconCheckCircleBefore,
   iconClose,
@@ -32,4 +35,5 @@ export {
   iconCs,
   iconTeam,
   iconKakao,
+  iconUserTest,
 }
