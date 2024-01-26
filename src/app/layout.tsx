@@ -77,7 +77,6 @@ export const viewport = {
   initialScale: 1,
   maximumScale: 1,
   userScalable: 'no',
-  // todo 편지쓰기 키보드 영역 확인 후 interactiveWidget 재조정
   interactiveWidget: 'overlays-content',
 }
 
