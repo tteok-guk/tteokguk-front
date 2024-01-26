@@ -24,6 +24,7 @@ export default function WritePage() {
   })
   const [disabled, setDisabled] = useState(true)
   const [showAlert, setShowAlert] = useState(false)
+  const [isBtnClick, setIsBtnClick] = useState(false)
 
   const pathname = usePathname()
   const params = useSearchParams()
@@ -61,11 +62,11 @@ export default function WritePage() {
   }
 
   // * 고명 작성하기
-  // const onSubmit = useMutation({
-  const { mutate, isPending } = useMutation({
+  const { mutate } = useMutation({
     mutationFn: (garnishData: RequestParamType) => postGarnish(garnishData),
     onSuccess: (res) => {
       if (res.code === 200) {
+        setIsBtnClick(false)
         router.push(`/${hostId}/snap-shot?garnish=${params.get('garnish') || ''}`)
         return
       }
@@ -78,10 +79,12 @@ export default function WritePage() {
       } else if (res.code === 500) {
         msg = '존재하지 않는 ID입니다.'
       }
+      setIsBtnClick(false)
       toast({ description: msg })
       router.push('/error')
     },
     onError: (err) => {
+      setIsBtnClick(false)
       toast({ description: '네트워크 요청에 실패했습니다.' })
       console.error('err', err)
     },
@@ -100,6 +103,8 @@ export default function WritePage() {
       garnishType: params.get('garnish') || '',
       content: data.content.replaceAll(/\r\n|\r|\n/gm, '\n'),
     }
+    setIsBtnClick(true)
+    router.prefetch(`/${hostId}/snap-shot?garnish=${params.get('garnish') || ''}`)
     mutate(garnishData)
   }, DEBOUNCE_TIME)
 
@@ -183,7 +188,7 @@ export default function WritePage() {
         )}
       </div>
 
-      {isPending && <Modal type="loading" />}
+      {isBtnClick && <Modal type="loading" />}
 
       {showAlert && (
         <Modal
