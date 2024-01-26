@@ -9,6 +9,7 @@ import { useToast } from '@/hooks/use-toast'
 import { useEffect, useState } from 'react'
 import { useParams } from 'next/navigation'
 
+
 export default function Garnishpage() {
   const { toast } = useToast()
   const router = useRouter()
@@ -17,18 +18,17 @@ export default function Garnishpage() {
   const [garnishType, setGarnishType] = useState('basicRc')
   const [nickname, setNickname] = useState('')
   const [content, setContent] = useState('')
-
+  const [isOpen, setIsOpen] = useState(false)
   const onSubmit = useMutation({
     mutationFn: (garnishId: string) => getGarnishDetail(garnishId),
     onSuccess: (res) => {
-      console.log("tteok>>" , res)
       if (res.code === 200) {
         setGarnishType(res.data.garnishType?res.data.garnishType:'basicRc')
         setNickname(res.data.nickName?res.data.nickName:'')
         setContent(res.data.content?res.data.content:'')
       } else if (res.code === 400) {
         // 존재하지 않는 고명입니다.
-        console.log('존재하지 않는 고명입니다.')
+        //console.log('존재하지 않는 고명입니다.')
         // todo 솔님이 만들어준 페이지로 라우트
         toast({
           duration: 1850,
@@ -39,10 +39,31 @@ export default function Garnishpage() {
         // todo 1000 에러처리
       }
     },
-    onError: (err) => console.log('tteok err>>', err), // todo 에러핸들링 추가
+    onError: (err) => console.log('tteok err', err), // todo 에러핸들링 추가
   })
 
+  
   useEffect(() => {
+
+    const TIME_ZONE = 9 * 60 * 60 * 1000; // 9시간
+    const d = new Date();
+
+    const currDate = new Date(new Date(d.getTime() + TIME_ZONE).toISOString().split('T')[0])
+    // const openTime = d.toTimeString().split(' ')[0];
+
+    const openDate = new Date('2024-02-10');
+    //console.log("dsdfsdfsd",currDate.getDate() + ':::' + openDate.getDate());
+    if(currDate > openDate){
+      //console.log("오픈 이후!!!1")
+      setIsOpen(true)
+    }else {
+      //console.log('오픈이전!!!')
+      router.push(`/error`)
+      toast({
+        duration: 1850,
+        description: '아직 설날이 아니에요!'
+      })
+    }
     onSubmit.mutate(params.garnishId)
   }, [])
 
@@ -56,11 +77,11 @@ export default function Garnishpage() {
       <div className='flex flex-col gap-y-24'>
         <div className={'flex justify-center flex-col items-center gap-y-10'}>
           <Image src={grnisheImgs.find((garnishImg) => garnishImg.id === garnishType)?.src || grnisheImgs[6].src} alt={'고명이미지'} width={78} height={78} ></Image>
-          <h1 className={'text-gr-900 font-soyoThin text-16 font-normal'}><span className={'text-pr-500 font-bold'}>{nickname}</span>님이 남긴 덕담</h1>
+          <h1 className={'text-gr-900 font-soyoThin text-16 font-normal'}>{isOpen?<><span className={'text-pr-500 font-bold'}>{nickname}</span>님이 남긴 덕담</>:<>아직 설날이 아니에요!</>}</h1>
         </div>
         <div className={'w-full bg-white border-1 border-pr-200 rounded-4 flex-grow flex-shrink-0  h-[calc(100vh-224px)] p-20 font-soyoThin font-normal text-14 blue-scroll'}>
           <div className={'whitespace-pre-line  break-all'}>
-            {content}
+            {isOpen?content:'고명은 설날이 되면 확인할 수 있어요!'}
           </div>
         </div>
       </div>

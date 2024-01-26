@@ -113,13 +113,13 @@ export default function MakeDishPage() {
     onSuccess: (res) => {
       console.log('res', res)
       if (res.code === 200) {
-        router.push(`/host?page=1`)
+        window.location.href = `/host?page=1`
       }else if (res.code === 400) {
         toast({
           duration: 1850,
           description: '이미 만들어진 떡국이 있습니다.'
         })
-        router.push(`/host?page=1`)
+        window.location.href = `/host?page=1`
       }else if (res.code === 403) {
         toast({
           duration: 2000,
