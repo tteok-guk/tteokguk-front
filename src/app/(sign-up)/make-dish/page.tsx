@@ -191,7 +191,7 @@ export default function MakeDishPage() {
     <div className={step.current === 0 ? `bg-[url(/images/matts/${selectMatt.id}.png)] bg-cover bg-center mt-[-32px] mx-[-20px] pt-32 px-20 h-[calc(100%-70px)]` : 'mt-[-32px] mx-[-20px] pt-32 px-20 h-[calc(100%-70px)] bg-white'}>
       {/* 상단 영역 */}
       <div className={step.current === 2 ? 'flex pt-20 px-20' : 'flex mt-[-12px]'}>
-        <div className={'pl-0 pr-24 py-12'} onClick={() => { navBtnOnClickHandler(step.current, 'prev') }}>
+        <div className={'pl-0 pr-24 py-12 cursor-pointer'} onClick={() => { navBtnOnClickHandler(step.current, 'prev') }}>
           <Image src={iconArrow} alt="왼쪽을 가르키는 화살표 이미지" width={24} height={24} />
         </div>
         <div className={'flex gap-6 items-center  ml-[calc(50%-48px)]'}>
