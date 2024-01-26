@@ -55,13 +55,17 @@ const PaginationEntire = ({ pageSize, pageParam }: paginationType) => {
     <nav className="w-full">
       <ul className="flex-center gap-5 text-14">
         <li>
-          <Button onClick={() => movePage('prev')}>&lt;</Button>
+          <Button onClick={() => movePage('prev')} className=" h-50 w-40">
+            &lt;
+          </Button>
         </li>
         <li>{currentPage}</li>
         <li>/</li>
         <li>{pageSize} 그릇</li>
         <li>
-          <Button onClick={() => movePage('next')}>&gt;</Button>
+          <Button onClick={() => movePage('next')} className="  h-50 w-40 ">
+            &gt;
+          </Button>
         </li>
       </ul>
     </nav>
