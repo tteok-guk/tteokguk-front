@@ -11,9 +11,13 @@ interface CsProps {
 function CsModal({ cancelBtnFn }: CsProps) {
   return (
     <div className="modal-bg">
-      <div className="modal-wrapper">
-        <div className="flex items-end">
-          <div className="relative w-dvw rounded-t-2xl bg-white px-20 py-40">
+      <div className="relative mx-auto flex h-full min-w-320 max-w-575 items-end">
+        <div
+          className="absolute bottom-0 right-0 top-0 w-full cursor-pointer bg-black bg-opacity-70"
+          onClick={cancelBtnFn}
+        ></div>
+        <div className="flex w-full items-end">
+          <div className="relative w-full rounded-t-2xl bg-white px-20 py-40">
             <button className="absolute right-20 top-20" onClick={cancelBtnFn}>
               <Image src={iconClose} alt="닫기 버튼" width={20} height={20} />
             </button>
@@ -28,11 +32,6 @@ function CsModal({ cancelBtnFn }: CsProps) {
             >
               <p>문의하기</p>
             </Link>
-            {/* <div className="flex-center mt-12">
-              <button className="w-100 text-pr-400" onClick={confirmBtnFn}>
-                다시 보지 않기
-              </button>
-            </div> */}
           </div>
         </div>
       </div>
