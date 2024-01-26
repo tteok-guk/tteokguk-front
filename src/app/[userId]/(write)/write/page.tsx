@@ -62,8 +62,7 @@ export default function WritePage() {
   }
 
   // * 고명 작성하기
-  // const onSubmit = useMutation({
-  const { mutate, isPending } = useMutation({
+  const { mutate } = useMutation({
     mutationFn: (garnishData: RequestParamType) => postGarnish(garnishData),
     onSuccess: (res) => {
       if (res.code === 200) {
@@ -189,7 +188,6 @@ export default function WritePage() {
         )}
       </div>
 
-      {/* {isPending && <Modal type="loading" />} */}
       {isBtnClick && <Modal type="loading" />}
 
       {showAlert && (
