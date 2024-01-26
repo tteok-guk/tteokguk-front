@@ -22,7 +22,49 @@ const soyo_thin = localFont({
 
 export const metadata: Metadata = {
   title: '니떡국 내떡국',
-  description: '',
+  description: '떡국을 나누고 덕담을 주고 받아요!',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  generator: 'Next.js',
+  applicationName: '니떡국 내떡국',
+  keywords: [
+    '니떡국 내떡국',
+    '니떡내떡',
+    '온라인 롤링페이퍼',
+    '2024년',
+    '새해',
+    '새해 덕담',
+    '덕담',
+    '편지',
+  ],
+  openGraph: {
+    title: '니떡국 내떡국',
+    description: '떡국을 나누고 덕담을 주고 받아요!',
+    siteName: '니떡국 내떡국',
+    images: [
+      {
+        url: 'https://i.imgur.com/WUrE6u9.png',
+        width: 1200,
+        height: 630,
+      },
+    ],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: '니떡국 내떡국',
+    description: '떡국을 나누고 덕담을 주고 받아요!',
+    images: [
+      {
+        url: 'https://i.imgur.com/WUrE6u9.png',
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
 }
 
 export const viewport = {

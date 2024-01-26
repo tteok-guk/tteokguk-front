@@ -101,7 +101,7 @@ export default function WritePage() {
   }, DEBOUNCE_TIME)
 
   // * 뒤로가기 버튼 클릭
-  const backBtnClick = () => !disabled && setShowAlert(true)
+  const backBtnClick = () => (!disabled ? setShowAlert(true) : router.back())
 
   // * alert 모달 닫기
   const setAlertClose = () => setShowAlert(false)
