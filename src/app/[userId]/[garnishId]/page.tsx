@@ -22,15 +22,11 @@ export default function Garnishpage() {
   const onSubmit = useMutation({
     mutationFn: (garnishId: string) => getGarnishDetail(garnishId),
     onSuccess: (res) => {
-      console.log("tteok>>" , res)
       if (res.code === 200) {
         setGarnishType(res.data.garnishType?res.data.garnishType:'basicRc')
         setNickname(res.data.nickName?res.data.nickName:'')
         setContent(res.data.content?res.data.content:'')
       } else if (res.code === 400) {
-        // 존재하지 않는 고명입니다.
-        //console.log('존재하지 않는 고명입니다.')
-        // todo 솔님이 만들어준 페이지로 라우트
         toast({
           duration: 1850,
           description: '존재하지 않는 고명입니다.'

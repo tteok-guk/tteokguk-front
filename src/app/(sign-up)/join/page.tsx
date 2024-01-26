@@ -15,7 +15,6 @@ import Cookies from 'js-cookie'
 import { useRouter } from 'next/navigation'
 import { iconArrow2 } from '../../../../public/images/icons'
 
-
 // 상태 Enum
 const StepStatus = {
   INITIAL: 'stepInitial',
@@ -26,13 +25,16 @@ export default function JoinPage() {
   const router = useRouter()
 
   // input style
-  const iptSt = 'w-full px-0 py-4 rounded-0 font-lg text-gr-900 border-t-0 border-x-0 border-b-1 bg-transparent placeholder:text-[#ADADAD] placeholder:font-lg caret-pr-500 focus:outline-none'
+  const iptSt =
+    'w-full px-0 py-4 rounded-0 font-lg text-gr-900 border-t-0 border-x-0 border-b-1 bg-transparent placeholder:text-[#ADADAD] placeholder:font-lg caret-pr-500 focus:outline-none'
   const invalidSt = 'border-b-[#FF0000]'
   const validSt = 'border-b-[#ADADAD]'
 
   // button style
-  const activeBtnSt = 'font-semibold border-0 bg-pr-500 text-17 leading-22 text-white active:bg-pr-500 cursor-pointer'
-  const disabledBtnSt = 'font-semibold border-0 bg-gr-100 text-17 leading-22 text-gr-400 disabled:bg-gr-100 active:bg-gr-100 hover:bg-gr-100'
+  const activeBtnSt =
+    'font-semibold border-0 bg-pr-500 text-17 leading-22 text-white active:bg-pr-500 cursor-pointer'
+  const disabledBtnSt =
+    'font-semibold border-0 bg-gr-100 text-17 leading-22 text-gr-400 disabled:bg-gr-100 active:bg-gr-100 hover:bg-gr-100'
 
   // 하단 버튼 활성화 상태
   const [isStepBtnActive, setIsStepBtnActive] = useState(false)
@@ -40,7 +42,7 @@ export default function JoinPage() {
   // 회원가입 단계 및 진행 상태
   const [step, setStep] = useState({
     current: 0,
-    status: [StepStatus.INITIAL, StepStatus.COMPLETE, StepStatus.INITIAL]
+    status: [StepStatus.INITIAL, StepStatus.COMPLETE, StepStatus.INITIAL],
   })
 
   // 사용자 닉네임, 닉네임 유효성 상태
@@ -48,7 +50,7 @@ export default function JoinPage() {
   const [isValidName, setIsValidName] = useState(true)
 
   // 선택 아바타
-  const [selectAvatar, setSelectAvatar] = useState({name :'dragon', idx:0})
+  const [selectAvatar, setSelectAvatar] = useState({ name: 'dragon', idx: 0 })
 
   // 전체 선택박스 상태
   const [groupTerm, setGroupTerm] = useState(false)
@@ -56,24 +58,23 @@ export default function JoinPage() {
   // 선택박스 상태
   const [terms, setTerms] = useState([
     {
-      'type': 'required',
-      'text': '(필수) 만 14세 이상입니다.',
-      'checked': false,
+      type: 'required',
+      text: '(필수) 만 14세 이상입니다.',
+      checked: false,
     },
     {
-      'type': 'required',
-      'text': '(필수) 서비스 이용 약관에 동의합니다.',
-      'checked': false,
-      'link': 'https://tteokguk.notion.site/5e0171c5524446ea84b5f2ffc2cb39b1?pvs=4',
+      type: 'required',
+      text: '(필수) 서비스 이용 약관에 동의합니다.',
+      checked: false,
+      link: 'https://tteokguk.notion.site/5e0171c5524446ea84b5f2ffc2cb39b1?pvs=4',
     },
     {
-      'type': 'required',
-      'text': '(필수) 개인정보 수집이용에 동의합니다.',
-      'checked': false,
-      'link': 'https://tteokguk.notion.site/87fde28ebf8940bb85576e1a68563d10?pvs=4',
-    }
+      type: 'required',
+      text: '(필수) 개인정보 수집이용에 동의합니다.',
+      checked: false,
+      link: 'https://tteokguk.notion.site/87fde28ebf8940bb85576e1a68563d10?pvs=4',
+    },
   ])
-
 
   // 닉네임 상태변경 핸들러
   const userNameOnChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -82,7 +83,7 @@ export default function JoinPage() {
     // 정규식 변경 - 한글, 영문자, 숫자만 입력 가능
     if (/^[a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ]*$/.test(typedValue)) {
       setIsValidName(true)
-      setUserName(typedValue);
+      setUserName(typedValue)
     } else {
       setIsValidName(false)
     }
@@ -97,10 +98,10 @@ export default function JoinPage() {
   const selectAvatarOnClickHandler = (name: string, idx: number) => {
     setSelectAvatar({
       name,
-      idx
+      idx,
     })
   }
-  
+
   // 선택박스 상태 변경 핸들러
   const checkboxOnChangeHandler = (idx: number) => {
     setTerms((prevTerms) => {
@@ -117,8 +118,8 @@ export default function JoinPage() {
   const groupCheckboxOnChangeHandler = (groupChecked: boolean) => {
     setTerms((prevTerms) =>
       prevTerms.map((term) =>
-        term.type === 'required' ? { ...term, checked: groupChecked } : term
-      )
+        term.type === 'required' ? { ...term, checked: groupChecked } : term,
+      ),
     )
   }
 
@@ -127,21 +128,21 @@ export default function JoinPage() {
     if (type === 'prev') {
       // 이전으로
       if (curr !== 0) {
-        setStep(prevStep => ({
+        setStep((prevStep) => ({
           ...prevStep,
-          current: prevStep.current - 1
+          current: prevStep.current - 1,
         }))
         setIsStepBtnActive(false)
       }
     } else {
       // 다음으로
       if (curr !== 2) {
-        setStep(prevStep => ({
+        setStep((prevStep) => ({
           ...prevStep,
-          current: prevStep.current + 1
+          current: prevStep.current + 1,
         }))
         setIsStepBtnActive(false)
-      }else{
+      } else {
         joinCompliteOnClickHandler()
       }
     }
@@ -151,16 +152,15 @@ export default function JoinPage() {
   const onSubmit = useMutation({
     mutationFn: (userData: RequestParamType) => putJoinUser(userData),
     onSuccess: (res) => {
-      console.log('res', res)
       if (res.code === 200) {
-        const token = res.data.token?res.data.token:''
+        const token = res.data.token ? res.data.token : ''
         Cookies.set('token', token)
         router.push(`/host?page=1`)
-      }else if (res.code === 400){
-        const token = res.data.token?res.data.token:''
+      } else if (res.code === 400) {
+        const token = res.data.token ? res.data.token : ''
         Cookies.set('token', token)
         router.push(`/host?page=1`)
-      }else if (res.code === 401){
+      } else if (res.code === 401) {
         router.push(`/`)
       }
     },
@@ -169,26 +169,26 @@ export default function JoinPage() {
 
   // 완료 클릭 핸들러
   const joinCompliteOnClickHandler = () => {
-    if(step.current === 2 && step.status.every((status)=> status === StepStatus.COMPLETE)){
+    if (step.current === 2 && step.status.every((status) => status === StepStatus.COMPLETE)) {
       // 회원가입 함수 - 저장
       const userData = {
-        nickname : userName,
-        privacyConsent : true,
-        avatar : selectAvatar.name
+        nickname: userName,
+        privacyConsent: true,
+        avatar: selectAvatar.name,
       }
       onSubmit.mutate(userData)
-    }else{
+    } else {
       // 토스트
-      toast({ 
-        duration : 1850 ,
-        description: '필수 약관에 모두 동의해 주세요.' 
+      toast({
+        duration: 1850,
+        description: '필수 약관에 모두 동의해 주세요.',
       })
     }
   }
 
   // 약관 내용 페이지 이동
-  const termsDetailPageOnClickHandler = (url:string) => {
-    window.open (`${url}`)
+  const termsDetailPageOnClickHandler = (url: string) => {
+    window.open(`${url}`)
   }
 
   // Hooks
@@ -197,7 +197,7 @@ export default function JoinPage() {
     if (userName.length > 0) {
       if (userName.length <= 8) {
         //입력 중 상태, 다음 단계 가능 상태
-        setStep(prevStep => ({
+        setStep((prevStep) => ({
           ...prevStep,
           status: [
             ...prevStep.status.slice(0, step.current),
@@ -211,7 +211,7 @@ export default function JoinPage() {
       }
     } else {
       // 못 넘어감. 입력하라고 알려줘야함.
-      setStep(prevStep => ({
+      setStep((prevStep) => ({
         ...prevStep,
         status: [
           ...prevStep.status.slice(0, step.current),
@@ -230,7 +230,7 @@ export default function JoinPage() {
       }
     })
     if (checkCondition.every(Boolean)) {
-      setStep(prevStep => ({
+      setStep((prevStep) => ({
         ...prevStep,
         status: [
           ...prevStep.status.slice(0, step.current),
@@ -240,7 +240,7 @@ export default function JoinPage() {
       }))
       setGroupTerm(true)
     } else {
-      setStep(prevStep => ({
+      setStep((prevStep) => ({
         ...prevStep,
         status: [
           ...prevStep.status.slice(0, step.current),
@@ -261,18 +261,48 @@ export default function JoinPage() {
     }
   }, [step])
 
-
   return (
-    <div className={step.current === 1 ? 'bg-[url(/images/matts/blueDew.png)] bg-cover bg-[-140px] mt-[-32px] mx-[-20px] h-[calc(100%-117px)]':''}>
+    <div
+      className={
+        step.current === 1
+          ? 'mx-[-20px] mt-[-32px] h-[calc(100%-117px)] bg-[url(/images/matts/blueDew.png)] bg-cover bg-[-140px]'
+          : ''
+      }
+    >
       {/* 상단 영역 */}
-      <div className={step.current === 1 ?'flex pt-20 px-20':'flex mt-[-12px]'}>
-        <div className={step.current === 0 ? 'pl-0 pr-24 py-12 invisible' : 'pl-0 pr-24 py-12 cursor-pointer'} onClick={() => { navBtnOnClickHandler(step.current, 'prev') }}>
-          <Image src={iconArrow} alt="왼쪽을 가르키는 화살표 이미지" width={24} height={24}/>
+      <div className={step.current === 1 ? 'flex px-20 pt-20' : 'mt-[-12px] flex'}>
+        <div
+          className={
+            step.current === 0 ? 'invisible py-12 pl-0 pr-24' : 'cursor-pointer py-12 pl-0 pr-24'
+          }
+          onClick={() => {
+            navBtnOnClickHandler(step.current, 'prev')
+          }}
+        >
+          <Image src={iconArrow} alt="왼쪽을 가르키는 화살표 이미지" width={24} height={24} />
         </div>
-        <div className={'flex gap-6 items-center  ml-[calc(50%-56px)]'}>
-          <div className={step.current === 0 ? 'w-8 h-8 rounded-full bg-pr-300' : 'w-8 h-8 rounded-full bg-gr-100'}></div>
-          <div className={step.current === 1 ? 'w-8 h-8 rounded-full bg-pr-300' : 'w-8 h-8 rounded-full bg-gr-100'}></div>
-          <div className={step.current === 2 ? 'w-8 h-8 rounded-full bg-pr-300' : 'w-8 h-8 rounded-full bg-gr-100'}></div>
+        <div className={'ml-[calc(50%-56px)] flex items-center  gap-6'}>
+          <div
+            className={
+              step.current === 0
+                ? 'h-8 w-8 rounded-full bg-pr-300'
+                : 'h-8 w-8 rounded-full bg-gr-100'
+            }
+          ></div>
+          <div
+            className={
+              step.current === 1
+                ? 'h-8 w-8 rounded-full bg-pr-300'
+                : 'h-8 w-8 rounded-full bg-gr-100'
+            }
+          ></div>
+          <div
+            className={
+              step.current === 2
+                ? 'h-8 w-8 rounded-full bg-pr-300'
+                : 'h-8 w-8 rounded-full bg-gr-100'
+            }
+          ></div>
         </div>
       </div>
       {/* 컨텐츠 영역 */}
@@ -280,8 +310,13 @@ export default function JoinPage() {
         {/* step 0 */}
         <div className={step.current === 0 ? 'flex flex-col gap-38' : 'hidden'}>
           <div className={'flex flex-col gap-4'}>
-            <h1 className={'font-xl text-gr-900'}>내 떡국에 표시될 <br />닉네임을 만들어 주세요</h1>
-            <h2 className={isValidName ? 'font-xs text-[#ADADAD]' : 'font-xs text-[#FF0000]'}>최대 8자 / 공백, 특수기호 불가</h2>
+            <h1 className={'font-xl text-gr-900'}>
+              내 떡국에 표시될 <br />
+              닉네임을 만들어 주세요
+            </h1>
+            <h2 className={isValidName ? 'font-xs text-[#ADADAD]' : 'font-xs text-[#FF0000]'}>
+              최대 8자 / 공백, 특수기호 불가
+            </h2>
           </div>
           <div className={'relative'}>
             <Input
@@ -289,70 +324,153 @@ export default function JoinPage() {
               placeholder={'닉네임을 입력해 주세요'}
               maxLength={8}
               className={isValidName ? `${iptSt}${validSt}` : `${iptSt}${invalidSt}`}
-              onChange={(e) => (userNameOnChangeHandler(e))}
-              value={userName} />
-            <div className={userName.length > 0 ? 'absolute right-0 top-4 w-fit cursor-pointer' : 'hidden'} onClick={deleteNameOnClickHandler}>
-              <Image src={iconCloseCircle} alt="인풋 내용 삭제 버튼 이미지" width={20} height={20}/>
+              onChange={(e) => userNameOnChangeHandler(e)}
+              value={userName}
+            />
+            <div
+              className={
+                userName.length > 0 ? 'absolute right-0 top-4 w-fit cursor-pointer' : 'hidden'
+              }
+              onClick={deleteNameOnClickHandler}
+            >
+              <Image
+                src={iconCloseCircle}
+                alt="인풋 내용 삭제 버튼 이미지"
+                width={20}
+                height={20}
+              />
             </div>
           </div>
         </div>
         {/* step 1 */}
-        <div className={step.current === 1 ? 'flex flex-col gap-8  px-20 h-full' : 'hidden'}>
+        <div className={step.current === 1 ? 'flex h-full flex-col  gap-8 px-20' : 'hidden'}>
           <div>
             <h1 className={'font-xl text-gr-900'}>캐릭터를 선택해주세요</h1>
           </div>
-          <div className={'flex flex-col gap-20 h-full justify-between'}>
-            <div className={'relative flex justify-center h-full'}>
-              <Image src={avatars[selectAvatar.idx].nomalSrc} alt="선택 캐릭터 이미지" loading='eager' fill={true} style={{objectFit: "contain"}}/>
+          <div className={'flex h-full flex-col justify-between gap-20'}>
+            <div className={'relative flex h-full justify-center'}>
+              <Image
+                src={avatars[selectAvatar.idx].nomalSrc}
+                alt="선택 캐릭터 이미지"
+                loading="eager"
+                fill={true}
+                style={{ objectFit: 'contain' }}
+              />
             </div>
-            <div className={step.current === 1 ?'relative grid grid-cols-4 grid-rows-2 justify-center gap-12 bg-white mt-[-20px] mx-[-20px] pt-[20px] px-[20px]':'relative grid grid-cols-4 grid-rows-2 justify-center gap-12'}>
-              {
-                avatars.map((avatar, idx) => {
-                  return <div onClick={()=>{selectAvatarOnClickHandler(avatar.name, idx)}} className={avatar.name === selectAvatar.name ? ' flex justify-center items-center min-w-75 min-h-75 aspect-square rounded-6 bg-pr-100 ring-pr-500 ring-[3px] ring-inset cursor-pointer' : 'flex justify-center items-center min-w-75 min-h-75 aspect-square rounded-6 bg-pr-100 cursor-pointer'} key={idx} >
-                      <Image src={avatar.smallSrc} alt={avatar.alt} width={75} height={75} style={{width: '100%', height: 'auto',}} loading='eager' />
-                    </div>
-                })
+            <div
+              className={
+                step.current === 1
+                  ? 'relative mx-[-20px] mt-[-20px] grid grid-cols-4 grid-rows-2 justify-center gap-12 bg-white px-[20px] pt-[20px]'
+                  : 'relative grid grid-cols-4 grid-rows-2 justify-center gap-12'
               }
+            >
+              {avatars.map((avatar, idx) => {
+                return (
+                  <div
+                    onClick={() => {
+                      selectAvatarOnClickHandler(avatar.name, idx)
+                    }}
+                    className={
+                      avatar.name === selectAvatar.name
+                        ? ' flex aspect-square min-h-75 min-w-75 cursor-pointer items-center justify-center rounded-6 bg-pr-100 ring-[3px] ring-inset ring-pr-500'
+                        : 'flex aspect-square min-h-75 min-w-75 cursor-pointer items-center justify-center rounded-6 bg-pr-100'
+                    }
+                    key={idx}
+                  >
+                    <Image
+                      src={avatar.smallSrc}
+                      alt={avatar.alt}
+                      width={75}
+                      height={75}
+                      style={{ width: '100%', height: 'auto' }}
+                      loading="eager"
+                    />
+                  </div>
+                )
+              })}
             </div>
           </div>
         </div>
         {/* step 2 */}
         <div className={step.current === 2 ? 'flex flex-col gap-38' : 'hidden'}>
           <div>
-            <h1 className={'font-xl text-gr-900'}>니떡국 내떡국<br />서비스 이용에 동의해 주세요</h1>
+            <h1 className={'font-xl text-gr-900'}>
+              니떡국 내떡국
+              <br />
+              서비스 이용에 동의해 주세요
+            </h1>
           </div>
           <div className={'relative flex flex-col gap-y-20'}>
-            <div className={isStepBtnActive?'flex items-center w-full gap-10 py-16 pl-20 bg-pr-100 rounded-4 h-52 cursor-pointer':'flex items-center w-full gap-10 py-16 pl-20 bg-gr-100 rounded-4 h-52 cursor-pointer'}>
-              <Checkbox id='termsAll' checked={groupTerm} onCheckedChange={groupCheckboxOnChangeHandler} className={'w-20 h-20 rounded-full bg-center border-0 bg-[url(/images/icons/iconCheckCircleBefore.png)] bg-white data-[state=checked]:bg-white data-[state=checked]:bg-[url(/images/icons/iconCheckCircleAfter.png)]'} />
-              <Label htmlFor='termsAll' className={'font-semibold text-gr-900'}>필수 약관 전체 동의</Label>
+            <div
+              className={
+                isStepBtnActive
+                  ? 'flex h-52 w-full cursor-pointer items-center gap-10 rounded-4 bg-pr-100 py-16 pl-20'
+                  : 'flex h-52 w-full cursor-pointer items-center gap-10 rounded-4 bg-gr-100 py-16 pl-20'
+              }
+            >
+              <Checkbox
+                id="termsAll"
+                checked={groupTerm}
+                onCheckedChange={groupCheckboxOnChangeHandler}
+                className={
+                  'h-20 w-20 rounded-full border-0 bg-white bg-[url(/images/icons/iconCheckCircleBefore.png)] bg-center data-[state=checked]:bg-white data-[state=checked]:bg-[url(/images/icons/iconCheckCircleAfter.png)]'
+                }
+              />
+              <Label htmlFor="termsAll" className={'font-semibold text-gr-900'}>
+                필수 약관 전체 동의
+              </Label>
             </div>
             <div className={'flex flex-col gap-y-22'}>
-              {
-                terms.map((term, idx) => {
-                  return (
-                    <div key={idx} className={'flex items-center w-full pl-20 cursor-pointer pr-3'}>
-                      <div className={'flex w-full cursor-pointer items-center gap-x-10'}>
-                        <Checkbox id={'terms' + idx} checked={term.checked} onCheckedChange={() => (checkboxOnChangeHandler(idx))} className={'w-20 h-20 rounded-full bg-center border-0 bg-[url(/images/icons/iconCheckCircleBefore.png)] bg-white data-[state=checked]:bg-white data-[state=checked]:bg-[url(/images/icons/iconCheckCircleAfter.png)]' } />
-                        <Label htmlFor={'terms' + idx}>{term.text}</Label>
-                      </div>
-                      {term.link?<div className='cursor-pointer' onClick={()=>(termsDetailPageOnClickHandler(term.link))}><Image src={iconArrow2} alt={'관련 약관 바로가기 링크 아이콘'} width={16} height={16}></Image></div>:<></>}
+              {terms.map((term, idx) => {
+                return (
+                  <div key={idx} className={'flex w-full cursor-pointer items-center pl-20 pr-3'}>
+                    <div className={'flex w-full cursor-pointer items-center gap-x-10'}>
+                      <Checkbox
+                        id={'terms' + idx}
+                        checked={term.checked}
+                        onCheckedChange={() => checkboxOnChangeHandler(idx)}
+                        className={
+                          'h-20 w-20 rounded-full border-0 bg-white bg-[url(/images/icons/iconCheckCircleBefore.png)] bg-center data-[state=checked]:bg-white data-[state=checked]:bg-[url(/images/icons/iconCheckCircleAfter.png)]'
+                        }
+                      />
+                      <Label htmlFor={'terms' + idx}>{term.text}</Label>
                     </div>
-                  )
-                })
-              }
+                    {term.link ? (
+                      <div
+                        className="cursor-pointer"
+                        onClick={() => termsDetailPageOnClickHandler(term.link)}
+                      >
+                        <Image
+                          src={iconArrow2}
+                          alt={'관련 약관 바로가기 링크 아이콘'}
+                          width={16}
+                          height={16}
+                        ></Image>
+                      </div>
+                    ) : (
+                      <></>
+                    )}
+                  </div>
+                )
+              })}
             </div>
           </div>
         </div>
       </div>
       {/* 하단 영역 */}
       <div>
-        <div className="fixed bottom-0 left-0 w-full h-117">
-          <div className={`mx-auto flex h-full min-w-320 max-w-575 justify-center bg-white px-20 pt-16`}>
+        <div className="fixed bottom-0 left-0 h-117 w-full">
+          <div
+            className={`mx-auto flex h-full min-w-320 max-w-575 justify-center bg-white px-20 pt-16`}
+          >
             <Button
               size="full"
               className={isStepBtnActive ? `${activeBtnSt}` : `${disabledBtnSt}`}
-              onClick={() => { navBtnOnClickHandler(step.current, step.current === 2 ? 'fin' : 'next') }}
-              disabled={step.current === 2 ?false:!isStepBtnActive}>
+              onClick={() => {
+                navBtnOnClickHandler(step.current, step.current === 2 ? 'fin' : 'next')
+              }}
+              disabled={step.current === 2 ? false : !isStepBtnActive}
+            >
               {step.current === 2 ? '완료' : '다음'}
             </Button>
           </div>

@@ -22,7 +22,6 @@ export const getUserType = async (token: string | null | undefined): Promise<Use
   if (response) {
     if (response.status !== 200) {
       if(response.status === 401){
-        console.log('response', '유효하지 않은 토큰입니다.')
         return null
       }else{
         throw new Error('fail')
@@ -31,7 +30,6 @@ export const getUserType = async (token: string | null | undefined): Promise<Use
   }
 
   const result = await response.json();
-  console.log('result', result)
   return result
 }
 
