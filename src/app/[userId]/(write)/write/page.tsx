@@ -78,6 +78,7 @@ export default function WritePage() {
         msg = '존재하지 않는 ID입니다.'
       }
       toast({ description: msg })
+      router.push('/error')
     },
     onError: (err) => {
       toast({ description: '네트워크 요청에 실패했습니다.' })
