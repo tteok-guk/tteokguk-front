@@ -78,8 +78,6 @@ function MyPage() {
   const nickname = data?.data.nickname ?? '로그인 후 내떡국 만들기'
   const id = data?.data.tteokGukId
 
-  console.log('datadatadatadatadatadatadatadata', data?.data.tteokGukId)
-
   const homeRoute = () => {
     window.location.href = `/${data?.data.tteokGukId}?page=1`
   }
@@ -101,7 +99,6 @@ function MyPage() {
       if (res.code === 400) {
         route.push('/error')
       }
-      console.log('res', res)
     },
     onError: (err) => console.log('err', err),
   })

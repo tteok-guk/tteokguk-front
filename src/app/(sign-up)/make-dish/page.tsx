@@ -111,7 +111,6 @@ export default function MakeDishPage() {
   const onSubmit = useMutation({
     mutationFn: (dishData: RequestParamType) => postMakeDish(dishData),
     onSuccess: (res) => {
-      console.log('res', res)
       if (res.code === 200) {
         window.location.href = `/host?page=1`
       }else if (res.code === 400) {

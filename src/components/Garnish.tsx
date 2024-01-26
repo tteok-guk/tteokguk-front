@@ -17,9 +17,6 @@ const Garnish = ({ garnishInfo, Public, dDay, userId }: GarnishType) => {
   const guestTG = userId !== 'host'
   const garnishOpen = dDay !== undefined && dDay >= 0
   const GarnishDetailMoveToBtnHandler = (garnishId: number) => {
-    console.log(!guestTG)
-    console.log(dDay)
-    console.log(garnishOpen, 'garnishOpen')
     if (!garnishOpen) {
       // 공유떡국 + 디데이 전
       toast({ description: '편지 확인은 02/09까지 기다려 주세요.' })

@@ -35,7 +35,6 @@ const PaginationEntire = ({ pageSize, pageParam }: paginationType) => {
   }, 500)
   useEffect(() => {
     if (!Number.isInteger(currentPage) || currentPage < 1 || currentPage > pagesize) {
-      // todo ?page=100과 같이 유효하지 않은 번호 입력하면 일단 undefined 떡국 떴다가 1페이지로 넘어감
       toast({ description: '유효한 페이지 번호가 아닙니다.' })
       setCurrentPage(1)
       return
