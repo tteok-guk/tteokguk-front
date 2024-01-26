@@ -33,7 +33,7 @@ export default function WritePage() {
 
   const hostId = pathname.split('/').filter((item) => item)[0]
   const hostNickname = params.get('nickname')
-  const DEBOUNCE_TIME = 1000
+  const DEBOUNCE_TIME = 2000
 
   // * 공통/동적 스타일 변수
   const avatarHeight = isMobile ? 54 : 84
@@ -148,14 +148,15 @@ export default function WritePage() {
               />
             ))}
             <Input
+              type="text"
               value={data.writerNickname}
               onChange={(e) => onChange('writerNickname', e.target.value)}
-              maxLength={8}
+              maxLength={6}
               placeholder="떡국에 남겨질 닉네임을 입력해주세요"
               className="placeholder:font-sm rounded-4 border-2 border-pr-200 bg-white px-24 py-16 font-soyoThin placeholder:text-gr-300"
             />
             <span className="font-sm absolute bottom-19 right-24 text-[#4B4B4B]">
-              {`${data.writerNickname.length > 8 ? 8 : data.writerNickname.length}/8`}
+              {`${data.writerNickname.length > 6 ? 6 : data.writerNickname.length}/6`}
             </span>
           </div>
           <div className="relative">

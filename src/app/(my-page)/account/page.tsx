@@ -76,10 +76,9 @@ function MyPage() {
     queryFn: getMyPage,
   })
   const nickname = data?.data.nickname ?? '로그인 후 내떡국 만들기'
-  const id = data?.data.tteokGukId
 
   const homeRoute = () => {
-    window.location.href = `/${data?.data.tteokGukId}?page=1`
+    window.location.href = `/host?page=1`
   }
 
   const [onChangeInputValue, setOnChangeInputValue] = useState<string>('')
@@ -128,7 +127,7 @@ function MyPage() {
           </div>
           {data?.data.nickname ? (
             <div className="flex-center mb-20 h-114 w-full gap-42 rounded bg-pr-100">
-              <Link href={`/${id}?page=1`}>
+              <Link href={`/host?page=1`}>
                 <Image
                   src={iconLink}
                   alt="myttukguk enter btn"
