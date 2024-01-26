@@ -40,17 +40,22 @@ export const metadata: Metadata = {
     '덕담',
     '편지',
   ],
+  icons: {
+    icon: '/favicon.ico',
+  },
   openGraph: {
     title: '니떡국 내떡국',
+    url: 'https://www.tteokguk.site',
     description: '떡국을 나누고 덕담을 주고 받아요!',
     siteName: '니떡국 내떡국',
     images: [
       {
-        url: 'https://i.imgur.com/WUrE6u9.png',
+        url: 'https://i.imgur.com/0UfDRsI.png',
         width: 1200,
         height: 630,
       },
     ],
+    locale: 'ko_KR',
     type: 'website',
   },
   twitter: {
@@ -59,7 +64,7 @@ export const metadata: Metadata = {
     description: '떡국을 나누고 덕담을 주고 받아요!',
     images: [
       {
-        url: 'https://i.imgur.com/WUrE6u9.png',
+        url: 'https://i.imgur.com/0UfDRsI.png',
         width: 1200,
         height: 630,
       },
@@ -72,7 +77,6 @@ export const viewport = {
   initialScale: 1,
   maximumScale: 1,
   userScalable: 'no',
-  // todo 편지쓰기 키보드 영역 확인 후 interactiveWidget 재조정
   interactiveWidget: 'overlays-content',
 }
 
