@@ -1,15 +1,11 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { BottomButton, TopButton } from '@/components/common'
 
 export default function SampleButtonPage() {
   const [disabled, setDisabled] = useState(false)
-
-  useEffect(() => {
-    console.log('env =>', process.env.NEXT_PUBLIC_RUN_MODE)
-  }, [])
 
   return (
     <>
