@@ -23,7 +23,7 @@ export interface BottomButtonProps {
   bgColor?: string
 }
 
-type ModalType = 'roulette' | 'logout' | 'userTest' | 'cs'
+type ModalType = 'roulette' | 'logout' | 'userTest' | 'cs' | 'loading'
 
 export interface ModalProps {
   type: ModalType
