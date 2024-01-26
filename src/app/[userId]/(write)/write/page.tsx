@@ -61,7 +61,8 @@ export default function WritePage() {
   }
 
   // * 고명 작성하기
-  const onSubmit = useMutation({
+  // const onSubmit = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: (garnishData: RequestParamType) => postGarnish(garnishData),
     onSuccess: (res) => {
       if (res.code === 200) {
@@ -99,7 +100,7 @@ export default function WritePage() {
       garnishType: params.get('garnish') || '',
       content: data.content.replaceAll(/\r\n|\r|\n/gm, '\n'),
     }
-    onSubmit.mutate(garnishData)
+    mutate(garnishData)
   }, DEBOUNCE_TIME)
 
   // * 뒤로가기 버튼 클릭
@@ -181,6 +182,8 @@ export default function WritePage() {
           <BottomButton fullBtnName="완료" fullBtnClick={doneBtnClick} fullBtnDisabled={disabled} />
         )}
       </div>
+
+      {isPending && <Modal type="loading" />}
 
       {showAlert && (
         <Modal
