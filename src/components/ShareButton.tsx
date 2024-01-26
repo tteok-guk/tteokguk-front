@@ -28,7 +28,7 @@ const ShareButton = ({ btnType, tteokGukId, nickname }: BtnType) => {
           fullBtnName={tteokGukId ? '내떡국 공유하기' : '내떡국 만들기'}
           fullBtnHref={!tteokGukId ? '/make-dish' : ''}
           fullBtnClick={() =>
-            handleCopyClipBoard(`https://develop-tteokguk.vercel.app/${tteokGukId}?page=1`)
+            handleCopyClipBoard(`${process.env.NEXT_PUBLIC_BASE_URL}/${tteokGukId}?page=1`)
           }
         />
       )}
