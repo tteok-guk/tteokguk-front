@@ -98,7 +98,6 @@ function MyPage() {
       if (res.code === 400) {
         route.push('/error')
       }
-      console.log('res', res)
     },
     onError: (err) => console.log('err', err),
   })

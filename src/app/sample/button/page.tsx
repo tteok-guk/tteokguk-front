@@ -6,11 +6,7 @@ import { BottomButton, TopButton } from '@/components/common'
 
 export default function SampleButtonPage() {
   const [disabled, setDisabled] = useState(false)
-
-  useEffect(() => {
-    console.log('env =>', process.env.NEXT_PUBLIC_RUN_MODE)
-  }, [])
-
+  
   return (
     <>
       <TopButton />
