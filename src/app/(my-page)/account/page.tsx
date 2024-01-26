@@ -98,6 +98,9 @@ function MyPage() {
     mutationFn: (onChangeInputValue: RequestParamType) => putNickname(onChangeInputValue),
     onSuccess: (res) => {
       queryClient.invalidateQueries({ queryKey: ['myPageInfo'] })
+      if (res.code === 400) {
+        route.push('/error')
+      }
       console.log('res', res)
     },
     onError: (err) => console.log('err', err),
