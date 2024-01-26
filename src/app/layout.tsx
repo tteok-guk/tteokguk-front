@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     url: 'https://www.tteokguk.site',
     description: '떡국을 나누고 덕담을 주고 받아요!',
     siteName: '니떡국 내떡국',
-    images: '/openGraph/ogImg.png',
+    images: 'https://i.imgur.com/0UfDRsI.png',
     locale: 'ko_KR',
     type: 'website',
   },
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     card: 'summary',
     title: '니떡국 내떡국',
     description: '떡국을 나누고 덕담을 주고 받아요!',
-    images: '/openGraph/ogImg.png',
+    images: 'https://i.imgur.com/0UfDRsI.png',
   },
 }
 
