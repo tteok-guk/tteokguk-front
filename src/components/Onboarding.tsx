@@ -25,7 +25,10 @@ export default function Onboarding({ step }: { step: number }) {
         (item) =>
           item.step === step && (
             <>
-              <h1 className="flex h-[18%] flex-col items-center justify-center gap-4">
+              <h1
+                className="flex h-[18%] flex-col items-center justify-center gap-4"
+                key={item.step}
+              >
                 <span className="font-soyoThin text-12 font-bold leading-15 text-gr-400">
                   {item.desc}
                 </span>
@@ -55,6 +58,7 @@ export default function Onboarding({ step }: { step: number }) {
                       loading="eager"
                       alt="떡국 샘플 일러스트"
                       className={`animate-spin-slow ${sizeFitClass}`}
+                      priority
                     />
                   </>
                 )}
@@ -64,6 +68,7 @@ export default function Onboarding({ step }: { step: number }) {
                     loading="eager"
                     alt={item.alt}
                     className="h-full w-full object-contain"
+                    priority
                   />
                 )}
               </div>
