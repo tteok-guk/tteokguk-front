@@ -40,13 +40,16 @@ export const metadata: Metadata = {
     '덕담',
     '편지',
   ],
+  icons: {
+    icon: '/favicon.ico',
+  },
   openGraph: {
     title: '니떡국 내떡국',
     description: '떡국을 나누고 덕담을 주고 받아요!',
     siteName: '니떡국 내떡국',
     images: [
       {
-        url: 'https://i.imgur.com/WUrE6u9.png',
+        url: '/ogImg.png',
         width: 1200,
         height: 630,
       },
@@ -59,7 +62,7 @@ export const metadata: Metadata = {
     description: '떡국을 나누고 덕담을 주고 받아요!',
     images: [
       {
-        url: 'https://i.imgur.com/WUrE6u9.png',
+        url: '/ogImg.png',
         width: 1200,
         height: 630,
       },
