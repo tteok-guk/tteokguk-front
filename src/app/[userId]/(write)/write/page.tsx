@@ -33,7 +33,7 @@ export default function WritePage() {
 
   const hostId = pathname.split('/').filter((item) => item)[0]
   const hostNickname = params.get('nickname')
-  const DEBOUNCE_TIME = 2000
+  const DEBOUNCE_TIME = 1000
 
   // * 공통/동적 스타일 변수
   const avatarHeight = isMobile ? 54 : 84
