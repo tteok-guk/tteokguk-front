@@ -22,6 +22,7 @@ export default function Garnishpage() {
   const onSubmit = useMutation({
     mutationFn: (garnishId: string) => getGarnishDetail(garnishId),
     onSuccess: (res) => {
+      console.log("tteok>>" , res)
       if (res.code === 200) {
         setGarnishType(res.data.garnishType?res.data.garnishType:'basicRc')
         setNickname(res.data.nickName?res.data.nickName:'')

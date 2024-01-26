@@ -114,7 +114,7 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
               )}
               {userId === 'host' && tteokGukId ? (
                 <div className="absolute bottom-[-52px] right-[-18px]">
-                  <Link href={'/change-matt	'}>
+                  <Link href={`/change-matt?matt=${hostTG?.mattType}`}>
                     <MattEdit mattType={mattType || 'default'} />
                   </Link>
                 </div>

@@ -78,6 +78,7 @@ export default function WritePage() {
         msg = '존재하지 않는 ID입니다.'
       }
       toast({ description: msg })
+      router.push('/error')
     },
     onError: (err) => {
       toast({ description: '네트워크 요청에 실패했습니다.' })
@@ -102,7 +103,7 @@ export default function WritePage() {
   }, DEBOUNCE_TIME)
 
   // * 뒤로가기 버튼 클릭
-  const backBtnClick = () => !disabled && setShowAlert(true)
+  const backBtnClick = () => (!disabled ? setShowAlert(true) : router.back())
 
   // * alert 모달 닫기
   const setAlertClose = () => setShowAlert(false)

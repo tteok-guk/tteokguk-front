@@ -8,20 +8,20 @@ import { useState } from 'react'
 import { putMatt } from '@/services/changeMatt'
 import { useMutation } from '@tanstack/react-query'
 import { RequestParamType } from '@/types/apiTypes'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useToast } from '@/hooks/use-toast'
 import { sampleDish } from '../../../../public/images/dishes'
 
 export default function ChangeMattPage() {
-  const [chosenMatt, setChosenMatt] = useState('blueDew')
+  const params = useSearchParams()
+  const mattName = params.get('matt')
+  const [chosenMatt, setChosenMatt] = useState<string>(mattName ? mattName : '')
   const setMatt = (clickedValue: string) => setChosenMatt(clickedValue)
   const router = useRouter()
-  // const { toast } = useToast()
 
   const onChangeMatt = useMutation({
     mutationFn: (chosenMatt: RequestParamType) => putMatt(chosenMatt),
     onSuccess: (res) => {
-      // toast({ description: '매트가 변경되었습니다.' })
       window.location.href = `/${res.data.tteokGukId}?page=1`
     },
     onError: (err) => console.log('err', err),
@@ -57,7 +57,12 @@ export default function ChangeMattPage() {
             </button>
           ))}
         </div>
-        <BottomButton fullBtnName="완료" fullBtnClick={completeBtn} />
+        <button
+          className="mt-20 h-58 w-full rounded-md bg-pr-500 text-white active:bg-pr-600"
+          onClick={completeBtn}
+        >
+          완료
+        </button>
       </div>
     </>
   )
