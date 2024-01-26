@@ -72,7 +72,7 @@ export default function SetGarnishPage() {
               <span
                 className={`
                 ${fontResponsiveClass}
-                bg-gradient-to-r from-pr-500 to-[#9C38FF] bg-clip-text text-transparent
+                flex-center h-full w-full bg-gradient-to-r from-pr-500 to-[#9C38FF] bg-clip-text text-transparent
               `}
               >
                 랜덤
