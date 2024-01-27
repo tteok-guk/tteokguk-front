@@ -96,7 +96,7 @@ export default function WritePage() {
     throttledDoneBtnClick()
   }
 
-  // * 완료 버튼 클릭
+  // * 고명 작성 핸들러
   const setGarnishWrite = async () => {
     setIsBtnClick(true)
     await checkQueryValid()
