@@ -5,8 +5,6 @@ import { Toaster } from '@/components/ui/toaster'
 import localFont from 'next/font/local'
 import '@/styles/globals.css'
 
-const GA_ID = `${process.env.NEXT_PUBLIC_RUN_MODE}`
-
 const pretendard = localFont({
   src: '../../public/fonts/PretendardVariable.woff2',
   display: 'swap',
@@ -99,41 +97,40 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </RecoilProvider>
         </ReactQueryProvider>
 
+        {/* 뷰저블 */}
         <Script
           id="beusable-script"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
-            (function(w, d, a){
-              w.__beusablerumclient__ = {
+              (function(w, d, a){
+                w.__beusablerumclient__ = {
                   load : function(src){
-                      var b = d.createElement("script");
-                      b.src = src; b.async=true; b.type = "text/javascript";
-                      d.getElementsByTagName("head")[0].appendChild(b);
+                    var b = d.createElement("script");
+                    b.src = src; b.async=true; b.type = "text/javascript";
+                    d.getElementsByTagName("head")[0].appendChild(b);
                   }
-              };w.__beusablerumclient__.load(a + "?url=" + encodeURIComponent(d.URL));
-          })(window, document, "//rum.beusable.net/load/b240125e215010u438");
+                };w.__beusablerumclient__.load(a + "?url=" + encodeURIComponent(d.URL));
+              })(window, document, "//rum.beusable.net/load/b240125e215010u438");
           `,
           }}
         />
 
+        {/* 구글 애널리틱스 */}
         <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-          strategy="afterInteractive"
-          async
-        />
-        <Script
-          id="gtag-init"
+          id="ga-script"
+          src="https://www.googletagmanager.com/gtag/js?id=G-Z8P5V8NNXF"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-
-              gtag('config', ${GA_ID});
+            
+              gtag('config', 'G-Z8P5V8NNXF');
             `,
           }}
+          async
         />
       </body>
     </html>
