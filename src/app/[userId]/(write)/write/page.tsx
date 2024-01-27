@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 import Image from 'next/image'
-import { debounce } from 'lodash'
+import { throttle } from 'lodash'
 import { isMobileDevice } from '@/utils/isMobileDevice'
 import { checkWriteQuery } from '@/utils/checkWriteQuery'
 import { useGarnishInput } from '@/hooks/useGarnishInput'
@@ -35,7 +35,7 @@ export default function WritePage() {
   const hostId = pathname.split('/').filter((item) => item)[0]
   const hostNickname = params.get('nickname')
   const garnish = params.get('garnish') || ''
-  const DEBOUNCE_TIME = 2000
+  const THROTTLE_TIME = 3000
 
   // * 공통/동적 스타일 변수
   const avatarHeight = isMobile ? 54 : 84
@@ -60,7 +60,6 @@ export default function WritePage() {
       router.push(`/${hostId}?page=1`)
       return
     }
-    setDisabled(false)
   }
 
   // * 고명 작성하기
@@ -93,21 +92,14 @@ export default function WritePage() {
   })
 
   // * 완료 버튼 클릭
-  // const doneBtnClick = debounce(async () => {
-  //   await setIsBtnClick(true)
-  //   await checkQueryValid()
-  //   const garnishData = {
-  //     tteokGukId: hostId,
-  //     nickname: data.writerNickname,
-  //     garnishType: garnish,
-  //     content: data.content.replaceAll(/\r\n|\r|\n/gm, '\n'),
-  //   }
-  //   router.prefetch(`/${hostId}/snap-shot?garnish=${garnish}`)
-  //   mutate(garnishData)
-  // }, DEBOUNCE_TIME)
+  const doneBtnClick = () => {
+    setIsBtnClick(true)
+    throttledDoneBtnClick()
+  }
 
-  const doneBtnClick = async () => {
-    await setIsBtnClick(true)
+  // * 완료 버튼 클릭
+  const setGarnishWrite = async () => {
+    setIsBtnClick(true)
     await checkQueryValid()
     router.prefetch(`/${hostId}/snap-shot?garnish=${garnish}`)
     const garnishData = {
@@ -118,6 +110,9 @@ export default function WritePage() {
     }
     mutate(garnishData)
   }
+
+  // * 완료 버튼에 쓰로틀링 적용
+  const throttledDoneBtnClick = throttle(setGarnishWrite, THROTTLE_TIME)
 
   // * 뒤로가기 버튼 클릭
   const backBtnClick = () => (!disabled ? setShowAlert(true) : router.back())
