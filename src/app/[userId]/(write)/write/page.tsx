@@ -107,8 +107,6 @@ export default function WritePage() {
       garnishType: garnish,
       content: data.content.replaceAll(/\r\n|\r|\n/gm, '\n'),
     }
-    setIsBtnClick(true)
-    router.prefetch(`/${hostId}/snap-shot?garnish=${params.get('garnish') || ''}`)
     mutate(garnishData)
   }
 
