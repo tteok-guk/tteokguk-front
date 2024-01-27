@@ -34,7 +34,8 @@ export default function WritePage() {
 
   const hostId = pathname.split('/').filter((item) => item)[0]
   const hostNickname = params.get('nickname')
-  const DEBOUNCE_TIME = 1000
+  const garnish = params.get('garnish') || ''
+  const DEBOUNCE_TIME = 2000
 
   // * 공통/동적 스타일 변수
   const avatarHeight = isMobile ? 54 : 84
@@ -46,19 +47,20 @@ export default function WritePage() {
   ]
 
   // * URL 쿼리 고명, 닉네임 검증
-  const checkQueryValid = async (): Promise<boolean> => {
-    const getChosenGarnish = params.get('garnish')
+  const checkQueryValid = async () => {
     const [isQueryValid, msg] = await checkWriteQuery({
       nickname: hostNickname,
       garnishCheck: true,
-      garnish: getChosenGarnish,
+      garnish,
     })
     if (!isQueryValid) {
       setDisabled(true)
+      setIsBtnClick(false)
       toast({ description: msg })
       router.push(`/${hostId}?page=1`)
+      return
     }
-    return isQueryValid
+    setDisabled(false)
   }
 
   // * 고명 작성하기
@@ -67,7 +69,7 @@ export default function WritePage() {
     onSuccess: (res) => {
       if (res.code === 200) {
         setIsBtnClick(false)
-        router.push(`/${hostId}/snap-shot?garnish=${params.get('garnish') || ''}`)
+        router.push(`/${hostId}/snap-shot?garnish=${garnish}`)
         return
       }
 
@@ -91,22 +93,31 @@ export default function WritePage() {
   })
 
   // * 완료 버튼 클릭
-  const doneBtnClick = debounce(() => {
-    const isQueryValid = checkQueryValid()
-    if (!isQueryValid) {
-      setDisabled(true)
-    }
-    setDisabled(false)
+  // const doneBtnClick = debounce(async () => {
+  //   await setIsBtnClick(true)
+  //   await checkQueryValid()
+  //   const garnishData = {
+  //     tteokGukId: hostId,
+  //     nickname: data.writerNickname,
+  //     garnishType: garnish,
+  //     content: data.content.replaceAll(/\r\n|\r|\n/gm, '\n'),
+  //   }
+  //   router.prefetch(`/${hostId}/snap-shot?garnish=${garnish}`)
+  //   mutate(garnishData)
+  // }, DEBOUNCE_TIME)
+
+  const doneBtnClick = async () => {
+    await setIsBtnClick(true)
+    await checkQueryValid()
+    router.prefetch(`/${hostId}/snap-shot?garnish=${garnish}`)
     const garnishData = {
       tteokGukId: hostId,
       nickname: data.writerNickname,
-      garnishType: params.get('garnish') || '',
+      garnishType: garnish,
       content: data.content.replaceAll(/\r\n|\r|\n/gm, '\n'),
     }
-    setIsBtnClick(true)
-    router.prefetch(`/${hostId}/snap-shot?garnish=${params.get('garnish') || ''}`)
     mutate(garnishData)
-  }, DEBOUNCE_TIME)
+  }
 
   // * 뒤로가기 버튼 클릭
   const backBtnClick = () => (!disabled ? setShowAlert(true) : router.back())
