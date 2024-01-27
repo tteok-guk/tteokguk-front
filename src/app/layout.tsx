@@ -5,6 +5,8 @@ import { Toaster } from '@/components/ui/toaster'
 import localFont from 'next/font/local'
 import '@/styles/globals.css'
 
+const GA_ID = `${process.env.NEXT_PUBLIC_RUN_MODE}`
+
 const pretendard = localFont({
   src: '../../public/fonts/PretendardVariable.woff2',
   display: 'swap',
@@ -112,6 +114,25 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               };w.__beusablerumclient__.load(a + "?url=" + encodeURIComponent(d.URL));
           })(window, document, "//rum.beusable.net/load/b240125e215010u438");
           `,
+          }}
+        />
+
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+          strategy="afterInteractive"
+          async
+        />
+        <Script
+          id="gtag-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', ${GA_ID});
+            `,
           }}
         />
       </body>
