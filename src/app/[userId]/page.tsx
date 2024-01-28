@@ -100,7 +100,7 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
               <></>
             )}
             <div
-              className={`relative mb-31 mt-19 h-300 w-300 lg:h-400 lg:w-400  ${
+              className={`relative mt-19 h-300 w-300 lg:h-400 lg:w-400  ${
                 dishesObj[determineDishType(garnish?.garnishes, userId)]
               } bg-cover bg-center`}
             >
