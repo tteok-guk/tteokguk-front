@@ -100,7 +100,7 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
               <></>
             )}
             <div
-              className={`relative mt-19 h-300 w-300 lg:h-400 lg:w-400  ${
+              className={`relative mb-31 mt-19 h-300 w-300 lg:h-400 lg:w-400  ${
                 dishesObj[determineDishType(garnish?.garnishes, userId)]
               } bg-cover bg-center`}
             >
@@ -134,13 +134,15 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
         </div>
       </section>
       {!guestTG?.hasTteokGuk && guestTG && (
-        <Image
-          src={makeDishBubble}
-          alt="makeDishBubble"
-          width={159}
-          height={36}
-          className=" absolute bottom-[105px]"
-        />
+        <Link href={'/host?page=1'}>
+          <Image
+            src={makeDishBubble}
+            alt="makeDishBubble"
+            width={159}
+            height={36}
+            className=" absolute bottom-[105px]"
+          />
+        </Link>
       )}
     </div>
   )
