@@ -134,15 +134,13 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
         </div>
       </section>
       {!guestTG?.hasTteokGuk && guestTG && (
-        <Link href={'/host?page=1'}>
-          <Image
-            src={makeDishBubble}
-            alt="makeDishBubble"
-            width={159}
-            height={36}
-            className=" absolute bottom-[105px]"
-          />
-        </Link>
+        <Image
+          src={makeDishBubble}
+          alt="makeDishBubble"
+          width={159}
+          height={36}
+          className=" absolute bottom-[105px]"
+        />
       )}
     </div>
   )
