@@ -1,4 +1,4 @@
-import catArm from './carArm.svg'
+import catArm from './catArm.svg'
 import dogArm from './dogArm.svg'
 import dragonArm from './dragonArm.svg'
 import dragonHeart from './dragonHeart.png'
