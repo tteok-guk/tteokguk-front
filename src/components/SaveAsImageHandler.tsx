@@ -8,7 +8,6 @@ import html2canvas from 'html2canvas' // Import html2canvas
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
-import { captureInfo } from '../../public/images/avatar'
 import { iconClose, iconError, iconSave } from '../../public/images/icons'
 import SaveImage from './SaveImage'
 import { BottomButton } from './common'
