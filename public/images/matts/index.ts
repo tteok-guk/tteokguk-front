@@ -10,8 +10,8 @@ import miniBlueColCheck from './miniBlueColCheck.png'
 import miniBlueDew from './miniBlueDew.png'
 import miniBlueGradation from './miniBlueGradation.png'
 import miniBubblePattern from './miniBubblePattern.png'
-import minipinkDew from './miniPinkDew.png'
-import minipinkGradation from './miniPinkGradation.png'
+import miniPinkDew from './miniPinkDew.png'
+import miniPinkGradation from './miniPinkGradation.png'
 import miniPurpleCheck from './miniPurpleCheck.png'
 import miniYellowCheck from './miniYellowCheck.png'
 
@@ -28,8 +28,8 @@ export {
   miniBlueDew,
   miniBlueGradation,
   miniBubblePattern,
-  minipinkDew,
-  minipinkGradation,
+  miniPinkDew,
+  miniPinkGradation,
   miniPurpleCheck,
   miniYellowCheck,
 }
