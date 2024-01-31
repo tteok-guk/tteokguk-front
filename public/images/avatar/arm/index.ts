@@ -1,12 +1,12 @@
-import catArm from './catArm.svg'
-import dogArm from './dogArm.svg'
-import dragonArm from './dragonArm.svg'
+import catArm from './catArm.png'
+import dogArm from './dogArm.png'
+import dragonArm from './dragonArm.png'
 import dragonHeart from './dragonHeart.png'
-import hedgehogArm from './hedgehogArm.svg'
-import otterArm from './otterArm.svg'
-import pandaArm from './pandaArm.svg'
-import rabbitArm from './rabbitArm.svg'
-import squirrelArm from './squirrelArm.svg'
+import hedgehogArm from './hedgehogArm.png'
+import otterArm from './otterArm.png'
+import pandaArm from './pandaArm.png'
+import rabbitArm from './rabbitArm.png'
+import squirrelArm from './squirrelArm.png'
 
 export {
   catArm,

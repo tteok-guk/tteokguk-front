@@ -1,35 +1,35 @@
-import blueDew from './blueDew.svg'
-import yellowCheck from './yellowCheck.svg'
-import blueGradation from './blueGradation.svg'
-import pinkDew from './pinkDew.svg'
-import pinkGradation from './pinkGradation.svg'
-import purpleCheck from './purpleCheck.svg'
-import miniBlueGradation from './miniBlueGradation.svg'
-import miniBlueDew from './miniBlueDew.svg'
-import minipinkDew from './miniPinkDew.svg'
-import minipinkGradation from './miniPinkGradation.svg'
-import miniPurpleCheck from './miniPurpleCheck.svg'
-import miniYellowCheck from './miniYellowCheck.svg'
-import blueColCheck from './blueColCheck.svg'
-import bubblePattern from './bubblePattern.svg'
-import miniBlueColCheck from './miniBlueColCheck.svg'
-import miniBubblePattern from './miniBubblePattern.svg'
+import blueColCheck from './blueColCheck.png'
+import blueDew from './blueDew.png'
+import blueGradation from './blueGradation.png'
+import bubblePattern from './bubblePattern.png'
+import pinkDew from './pinkDew.png'
+import pinkGradation from './pinkGradation.png'
+import purpleCheck from './purpleCheck.png'
+import yellowCheck from './yellowCheck.png'
+import miniBlueColCheck from './miniBlueColCheck.png'
+import miniBlueDew from './miniBlueDew.png'
+import miniBlueGradation from './miniBlueGradation.png'
+import miniBubblePattern from './miniBubblePattern.png'
+import minipinkDew from './miniPinkDew.png'
+import minipinkGradation from './miniPinkGradation.png'
+import miniPurpleCheck from './miniPurpleCheck.png'
+import miniYellowCheck from './miniYellowCheck.png'
 
 export {
+  blueColCheck,
   blueDew,
-  yellowCheck,
-  pinkDew,
   blueGradation,
+  bubblePattern,
+  pinkDew,
   pinkGradation,
   purpleCheck,
-  miniBlueGradation,
+  yellowCheck,
+  miniBlueColCheck,
   miniBlueDew,
+  miniBlueGradation,
+  miniBubblePattern,
   minipinkDew,
   minipinkGradation,
   miniPurpleCheck,
   miniYellowCheck,
-  blueColCheck,
-  bubblePattern,
-  miniBlueColCheck,
-  miniBubblePattern,
 }
