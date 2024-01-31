@@ -14,7 +14,7 @@ export const AllMatt: changeMattType[] = [
   },
   {
     id: 'pinkGradation',
-    src: img.minipinkGradation,
+    src: img.miniPinkGradation,
     alt: 'miniPinkGradation-matt',
   },
   {
@@ -24,7 +24,7 @@ export const AllMatt: changeMattType[] = [
   },
   {
     id: 'pinkDew',
-    src: img.minipinkDew,
+    src: img.miniPinkDew,
     alt: 'miniPinkDew-matt',
   },
   {
