@@ -75,7 +75,7 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
       >
         <div className={` w-full `}>
           <div className="flex flex-row items-center justify-between pb-36 pt-32 ">
-            <h1 className="font-xl">{`${nickname}님의 떡국`}</h1>
+            <h1 className="font-xl font-soyo">{`${nickname}님의 떡국`}</h1>
             {hostTG && (
               <Link href={'/account'}>
                 <Image
@@ -102,7 +102,7 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
               <></>
             )}
             <div className=" relative">
-              <div className=" absolute left-[-20px] top-[-8px] block  h-120 w-110 -rotate-45 scale-x-[-1] lg:left-[-50px] lg:top-[-20px] lg:h-250 lg:w-200">
+              <div className=" absolute left-[-20px] top-[-3px] block  h-120 w-110 -rotate-45 scale-x-[-1] lg:left-[-50px] lg:top-[-13px] lg:h-250 lg:w-200">
                 <Image
                   src={`/images/avatar/normal/${hostAvatar}.png`}
                   width={170}
@@ -111,7 +111,7 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
                 />
               </div>
               <div
-                className={`relative mt-19 h-300 w-300 lg:h-400 lg:w-400  ${
+                className={`relative mt-26 h-300 w-300 lg:h-400 lg:w-400  ${
                   dishesObj[determineDishType(garnish?.garnishes, userId)]
                 } bg-cover bg-center`}
               >
@@ -146,15 +146,13 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
         </div>
       </section>
       {!guestTG?.hasTteokGuk && guestTG && (
-        <Link href={'/host?page=1'}>
-          <Image
-            src={makeDishBubble}
-            alt="makeDishBubble"
-            width={159}
-            height={36}
-            className=" absolute bottom-[105px]"
-          />
-        </Link>
+        <Image
+          src={makeDishBubble}
+          alt="makeDishBubble"
+          width={159}
+          height={36}
+          className=" absolute bottom-[105px]"
+        />
       )}
     </div>
   )
