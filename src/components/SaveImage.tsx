@@ -9,7 +9,7 @@ const SaveImage = ({ avatar, garnish }: snapShotType) => {
     <>
       <div className="relative px-2">
         <div className="relative block  w-full">
-          <Image src={speechBubble} alt="말풍선" layout="responsive" />
+          <Image src={speechBubble} width={272} height={137} alt="말풍선" layout="responsive" />
         </div>
         <div className=" flex w-full flex-row gap-30">
           <div className=" relative z-[99] block h-160 w-1/2 scale-x-[-1]">
