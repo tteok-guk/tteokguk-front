@@ -62,8 +62,7 @@ export default function AuthPage() {
           ))}
         </div>
       </div>
-      {/* <div className="root-bottom-height flex-center flex-col gap-8 border-2 border-red-500 py-24"> */}
-      <div className="root-bottom-height flex flex-col gap-10">
+      <div className="root-bottom-height flex flex-col gap-10 pt-18">
         <Button
           size="full"
           href="/e75c43ec-3ec3-42bf-8b7a-7d96a0f7909b?page=1"
