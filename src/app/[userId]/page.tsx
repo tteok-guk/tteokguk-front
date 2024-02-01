@@ -12,6 +12,7 @@ import { dishesObj, mattObj } from './_object/object'
 import NotFoundPage from '../not-found'
 import { makeDishBubble } from '../../../public/images/etc'
 import { cat, dragon, hedgehog } from '../../../public/images/avatar/normal'
+import EasterEgg from '@/components/EasterEgg'
 
 export interface Props {
   params: {
@@ -68,6 +69,7 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
 
   return (
     <div className="relative">
+      <EasterEgg />
       <section
         className={` mx-[-20px] mt-[-32px] flex h-dvh justify-center ${
           tteokGukId ? mattObj[mattType || 'default'] : mattObj['blueDew']
