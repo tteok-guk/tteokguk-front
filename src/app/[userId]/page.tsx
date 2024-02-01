@@ -11,6 +11,7 @@ import { iconDday, iconMypage } from '../../../public/images/icons'
 import { dishesObj, mattObj } from './_object/object'
 import NotFoundPage from '../not-found'
 import { makeDishBubble } from '../../../public/images/etc'
+import { cat, dragon, hedgehog } from '../../../public/images/avatar/normal'
 
 export interface Props {
   params: {
@@ -50,6 +51,7 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
   const garnish = garnishes
   const dDay = hostTG ? hostTG.dday : guestTG?.dday
   const dDayUi = dDay === 0 ? 'D-Day' : dDay && dDay >= 1 ? `+${dDay}` : dDay
+  const hostAvatar = hostTG ? hostTG.hostAvatar : guestTG?.hostAvatar
 
   const determineDishType = (garnish: GarnishItem[] | undefined, userId: string) => {
     if (!tteokGukId) {
@@ -99,28 +101,38 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
             ) : (
               <></>
             )}
-            <div
-              className={`relative mb-31 mt-19 h-300 w-300 lg:h-400 lg:w-400  ${
-                dishesObj[determineDishType(garnish?.garnishes, userId)]
-              } bg-cover bg-center`}
-            >
-              {garnishes && (
-                <Garnish
-                  garnishInfo={garnish?.garnishes}
-                  Public={guestTG?.public}
-                  dDay={guestTG ? guestTG.dday : hostTG?.dday}
-                  userId={userId}
+            <div className=" relative">
+              <div className=" absolute left-[-20px] top-[-8px] block  h-120 w-110 -rotate-45 scale-x-[-1] lg:left-[-50px] lg:top-[-20px] lg:h-250 lg:w-200">
+                <Image
+                  src={`/images/avatar/normal/${hostAvatar}.png`}
+                  width={170}
+                  height={200}
+                  alt="my avatar"
                 />
-              )}
-              {userId === 'host' && tteokGukId ? (
-                <div className="absolute bottom-[-52px] right-[-18px]">
-                  <Link href={`/change-matt?matt=${hostTG?.mattType}`}>
-                    <MattEdit mattType={mattType || 'default'} />
-                  </Link>
-                </div>
-              ) : (
-                ''
-              )}
+              </div>
+              <div
+                className={`relative mt-19 h-300 w-300 lg:h-400 lg:w-400  ${
+                  dishesObj[determineDishType(garnish?.garnishes, userId)]
+                } bg-cover bg-center`}
+              >
+                {garnishes && (
+                  <Garnish
+                    garnishInfo={garnish?.garnishes}
+                    Public={guestTG?.public}
+                    dDay={guestTG ? guestTG.dday : hostTG?.dday}
+                    userId={userId}
+                  />
+                )}
+                {userId === 'host' && tteokGukId ? (
+                  <div className="absolute bottom-[-52px] right-[-18px]">
+                    <Link href={`/change-matt?matt=${hostTG?.mattType}`}>
+                      <MattEdit mattType={mattType || 'default'} />
+                    </Link>
+                  </div>
+                ) : (
+                  ''
+                )}
+              </div>
             </div>
             {tteokGukId && (
               <PaginationEntire

@@ -8,6 +8,7 @@ export interface TteokgukType {
     mattType: string
     public?: boolean
     hasTteokGuk?: boolean
+    hostAvatar: string
   }
 }
 
