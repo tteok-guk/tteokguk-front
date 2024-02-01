@@ -36,7 +36,7 @@ export default function AuthPage() {
 
   return (
     <section className="relative h-full">
-      <div className="content-height overflow-y-hidden">
+      <div className="root-content-height overflow-y-hidden">
         <div className="flex-center h-[90%] flex-col">
           <Onboarding step={step} />
           {carouselElements.map((item) => (
@@ -62,7 +62,14 @@ export default function AuthPage() {
           ))}
         </div>
       </div>
-      <div className="bottom-height">
+      <div className="root-bottom-height flex flex-col gap-10 pt-18">
+        <Button
+          size="full"
+          href="/e75c43ec-3ec3-42bf-8b7a-7d96a0f7909b?page=1"
+          className="rounded-12 bg-pr-100 text-17 font-medium text-[#181818] hover:bg-pr-200 active:bg-pr-200"
+        >
+          로그인 없이 구경하기
+        </Button>
         <Button
           size="full"
           onClick={loginHandler}

@@ -61,6 +61,14 @@
     padding-top: 16px;
     height: 117px;
   }
+  .root-content-height {
+    @apply layout-scroll h-auto;
+    height: calc(100% - 172px);
+  }
+  .root-bottom-height {
+    @apply h-auto;
+    height: 172px;
+  }
 
   /* font */
   .font-xl {
