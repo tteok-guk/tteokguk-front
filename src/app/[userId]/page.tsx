@@ -102,7 +102,7 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
               <></>
             )}
             <div className=" relative">
-              <div className=" absolute left-[-20px] top-0 block  h-120 w-110 -rotate-45 scale-x-[-1] lg:left-[-50px] lg:top-[-9px] lg:h-250 lg:w-200">
+              <div className=" absolute left-[-20px] top-[-3px] block  h-120 w-110 -rotate-45 scale-x-[-1] lg:left-[-50px] lg:top-[-13px] lg:h-250 lg:w-200">
                 <Image
                   src={`/images/avatar/normal/${hostAvatar}.png`}
                   width={170}
@@ -111,7 +111,7 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
                 />
               </div>
               <div
-                className={`relative mt-30 h-300 w-300 lg:h-400 lg:w-400  ${
+                className={`relative mt-26 h-300 w-300 lg:h-400 lg:w-400  ${
                   dishesObj[determineDishType(garnish?.garnishes, userId)]
                 } bg-cover bg-center`}
               >
