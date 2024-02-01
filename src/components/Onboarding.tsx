@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { OnboardingData } from '../../data/mainTitle'
 import Image, { StaticImageData } from 'next/image'
 import { dragonNotWalkSmall, dragonWalkSmall } from '../../public/images/avatar/small'
@@ -24,11 +24,8 @@ export default function Onboarding({ step }: { step: number }) {
       {OnboardingData.map(
         (item) =>
           item.step === step && (
-            <>
-              <h1
-                className="flex h-[18%] flex-col items-center justify-center gap-4"
-                key={item.step}
-              >
+            <React.Fragment key={item.step}>
+              <h1 className="flex h-[18%] flex-col items-center justify-center gap-4">
                 <span className="font-soyoThin text-12 font-bold leading-15 text-gr-400">
                   {item.desc}
                 </span>
@@ -52,6 +49,7 @@ export default function Onboarding({ step }: { step: number }) {
                       loading="eager"
                       alt="걷는 용 일러스트"
                       className={`z-10 mb-[-5px] ml-18 ${sizeFitClass}`}
+                      priority
                     />
                     <Image
                       src={sampleDish}
@@ -72,7 +70,7 @@ export default function Onboarding({ step }: { step: number }) {
                   />
                 )}
               </div>
-            </>
+            </React.Fragment>
           ),
       )}
     </>
