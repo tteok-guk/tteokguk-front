@@ -3,6 +3,7 @@ import cheese from './cheese.png'
 import coloredRc from './coloredRc.png'
 import coriander from './coriander.png'
 import cucumber from './cucumber.png'
+import dragonRc from './dragonRc.png'
 import dumpling from './dumpling.png'
 import egg from './egg.png'
 import greenOnion from './greenOnion.png'
@@ -22,6 +23,7 @@ export {
   coloredRc,
   coriander,
   cucumber,
+  dragonRc,
   dumpling,
   egg,
   greenOnion,

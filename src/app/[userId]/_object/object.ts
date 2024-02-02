@@ -47,4 +47,5 @@ export const garnishes: string[] = [
   'shapedRc',
   'strawberry',
   'vegetable',
+  'dragonRc',
 ]
