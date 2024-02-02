@@ -11,45 +11,29 @@ const PaginationEntire = ({ pageSize, pageParam }: paginationType) => {
   const params = useSearchParams()
   const router = useRouter()
 
-  const [page, setPage] = useState<number>(Number(params.get('page')) || 1)
-
-  // const currentPage: number = Number(params.get('page'))
-  const [currentPage, setCurrentPage] = useState(Number(params.get('page')))
+  const [currentPage, setCurrentPage] = useState(
+    Number(params.get('page')) === 0 ? 1 : Number(params.get('page')),
+  )
 
   const pagesize = pageSize ? pageSize : 1
-  // const movePage = (flag?: string) => {
-  //   if ((flag === 'prev' && currentPage <= 1) || (flag === 'next' && currentPage >= pagesize)) {
-  //     return
-  //   }
-  //   const movePageNum = flag === 'prev' ? currentPage - 1 : currentPage + 1
-
-  //   setPage(movePageNum)
-  // }
   const movePage = debounce((flag?: string) => {
     if ((flag === 'prev' && currentPage <= 1) || (flag === 'next' && currentPage >= pagesize)) {
       return
     }
     const movePageNum = flag === 'prev' ? currentPage - 1 : currentPage + 1
     setCurrentPage(movePageNum)
-    // setPage(movePageNum)
   }, 500)
   useEffect(() => {
     if (!Number.isInteger(currentPage) || currentPage < 1 || currentPage > pagesize) {
-      // todo ?page=100과 같이 유효하지 않은 번호 입력하면 일단 undefined 떡국 떴다가 1페이지로 넘어감
       toast({ description: '유효한 페이지 번호가 아닙니다.' })
       setCurrentPage(1)
       return
     }
-    setPage(currentPage)
   }, [])
 
   useEffect(() => {
-    setPage(currentPage)
+    router.push(`/${pageParam}?page=${currentPage}`)
   }, [currentPage])
-
-  useEffect(() => {
-    router.push(`/${pageParam}?page=${page}`)
-  }, [page])
 
   return (
     <nav className="w-full">

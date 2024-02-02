@@ -1,10 +1,7 @@
-// todo 추후 임시 아바타 삭제 예정
-
-import avatar1 from './avatar1.png'
-import cryingAvatars from './cryingAvatars.png'
-import defaultAvatar from './defaultAvatar.png'
+import cryingAvatars from './cryingAvatars.svg'
 import speechBubble from './speechBubble.png'
-import captureInfo from './captureInfo.png'
 import userTest from './userTest.png'
+import characterSet from './characterSet.svg'
+import myPageBottom from './myPageBottom.png'
 
-export { avatar1, cryingAvatars, defaultAvatar, speechBubble, captureInfo, userTest }
+export { cryingAvatars, speechBubble, userTest, characterSet, myPageBottom }

@@ -18,6 +18,7 @@ import {
 } from '../../../../public/images/icons'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import { myPageBottom } from '../../../../public/images/avatar'
 
 //? React Query v5에서 query 함수 호출 시 새로운 형식을 사용해야된다
 //? query 함수 호출시 Object형태만 허용된다. exuseQuery({queryKey: ['myPageInfo'],queryFn: getMyPage,})
@@ -98,7 +99,6 @@ function MyPage() {
       if (res.code === 400) {
         route.push('/error')
       }
-      console.log('res', res)
     },
     onError: (err) => console.log('err', err),
   })
@@ -146,18 +146,18 @@ function MyPage() {
                   height={48}
                   className="m-auto mb-8 rounded-full"
                 />
-                <p className="font-sm">받은 편지함</p>
+                <p className="font-sm">받은 고명</p>
               </Link>
             </div>
           ) : null}
           <div className="flex flex-col gap-16">
             <Link
               className="flex items-center gap-6"
-              href={'https://forms.gle/oavk3yJND7A8JrMh7'}
+              href={'https://forms.gle/RfazdTeYTUCQoz9KA'}
               target="_blank"
             >
               <Image src={iconUserTest} alt="mypage enter btn" width={20} height={20} />
-              <p className="font-base">유저테스트 참여하기</p>
+              <p className="font-base">피드백 남기기</p>
             </Link>
             <Link
               className="flex items-center gap-6"
@@ -260,6 +260,11 @@ function MyPage() {
           </div>
         </div>
       )}
+      <div className="absolute bottom-20 right-20 flex justify-end">
+        <div className="w-[80%]">
+          <Image src={myPageBottom} alt="마이페이지 캐릭터 이미지" />
+        </div>
+      </div>
     </>
   )
 }

@@ -54,9 +54,7 @@ export default function GarnishListpage() {
     setIsDDay(true)
   }
 
-  if (data) {
-    console.log('data :', data)
-    
+  if (data) {    
     if (data?.code === 2002) {
       return (
         <div className={'bg-cover'}>

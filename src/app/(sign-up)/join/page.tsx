@@ -152,7 +152,6 @@ export default function JoinPage() {
   const onSubmit = useMutation({
     mutationFn: (userData: RequestParamType) => putJoinUser(userData),
     onSuccess: (res) => {
-      console.log('res', res)
       if (res.code === 200) {
         const token = res.data.token ? res.data.token : ''
         Cookies.set('token', token)
@@ -161,7 +160,7 @@ export default function JoinPage() {
         const token = res.data.token ? res.data.token : ''
         Cookies.set('token', token)
         router.push(`/host?page=1`)
-      }else if (res.code === 401){
+      } else if (res.code === 401) {
         router.push(`/`)
       }
     },
