@@ -23,7 +23,7 @@ export const optionGarnishes: OptionGarnishesType[] = [
     weight: 12,
   },
   {
-    id: 'shapedRc',
+    id: 'dragonRc',
     weight: 4,
   },
   {
