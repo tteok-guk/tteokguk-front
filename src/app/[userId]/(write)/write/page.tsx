@@ -34,11 +34,16 @@ export default function WritePage() {
   const hostId = pathname.split('/').filter((item) => item)[0]
   const hostNickname = params.get('nickname')
 <<<<<<< HEAD
+<<<<<<< HEAD
   const DEBOUNCE_TIME = 2000
 =======
   const garnish = params.get('garnish') || ''
   const THROTTLE_TIME = 3000
 >>>>>>> feature/shj/TG-180
+=======
+  const garnish = params.get('garnish') || ''
+  const THROTTLE_TIME = 3000
+>>>>>>> 4a2a1f95d02d4e31412a79e91bcdec28b7d2d83f
 
   // * 공통/동적 스타일 변수
   const avatarHeight = isMobile ? 54 : 84
