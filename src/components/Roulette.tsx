@@ -63,7 +63,6 @@ export default function Roulette() {
     if (rouletteResult) {
       const resultInfo = garnishes.find((item) => item.id === rouletteResult && item.alt)
       resultInfo && setBtnName(resultInfo.alt)
-      // console.log('resultName', resultName)
     }
   }, [rouletteResult])
 

@@ -104,4 +104,10 @@ export const garnishes: AllGarnishesType[] = [
     src: img.coloredRc,
     alt: '오색떡',
   },
+  {
+    id: 'dragonRc',
+    type: 'option',
+    src: img.dragonRc,
+    alt: '용용이',
+  },
 ]

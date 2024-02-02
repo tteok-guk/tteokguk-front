@@ -20,6 +20,7 @@ type OptionGarnishId =
   | 'shapedRc'
   | 'pineapple'
   | 'coloredRc'
+  | 'dragonRc'
 
 type BasicGarnishName =
   | '파'
@@ -41,6 +42,7 @@ type OptionGarnishName =
   | '조랭이떡'
   | '파인애플'
   | '오색떡'
+  | '용용이'
 
 export type AllGarnishesType = {
   id: BasicGarnishId | OptionGarnishId
