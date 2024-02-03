@@ -1,10 +1,11 @@
 import * as img from '../public/images/onboarding'
+import { sampleDish } from '../public/images/dishes'
 import { onboardingType } from '@/types/OnboardingTypes'
 
 export const OnboardingData: onboardingType[] = [
   {
     step: 1,
-    src: '',
+    src: sampleDish,
     alt: '니떡내떡 용 캐릭터 및 떡국 일러스트',
     title: '니떡국 내떡국',
     desc: '고명에 마음을 담았어요!',
