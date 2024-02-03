@@ -1,24 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
+import Image from 'next/image'
 import { OnboardingData } from '../../data/mainTitle'
-import Image, { StaticImageData } from 'next/image'
-import { dragonNotWalkSmall, dragonWalkSmall } from '../../public/images/avatar/small'
-import { sampleDish } from '../../public/images/dishes'
+import { dragonWalk } from '../../public/images/avatar'
 
 export default function Onboarding({ step }: { step: number }) {
-  const [walk, setWalk] = useState(false)
-
-  const CHANGE_STEP_TIME = 300
-  const dragonImg: StaticImageData = !walk ? dragonNotWalkSmall : dragonWalkSmall
-
-  const sizeFitClass = 'max-w-full max-h-full object-contain'
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setWalk((prev) => !prev)
-    }, CHANGE_STEP_TIME)
-    return () => clearInterval(interval)
-  }, [])
-
   return (
     <>
       {OnboardingData.map(
@@ -37,30 +22,25 @@ export default function Onboarding({ step }: { step: number }) {
                   {item.title}
                 </span>
               </h1>
-              <div
-                className={`flex-center mt-10 h-[80%] flex-col p-20
-                ${step === 1 ? 'p-50' : 'p-20'}
-              `}
-              >
-                {step === 1 && (
-                  <>
+              <div className="mt-10 h-[80%] flex-col p-20">
+                {step === 1 ? (
+                  <div className="flex-center h-full w-full flex-col">
                     <Image
-                      src={dragonImg}
+                      src={dragonWalk}
                       loading="eager"
                       alt="걷는 용 일러스트"
-                      className={`z-10 mb-[-5px] ml-18 ${sizeFitClass}`}
+                      className={`mb-[-5px] ml-25 h-[25%] object-contain`}
                       priority
                     />
                     <Image
-                      src={sampleDish}
+                      src={item.src}
                       loading="eager"
                       alt="떡국 샘플 일러스트"
-                      className={`animate-spin-slow ${sizeFitClass}`}
+                      className={`h-[75%] animate-spin-slow object-contain`}
                       priority
                     />
-                  </>
-                )}
-                {step !== 1 && (
+                  </div>
+                ) : (
                   <Image
                     src={item.src}
                     loading="eager"
