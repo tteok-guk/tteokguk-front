@@ -24,6 +24,7 @@
     "file-saver": "^2.0.5",
     "file-server": "^2.2.1",
     "html2canvas": "^1.4.1",
+    "js-base64": "^3.7.6",
     "js-cookie": "^3.0.5",
     "lodash": "^4.17.21",
     "lucide-react": "^0.302.0",
