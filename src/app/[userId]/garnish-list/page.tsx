@@ -22,15 +22,16 @@ export default function GarnishListpage() {
   const getGarnishDetailsHandler = (isOpen: boolean, garnishId: string, tteokGukId: string, isPublic: boolean) => {
     if (isOpen && isPublic) {
       router.push(`/${tteokGukId}/${garnishId}`)
-    } else if (isOpen && !isPublic) {
-      toast({
-        duration: 1850,
-        description: '떡국 주인만 볼 수 있어요!'
-      })
+    // } else if (isOpen && !isPublic) {
+    //   toast({
+    //     duration: 1850,
+    //     description: '떡국 주인만 볼 수 있어요!'
+    //   })
+    // todo 토큰이 없는 채로 해당 페이지로 올 경우 내 목록이 아닌 목록이 조회될수 있는가? 있다면 공개여부에 따라 막아야겠지만 만약 아니라면 공개여부를 통해 막는거 하지 않는게 맞음.
     } else if (!isOpen){
       toast({
         duration: 1850,
-        description: '덕담 확인은 2월 9일까지 기다려 주세요!'
+        description: '고명 확인은 2월 9일까지 기다려 주세요!'
       })
     }
   }
@@ -42,7 +43,6 @@ export default function GarnishListpage() {
   })
 
   if (isError) {
-    // todo 솔님이 만들어준 페이지로 라우트
     toast({
       duration: 1850,
       description: '로그인이 풀리셨나요?'
@@ -113,7 +113,7 @@ export default function GarnishListpage() {
           <div className={'flex flex-col gap-4 mb-20'}>
             <h1 className={'font-xl text-gr-900'}><span className={'text-pr-500'}>{data?.data?.garnishes ? data.data.garnishes.length : '0'}개의 덕담</span>을 받았어요!</h1>
           </div>
-          <div className={'flex flex-col gap-16 h-[calc(100vh-120px)] overflow-y-scroll'}>
+          <div className={'flex flex-col gap-16 h-[calc(100vh-120px)] layout-scroll'}>
             {
               data?.data?.garnishes?.map((garnish, idx) => {
                 return (
@@ -123,7 +123,7 @@ export default function GarnishListpage() {
                     </div>
                     <div className={'flex flex-col w-[100%-61px] justify-center truncate flex-grow'}>
                       <p className={'text-16 font-medium text-gr-900'}>{garnish.nickname}</p>
-                      <p className={'text-14 font-medium text-gr-400 truncate'}>{garnish.content ? garnish.content : '2월9일 이후에 확인 할 수 있어요'}</p>
+                      <p className={'text-14 font-medium text-gr-400 truncate'}>{garnish.content ? garnish.content.replace(/<br\s*\/?>/gi, ' ') : '2월9일 이후에 확인 할 수 있어요'}</p>
                     </div>
                   </div>
                 )
