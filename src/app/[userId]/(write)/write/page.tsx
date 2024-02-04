@@ -12,7 +12,6 @@ import { useMutation } from '@tanstack/react-query'
 import { postGarnish } from '@/services/write'
 import { RequestParamType } from '@/types/apiTypes'
 import { BottomButton, Modal, TopButton } from '@/components/common'
-import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { characterSet } from '../../../../../public/images/avatar'
@@ -141,8 +140,7 @@ export default function WritePage() {
             덕담을 남겨주세요!
           </h1>
           <p className="font-xs pb-12 pt-8 text-gr-300">
-            {/* 욕설/비방/음란 메시지는 이용 제한이 있을 수 있어요. */}
-            isMobileTest: {`${isMobile}, ${avatarHeight}`}
+            욕설/비방/음란 메시지는 이용 제한이 있을 수 있어요.
           </p>
           <div className="relative">
             <Image
@@ -177,13 +175,6 @@ export default function WritePage() {
       </div>
 
       <div className="bottom-height">
-        {/* {isMobile ? (
-          <Button size="full" className="mb-20 mt-16" onClick={doneBtnClick} disabled={disabled}>
-            완료
-          </Button>
-        ) : (
-          <BottomButton fullBtnName="완료" fullBtnClick={doneBtnClick} fullBtnDisabled={disabled} />
-          )} */}
         <BottomButton fullBtnName="완료" fullBtnClick={doneBtnClick} fullBtnDisabled={disabled} />
       </div>
 
