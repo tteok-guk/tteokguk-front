@@ -6,7 +6,7 @@ import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 import Image from 'next/image'
 import { chosenGarnishState, rouletteResultState } from '@/store/WriteAtom'
 import { checkWriteQuery } from '@/utils/checkWriteQuery'
-import { useToast } from '@/hooks/use-toast'
+import { toast } from '@/hooks/use-toast'
 import { AllGarnishesType } from '@/types/GarnishTypes'
 import { garnishes } from '../../../../../data/garnishes'
 import { BottomButton, TopButton, Modal } from '@/components/common'
@@ -21,7 +21,6 @@ export default function SetGarnishPage() {
   const pathname = usePathname()
   const params = useSearchParams()
   const router = useRouter()
-  const { toast } = useToast()
 
   const hostId = pathname.split('/').filter((item) => item)[0]
   const hostNickname = params.get('nickname')
