@@ -25,7 +25,22 @@ export default function Garnishpage() {
       if (res.code === 200) {
         setGarnishType(res.data.garnishType?res.data.garnishType:'basicRc')
         setNickname(res.data.nickName?res.data.nickName:'')
-        setContent(res.data.content?res.data.content:'')
+
+        if(res.data.content){
+        // 사용자 디바이스 환경에 따른 줄바꿈 문자열 치환
+        let userAgent = navigator.userAgent.toLowerCase();
+          if (userAgent.indexOf('windows') !== -1) {
+            // 윈도우 환경
+            setContent(res.data.content.replaceAll(/<br\s*\/?>/gi, '\r\n'))
+          } else if (userAgent.indexOf('mac') !== -1 || userAgent.indexOf('iphone') !== -1 || userAgent.indexOf('ipad') !== -1 || userAgent.indexOf('ipod') !== -1) {
+            // 맥, iOS 환경
+            setContent(res.data.content.replaceAll(/<br\s*\/?>/gi, '\n'))
+          } else {
+            // 기타 플랫폼
+            setContent(res.data.content.replaceAll(/<br\s*\/?>/gi, '\n'))
+          }
+        }
+
       } else if (res.code === 400) {
         toast({
           duration: 1850,
@@ -87,4 +102,3 @@ export default function Garnishpage() {
     </>:<LoadingPage />
   )
 }
-//<LoadingPage />
