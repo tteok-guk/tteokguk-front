@@ -81,8 +81,8 @@ export default function JoinPage() {
     const typedValue = e.target.value
     // if (/^[^\s~`!@#$%\^&*()+=\[\]\\';,./{}|\\":<>\?_-]*$/.test(typedValue)) {
     // 정규식 변경 - 한글, 영문자, 숫자만 입력 가능
-    // 정규식 변경 - 한글, 영문자, 숫자만 입력 가능 (천지인 대응 ㆍ 도 입력 가능)
-    if (/^[a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣㆍ]*$/.test(typedValue)) {
+    // 정규식 변경 - 한글, 영문자, 숫자만 입력 가능 (천지인, 새천지인 대응 ㆍ : 도 입력 가능)
+    if (/^[a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣㆍ:]*$/.test(typedValue)) {
       setIsValidName(true)
       setUserName(typedValue)
     } else {
