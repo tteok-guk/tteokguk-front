@@ -49,6 +49,11 @@ export default function Garnishpage() {
         router.push(`/error`)
       } else if (res.code === 1000) {
         // todo 1000 에러처리
+        toast({
+          duration: 1850,
+          description: '해당 고명은 고명 주인만 확인 가능해요!'
+        })
+        router.push(`/error`)
       }
     },
     onError: (err) => console.log('tteok err', err), // todo 에러핸들링 추가
