@@ -23,7 +23,7 @@ const soyo_thin = localFont({
 
 export const metadata: Metadata = {
   title: '니떡국 내떡국',
-  description: '떡국을 나누고 덕담을 주고 받아요!',
+  description: '2024년 설날을 맞이해 롤링페이퍼에 마음을 담아요!',
   formatDetection: {
     email: false,
     address: false,
@@ -33,8 +33,10 @@ export const metadata: Metadata = {
   applicationName: '니떡국 내떡국',
   keywords: [
     '니떡국 내떡국',
+    '니떡국내떡국',
     '니떡내떡',
     '온라인 롤링페이퍼',
+    '롤링페이퍼',
     '2024년',
     '새해',
     '새해 덕담',
@@ -47,7 +49,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: '니떡국 내떡국',
     url: 'https://www.tteokguk.site',
-    description: '떡국을 나누고 덕담을 주고 받아요!',
+    description: '새해 덕담을 롤링페이퍼로 나눠요!',
     siteName: '니떡국 내떡국',
     images: [
       {
@@ -62,7 +64,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary',
     title: '니떡국 내떡국',
-    description: '떡국을 나누고 덕담을 주고 받아요!',
+    description: '새해 덕담을 롤링페이퍼로 나눠요!',
     images: [
       {
         url: 'https://i.imgur.com/0UfDRsI.png',
