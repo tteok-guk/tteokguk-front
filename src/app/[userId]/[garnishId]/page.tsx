@@ -48,7 +48,7 @@ export default function Garnishpage() {
     const currDate = new Date(new Date(d.getTime() + TIME_ZONE).toISOString().split('T')[0])
     // const openTime = d.toTimeString().split(' ')[0];
 
-    const openDate = new Date('2024-02-10');
+    const openDate = new Date('2024-02-09');
     //console.log("dsdfsdfsd",currDate.getDate() + ':::' + openDate.getDate());
     if(currDate > openDate){
       //console.log("오픈 이후!!!1")
