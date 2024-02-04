@@ -85,6 +85,7 @@ export default function JoinPage() {
     if (/^[a-zA-Z0-9가-힣ㆍᆞᆢㄱ-ㅎㅏ-ㅣ]*$/.test(typedValue)) {
       setIsValidName(true)
       setUserName(typedValue)
+      
     } else {
       setIsValidName(false)
     }
@@ -198,14 +199,26 @@ export default function JoinPage() {
     if (userName.length > 0) {
       if (userName.length <= 8) {
         //입력 중 상태, 다음 단계 가능 상태
-        setStep((prevStep) => ({
-          ...prevStep,
-          status: [
-            ...prevStep.status.slice(0, step.current),
-            StepStatus.COMPLETE,
-            ...prevStep.status.slice(step.current + 1),
-          ],
-        }))
+        if (!/[ㆍᆞᆢ]/.test(userName)) {
+          // 천지인 대응 추가. 해당 미들닷이 있을 경우 다음 단계 버튼 비활성화
+          setStep((prevStep) => ({
+            ...prevStep,
+            status: [
+              ...prevStep.status.slice(0, step.current),
+              StepStatus.COMPLETE,
+              ...prevStep.status.slice(step.current + 1),
+            ],
+          }))
+        } else {
+          setStep((prevStep) => ({
+            ...prevStep,
+            status: [
+              ...prevStep.status.slice(0, step.current),
+              StepStatus.INITIAL,
+              ...prevStep.status.slice(step.current + 1),
+            ],
+          }))
+        }
       } else {
         // 8 보다 큰 경우
         // 경고창 빨개지고 마지막 글자 절삭
@@ -255,6 +268,7 @@ export default function JoinPage() {
 
   // [step] useEffect Hook
   useEffect(() => {
+    console.log("step>>" , step)
     if (step.status[step.current] === StepStatus.COMPLETE) {
       setIsStepBtnActive(true)
     } else {
