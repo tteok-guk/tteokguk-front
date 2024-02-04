@@ -15,7 +15,7 @@ import { BottomButton, Modal, TopButton } from '@/components/common'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
-import { dragonSmall, dogSmall, rabbitSmall } from '../../../../../public/images/avatar/small'
+import { characterSet } from '../../../../../public/images/avatar'
 
 export default function WritePage() {
   const [data, onChange] = useGarnishInput({
@@ -39,12 +39,12 @@ export default function WritePage() {
 
   // * 공통/동적 스타일 변수
   const avatarHeight = isMobile ? 54 : 84
-  const avatarTop = isMobile ? 'top-[-48px]' : 'top-[-76px]'
-  const avatarLocation = [
-    { name: '공룡', src: dragonSmall, location: `${isMobile ? 'right-50' : 'right-80'}` },
-    { name: '강아지', src: dogSmall, location: `${isMobile ? 'right-20' : 'right-30'}` },
-    { name: '토끼', src: rabbitSmall, location: `${isMobile ? 'right-[-13px]' : 'right-[-20px]'}` },
-  ]
+  const avatarTop = isMobile ? 'top-[-53px]' : 'top-[-83px]'
+  // const avatarLocation = [
+  //   { name: '공룡', src: dragonSmall, location: `${isMobile ? 'right-50' : 'right-80'}` },
+  //   { name: '강아지', src: dogSmall, location: `${isMobile ? 'right-20' : 'right-30'}` },
+  //   { name: '토끼', src: rabbitSmall, location: `${isMobile ? 'right-[-13px]' : 'right-[-20px]'}` },
+  // ]
 
   // * URL 쿼리 고명, 닉네임 검증
   const checkQueryValid = async () => {
@@ -146,11 +146,11 @@ export default function WritePage() {
             <br />
             덕담을 남겨주세요!
           </h1>
-          <p className="font-xs relative pb-12 pt-8 text-gr-300">
+          <p className="font-xs pb-12 pt-8 text-gr-300">
             욕설/비방/음란 메시지는 이용 제한이 있을 수 있어요.
           </p>
           <div className="relative">
-            {avatarLocation.map((avatar) => (
+            {/* {avatarLocation.map((avatar) => (
               <Image
                 key={avatar.name}
                 src={avatar.src}
@@ -158,7 +158,13 @@ export default function WritePage() {
                 height={avatarHeight}
                 className={`absolute ${avatar.location} ${avatarTop}`}
               />
-            ))}
+              ))} */}
+            <Image
+              src={characterSet}
+              alt="니떡내떡 용, 강아지, 토끼 캐릭터 일러스트"
+              height={avatarHeight}
+              className={`absolute right-0 ${avatarTop}`}
+            />
             <Input
               type="text"
               value={data.writerNickname}
