@@ -141,7 +141,8 @@ export default function WritePage() {
             덕담을 남겨주세요!
           </h1>
           <p className="font-xs pb-12 pt-8 text-gr-300">
-            욕설/비방/음란 메시지는 이용 제한이 있을 수 있어요.
+            {/* 욕설/비방/음란 메시지는 이용 제한이 있을 수 있어요. */}
+            isMobileTest: {`${isMobile}, ${avatarHeight}`}
           </p>
           <div className="relative">
             <Image
