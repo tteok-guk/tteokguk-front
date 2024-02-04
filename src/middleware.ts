@@ -1,6 +1,7 @@
 import { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { getUserType } from "@/services/userCheck";
+import base64, { decode } from "js-base64"
 
 export async function middleware(request: NextRequest) {
   // 접근 불가 URL 차단 + 접근 가능 URL? => 쿠키값 확인 => 사용자 타입 확인 타입별 valid 체크
@@ -92,16 +93,36 @@ export async function middleware(request: NextRequest) {
       if (request.nextUrl.searchParams.get('token')) {
         // 쿼리파람 - 토큰
         const token = request.nextUrl.searchParams.get('token')
+        const decodeToken = decode(token?.split('.')?token?.split('.')[1]:'')
+        const tokenExp = JSON.parse(decodeToken).exp
+        const tokenExpDate = new Date(tokenExp * 1000) // 초를 밀리초로 변환
+        tokenExpDate.setHours(tokenExpDate.getHours() + 9) // 한국 표준시
+
+        // console.log(">>>>>>1",token?.split('.'))
+        // console.log(">>>>>>2",decode(token?.split('.')?token?.split('.')[1]:'엥?'))
+        // console.log(">>>>>>3",JSON.parse(decodeToken))
+        // console.log(">>>>>>4",tokenExp)
+        // console.log(">>>>>>5",tokenExpDate)
+
         // 사용자 타입 확인
         const userType = await getUserType(token)
         if (userType?.data?.isMember) {
           // 쿠키에 토큰 세팅
+          // 만료일자 지정
           const response = NextResponse.redirect(new URL('/host?page=1', request.url))
-          response.cookies.set('token', token || '')
+          response.cookies.set({
+            name: 'token',
+            value: token || '',
+            expires: tokenExpDate || '',
+          })
           return response
         } else {
           const response = NextResponse.redirect(new URL('/join', request.url))
-          response.cookies.set('token', token || '')
+          response.cookies.set({
+              name: 'token',
+              value: token || '',
+              expires: tokenExpDate || '',
+          })
           return response
         }
       } else {
