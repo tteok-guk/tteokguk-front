@@ -4,11 +4,11 @@ import { useMutation } from '@tanstack/react-query'
 import Image from 'next/image'
 import { iconArrow } from '../../../../public/images/icons'
 import { garnishes as grnisheImgs } from '../../../../data/garnishes'
-import { redirect, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { useToast } from '@/hooks/use-toast'
 import { useEffect, useState } from 'react'
 import { useParams } from 'next/navigation'
-
+import LoadingPage from '@/app/loading'
 
 export default function Garnishpage() {
   const { toast } = useToast()
@@ -56,15 +56,16 @@ export default function Garnishpage() {
     }else {
       //console.log('오픈이전!!!')
       router.push(`/error`)
-      toast({
-        duration: 1850,
-        description: '아직 설날이 아니에요!'
-      })
+      // toast({
+      //   duration: 1850,
+      //   description: '아직 설날이 아니에요!'
+      // })
     }
     onSubmit.mutate(params.garnishId)
   }, [])
 
   return (
+    isOpen?<>
     <div className={'bg-cover h-full'}>
       <div className={'flex mt-[-12px]'}>
         <div className={'pl-0 pr-24 py-12 cursor-pointer'} onClick={() => (router.back())}>
@@ -74,14 +75,16 @@ export default function Garnishpage() {
       <div className='flex flex-col gap-y-24'>
         <div className={'flex justify-center flex-col items-center gap-y-10'}>
           <Image src={grnisheImgs.find((garnishImg) => garnishImg.id === garnishType)?.src || grnisheImgs[6].src} alt={'고명이미지'} width={78} height={78} ></Image>
-          <h1 className={'text-gr-900 font-soyoThin text-16 font-normal'}>{isOpen?<><span className={'text-pr-500 font-bold'}>{nickname}</span>님이 남긴 덕담</>:<>아직 설날이 아니에요!</>}</h1>
+          <h1 className={'text-gr-900 font-soyoThin text-16 font-normal'}><span className={'text-pr-500 font-bold'}>{nickname}</span>님이 남긴 덕담</h1>
         </div>
         <div className={'w-full bg-white border-1 border-pr-200 rounded-4 flex-grow flex-shrink-0  h-[calc(100vh-224px)] p-20 font-soyoThin font-normal text-14 blue-scroll'}>
           <div className={'whitespace-pre-line  break-all'}>
-            {isOpen?content:'고명은 설날이 되면 확인할 수 있어요!'}
+            {content}
           </div>
         </div>
       </div>
     </div>
+    </>:<LoadingPage />
   )
 }
+//<LoadingPage />

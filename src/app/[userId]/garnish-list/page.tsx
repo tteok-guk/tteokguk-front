@@ -113,7 +113,7 @@ export default function GarnishListpage() {
           <div className={'flex flex-col gap-4 mb-20'}>
             <h1 className={'font-xl text-gr-900'}><span className={'text-pr-500'}>{data?.data?.garnishes ? data.data.garnishes.length : '0'}개의 덕담</span>을 받았어요!</h1>
           </div>
-          <div className={'flex flex-col gap-16 h-[calc(100vh-120px)] overflow-y-scroll'}>
+          <div className={'flex flex-col gap-16 h-[calc(100vh-120px)] layout-scroll'}>
             {
               data?.data?.garnishes?.map((garnish, idx) => {
                 return (
