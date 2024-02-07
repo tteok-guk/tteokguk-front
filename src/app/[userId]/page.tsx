@@ -50,8 +50,7 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
   const tteokGukId = hostTG ? hostTG.tteokGukId : guestTG?.tteokGukId
   const mattType = hostTG ? hostTG.mattType : guestTG?.mattType
   const garnish = garnishes
-  // const dDay = hostTG ? hostTG.dday : guestTG?.dday
-  const dDay = 0
+  const dDay = hostTG ? hostTG.dday : guestTG?.dday
 
   const dDayUi = dDay === 0 ? 'D-Day' : dDay && dDay >= 1 ? `D+${dDay}` : `D${dDay}`
   const hostAvatar = hostTG ? hostTG.hostAvatar : guestTG?.hostAvatar
