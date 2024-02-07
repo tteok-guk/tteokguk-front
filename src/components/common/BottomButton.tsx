@@ -71,8 +71,8 @@ export default function BottomButton({
             <Button
               href={fullBtnHref}
               className={`
-            active:bg[#E95151] h-58 min-w-263 flex-shrink-0 flex-grow border bg-[#FD6D6D]
-            text-white hover:bg-[#E95151]
+            h-58 min-w-263 flex-shrink-0 flex-grow border bg-[#FD6D6D] text-white
+            hover:bg-[#E95151] active:bg-[#E95151]
             ${fullBtnDisabled && disabledClass}
           `}
               onClick={fullBtnClick}
