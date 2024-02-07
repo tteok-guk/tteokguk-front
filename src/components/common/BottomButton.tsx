@@ -15,6 +15,7 @@ export default function BottomButton({
   smallBtnDisabled,
   fullBtnDisabled,
   icon,
+  fullBtnIcon,
   bgColor = 'bg-bg',
 }: BottomButtonProps) {
   const disabledClass = 'bg-gr-100 text-gr-400 border-0 hover:bg-bg-gr-100 active:bg-gr-200'
@@ -50,6 +51,35 @@ export default function BottomButton({
               onClick={fullBtnClick}
               disabled={fullBtnDisabled}
             >
+              {fullBtnName}
+            </Button>
+          </>
+        ) : split === 'openTwice' ? (
+          <>
+            <Button
+              href={smallBtnHref}
+              className={` 
+            h-58 min-w-58 max-w-100 flex-shrink-0 flex-grow border border-[#FD6D6D] bg-white text-pr-500
+            hover:bg-gr-100 active:bg-gr-100
+            ${smallBtnDisabled && disabledClass} 
+          `}
+              onClick={smallBtnClick}
+              disabled={smallBtnDisabled}
+            >
+              {icon && <Image src={icon} alt="아이콘" width={24} height={24} />}
+            </Button>
+            <Button
+              href={fullBtnHref}
+              className={`
+            active:bg[#E95151] h-58 min-w-263 flex-shrink-0 flex-grow border bg-[#FD6D6D]
+            text-white hover:bg-[#E95151]
+            ${fullBtnDisabled && disabledClass}
+          `}
+              onClick={fullBtnClick}
+            >
+              {fullBtnIcon && (
+                <Image src={fullBtnIcon} alt="아이콘" width={24} height={27} className="mr-4" />
+              )}
               {fullBtnName}
             </Button>
           </>
