@@ -147,7 +147,7 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
             <ShareButton
               tteokGukId={tteokGukId}
               nickname={guestTG?.nickname}
-              btnType={dDay >= 0 ? 'openTwice' : 'none'}
+              btnType={dDay && dDay >= 0 ? 'openTwice' : 'none'}
             />
           </div>
         </div>
@@ -161,7 +161,7 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
           className=" absolute bottom-[97px]"
         />
       )}
-      {hostTG && dDay >= 0 && (
+      {hostTG && dDay && dDay >= 0 && (
         <Image
           src={shareBubble}
           alt="shareBubble"
