@@ -48,7 +48,7 @@ export interface paginationType {
   pageParam: string
 }
 export interface BtnType {
-  btnType?: string
+  btnType?: 'openTwice' | 'none'
   tteokGukId?: string
   nickname?: string
 }
