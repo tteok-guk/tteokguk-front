@@ -1,4 +1,6 @@
 import { Button } from '@/components/ui/button'
+import { BottomButton } from '@/components/common'
+import { share, burger } from '../../../public/images/icons'
 
 export default function SamplePage() {
   const components = [
@@ -52,6 +54,14 @@ export default function SamplePage() {
           폰트 외 기타
         </Button>
       </div>
+
+      <BottomButton
+        bgColor="bg-transperant"
+        split="openTwice"
+        icon={share}
+        fullBtnIcon={burger}
+        fullBtnName="받은 덕담 모아보기"
+      />
     </>
   )
 }
