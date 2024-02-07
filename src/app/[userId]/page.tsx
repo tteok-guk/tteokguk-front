@@ -10,7 +10,7 @@ import { notFound, redirect } from 'next/navigation'
 import { iconDday, iconMypage } from '../../../public/images/icons'
 import { dishesObj, mattObj } from './_object/object'
 import NotFoundPage from '../not-found'
-import { makeDishBubble } from '../../../public/images/etc'
+import { makeDishBubble, shareBubble } from '../../../public/images/etc/index'
 import { cat, dragon, hedgehog } from '../../../public/images/avatar/normal'
 import EasterEgg from '@/components/EasterEgg'
 
@@ -153,13 +153,22 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
           </div>
         </div>
       </section>
-      {!guestTG?.hasTteokGuk && guestTG && (
+      {guestTG && !guestTG.hasTteokGuk && (
         <Image
           src={makeDishBubble}
           alt="makeDishBubble"
           width={159}
           height={36}
-          className=" absolute bottom-[105px]"
+          className=" absolute bottom-[97px]"
+        />
+      )}
+      {hostTG && dDay >= 0 && (
+        <Image
+          src={shareBubble}
+          alt="shareBubble"
+          width={190}
+          height={36}
+          className=" absolute bottom-[97px] w-1/2 min-w-190"
         />
       )}
     </div>

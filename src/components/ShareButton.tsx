@@ -5,6 +5,8 @@ import { BtnType } from '@/types/MainPageTypes'
 import { redirect, usePathname } from 'next/navigation'
 import { BottomButton } from './common'
 import { burger, share } from '../../public/images/icons'
+import Image from 'next/image'
+import { shareBubble } from '../../public/images/etc'
 
 const ShareButton = ({ btnType = 'none', tteokGukId, nickname }: BtnType) => {
   const handleCopyClipBoard = async (text: string) => {
