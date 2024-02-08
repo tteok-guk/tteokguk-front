@@ -70,7 +70,7 @@ export default function Garnishpage() {
 
     const openDate = new Date('2024-02-09');
     //console.log("dsdfsdfsd",currDate.getDate() + ':::' + openDate.getDate());
-    if(currDate > openDate){
+    if(currDate >= openDate){
       //console.log("오픈 이후!!!1")
       setIsOpen(true)
     }else {

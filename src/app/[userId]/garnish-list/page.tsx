@@ -16,11 +16,12 @@ export default function GarnishListpage() {
   const router = useRouter()
 
   // 고명 목록 오픈일
-  const [isDDay, setIsDDay] = useState(false)
+  const [isDDay, setIsDDay] = useState(true)
 
   // 가니시 상세 조회 핸들러
   const getGarnishDetailsHandler = (isOpen: boolean, garnishId: string, tteokGukId: string, isPublic: boolean) => {
-    if (isOpen && isPublic) {
+    // if (isOpen && isPublic) {
+    if (isOpen) {
       router.push(`/${tteokGukId}/${garnishId}`)
     // } else if (isOpen && !isPublic) {
     //   toast({
@@ -50,9 +51,9 @@ export default function GarnishListpage() {
     router.push(`/error`)
   }
 
-  if (data?.data?.dday === 0){
-    setIsDDay(true)
-  }
+  // if (data?.data?.dday === 0){
+  //   setIsDDay(true)
+  // }
 
   if (data) {    
     if (data?.code === 2002) {
