@@ -10,7 +10,7 @@ export interface TopButtonProps {
 }
 
 export interface BottomButtonProps {
-  split?: 'none' | 'twice'
+  split?: 'none' | 'twice' | 'openTwice'
   smallBtnName?: string
   fullBtnName: string
   smallBtnClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
@@ -20,6 +20,7 @@ export interface BottomButtonProps {
   smallBtnDisabled?: boolean
   fullBtnDisabled?: boolean
   icon?: StaticImageData
+  fullBtnIcon?: StaticImageData
   bgColor?: string
 }
 
