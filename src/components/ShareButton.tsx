@@ -34,7 +34,7 @@ const ShareButton = ({ btnType = 'none', tteokGukId, nickname }: BtnType) => {
           smallBtnHref="/host?page=1"
           fullBtnHref={`/${tteokGukId}/set-garnish?nickname=${nickname}`}
         />
-      ) : btnType === 'openTwice' ? (
+      ) : btnType === 'openTwice' && tteokGukId ? (
         <BottomButton
           bgColor="bg-transperant"
           split="openTwice"
