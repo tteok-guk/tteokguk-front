@@ -50,8 +50,7 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
   const tteokGukId = hostTG ? hostTG.tteokGukId : guestTG?.tteokGukId
   const mattType = hostTG ? hostTG.mattType : guestTG?.mattType
   const garnish = garnishes
-  // const dDay = hostTG ? hostTG.dday : guestTG?.dday
-  // const dDay = hostTG ? hostTG.dday : guestTG?.dday || -1
+
   const dDay = hostTG ? hostTG.dday : guestTG?.dday ?? -1
 
   const dDayUi = dDay === 0 ? 'D-Day' : dDay && dDay >= 1 ? `D+${dDay}` : `D${dDay}`
@@ -163,7 +162,7 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
           className=" absolute bottom-[97px]"
         />
       )}
-      {hostTG && dDay >= 0 && (
+      {hostTG && dDay >= 0 && tteokGukId && (
         <Image
           src={shareBubble}
           alt="shareBubble"
