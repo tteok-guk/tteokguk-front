@@ -23,7 +23,7 @@ function WithdrawalPage() {
       Cookies.remove('token')
       router.push('/')
     },
-    onError: (err) => console.log('err', err),
+    onError: (err) => console.error('err', err),
   })
 
   const completeBtn = () => {
