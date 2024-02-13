@@ -1,6 +1,6 @@
 'use client'
 
-import { toast } from '@/hooks/use-toast'
+import { toast } from '@/hooks/useToast'
 import { BtnType } from '@/types/MainPageTypes'
 import { redirect, usePathname } from 'next/navigation'
 import { BottomButton } from './common'
@@ -14,8 +14,6 @@ const ShareButton = ({ btnType = 'none', tteokGukId, nickname }: BtnType) => {
       try {
         await navigator.clipboard.writeText(text)
         toast({ description: 'URL 복사가 완료되었습니다.' })
-
-        // alert('복사 성공!')
       } catch (error) {
         alert('복사 실패!')
       }

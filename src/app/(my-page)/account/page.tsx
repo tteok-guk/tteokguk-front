@@ -90,7 +90,6 @@ function MyPage() {
       setOnChangeInputValue(filteredValue)
     }
   }
-  console.log('onChangeInputValue', onChangeInputValue)
 
   const onChangeNickname = useMutation({
     mutationFn: (onChangeInputValue: RequestParamType) => putNickname(onChangeInputValue),
@@ -100,7 +99,7 @@ function MyPage() {
         route.push('/error')
       }
     },
-    onError: (err) => console.log('err', err),
+    onError: (err) => console.error('err', err),
   })
 
   const completeBtn = () => {

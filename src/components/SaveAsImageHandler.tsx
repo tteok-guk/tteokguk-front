@@ -1,6 +1,6 @@
 'use client'
 
-import { toast } from '@/hooks/use-toast'
+import { toast } from '@/hooks/useToast'
 import { getAvatar } from '@/services/snapShot'
 import { useQuery } from '@tanstack/react-query'
 import saveAs from 'file-saver'

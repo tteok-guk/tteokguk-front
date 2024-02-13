@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image'
-import { useToast } from '@/hooks/use-toast'
+import { useToast } from '@/hooks/useToast'
 import { useEffect, useState } from 'react'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
@@ -85,7 +85,6 @@ export default function JoinPage() {
     if (/^[a-zA-Z0-9가-힣ㆍᆞᆢㄱ-ㅎㅏ-ㅣ]*$/.test(typedValue)) {
       setIsValidName(true)
       setUserName(typedValue)
-      
     } else {
       setIsValidName(false)
     }
@@ -166,7 +165,7 @@ export default function JoinPage() {
         router.push(`/`)
       }
     },
-    onError: (err) => console.log('err', err), // todo 에러핸들링 추가
+    onError: (err) => console.error('err', err),
   })
 
   // 완료 클릭 핸들러
@@ -268,7 +267,6 @@ export default function JoinPage() {
 
   // [step] useEffect Hook
   useEffect(() => {
-    console.log("step>>" , step)
     if (step.status[step.current] === StepStatus.COMPLETE) {
       setIsStepBtnActive(true)
     } else {
