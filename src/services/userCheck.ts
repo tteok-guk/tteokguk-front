@@ -1,10 +1,10 @@
 export type UserType = {
-  code: number, 
-  message : string,
-  data : {
+  code: number
+  message: string
+  data: {
     isMember: boolean
-  } 
-}|null
+  }
+} | null
 
 export const getUserType = async (token: string | null | undefined): Promise<UserType> => {
   // 토큰 정보로 유저 정보 가져오기
@@ -15,33 +15,20 @@ export const getUserType = async (token: string | null | undefined): Promise<Use
     credentials: 'include', // include, *same-origin, omit
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
     },
   })
 
   if (response) {
     if (response.status !== 200) {
-      if(response.status === 401){
+      if (response.status === 401) {
         return null
-      }else{
+      } else {
         throw new Error('fail')
       }
     }
   }
 
-  const result = await response.json();
+  const result = await response.json()
   return result
 }
-
-// if (response.status === 200 && response.statusText === 'OK') {
-//   try {
-//     const res = await response.json()
-//     return res;
-//   } catch (jsonError) {
-//     // Handle JSON parsing error
-//     console.error('Error parsing JSON:', jsonError);
-//     throw jsonError;
-//   }
-// } else {
-//   throw new Error('Failed to fetch user type')
-// }

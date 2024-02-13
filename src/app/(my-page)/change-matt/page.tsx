@@ -9,7 +9,7 @@ import { putMatt } from '@/services/changeMatt'
 import { useMutation } from '@tanstack/react-query'
 import { RequestParamType } from '@/types/apiTypes'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { useToast } from '@/hooks/use-toast'
+import { useToast } from '@/hooks/useToast'
 import { sampleDish } from '../../../../public/images/dishes'
 
 export default function ChangeMattPage() {
@@ -24,7 +24,7 @@ export default function ChangeMattPage() {
     onSuccess: (res) => {
       window.location.href = `/${res.data.tteokGukId}?page=1`
     },
-    onError: (err) => console.log('err', err),
+    onError: (err) => console.error('err', err),
   })
 
   const completeBtn = () => {

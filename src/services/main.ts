@@ -10,7 +10,6 @@ export const tokens = () => {
 }
 
 export async function getGuestTteokguk(userId: string): Promise<TteokgukType> {
-  // ! 이거 왜 함수 바깥에서 못쓰는거지..?ㅠㅠ
   const token = tokens()
   const res = await fetch(`${baseUrl}/api/v1/tteokguk/${userId}`, {
     headers: {
