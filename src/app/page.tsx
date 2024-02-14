@@ -65,7 +65,7 @@ export default function AuthPage() {
       <div className="root-bottom-height flex flex-col gap-10 pt-18">
         <Button
           size="full"
-          href="/e75c43ec-3ec3-42bf-8b7a-7d96a0f7909b?page=1"
+          href="/1549cae9-b407-482f-b511-71efdb1951ea?page=1"
           className="rounded-12 bg-pr-100 text-17 font-medium text-[#181818] hover:bg-pr-200 active:bg-pr-200"
         >
           로그인 없이 구경하기
