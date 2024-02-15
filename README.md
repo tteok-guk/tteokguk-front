@@ -33,13 +33,13 @@
   <tbody>
     <tr align="center">
       <td>
-        <img width="" src="" alt="" />
+        <img width="" src="https://i.imgur.com/EUE52vK.gif" alt="온보딩 gif" />
       </td>
       <td>
-        <img width="" src="" alt="" />
+        <img width="" src="https://i.imgur.com/BrFhmrP.gif" alt="회원가입 gif" />
       </td>
       <td>
-        <img width="" src="" alt="" />
+        <img width="" src="https://i.imgur.com/GGMi55B.gif" alt="떡국 공유 gif" />
       </td>
     </tr>
     <tr align="center">
@@ -55,13 +55,13 @@
     </tr>
     <tr align="center">
       <td>
-        <img width="" src="" alt="" />
+        <img width="" src="https://i.imgur.com/QZp8SGL.gif" alt="마이페이지 gif" />
       </td>
       <td>
-        <img width="" src="" alt="" />
+        <img width="" src="https://i.imgur.com/yWFpSLE.gif" alt="매트 변경 gif" />
       </td>
       <td>
-        <img width="" src="" alt="" />
+        <img width="" src="https://i.imgur.com/psWTlJt.gif" alt="고명 조회 gif" />
       </td>
     </tr>
     <tr align="center">
@@ -77,13 +77,13 @@
     </tr>
     <tr align="center">
       <td>
-        <img width="" src="" alt="" />
+        <img width="" src="https://i.imgur.com/qUs6EkD.gif" alt="고명 룰렛 gif" />
       </td>
       <td>
-        <img width="" src="" alt="" />
+        <img width="" src="https://i.imgur.com/PtNcNxw.gif" alt="고명 작성 gif" />
       </td>
       <td>
-        <img width="" src="" alt="" />
+        <img width="" src="https://i.imgur.com/WmrRZwa.gif" alt="스냅샷 gif" />
       </td>
     </tr>
     <tr align="center">
