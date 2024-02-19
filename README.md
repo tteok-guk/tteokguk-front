@@ -268,7 +268,7 @@
       <td><b>이메일</b></td>
       <td>
         <a href="mailto:dev.hansolkim@gmail.com">dev.hanolkim@gmail.com</a>
-ㄱ      </td>
+      </td>
       <td>
         <a href="mailto:dbflxogml@gmail.com">dbflxogml@gmail.com</a>
       </td>
