@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     siteName: '니떡국 내떡국',
     images: [
       {
-        url: 'https://i.imgur.com/602cnZU.png',
+        url: 'https://i.imgur.com/0UfDRsI.png',
         width: 1200,
         height: 630,
       },
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     description: '새해 덕담을 롤링페이퍼로 나눠요!',
     images: [
       {
-        url: 'https://i.imgur.com/602cnZU.png',
+        url: 'https://i.imgur.com/0UfDRsI.png',
         width: 1200,
         height: 630,
       },

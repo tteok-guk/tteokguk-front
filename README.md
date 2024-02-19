@@ -6,7 +6,7 @@
 
 # <div style="display: flex; align-items: center; gap: 10px;"><img width="40" src="https://i.imgur.com/TtyJdY4.png" alt="니떡국 내떡국 브로슈어" /><b> 프로젝트 소개 </b></div>
 
-      ✨ 니떡국 내떡국은 2024년 설날을 맞이해 새해 덕담을 주고 받을 수 있는 온라인 롤링페이퍼입니다.
+      ✨ 니떡국 내떡국은 2024년 새해 덕담을 주고 받을 수 있는 온라인 롤링페이퍼입니다.
 
 <table>
   <tbody>
@@ -39,7 +39,7 @@
         <img width="" src="https://i.imgur.com/BrFhmrP.gif" alt="회원가입 gif" />
       </td>
       <td>
-        <img width="" src="https://i.imgur.com/GGMi55B.gif" alt="떡국 공유 gif" />
+        <img width="" src="https://i.imgur.com/pRgag9p.gif" alt="떡국 공유 gif" />
       </td>
     </tr>
     <tr align="center">
@@ -177,7 +177,7 @@
 
 ### 3. 오픈 2주간 페이지뷰 일 평균 35PV, 가입자 수 126명 달성
 
-<img width="500" src="https://i.imgur.com/MDQdzJG.png" alt="뷰저블 캡쳐" />
+<img width="500" src="https://i.imgur.com/w3lQ6by.png" alt="뷰저블 캡쳐" />
 
       📈 오픈 초기 2주간 페이지뷰 일 평균 35PV, 순 방문자 수 20UV, 가입자 수 126명을 달성하였습니다!
 
@@ -267,7 +267,7 @@
     <tr align="center">
       <td><b>이메일</b></td>
       <td>
-        <a href="mailto:dev.hanolkim@gmail.com">dev.hanolkim@gmail.com</a>
+        <a href="mailto:dev.hansolkim@gmail.com">dev.hanolkim@gmail.com</a>
       </td>
       <td>
         <a href="mailto:dbflxogml@gmail.com">dbflxogml@gmail.com</a>
