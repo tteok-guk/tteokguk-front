@@ -85,7 +85,7 @@ function MyPage() {
   const [onChangeInputValue, setOnChangeInputValue] = useState<string>('')
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value
-    const filteredValue = inputValue.replace(/^[a-zA-Z0-9가-힣ㆍᆞᆢㄱ-ㅎㅏ-ㅣ]*$/g, '')
+    const filteredValue = inputValue.replace(/^[^a-zA-Z0-9가-힣ㆍᆞᆢㄱ-ㅎㅏ-ㅣ]*$/g, '')
     if (filteredValue.length <= 8) {
       setOnChangeInputValue(filteredValue)
     }
