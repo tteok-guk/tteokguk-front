@@ -16,6 +16,8 @@ import iconTeam from './iconTeam.png'
 import iconCs from './iconCs.png'
 import iconKakao from './iconKakao.png'
 import iconUserTest from './iconUserTest.png'
+import burger from './burger.png'
+import share from './share.png'
 
 export {
   iconArrow,
@@ -36,4 +38,6 @@ export {
   iconTeam,
   iconKakao,
   iconUserTest,
+  share,
+  burger,
 }

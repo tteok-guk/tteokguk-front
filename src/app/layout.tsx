@@ -113,7 +113,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     d.getElementsByTagName("head")[0].appendChild(b);
                   }
                 };w.__beusablerumclient__.load(a + "?url=" + encodeURIComponent(d.URL));
-              })(window, document, "//rum.beusable.net/load/b240125e215010u438");
+              })(window, document, "//rum.beusable.net/load/b240208e235438u745");
           `,
           }}
         />

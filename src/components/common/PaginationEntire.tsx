@@ -1,6 +1,6 @@
 'use client'
 
-import { toast } from '@/hooks/use-toast'
+import { toast } from '@/hooks/useToast'
 import { paginationType } from '@/types/MainPageTypes'
 import { debounce } from 'lodash'
 import { useRouter, useSearchParams } from 'next/navigation'

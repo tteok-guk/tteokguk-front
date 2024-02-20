@@ -10,7 +10,7 @@ import { notFound, redirect } from 'next/navigation'
 import { iconDday, iconMypage } from '../../../public/images/icons'
 import { dishesObj, mattObj } from './_object/object'
 import NotFoundPage from '../not-found'
-import { makeDishBubble } from '../../../public/images/etc'
+import { makeDishBubble, shareBubble } from '../../../public/images/etc/index'
 import { cat, dragon, hedgehog } from '../../../public/images/avatar/normal'
 import EasterEgg from '@/components/EasterEgg'
 
@@ -50,8 +50,10 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
   const tteokGukId = hostTG ? hostTG.tteokGukId : guestTG?.tteokGukId
   const mattType = hostTG ? hostTG.mattType : guestTG?.mattType
   const garnish = garnishes
-  const dDay = hostTG ? hostTG.dday : guestTG?.dday
-  const dDayUi = dDay === 0 ? 'D-Day' : dDay && dDay >= 1 ? `+${dDay}` : dDay
+
+  const dDay = hostTG ? hostTG.dday : guestTG?.dday ?? -1
+
+  const dDayUi = dDay === 0 ? 'D-Day' : dDay && dDay >= 1 ? `D+${dDay}` : `D${dDay}`
   const hostAvatar = hostTG ? hostTG.hostAvatar : guestTG?.hostAvatar
 
   const determineDishType = (garnish: GarnishItem[] | undefined, userId: string) => {
@@ -93,7 +95,7 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
           <div className="flex flex-col items-center">
             <div className="font-sm flex-center mb-8 flex flex-row gap-1.5 rounded-2xl bg-pr-100 px-15 py-3 lg:px-20 lg:py-6">
               <Image width={12} height={11} src={iconDday} alt="D-day icon" />
-              <p className="font-base lg:font-lg text-pr-800">{`까치까치 설날 D${dDayUi}`}</p>
+              <p className="font-base lg:font-lg text-pr-800">{`까치까치 설날 ${dDayUi}`}</p>
             </div>
 
             {hostTG?.tteokGukId || guestTG ? (
@@ -126,7 +128,7 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
                   />
                 )}
                 {userId === 'host' && tteokGukId ? (
-                  <div className="absolute bottom-[-52px] right-[-18px]">
+                  <div className="absolute bottom-[-52px] right-[-18px] ">
                     <Link href={`/change-matt?matt=${hostTG?.mattType}`}>
                       <MattEdit mattType={mattType || 'default'} />
                     </Link>
@@ -143,17 +145,30 @@ export default async function DishPage({ params: { userId }, searchParams: { pag
               />
             )}
 
-            <ShareButton tteokGukId={tteokGukId} nickname={guestTG?.nickname} />
+            <ShareButton
+              tteokGukId={tteokGukId}
+              nickname={guestTG?.nickname}
+              btnType={dDay >= 0 ? 'openTwice' : 'none'}
+            />
           </div>
         </div>
       </section>
-      {!guestTG?.hasTteokGuk && guestTG && (
+      {guestTG && !guestTG.hasTteokGuk && (
         <Image
           src={makeDishBubble}
           alt="makeDishBubble"
           width={159}
           height={36}
-          className=" absolute bottom-[105px]"
+          className=" absolute bottom-[97px]"
+        />
+      )}
+      {hostTG && dDay >= 0 && tteokGukId && (
+        <Image
+          src={shareBubble}
+          alt="shareBubble"
+          width={190}
+          height={36}
+          className=" absolute bottom-[97px] w-1/2 min-w-190"
         />
       )}
     </div>
