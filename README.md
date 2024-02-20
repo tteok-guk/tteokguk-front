@@ -268,7 +268,11 @@
       <td><b>이메일</b></td>
       <td>
         <a href="mailto:dev.hansolkim@gmail.com">dev.hanolkim@gmail.com</a>
+<<<<<<< HEAD
       </td>
+=======
+ㄱ      </td>
+>>>>>>> 8dc35db2ff45ff21bf34e53324e7d5eeef133704
       <td>
         <a href="mailto:dbflxogml@gmail.com">dbflxogml@gmail.com</a>
       </td>
