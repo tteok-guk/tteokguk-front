@@ -1,10 +1,10 @@
-# <div align="center"><img width="30" src="https://i.imgur.com/aWC6YyP.png" alt="니떡국 내떡국 브로슈어" /><b> 니떡국 내떡국 </b><img width="30" src="https://i.imgur.com/aWC6YyP.png" alt="니떡국 내떡국 브로슈어" /></div>
+# <div align="center"><img width="30" src="https://github.com/tteok-guk/tteokguk-front/assets/84097192/017fe567-0250-4870-b507-b64f4dff9440" alt="니떡국 내떡국 떡국 일러스트" /><b> 니떡국 내떡국 </b><img width="30" src="https://github.com/tteok-guk/tteokguk-front/assets/84097192/017fe567-0250-4870-b507-b64f4dff9440" alt="니떡국 내떡국 떡국 일러스트" /></div>
 
-<div align="center"><img width="600" src="https://i.imgur.com/602cnZU.png" alt="니떡국 내떡국 브로슈어" /></div>
+<div align="center"><img width="600" src="https://github.com/tteok-guk/tteokguk-front/assets/84097192/c3accb37-b404-44b8-a76a-e6badf943e8f" alt="니떡국 내떡국 브로슈어" /></div>
 
 <br/><br/>
 
-# <div style="display: flex; align-items: center; gap: 10px;"><img width="40" src="https://i.imgur.com/TtyJdY4.png" alt="니떡국 내떡국 브로슈어" /><b> 프로젝트 소개 </b></div>
+# <div style="display: flex; align-items: center; gap: 10px;"><img width="40" src="https://github.com/tteok-guk/tteokguk-front/assets/84097192/7faea2d7-7476-4eae-be5e-60e28154d9c2" alt="니떡국 내떡국 용용이 고명 일러스트" /><b> 프로젝트 소개 </b></div>
 
       ✨ 니떡국 내떡국은 2024년 새해 덕담을 주고 받을 수 있는 온라인 롤링페이퍼입니다.
 
@@ -27,19 +27,19 @@
 
 <br /><br />
 
-# <div style="display: flex; align-items: center; gap: 10px;"><img width="40" src="https://i.imgur.com/TtyJdY4.png" alt="니떡국 내떡국 브로슈어" /><b> 주요 기능 </b></div>
+# <div style="display: flex; align-items: center; gap: 10px;"><img width="40" src="https://github.com/tteok-guk/tteokguk-front/assets/84097192/7faea2d7-7476-4eae-be5e-60e28154d9c2" alt="니떡국 내떡국 용용이 고명 일러스트" /><b> 주요 기능 </b></div>
 
 <table>
   <tbody>
     <tr align="center">
       <td>
-        <img width="" src="https://i.imgur.com/EUE52vK.gif" alt="온보딩 gif" />
+        <img width="" src="" alt="온보딩 gif" />
       </td>
       <td>
-        <img width="" src="https://i.imgur.com/BrFhmrP.gif" alt="회원가입 gif" />
+        <img width="" src="" alt="회원가입 gif" />
       </td>
       <td>
-        <img width="" src="https://i.imgur.com/pRgag9p.gif" alt="떡국 공유 gif" />
+        <img width="" src="" alt="떡국 공유 gif" />
       </td>
     </tr>
     <tr align="center">
@@ -55,13 +55,13 @@
     </tr>
     <tr align="center">
       <td>
-        <img width="" src="https://i.imgur.com/QZp8SGL.gif" alt="마이페이지 gif" />
+        <img width="" src="" alt="마이페이지 gif" />
       </td>
       <td>
-        <img width="" src="https://i.imgur.com/yWFpSLE.gif" alt="매트 변경 gif" />
+        <img width="" src="" alt="매트 변경 gif" />
       </td>
       <td>
-        <img width="" src="https://i.imgur.com/psWTlJt.gif" alt="고명 조회 gif" />
+        <img width="" src="" alt="고명 조회 gif" />
       </td>
     </tr>
     <tr align="center">
@@ -77,13 +77,13 @@
     </tr>
     <tr align="center">
       <td>
-        <img width="" src="https://i.imgur.com/qUs6EkD.gif" alt="고명 룰렛 gif" />
+        <img width="" src="" alt="고명 룰렛 gif" />
       </td>
       <td>
-        <img width="" src="https://i.imgur.com/PtNcNxw.gif" alt="고명 작성 gif" />
+        <img width="" src="" alt="고명 작성 gif" />
       </td>
       <td>
-        <img width="" src="https://i.imgur.com/WmrRZwa.gif" alt="스냅샷 gif" />
+        <img width="" src="" alt="스냅샷 gif" />
       </td>
     </tr>
     <tr align="center">
@@ -102,7 +102,7 @@
 
 <br /><br />
 
-# <div style="display: flex; align-items: center; gap: 10px;"><img width="40" src="https://i.imgur.com/TtyJdY4.png" alt="니떡국 내떡국 브로슈어" /><b> 사용 기술 스택 </b></div>
+# <div style="display: flex; align-items: center; gap: 10px;"><img width="40" src="https://github.com/tteok-guk/tteokguk-front/assets/84097192/7faea2d7-7476-4eae-be5e-60e28154d9c2" alt="니떡국 내떡국 용용이 고명 일러스트" /><b> 사용 기술 스택 </b></div>
 
 <table>
   <tr>
@@ -154,11 +154,11 @@
 
 <br /><br />
 
-# <div style="display: flex; align-items: center; gap: 10px;"><img width="40" src="https://i.imgur.com/TtyJdY4.png" alt="니떡국 내떡국 브로슈어" /><b> 주요 성과 및 업데이트 내역 </b></div>
+# <div style="display: flex; align-items: center; gap: 10px;"><img width="40" src="https://github.com/tteok-guk/tteokguk-front/assets/84097192/7faea2d7-7476-4eae-be5e-60e28154d9c2" alt="니떡국 내떡국 용용이 고명 일러스트" /><b> 주요 성과 및 업데이트 내역 </b></div>
 
 ### 1. 디스콰이엇 트렌딩 프로덕트 1위 달성
 
-<img width="500" src="https://i.imgur.com/BomzzjS.png" alt="디스콰이엇 화면 캡쳐" />
+<img width="500" src="https://github.com/tteok-guk/tteokguk-front/assets/84097192/e361b2f4-ca9b-4b5b-8450-04efc1e74d5f" alt="디스콰이엇 화면 캡쳐" />
 
       🏆 IT 프로덕트 메이커 커뮤니티인 '디스콰이엇' 에 니떡국 내떡국을 소개한지 하루만에 트렌딩 프로덕트 1위를 달성하였습니다!
 
@@ -166,7 +166,7 @@
 
 ### 2. 협업 후기 아티클 디스콰이엇 뉴스레터 소개
 
-<img width="500" src="https://i.imgur.com/bFpzFwv.png" alt="디스콰이엇 화면 캡쳐" />
+<img width="500" src="https://github.com/tteok-guk/tteokguk-front/assets/84097192/2d394790-b647-4b37-a4f2-c916ccd39698" alt="디스콰이엇 화면 캡쳐" />
 
       📰 니떡국 내떡국 팀의 협업 후기 아티클이 디스콰이엇 뉴스레터에 소개되었습니다!
 
@@ -177,7 +177,7 @@
 
 ### 3. 오픈 2주간 페이지뷰 일 평균 35PV, 가입자 수 126명 달성
 
-<img width="500" src="https://i.imgur.com/w3lQ6by.png" alt="뷰저블 캡쳐" />
+<img width="500" src="https://github.com/tteok-guk/tteokguk-front/assets/84097192/0594c047-c403-45ed-b774-8e4f14337902" alt="뷰저블 캡쳐" />
 
       📈 오픈 초기 2주간 페이지뷰 일 평균 35PV, 순 방문자 수 20UV, 가입자 수 126명을 달성하였습니다!
 
@@ -201,23 +201,23 @@
 
 <br /><br />
 
-# <div style="display: flex; align-items: center; gap: 10px;"><img width="40" src="https://i.imgur.com/TtyJdY4.png" alt="니떡국 내떡국 브로슈어" /><b> 프론트엔드 개발팀 소개 </b></div>
+# <div style="display: flex; align-items: center; gap: 10px;"><img width="40" src="https://github.com/tteok-guk/tteokguk-front/assets/84097192/7faea2d7-7476-4eae-be5e-60e28154d9c2" alt="니떡국 내떡국 용용이 고명 일러스트" /><b> 프론트엔드 개발팀 소개 </b></div>
 
 <table>
   <tbody>
     <tr align="center">
       <td rowspan="2"><b>이름</b></td>
       <td>
-        <img width="75" src="https://i.imgur.com/3TBUYYA.png" alt="니떡국 내떡국 고양이 캐릭터" />
+        <img width="75" src="https://github.com/tteok-guk/tteokguk-front/assets/84097192/a659b42b-80fa-42ad-83bf-e37753de2e80" alt="니떡국 내떡국 고양이 캐릭터" />
       </td>
       <td>
-        <img width="75" src="https://i.imgur.com/1M17Mbj.png" alt="니떡국 내떡국 다람쥐 캐릭터" />
+        <img width="75" src="https://github.com/tteok-guk/tteokguk-front/assets/84097192/59318215-013a-4b72-85e3-c02947caefcb" alt="니떡국 내떡국 다람쥐 캐릭터" />
       </td>
       <td>
-        <img width="75" src="https://i.imgur.com/gB5oprq.png" alt="니떡국 내떡국 판다 캐릭터" />
+        <img width="75" src="https://github.com/tteok-guk/tteokguk-front/assets/84097192/72bc9b08-83e4-4fee-83b2-742265fc7ca3" alt="니떡국 내떡국 판다 캐릭터" />
       </td>
       <td>
-        <img width="75" src="https://i.imgur.com/leTSiTE.png" alt="니떡국 내떡국 용 캐릭터" />
+        <img width="75" src="https://github.com/tteok-guk/tteokguk-front/assets/84097192/2f73c0a2-057f-4832-8c95-c58a9b44a89e" alt="니떡국 내떡국 용 캐릭터" />
       </td>
     </tr>
     <tr align="center">
@@ -267,12 +267,8 @@
     <tr align="center">
       <td><b>이메일</b></td>
       <td>
-        <a href="mailto:dev.hansolkim@gmail.com">dev.hanolkim@gmail.com</a>
-<<<<<<< HEAD
+        <a href="mailto:dev.hansolkim@gmail.com">dev.hansolkim@gmail.com</a>
       </td>
-=======
-ㄱ      </td>
->>>>>>> 8dc35db2ff45ff21bf34e53324e7d5eeef133704
       <td>
         <a href="mailto:dbflxogml@gmail.com">dbflxogml@gmail.com</a>
       </td>
