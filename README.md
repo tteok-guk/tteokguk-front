@@ -32,37 +32,15 @@
 <table>
   <tbody>
     <tr align="center">
-      <td>
-        <img width="" src="" alt="온보딩 gif" />
-      </td>
-      <td>
-        <img width="" src="" alt="회원가입 gif" />
-      </td>
-      <td>
-        <img width="" src="" alt="떡국 공유 gif" />
-      </td>
-    </tr>
-    <tr align="center">
       <th>
         <a href="https://github.com/tteok-guk/tteokguk-front/blob/main/src/app/page.tsx">온보딩</a>
       </th>
       <th>
-        <a href="https://github.com/tteok-guk/tteokguk-front/blob/main/src/app/(sign-up)/join/page.tsx">카카오 로그인<br />& 회원가입</a>
+        <a href="https://github.com/tteok-guk/tteokguk-front/blob/main/src/app/(sign-up)/join/page.tsx">로그인 & 회원가입</a>
       </th>
       <th>
-        <a href="https://github.com/tteok-guk/tteokguk-front/blob/main/src/app/[userId]/page.tsx">내 떡국<br />& 공유 떡국</a>
+        <a href="https://github.com/tteok-guk/tteokguk-front/blob/main/src/app/[userId]/page.tsx">내 떡국 & 공유 떡국</a>
       </th>
-    </tr>
-    <tr align="center">
-      <td>
-        <img width="" src="" alt="마이페이지 gif" />
-      </td>
-      <td>
-        <img width="" src="" alt="매트 변경 gif" />
-      </td>
-      <td>
-        <img width="" src="" alt="고명 조회 gif" />
-      </td>
     </tr>
     <tr align="center">
       <th>
@@ -72,19 +50,8 @@
         <a href="https://github.com/tteok-guk/tteokguk-front/blob/main/src/app/(my-page)/change-matt/page.tsx">매트 변경</a>
       </th>
       <th>
-        <a href="https://github.com/tteok-guk/tteokguk-front/blob/main/src/app/[userId]/[garnishId]/page.tsx">고명 리스트<br />& 상세 조회</a>
+        <a href="https://github.com/tteok-guk/tteokguk-front/blob/main/src/app/[userId]/[garnishId]/page.tsx">고명 리스트 & 상세 조회</a>
       </th>
-    </tr>
-    <tr align="center">
-      <td>
-        <img width="" src="" alt="고명 룰렛 gif" />
-      </td>
-      <td>
-        <img width="" src="" alt="고명 작성 gif" />
-      </td>
-      <td>
-        <img width="" src="" alt="스냅샷 gif" />
-      </td>
     </tr>
     <tr align="center">
       <th>
