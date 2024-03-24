@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     siteName: '니떡국 내떡국',
     images: [
       {
-        url: 'https://i.imgur.com/0UfDRsI.png',
+        url: 'https://github.com/tteok-guk/tteokguk-front/assets/84097192/216a482a-34a4-4fe7-ba33-bb717162c4d6',
         width: 1200,
         height: 630,
       },
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     description: '새해 덕담을 롤링페이퍼로 나눠요!',
     images: [
       {
-        url: 'https://i.imgur.com/0UfDRsI.png',
+        url: 'https://github.com/tteok-guk/tteokguk-front/assets/84097192/216a482a-34a4-4fe7-ba33-bb717162c4d6',
         width: 1200,
         height: 630,
       },
