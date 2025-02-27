@@ -12,7 +12,7 @@
   <tbody>
     <tr align="center">
       <th>배포 주소</th>
-      <td><a href="https://www.tteokguk.site">https://www.tteokguk.site</a></td>
+      <td><a href="https://tteokguk.vercel.app">https://tteokguk.vercel.app</a></td>
     </tr>
     <tr align="center">
       <th>개발 기간</th>
