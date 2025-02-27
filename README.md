@@ -1,29 +1,17 @@
 # <div align="center"><img width="30" src="https://github.com/tteok-guk/tteokguk-front/assets/84097192/017fe567-0250-4870-b507-b64f4dff9440" alt="니떡국 내떡국 떡국 일러스트" /><b> 니떡국 내떡국 </b><img width="30" src="https://github.com/tteok-guk/tteokguk-front/assets/84097192/017fe567-0250-4870-b507-b64f4dff9440" alt="니떡국 내떡국 떡국 일러스트" /></div>
 
-<div align="center"><img width="600" src="https://github.com/tteok-guk/tteokguk-front/assets/84097192/c3accb37-b404-44b8-a76a-e6badf943e8f" alt="니떡국 내떡국 브로슈어" /></div>
+<br />
+
+<div align="center">
+  <img width="600" src="https://github.com/tteok-guk/tteokguk-front/assets/84097192/c3accb37-b404-44b8-a76a-e6badf943e8f" alt="니떡국 내떡국 브로슈어" />
+</div>
 
 <br/><br/>
 
 # <div style="display: flex; align-items: center; gap: 10px;"><img width="40" src="https://github.com/tteok-guk/tteokguk-front/assets/84097192/7faea2d7-7476-4eae-be5e-60e28154d9c2" alt="니떡국 내떡국 용용이 고명 일러스트" /><b> 프로젝트 소개 </b></div>
 
-      ✨ 니떡국 내떡국은 2024년 새해 덕담을 주고 받을 수 있는 온라인 롤링페이퍼입니다.
-
-<table>
-  <tbody>
-    <tr align="center">
-      <th>배포 주소</th>
-      <td><a href="https://tteokguk.vercel.app">https://tteokguk.vercel.app</a></td>
-    </tr>
-    <tr align="center">
-      <th>개발 기간</th>
-      <td>2023.12.18 ~ 2024.01.25</td>
-    </tr>
-    <tr align="center">
-      <th>배포 및 운영 기간</th>
-      <td>2023.01.26 ~ 2024.03.31</td>
-    </tr>
-  </tbody>
-</table>
+      니떡국 내떡국은 2024년 새해 덕담을 주고 받을 수 있는 온라인 롤링페이퍼입니다.
+      룰렛을 이용해 🥕 고명을 뽑고, 📝 고명에 편지를 작성하고, 🥣 떡국에 다양한 고명을 올려 개성있는 떡국을 만들어 보세요!
 
 <br /><br />
 
@@ -32,37 +20,52 @@
 <table>
   <tbody>
     <tr align="center">
-      <th>
-        <a href="https://github.com/tteok-guk/tteokguk-front/blob/main/src/app/page.tsx">온보딩</a>
-      </th>
-      <th>
-        <a href="https://github.com/tteok-guk/tteokguk-front/blob/main/src/app/(sign-up)/join/page.tsx">로그인 & 회원가입</a>
-      </th>
-      <th>
-        <a href="https://github.com/tteok-guk/tteokguk-front/blob/main/src/app/[userId]/page.tsx">내 떡국 & 공유 떡국</a>
-      </th>
+      <td>
+        <img width="" src="https://github.com/user-attachments/assets/1c6b64d8-ec62-4133-b475-feb06242e9e3" alt="온보딩 gif" />
+      </td>
+      <td>
+        <img width="" src="https://github.com/user-attachments/assets/a53c4d30-0b87-4a12-a9d8-d2fd0bb202ac" alt="카카오 로그인, 회원가입 gif" />
+      </td>
+      <td>
+        <img width="" src="https://github.com/user-attachments/assets/44b2d07c-c425-4c05-bffc-81e6dab5daf1" alt="떡국 구경하기 gif" />
+      </td>
     </tr>
     <tr align="center">
-      <th>
-        <a href="https://github.com/tteok-guk/tteokguk-front/blob/main/src/app/(my-page)/account/page.tsx">마이페이지</a>
-      </th>
-      <th>
-        <a href="https://github.com/tteok-guk/tteokguk-front/blob/main/src/app/(my-page)/change-matt/page.tsx">매트 변경</a>
-      </th>
-      <th>
-        <a href="https://github.com/tteok-guk/tteokguk-front/blob/main/src/app/[userId]/[garnishId]/page.tsx">고명 리스트 & 상세 조회</a>
-      </th>
+      <th>최초 진입 시 온보딩 페이지</th>
+      <th>카카오 로그인, 회원가입</th>
+      <th>내 떡국, 유저 떡국 구경하기</th>
     </tr>
     <tr align="center">
-      <th>
-        <a href="https://github.com/tteok-guk/tteokguk-front/blob/main/src/components/modal/RouletteModal.tsx">고명 룰렛</a>
-      </th>
-      <th>
-        <a href="https://github.com/tteok-guk/tteokguk-front/blob/main/src/app/[userId]/(write)/write/page.tsx">고명 작성</a>
-      </th>
-      <th>
-        <a href="https://github.com/tteok-guk/tteokguk-front/blob/main/src/components/SaveAsImageHandler.tsx">스냅샷 저장</a>
-      </th>
+      <td>
+        <img width="" src="https://github.com/user-attachments/assets/02e0fc92-443d-4e29-8662-7df3882d7ff6" alt="고명 룰렛 gif" />
+      </td>
+      <td>
+        <img width="" src="https://github.com/user-attachments/assets/f8f5a0bf-f33d-4fd5-9f45-e8841a06b321" alt="고명 작성 gif" />
+      </td>
+      <td>
+        <img width="" src="https://github.com/user-attachments/assets/8057c199-0b5d-4e63-8dfe-b63ce6f8d9b7" alt="스냅샷 저장 gif" />
+      </td>
+    </tr>
+    <tr align="center">
+      <th>떡국 고명 룰렛 뽑기</th>
+      <th>선택한 고명으로 편지 작성</th>
+      <th>아바타와 함께 스냅샷 저장</th>
+    </tr>
+    <tr align="center">
+      <td>
+        <img width="" src="https://github.com/user-attachments/assets/0ec50a76-36a4-40b8-b7e2-008d6d4a922c" alt="마이페이지 gif" />
+      </td>
+      <td>
+        <img width="" src="https://github.com/user-attachments/assets/66528eef-6fb8-4b89-b370-5e94b641f4d2" alt="테이블 매트 변경 gif" />
+      </td>
+      <td>
+        <img width="" src="https://github.com/user-attachments/assets/897cdc82-49e2-414b-96ce-a2ef8625f613" alt="고명 리스트, 상세 조회 gif" />
+      </td>
+    </tr>
+    <tr align="center">
+      <th>마이페이지</th>
+      <th>테이블 매트 변경</th>
+      <th>고명(편지) 리스트, 상세 조회</th>
     </tr>
   </tbody>
 </table>
@@ -121,50 +124,31 @@
 
 <br /><br />
 
-# <div style="display: flex; align-items: center; gap: 10px;"><img width="40" src="https://github.com/tteok-guk/tteokguk-front/assets/84097192/7faea2d7-7476-4eae-be5e-60e28154d9c2" alt="니떡국 내떡국 용용이 고명 일러스트" /><b> 주요 성과 및 업데이트 내역 </b></div>
+# <div style="display: flex; align-items: center; gap: 10px;"><img width="40" src="https://github.com/tteok-guk/tteokguk-front/assets/84097192/7faea2d7-7476-4eae-be5e-60e28154d9c2" alt="니떡국 내떡국 용용이 고명 일러스트" /><b> 주요 성과 </b></div>
 
-### 1. 디스콰이엇 트렌딩 프로덕트 1위 달성
+### 🏆 디스콰이엇 트렌딩, 위클리 프로덕트 1위 달성
 
 <img width="500" src="https://github.com/tteok-guk/tteokguk-front/assets/84097192/e361b2f4-ca9b-4b5b-8450-04efc1e74d5f" alt="디스콰이엇 화면 캡쳐" />
 
-      🏆 IT 프로덕트 메이커 커뮤니티인 '디스콰이엇' 에 니떡국 내떡국을 소개한지 하루만에 트렌딩 프로덕트 1위를 달성하였습니다!
+<br />
+
+- IT 프로덕트 메이커 커뮤니티인 '디스콰이엇' 에 니떡국 내떡국을 소개한지 하루만에 트렌딩 프로덕트 1위를 달성하였습니다!
+
+- 디스콰이엇에서 매주 가장 많은 표를 받은 상위 3개의 프로덕트를 뽑는 위클리 프로덕트 1위에 선정되었습니다!
 
 <br />
 
-### 2. 협업 후기 아티클 디스콰이엇 뉴스레터 소개
+### 📰 협업 후기 아티클 디스콰이엇 뉴스레터 소개
 
 <img width="500" src="https://github.com/tteok-guk/tteokguk-front/assets/84097192/2d394790-b647-4b37-a4f2-c916ccd39698" alt="디스콰이엇 화면 캡쳐" />
 
-      📰 니떡국 내떡국 팀의 협업 후기 아티클이 디스콰이엇 뉴스레터에 소개되었습니다!
+<br />
+
+- 니떡국 내떡국 팀의 협업 후기 아티클이 디스콰이엇 뉴스레터에 소개되었습니다!
 
 - 아티클(1): [주니어지만 사이드 프로젝트는 하고 싶어 (ft.니떡내떡 개발 후기)](https://bit.ly/tteokguk-article-1)
+  
 - 아티클(2): [주니어가 사이드 프로젝트를 하기 전까지 몰랐던 세 가지](https://bit.ly/tteokguk-article-2)
-
-<br />
-
-### 3. 오픈 2주간 페이지뷰 일 평균 35PV, 가입자 수 126명 달성
-
-<img width="500" src="https://github.com/tteok-guk/tteokguk-front/assets/84097192/0594c047-c403-45ed-b774-8e4f14337902" alt="뷰저블 캡쳐" />
-
-      📈 오픈 초기 2주간 페이지뷰 일 평균 35PV, 순 방문자 수 20UV, 가입자 수 126명을 달성하였습니다!
-
-<br />
-
-### 4. 유저 피드백 반영하여 업데이트 진행
-
-      📢 오픈 후 유저 피드백 폼을 만들어 피드백을 수집하였고, 해당 피드백을 반영하여 다음과 같이 업데이트를 진행하였습니다.
-
-- 회원가입 이전에 사이트를 둘러볼 수 있었으면 좋겠다는 의견을 반영하여
-  '로그인 없이 둘러보기' 기능을 추가하였습니다!<br />
-
-- 가입 시 선택하는 캐릭터를 여러 페이지에서 볼 수 있었으면 좋겠다는 의견을 반영하여,
-  떡국 페이지 및 마이페이지 내에서도 캐릭터 UI를 추가하였습니다!<br />
-
-- 청룡 캐릭터에 대한 긍정적인 피드백이 많아
-  고명 룰렛 내 조랭이떡을 용용이떡으로 수정하였습니다!<br />
-
-- 설날 이후에도 편지 작성할 수 있었으면 좋겠다는 의견을 반영하여
-  롤링페이퍼 작성 가능 기간을 3월 31일까지로 연장하였습니다!<br />
 
 <br /><br />
 
@@ -173,7 +157,6 @@
 <table>
   <tbody>
     <tr align="center">
-      <td rowspan="2"><b>이름</b></td>
       <td>
         <img width="75" src="https://github.com/tteok-guk/tteokguk-front/assets/84097192/a659b42b-80fa-42ad-83bf-e37753de2e80" alt="니떡국 내떡국 고양이 캐릭터" />
       </td>
@@ -194,56 +177,43 @@
       <td><b>신희제</b></td>
     </tr>
     <tr>
-      <td align="center"><b>담당 기능</b></td>
       <td align="left">
-        • 온보딩 페이지<br />
-        • 공통 컴포넌트<br />
-        • 고명 룰렛 & 고명 작성
+        • 프로젝트 총괄<br />
+        • 공통 컴포넌트&hooks<br />
+        • 고명 룰렛, 고명 작성<br />
+        • 온보딩 페이지
       </td>
       <td align="left">
-        • 내 떡국 & 공유 떡국 조회<br />
-        • 페이지네이션 & 떡국 공유<br />
+        • 유저별 떡국 조회<br />
+        • 페이지네이션<br />
+        • 떡국 url 공유<br />
         • 스냅샷 저장
       </td>
       <td align="left">
-        • 카카오 로그인 & 회원가입<br />
-        • 고명 리스트 & 상세 조회<br />
-        • 미들웨어
+        • 카카오 로그인<br />
+        • 카카오 회원가입<br />
+        • 미들웨어 설정<br />
+        • 고명 리스트, 상세 조회
       </td>
       <td align="left">
         • 공통 모달 설정<br />
-        • 마이페이지 & 회원 정보 변경<br />
-        • 로그아웃 & 회원 탈퇴
+        • 마이페이지<br />
+        • 로그아웃, 회원 탈퇴<br />
+        • 회원 정보, 테이블 매트 설정
       </td>
     </tr>
     <tr align="center">
-      <td><b>깃허브</b></td>
       <td>
-        <a href="https://github.com/hansololiviakim">hansololiviakim</a>
+        <a href="https://github.com/hansololiviakim">@hansololiviakim</a>
       </td>
       <td>
-        <a href="https://github.com/stella0905">stella0905</a>
+        <a href="https://github.com/stella0905">@stella0905</a>
       </td>
       <td>
-        <a href="https://github.com/godjooyoung">godjooyoung</a>
+        <a href="https://github.com/godjooyoung">@godjooyoung</a>
       </td>
       <td>
-        <a href="https://github.com/Shinheeje">Shinheeje</a>
-      </td>
-    </tr>
-    <tr align="center">
-      <td><b>이메일</b></td>
-      <td>
-        <a href="mailto:dev.hansolkim@gmail.com">dev.hansolkim@gmail.com</a>
-      </td>
-      <td>
-        <a href="mailto:dbflxogml@gmail.com">dbflxogml@gmail.com</a>
-      </td>
-      <td>
-        <a href="mailto:xolovesjoo36@naver.com">xolovesjoo36@naver.com</a>
-      </td>
-      <td>
-        <a href="mailto:tlsgmlwp37@gmail.com">tlsgmlwp37@gmail.com</a>
+        <a href="https://github.com/Shinheeje">@Shinheeje</a>
       </td>
     </tr>
   </tbody>
