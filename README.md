@@ -10,8 +10,8 @@
 
 # <div style="display: flex; align-items: center; gap: 10px;"><img width="40" src="https://github.com/tteok-guk/tteokguk-front/assets/84097192/7faea2d7-7476-4eae-be5e-60e28154d9c2" alt="니떡국 내떡국 용용이 고명 일러스트" /><b> 프로젝트 소개 </b></div>
 
-      니떡국 내떡국은 2024년 새해 덕담을 주고 받을 수 있는 온라인 롤링페이퍼입니다.
-      룰렛을 이용해 🥕 고명을 뽑고, 📝 고명에 편지를 작성하고, 🥣 떡국에 다양한 고명을 올려 개성있는 떡국을 만들어 보세요!
+니떡국 내떡국은 2024년 새해 덕담을 주고 받을 수 있는 온라인 롤링페이퍼입니다.<br />
+룰렛을 이용해 고명을 뽑고 🥕, 고명에 편지를 작성하고 📝, 떡국에 다양한 고명을 올려 🥣 개성있는 떡국을 만들어 보세요!
 
 <br /><br />
 
@@ -19,6 +19,11 @@
 
 <table>
   <tbody>
+    <tr align="center">
+      <th>최초 진입 시 온보딩 페이지</th>
+      <th>카카오 로그인, 회원가입</th>
+      <th>내 떡국, 유저 떡국 구경하기</th>
+    </tr>
     <tr align="center">
       <td>
         <img width="" src="https://github.com/user-attachments/assets/1c6b64d8-ec62-4133-b475-feb06242e9e3" alt="온보딩 gif" />
@@ -31,9 +36,9 @@
       </td>
     </tr>
     <tr align="center">
-      <th>최초 진입 시 온보딩 페이지</th>
-      <th>카카오 로그인, 회원가입</th>
-      <th>내 떡국, 유저 떡국 구경하기</th>
+      <th>떡국 고명 룰렛 뽑기</th>
+      <th>선택한 고명으로 편지 작성</th>
+      <th>아바타와 함께 스냅샷 저장</th>
     </tr>
     <tr align="center">
       <td>
@@ -47,9 +52,9 @@
       </td>
     </tr>
     <tr align="center">
-      <th>떡국 고명 룰렛 뽑기</th>
-      <th>선택한 고명으로 편지 작성</th>
-      <th>아바타와 함께 스냅샷 저장</th>
+      <th>마이페이지</th>
+      <th>테이블 매트 변경</th>
+      <th>고명(편지) 리스트, 상세 조회</th>
     </tr>
     <tr align="center">
       <td>
@@ -61,11 +66,6 @@
       <td>
         <img width="" src="https://github.com/user-attachments/assets/897cdc82-49e2-414b-96ce-a2ef8625f613" alt="고명 리스트, 상세 조회 gif" />
       </td>
-    </tr>
-    <tr align="center">
-      <th>마이페이지</th>
-      <th>테이블 매트 변경</th>
-      <th>고명(편지) 리스트, 상세 조회</th>
     </tr>
   </tbody>
 </table>
